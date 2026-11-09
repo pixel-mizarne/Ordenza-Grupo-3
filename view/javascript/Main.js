@@ -401,7 +401,6 @@ window.addEventListener('click', function(event) {
     const adminBtn = document.querySelector('.admin-dropdown'); 
 
     if (adminMenu && adminMenu.classList.contains('show')) {
-        // Si el clic NO ha sido dentro del menú Y TAMPOCO en el botón
         if (!adminMenu.contains(event.target) && !adminBtn.contains(event.target)) {
             adminMenu.classList.remove('show');
         }
@@ -412,7 +411,6 @@ window.addEventListener('click', function(event) {
     const notifBtn = document.getElementById('notificationToggle'); 
 
     if (notifMenu && notifMenu.classList.contains('show')) {
-        // Si el clic NO ha sido dentro del menú Y TAMPOCO en la campana
         if (!notifMenu.contains(event.target) && !notifBtn.contains(event.target)) {
             notifMenu.classList.remove('show');
             notifBtn.setAttribute('aria-expanded', 'false');
@@ -421,7 +419,7 @@ window.addEventListener('click', function(event) {
 });
 
 /* =========================================
-   LÓGICA DEL MENÚ MÓVIL
+   LÓGICA del hamburguesa
    ========================================= */
 function toggleMobileMenu() {
     const navTabs = document.getElementById('navTabs');

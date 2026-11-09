@@ -12,13 +12,9 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { font-family: "Poppins", sans-serif; }
-
-/* Apply background to body so the wrapper can be transparent */
 body {
     background-color: var(--bg-body) !important;
 }
-
-/* YELLOW GLOW (Moved behind) */
 .yellow-glow {
     position: fixed;
     top: 50%;
@@ -28,7 +24,7 @@ body {
     height: 800px;
     background: radial-gradient(circle, var(--glow-yellow) 0%, rgba(253, 250, 231, 0) 60%);
     filter: blur(40px);
-    z-index: 1 !important; /* Sits BEHIND the circle */
+    z-index: 1 !important; 
     pointer-events: none;
 }
 
@@ -65,12 +61,12 @@ body {
     top: 0; left: 0;
     width: 100vw !important;
     height: 100vh !important;
-    background-color: transparent !important; /* Lets the glow show through */
+    background-color: transparent !important; 
     display: flex;
     justify-content: center;
     align-items: center;
     transform: translateY(-30px);
-    z-index: 10; /* Sits ABOVE the glow */
+    z-index: 10; 
     overflow: hidden;
 }
 
@@ -146,7 +142,7 @@ body {
 .input-box input {
     width: 100%;
     height: 48px;
-    padding: 0 40px 0 45px; /* Padding right keeps text away from the X */
+    padding: 0 40px 0 45px; 
     border: none;
     outline: none;
     background: var(--circle-bg);
@@ -172,7 +168,7 @@ body {
 .input-box:focus-within i { color: var(--azul); }
 
 /* ==========================================================
-   6. BOTÓN SUBMIT (DEFAULT STATE)
+   6. BOTÓN SUBMIT 
    ========================================================== */
 .login-form button[type="submit"] {
     position: relative;
@@ -192,10 +188,7 @@ body {
     text-transform: uppercase;
     
     color: var(--azul); /* Dark text */
-    
-    /* 👇 CHANGE THIS TO YOUR DEFAULT COLOR (e.g., Cream, Gray, etc.) 👇 */
     background: var(--circle-bg); 
-    
     box-shadow:
         -5px -5px 12px rgba(255, 255, 255, 0.9),
          5px 5px 12px rgba(0,0,0,0.08);
@@ -203,7 +196,7 @@ body {
 }
 
 /* ==========================================================
-   THE ANIMATION (Do not change this!)
+   ANIMATION 
    ========================================================== */
 .login-form button[type="submit"]::before {
     content: "";
@@ -222,7 +215,7 @@ body {
 }
 
 /* ==========================================================
-   HOVER STATE (Turns Yellow)
+   HOVER STATE 
    ========================================================== */
 .login-form button[type="submit"]:hover {
     transform: translateY(-2px);
@@ -237,7 +230,7 @@ body {
 }
 
 /* ==========================================================
-   CLICK STATE (When pressed down)
+   CLICK STATE 
    ========================================================== */
 .login-form button[type="submit"]:active {
     transform: translateY(0) scale(0.98);
@@ -245,7 +238,7 @@ body {
 }
 
 /* ==========================================================
-   7. CLEAR INPUT (X) BUTTON (Fixed position)
+   7. CLEAR (X) BUTTON 
    ========================================================== */
 .clear-input {
     position: absolute !important;
@@ -294,7 +287,7 @@ body {
     75% { transform: translateX(5px); }
 }
 /* ==========================================================
-   FIX: X BUTTON POSITION AND SIZE
+   X BUTTON 
    ========================================================== */
 
 .input-box {
@@ -329,4 +322,82 @@ body {
 
 .clear-input:hover {
     color: #000855 !important; 
+}
+
+/* ==========================================================
+   DISEÑO RESPONSIVE LOGIN 
+   ========================================================== */
+
+/* Tablets y Móviles */
+@media (max-width: 600px) {
+    
+    /* 1. El círculo de cristal se adapta al ancho de la pantalla */
+    .glass-circle {
+        width: 85vw !important;
+        height: 85vw !important;
+        max-width: 380px !important;
+        max-height: 380px !important;
+    }
+
+    /* 2. El formulario ocupa más espacio dentro del círculo */
+    .login-form {
+        width: 75% !important; 
+    }
+
+    /* 3. tamaño del título */
+    .login-form h1 {
+        font-size: 32px !important;
+    }
+
+    /* 4. inputs y el botón para que no se vean gigantes */
+    .input-box input {
+        height: 44px !important;
+    }
+    
+    .login-form button[type="submit"] {
+        height: 44px !important;
+        font-size: 13px !important;
+    }
+
+    /* 5. El logo se hace más pequeño y se acerca a la esquina */
+    .brand-logo {
+        top: 20px !important;
+        left: 20px !important;
+        gap: 10px !important;
+    }
+    .logo-img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .logo-text {
+        font-size: 16px !important;
+        letter-spacing: 5px !important;
+    }
+}
+
+/* Móviles Pequeños */
+@media (max-width: 400px) {
+    
+    .glass-circle {
+        width: 90vw !important;
+        height: 90vw !important;
+    }
+
+    .login-form {
+        width: 80% !important;
+    }
+
+    .login-form h1 {
+        font-size: 26px !important;
+    }
+
+    .login-form .subtitle {
+        font-size: 11px !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Ocultamos el texto del logo en pantallas súper pequeñas para que no estorbe */
+    .logo-text {
+        display: none !important;
+    }
 }
