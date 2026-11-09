@@ -151,7 +151,7 @@ body {
 /* 3.1.5 BOTÓN CAMPANA: Estado activo (página de notificaciones) */
 .notification-toggle.is-current { 
     border-radius: 50%; 
-    background: #0b1b42; 
+    background: #051BFF; 
 }
 .notification-toggle.is-current .bell { 
     color: white; 
@@ -634,6 +634,12 @@ body.colorblind-mode .notification-toggle i {
     font-weight: 900 !important; 
 }
 
+body.colorblind-mode .notification-toggle.is-current .bell,
+body.colorblind-mode .notification-toggle.is-current i {
+    color: #FFFFFF !important;
+    -webkit-text-stroke: 0;
+}
+
 /* --- 3. FORMULARIOS Y BOTONES GENERALES --- */
 
 /* 8.8 DALTONISMO: Inputs y cajas de búsqueda (Borde negro grueso) */
@@ -748,7 +754,6 @@ body.colorblind-mode .estadistica-barra,
 body.colorblind-mode .tarjetaInfo p, 
 body.colorblind-mode .tarjetaInfo strong, 
 body.colorblind-mode .notificaciones-lista__tabla td, 
-body.colorblind-mode .notificaciones-lista__controles h1, 
 body.colorblind-mode .notificaciones-admin__campo label, 
 body.colorblind-mode .perfil-label, 
 body.colorblind-mode .perfil-label i, 
@@ -867,6 +872,14 @@ body.colorblind-mode .notificaciones-lista__estado {
 
 body.colorblind-mode .notificaciones-lista__mensaje,
 body.colorblind-mode .notificaciones-admin__campo {
+    color: #000000 !important;
+}
+
+body.colorblind-mode .notification-menu__message--empty {
+    color: #000000 !important;
+}
+
+body.colorblind-mode .notification-menu__title {
     color: #000000 !important;
 }
 
