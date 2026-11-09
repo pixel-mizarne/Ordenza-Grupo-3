@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 window.location.href = 'index.html?page=login';
                 return;
             }
+            document.getElementById('main-navbar').style.display = 'none';
+            document.getElementById('main-footer').style.display = 'none';
             loadView('login');
         } else {
             const user = sessionData.usuario;
