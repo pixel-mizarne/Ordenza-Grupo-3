@@ -822,11 +822,13 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 
 .eq-category-card {
     display: flex;
-    min-height: 180px;
+    /* En pantallas móviles altas, las tres filas crecen con el ancho y la altura visibles; en PC se conserva el tamaño base. */
+    height: clamp(180px, min(calc(600px - 30vw), calc((100dvh - 40rem) / 3)), 300px);
+    min-height: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 14px;
+    gap: clamp(14px, 3vw, 24px);
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     background: #ffffff;
@@ -853,7 +855,8 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 /* Reutiliza el lenguaje visual de los iconos de equipo, ampliándolos para que identifiquen cada filtro. */
 .eq-category-icon {
     color: #814017;
-    font-size: 48px;
+    /* El icono aumenta en pantallas estrechas y altas, mientras en pantallas de escritorio permanece en 48px. */
+    font-size: clamp(48px, min(calc(120px - 4vw), calc(24px + 3vh)), 80px);
     line-height: 1;
 }
 
