@@ -738,6 +738,24 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     background: #1e293b;
 }
 
+#modal-crear .eq-btn-cancelar {
+    background: #0f172a;
+    color: white;
+    border: none;
+}
+#modal-crear .eq-btn-cancelar:hover {
+    background: #1e293b;
+}
+
+#modal-crear .eq-btn-guardar {
+    background: #f3f4f6;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+}
+#modal-crear .eq-btn-guardar:hover {
+    background: #e5e7eb;
+}
+
 .search-clear-btn {
     position: absolute;
     right: 12px;
