@@ -71,7 +71,8 @@ async function cargarUsuarios() {
                     usuario.id_usuario,
                     usuario.nombre,
                     usuario.apellidos,
-                    usuario.nombre_usuario
+                    usuario.nombre_usuario,
+                    usuario.rol
                 );
             });
 
@@ -114,11 +115,15 @@ btnAnadir.addEventListener('click', () => {
 });
 
 // POPUP EDITAR
-window.abrirEditar = function(id, nombre, apellido, username) {
+window.abrirEditar = function(id, nombre, apellido, username, rolActual) {
     document.getElementById('userId').value = id;
     document.getElementById('nombre').value = nombre;
     document.getElementById('apellido').value = apellido;
     document.getElementById('username').value = username;
+    
+    const opcionRol = formUsuario.querySelector(`input[name="rol"][value="${String(rolActual).toUpperCase()}"]`);
+    if (opcionRol) opcionRol.checked = true;
+
     const passwordInput = document.getElementById('password');
     passwordInput.value = '';
     passwordInput.required = false;
@@ -157,7 +162,8 @@ formUsuario.addEventListener('submit', async (evento) => {
     const datos = {
         nombre: document.getElementById('nombre').value,
         apellidos: document.getElementById('apellido').value,
-        nombre_usuario: document.getElementById('username').value
+        nombre_usuario: document.getElementById('username').value,
+        rol: formUsuario.querySelector('input[name="rol"]:checked').value
     };
     if (password) datos.password = password;
 

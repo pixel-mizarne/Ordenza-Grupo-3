@@ -439,6 +439,53 @@ main {
 .grupo-input input:focus {
     border-color: #2563eb; /* Se pone azul al hacer click dentro */
 }
+/*-----------
+    ROL
+-------------*/
+.grupo-rol {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+}
+.grupo-rol legend {
+    margin-bottom: 5px;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.rol-opciones {
+    display: flex;
+    gap: 10px;
+}
+.grupo-rol .rol-opcion {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    margin-bottom: 0;
+    color: #111827;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+body.colorblind-mode .grupo-rol .rol-opcion {
+    border: 2px solid #000000 !important;
+}
+.rol-opcion input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: #2563eb;
+}
+.rol-opcion input:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
 
 /* La fila con los botones de guardar y cancelar */
 .botones-popup {

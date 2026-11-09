@@ -199,7 +199,7 @@ try {
 
 
             $consulta = $conexion->prepare(
-                'INSERT INTO usuarios (nombre, apellidos, nombre_usuario, password_hash)
+                'INSERT INTO usuarios (nombre, apellidos, nombre_usuario, password_hash, rol)
                  VALUES (:nombre, :apellidos, :nombre_usuario, :password_hash, :rol)'
             );
             $consulta->execute([
@@ -244,6 +244,11 @@ try {
                 break;
             }
 
+            $rol = $datos['rol'] ?? 'USER';
+            if (!in_array($rol, ['ADMIN', 'USER'])) {
+                $rol = 'USER';
+            }
+            
             $actualizarPassword = isset($datos['password']) && $datos['password'] !== '';
             if ($actualizarPassword) {
 
