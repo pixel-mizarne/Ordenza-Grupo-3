@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const urlParams = new URLSearchParams(window.location.search);
     let page = urlParams.get('page') || 'login';
 
-        // --- COLORBLIND Dark Mode ---
+    // --- COLORBLIND Dark Mode ---
     const isColorblind = localStorage.getItem('modoDaltonismo') === 'true';
     const isDarkMode = localStorage.getItem('modoOscuro') === 'true';
 

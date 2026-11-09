@@ -39,6 +39,11 @@ function tieneCamposTextoUsuarios(array $datos, array $campos): bool
     return true;
 }
 
+function esContrasenaValidaUsuarios(string $contrasena): bool
+{
+    return preg_match('/\A(?=[\s\S]{8,}\z)(?=[\s\S]*\p{Ll})(?=[\s\S]*\p{Lu})(?=[\s\S]*[0-9])(?=[\s\S]*[._-])[\s\S]*\z/u', $contrasena) === 1;
+}
+
 // Indica si existe un usuario con el identificador proporcionado.
 function existeUsuario(PDO $conexion, int $id): bool
 {
@@ -184,8 +189,10 @@ try {
             }
 
             $password = $datos['password'] ?? null;
-            if (!is_string($password) || trim($password) === '') {
-                responderUsuarios(['error' => 'Se requiere una contraseña válida.'], 400);
+            if (!is_string($password) || !esContrasenaValidaUsuarios($password)) {
+                responderUsuarios([
+                    'error' => 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y uno de estos caracteres: . - _'
+                ], 400);
                 break;
             }
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -250,6 +257,13 @@ try {
             }
             
             $actualizarPassword = isset($datos['password']) && $datos['password'] !== '';
+            if ($actualizarPassword && !esContrasenaValidaUsuarios($datos['password'])) {
+                responderUsuarios([
+                    'error' => 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y uno de estos caracteres: . - _'
+                ], 400);
+                break;
+            }
+
             if ($actualizarPassword) {
 
              // Aqui lo mismo para validar rol
@@ -314,6 +328,12 @@ try {
             }
             if (!tieneCamposTextoUsuarios($datos, ['password'])) {
                 responderUsuarios(['error' => 'Se requiere una contraseña válida.'], 400);
+                break;
+            }
+            if (!esContrasenaValidaUsuarios($datos['password'])) {
+                responderUsuarios([
+                    'error' => 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y uno de estos caracteres: . - _'
+                ], 400);
                 break;
             }
 
