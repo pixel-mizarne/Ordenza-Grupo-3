@@ -1,0 +1,42 @@
+<div class="eq-header">
+    <h1 class="eq-title">Historial de Movimientos</h1>
+</div>
+
+<div class="eq-filters-bar">
+    <div class="eq-search-box">
+        <i class="fa-solid fa-magnifying-glass" style="color: #9ca3af;"></i>
+        <input type="text" id="search-input" placeholder="Buscar por nombre, ID o marca...">
+    <button type="button" class="search-clear-btn" id="clear-search-his">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+</div>
+
+<!-- 👇 LAS PESTAÑAS CON FLECHA 👇 -->
+<div class="eq-tabs-container">
+    <div class="eq-tabs">
+        <button class="eq-tab active" data-category="">Todos</button>
+        <button class="eq-tab" data-category="PORTATIL">Portátil</button>
+        <button class="eq-tab" data-category="SOBREMESA">Sobremesa</button>
+        <button class="eq-tab" data-category="PERIFERICO">Periférico</button>
+        <button class="eq-tab" data-category="AUDIOVISUAL">Audiovisual</button>
+        <button class="eq-tab" data-category="OTROS">Otros</button>
+    </div>
+</div>
+
+<div class="eq-table-container">
+    <table class="eq-table" style="width: 100%;">
+        <thead>
+    <tr>
+        <!-- 👇 REPARTO BALANCEADO 👇 -->
+        <th style="width: 10%; text-align: left;">ID</th>
+        <th style="width: 35%; text-align: left;">Nombre</th>
+        <th style="width: 35%; text-align: left;">Ubicación Actual</th>
+        <th style="width: 20%; text-align: left;">Acciones</th>
+    </tr>
+</thead>
+        <tbody id="historico-table-body">
+            <tr><td colspan="4" style="text-align:center; padding: 20px;">Cargando equipamientos...</td></tr>
+        </tbody>
+    </table>
+</div>

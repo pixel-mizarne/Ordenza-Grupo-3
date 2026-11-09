@@ -1,0 +1,239 @@
+.notificaciones-lista {
+    width: 100%;
+}
+
+.notificaciones-lista__controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.notificaciones-lista h1,
+.notificaciones-admin h1 {
+    margin: 0;
+    color: #111827;
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+
+.notificaciones-lista__acciones {
+    display: flex;
+    gap: 12px;
+}
+
+.notificaciones-lista__accion {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    color: #374151;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.notificaciones-lista__accion:hover {
+    background: #fff79d;
+    border-color: #e5e7eb;
+}
+
+.notificaciones-lista__tabla {
+    overflow-x: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+}
+
+.notificaciones-lista table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.notificaciones-lista th {
+    padding: 16px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fff79d;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.notificaciones-lista td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #111827;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.notificaciones-lista tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.notificaciones-lista tbody tr:hover {
+    background: #fffbea;
+}
+
+.notificaciones-lista tbody tr.notificacion-no-leida {
+    background: #fffbea;
+    font-weight: 600;
+}
+
+.notificaciones-lista__mensaje {
+    color: #6b7280;
+    text-align: center;
+}
+
+.notificaciones-lista__mensaje--error {
+    color: #dc2626;
+}
+
+.notificaciones-admin {
+    width: 100%;
+}
+
+.notificaciones-admin__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 720px;
+    padding: 28px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+}
+
+.notificaciones-admin__campo {
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.notificaciones-admin__campo input,
+.notificaciones-admin__campo textarea,
+.notificaciones-admin__campo select {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    outline: none;
+    background: white;
+    color: #111827;
+    font: inherit;
+}
+
+.notificaciones-admin__campo textarea {
+    resize: vertical;
+}
+
+.notificaciones-admin__campo input:focus,
+.notificaciones-admin__campo textarea:focus,
+.notificaciones-admin__campo select:focus {
+    border-color: #9ca3af;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
+}
+
+.notificaciones-admin__acciones {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.notificaciones-admin__acciones .notificaciones-lista__accion {
+    background: #0b1b42;
+    border-color: #0b1b42;
+    color: white;
+}
+
+.notificaciones-admin__acciones .notificaciones-lista__accion:hover {
+    background: #1e293b;
+    border-color: #1e293b;
+}
+
+@media (max-width: 600px) {
+    .notificaciones-lista__controles {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .notificaciones-admin__form {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .notificaciones-lista__acciones {
+        width: 100%;
+    }
+
+    .notificaciones-lista__accion {
+        justify-content: center;
+        flex: 1;
+    }
+}
+
+@media (max-width: 1000px) {
+    .top-navbar {
+        gap: 12px;
+        padding: 0 20px;
+    }
+
+    .nav-tabs {
+        gap: 4px;
+    }
+
+    .nav-tabs a {
+        padding: 10px 12px;
+        white-space: nowrap;
+    }
+
+    .nav-logo-center {
+        gap: 8px;
+    }
+
+    .login-logo-text {
+        display: none;
+    }
+
+    .nav-profile {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 700px) {
+    .top-navbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        height: auto;
+        min-height: 84px;
+        padding: 12px 16px;
+    }
+
+    .nav-logo-center {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .nav-profile {
+        grid-column: 2;
+        grid-row: 1;
+        flex: none;
+    }
+
+    .nav-tabs {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        min-width: 0;
+        overflow-x: auto;
+    }
+}

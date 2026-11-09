@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ordenza</title>
+
+    <!------------------------------------------------------------->
+    <!-------------------------ARCHIVOS GENERALES------------------>
+    <!------------------------------------------------------------->
+    <!-- Fonts Y Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!------------------------------------------------------------->
+    <!-------------------------CSS ARCHIVOS------------------------>
+    <!------------------------------------------------------------->
+    <link rel="stylesheet" href="view/css/Main.css">            <!--Mizarne-->
+    <link rel="stylesheet" href="view/css/login.css">           <!--Mizarne-->
+    <link rel="stylesheet" href="view/css/equipamiento.css">    <!--Mizarne-->
+    <link rel="stylesheet" href="view/css/historico.css">       <!--Mizarne-->
+    <link rel="stylesheet" href="view/css/Ubicaciones.css">     <!--Adrian-->
+    <link rel="stylesheet" href="view/css/Usuarios.css">        <!--Adrian-->
+    <link rel="stylesheet" href="view/css/Notificaciones.css">  <!--Victor-->
+</head>
+
+<!-----------------Los numeros que he puesto que corresponde a cada elemento es lo mismo en el CSS-------------------->
+<body>
+    <!------------------------------------------------------------->
+    <!-------------------------NAVBAR------------------------------>
+    <!------------------------------------------------------------->
+    <nav class="top-navbar" id="main-navbar">
+
+        <!-----------------------1. NAV TABS-------------------------->
+        <div class="nav-tabs">
+            <a href="index.html?page=equipamientos" class="nav-link" data-page="equipamientos">Equipamiento</a>
+            <a href="index.html?page=usuarios" class="nav-link" data-page="usuarios" id="nav-usuarios">Usuarios</a>
+            <a href="index.html?page=ubicaciones" class="nav-link" data-page="ubicaciones" id="nav-ubicaciones">Ubicaciones</a>
+            <a href="index.html?page=historico" class="nav-link" data-page="historico">Historial</a>
+        </div>
+
+        <!-----------------------2. LOGO------------------------------>
+        <div class="nav-logo-center">
+            <img src="img/logo.svg" alt="Logo" class="login-logo-img">
+            <div class="login-logo-text">r d e n z a</div>
+        </div>
+
+        <!-----------------------3. NOTIF, AVATAR, MENU---------------->
+        <div class="nav-profile">
+            
+            <!--3.1 NOTIFICACIONES-->
+            <div class="dropdown-container" id="notificationDropdown">
+                <button type="button" class="notification-toggle" id="notificationToggle"
+                    onclick="toggleNotifications(event)" aria-label="Notificaciones" aria-expanded="false"
+                    aria-controls="notificationMenu">
+                    <i class="fa-regular fa-bell bell" aria-hidden="true"></i>
+                    <span class="notification-badge" id="notificationBadge" hidden></span>
+                </button>
+                
+                <div class="dropdown-menu notification-menu" id="notificationMenu">
+                    <h2 class="notification-menu__title">Notificaciones</h2>
+                    <div class="notification-menu__list" id="notificationList" aria-live="polite">
+                        <p class="notification-menu__message">Cargando notificaciones...</p>
+                    </div>
+                    <a class="notification-menu__footer" href="index.html?page=notificaciones&amp;vista=lista">
+                        Ver todas las notificaciones
+                    </a>
+                </div>
+            </div>
+
+            <!--3.2 AVATAR-->
+            <div class="user-avatar" id="nav-avatar"></div>
+            
+            <!--3.3 MENU DE USUARIO-->
+            <div class="dropdown-container">
+                <div class="admin-dropdown" onclick="toggleDropdown(event)">
+                    <span id="nav-username"></span> 
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                
+                <div class="dropdown-menu" id="adminMenu">
+                    <!-- 1.Opcion: Perfil -->
+                    <a class="menu-option-perfil" onclick="abrirPerfil(event)">
+                        <i class="fa-solid fa-user"></i> Mi Perfil
+                    </a>
+                    
+                    <!-- 2.Opcion: Daltonismo -->
+                    <div class="menu-option-daltonismo" onclick="toggleColorblind(event)">
+                        <span>Daltonismo</span>
+                        <div class="toggle-switch" id="colorblindSwitch"></div>
+                    </div>
+
+                    <!-- 3. Opcion: Dark mode -->
+                    <div class="menu-option-daltonismo" onclick="toggleDarkMode(event)">
+                            <span>Oscuro</span>
+                            <div class="toggle-switch" id="darkSwitch"></div>
+                    </div>
+                    
+                    <!-- Separador -->
+                    <div class="menu-separator"></div>
+                    
+                    <!-- 3.Opcion: Salir -->
+                    <a class="menu-option-salir" onclick="logout()">
+                        <i class="fa-solid fa-right-from-bracket"></i> Salir
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </nav> 
+
+    <!-------------------------4. MAIN CONTENT------------------------>
+    <main id="app-content">
+        <p id="app-loading">Cargando aplicación...</p>
+    </main>
+
+    <!-------------------------5. FOOTER------------------------------>
+    <footer id="main-footer">
+        &copy; 2026 Reto 2DAW - Ordenza. Todos los derechos reservados.
+    </footer>
+
+    <!-------------------------6. MODAL DE PERFIL--------------------->
+    <dialog id="perfilModal" class="perfil-modal">
+        <div class="perfil-modal-content">
+            
+            <!-- 6.1 Cabecera del perfil -->
+            <div class="perfil-header">
+                <div class="perfil-avatar-icon" id="perfil-avatar"></div>
+                <h3>Mi Perfil</h3>
+                <p class="perfil-subtitle">Información de la cuenta</p>
+            </div>
+        
+            <!-- 6.2 Datos del usuario -->
+            <div class="perfil-body">
+                <div class="perfil-row">
+                    <span class="perfil-label"><i class="fa-solid fa-user"></i> Nombre</span>
+                    <span class="perfil-value" id="perfil-nombre">-</span>
+                </div>
+                <div class="perfil-row">
+                    <span class="perfil-label"><i class="fa-solid fa-signature"></i> Apellidos</span>
+                    <span class="perfil-value" id="perfil-apellidos">-</span>
+                </div>
+                <div class="perfil-row">
+                    <span class="perfil-label"><i class="fa-solid fa-at"></i> Usuario</span>
+                    <span class="perfil-value" id="perfil-usuario">-</span>
+                </div>
+                <div class="perfil-row">
+                    <span class="perfil-label"><i class="fa-solid fa-shield-halved"></i> Rol</span>
+                    <span class="perfil-value" id="perfil-rol">-</span>
+                </div>
+            </div>
+            
+            <!-- 6.3 Botón de cerrar -->
+            <div class="perfil-footer">
+                <button type="button" class="perfil-btn-cerrar" onclick="cerrarPerfil()">Cerrar</button>
+            </div>
+
+        </div>
+    </dialog>
+
+    <script src="view/javascript/Main.js"></script>
+</body>
+</html>

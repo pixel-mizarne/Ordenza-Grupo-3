@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head lang="es">
+        <!-- Metadatos de idioma, codificación y adaptación a pantallas. -->
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reto 2DAW - Crear notificación</title>
+
+        <!-- Fuentes e iconos compartidos con el resto del panel. -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- Estilo compartido de equipamientos y notificaciones. -->
+        <link rel="stylesheet" href="../css/AEquipamientos.css">
+        <link rel="stylesheet" href="../css/Notificaciones.css">
+        <script src=""></script>
+    </head>
+    <body>
+        <main>
+            <section class="notificaciones-admin">
+                <div class="notificaciones-lista__controles">
+                    <h1>Crear notificaciones</h1>
+                </div>
+                <!-- Formulario para redactar y enviar una notificación. -->
+                <form action="" method="get" class="notificaciones-admin__form">
+                    <!-- Datos del usuario al que se dirige la notificación. -->
+                    <div class="notificaciones-admin__campo">Buscar usuario:<br>
+                    <input type="text" name="Nombre Usuario" id="nom_user"></div>
+                    <div class="notificaciones-admin__campo">Destinatario:<br>
+                    <input type="text" name="Destinatario" id="destinatario"></div>
+                    <!-- Mensaje que recibirá el destinatario. -->
+                    <div class="notificaciones-admin__campo">Mensaje:<br>
+                    <textarea id="mensaje" name="Mensaje" rows="5" cols="30"></textarea></div>
+                    <!-- Estado inicial o de seguimiento de la notificación. -->
+                    <div class="notificaciones-admin__campo">Estado:<br>
+                    <select name="Estado" id="estado">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="proceso">En proceso</option>
+                        <option value="completado">Completado</option>
+                    </select></div>
+                    <!-- Envía los datos del formulario. -->
+                    <div class="notificaciones-admin__acciones">
+                        <input type="submit" value="Enviar" class="notificaciones-lista__accion">
+                    </div>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

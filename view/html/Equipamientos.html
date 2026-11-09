@@ -1,0 +1,179 @@
+<div class="eq-header">
+    <h1 class="eq-title">Inventario de equipamientos</h1>
+</div>
+
+<div class="eq-stats-bar">
+    <div class="eq-stat">
+        <i class="fa-solid fa-box" style="color: #9ca3af;"></i>
+        <span class="stat-number" id="stat-total">0</span> Equipos registrados
+    </div>
+    <div class="eq-stat-divider"></div>
+    <div class="eq-stat">
+        <i class="fa-solid fa-layer-group" style="color: #9ca3af;"></i>
+        <span class="stat-number" id="stat-categories">0</span> Categorías
+    </div>
+    <div class="eq-stat-divider"></div>
+    <div class="eq-stat">
+        <i class="fa-solid fa-location-dot" style="color: #9ca3af;"></i>
+        <span class="stat-number" id="stat-locations">0</span> Ubicaciones
+    </div>
+</div>
+
+<!-- FILTER BAR-->
+<div class="eq-filters-bar">
+    
+    <!-- 1. Search Box (X is now INSIDE the search box) -->
+    <div class="eq-search-box" style="position: relative;">
+        <i class="fa-solid fa-magnifying-glass" style="color: #9ca3af;"></i>
+        <input type="text" id="search-input" placeholder="Buscar por nombre, ID, marca o modelo...">
+        
+        <button type="button" class="search-clear-btn" id="clear-search-eq">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    
+    <!-- 2. Location Dropdown -->
+    <select id="filter-location" class="eq-select">
+        <option value="">Ubicación: Todas</option>
+    </select>
+
+    <!-- 3. Create Button -->
+    <button class="eq-btn-primary" id="btn-crear-equipamiento" onclick="abrirModalCrear()" style="display: none;">
+        <i class="fa-solid fa-plus"></i> Crear equipamiento
+    </button>
+    
+</div>
+
+<!-- TABS CON FLECHA -->
+<div class="eq-tabs-container">
+    <div class="eq-tabs">
+        <button class="eq-tab active" data-category="">Todos</button>
+        <button class="eq-tab" data-category="PORTATIL">Portátil</button>
+        <button class="eq-tab" data-category="SOBREMESA">Sobremesa</button>
+        <button class="eq-tab" data-category="PERIFERICO">Periférico</button>
+        <button class="eq-tab" data-category="AUDIOVISUAL">Audiovisual</button>
+        <button class="eq-tab" data-category="OTROS">Otros</button>
+    </div>
+</div>
+
+<div class="eq-table-container">
+    <table class="eq-table">
+        <thead>
+            <tr>
+                <th style="width: 60px;">ID</th>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Categoría</th>
+                <th>Ubicación</th>
+                <th>Descripción</th>
+                <th style="text-align: right; width: 180px;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="eq-table-body"></tbody>
+    </table>
+</div>
+
+<div class="eq-footer">
+    <span id="eq-showing-text">Mostrando 0 de 0 equipamientos</span>
+    <div class="eq-pagination">
+        <button class="eq-page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="eq-page-btn active">1</button>
+        <button class="eq-page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+</div>
+
+<!-- POP UP UNIFICADO PARA CREAR EQUIPO -->
+<dialog id="modal-crear" class="eq-modal">
+    <div class="eq-modal-content">
+        <h3>Nuevo Equipamiento</h3>
+        <form id="form-crear-eq">
+            
+            <div class="eq-form-grupo">
+                <label for="new-nombre">Nombre</label>
+                <input type="text" id="new-nombre" required>
+            </div>
+            
+            <div class="eq-form-grupo">
+                <label for="new-marca">Marca</label>
+                <input type="text" id="new-marca" required>
+            </div>
+
+            <div class="eq-form-grupo">
+                <label for="new-modelo">Modelo</label>
+                <input type="text" id="new-modelo" required>
+            </div>
+
+            <div class="eq-form-grupo">
+                <label for="new-desc">Descripción</label>
+                <input type="text" id="new-desc" required>
+            </div>
+
+            <div class="eq-form-grupo">
+                <label for="new-categoria">Categoría</label>
+                <select id="new-categoria">
+                    <option value="PORTATIL">Portátil</option>
+                    <option value="SOBREMESA">Sobremesa</option>
+                    <option value="PERIFERICO">Periférico</option>
+                    <option value="AUDIOVISUAL">Audiovisual</option>
+                    <option value="OTROS">Otros</option>
+                </select>
+            </div>
+
+            <div class="eq-modal-acciones">
+                <button type="button" class="eq-btn-cancelar" onclick="cerrarModalCrear()">Cancelar</button>
+                <button type="submit" class="eq-btn-guardar">Guardar</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+
+<div id="modal-desc" class="eq-modal" style="display: none;">
+    <div class="eq-modal-content">
+        <h3>Descripción del Equipamiento</h3>
+        <p id="desc-text-content" style="margin-bottom: 20px; line-height: 1.6; color: #374151; font-size: 15px;"></p>
+        <div class="eq-modal-actions">
+            <button type="button" class="eq-btn-secondary" onclick="cerrarModalDesc()">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<!-- POPUP PARA ELIMINAR EQUIPO -->
+<div id="modal-eliminar-eq" class="eq-modal" style="display: none;">
+    <div class="eq-modal-content">
+        <h3>Eliminar Equipamiento</h3>
+        <p style="margin-bottom: 20px; color: #4b5563; font-size: 14px;">
+            ¿Seguro que quieres borrar este equipo? Esta acción no se puede deshacer.
+        </p>
+        
+        <input type="hidden" id="delete-id-eq">
+        
+        <div class="eq-modal-actions">
+            <button type="button" class="eq-btn-secondary" onclick="cerrarModalEliminar()">Cancelar</button>
+            <button type="button" class="eq-btn-primary" style="background-color: #ef4444;" onclick="confirmarEliminar()">Eliminar</button>
+        </div>
+    </div>
+</div>
+
+<!-- POPUP PARA ASIGNAR UBICACIÓN (SOLO CONSERJE) -->
+<dialog id="modal-asignar-ubicacion" class="eq-modal">
+    <div class="eq-modal-content">
+        <h3>Asignar Ubicación</h3>
+        <form id="form-asignar-ubicacion">
+            
+            <input type="hidden" id="asignar-id-eq">
+            
+            <div class="eq-form-grupo">
+                <label for="asignar-ubicacion-select">Nueva Ubicación</label>
+                <select id="asignar-ubicacion-select" required>
+                    <option value="">Cargando ubicaciones...</option>
+                </select>
+            </div>
+
+            <div class="eq-modal-acciones">
+                <button type="button" class="eq-btn-cancelar" onclick="cerrarModalAsignar()">Cancelar</button>
+                <button type="submit" class="eq-btn-guardar">Asignar</button>
+            </div>
+        </form>
+    </div>
+</dialog>

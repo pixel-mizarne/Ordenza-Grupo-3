@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión - Ubicaciones</title>
+    
+    <!-- Fuentes e iconos de FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Enlace a tu archivo CSS -->
+</head>
+<body>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <div class="header-ubi">
+            <h1 class="titulo-ubi">Gestión de Ubicaciones</h1>
+        </div>
+
+        <!-- Buscador y boton de añadir -->
+        <div class="ubi-filtro-buscador">
+            <div class="ubi-buscador">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="buscarUbicacion" placeholder="Buscar aula o espacio...">
+            </div>
+            
+            <button class="ubi-boton-añadir" id="btnAnadir">
+                Añadir Ubicación
+                <i class="fa-solid fa-plus"></i> 
+            </button>
+        </div>
+
+        <!-- Contenedor blanco para las ubicaciones -->
+        <div class="ubi-contenedor-tabla" id="contenedorUbicaciones">
+            <!--Aqui se meten las ubicaciones-->
+        </div>
+
+    </main>
+
+    <!-- POP UP UNIFICADO PARA AÑADIR/EDITAR -->
+    <dialog id="popupUbicacion" class="ubi-modal">
+        <div class="ubi-modal-contenido">
+            <h3 id="popupTitulo">Nueva Ubicación</h3>
+            <form id="formularioUbicacion">
+                <input type="hidden" id="ubiId">
+                
+                <div class="ubi-form-grupo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" required>
+                </div>
+                
+                <div class="ubi-form-grupo">
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" id="descripcion" required>
+                </div>
+
+                <div class="ubi-modal-acciones">
+                    <button type="button" class="ubi-btn-cancelar" id="btnCancelarUbicacion">Cancelar</button>
+                    <button type="submit" class="ubi-btn-guardar">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Pop-up para Eliminar -->
+    <dialog id="popupEliminar" class="ubi-modal">
+        <div class="ubi-modal-contenido">
+            <h3>¿Eliminar Ubicación?</h3>
+            <p class="ubi-texto-eliminar">¿Estás seguro de que quieres borrar esta ubicación? Esta acción no se puede deshacer.</p>
+            <input type="hidden" id="eliminarUbiId">
+            <div class="ubi-modal-acciones">
+                <button type="button" class="ubi-btn-cancelar" id="btnCancelarEliminar">Cancelar</button>
+                <button type="button" class="ubi-btn-peligro" id="btnConfirmarEliminar">Eliminar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="../javascript/Ubicaciones.js"></script>
+</body>
+</html>

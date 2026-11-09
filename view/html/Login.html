@@ -1,0 +1,43 @@
+<!-- LOGO TOP LEFT -->
+<div class="brand-logo">
+    <img src="img/logo.svg" alt="Logo" class="logo-img">
+    <div class="logo-text">r d e n z a</div>
+</div>
+
+<!-- YELLOW LIGHT -->
+<div class="yellow-glow"></div>
+
+<div class="login-wrapper">
+    <div class="glass-circle">
+        
+        <form class="login-form" id="loginForm">
+            <h1>Bienvenido</h1>
+            <div class="subtitle">Inicia sesión en tu cuenta</div>
+
+            <!-- USER INPUT -->
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="usuario" placeholder="Usuario" autocomplete="username" required>
+                <button type="button" class="clear-input" id="clear-usuario">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- PASSWORD INPUT -->
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" placeholder="Contraseña" autocomplete="current-password" required>
+                <button type="button" class="clear-input" id="clear-password">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- ERROR MESSAGE -->
+            <div id="login-error" class="login-error"></div>
+
+            <!-- SUBMIT BUTTON -->
+            <button type="submit" id="btnLogin">Iniciar sesión</button>
+        </form>
+
+    </div>
+</div>
