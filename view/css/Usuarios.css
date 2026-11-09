@@ -439,6 +439,18 @@ main {
 .grupo-input input:focus {
     border-color: #2563eb; /* Se pone azul al hacer click dentro */
 }
+.password-requirements {
+    margin-top: 6px;
+    color: #6b7280;
+    font-size: 12px;
+    line-height: 1.4;
+}
+body.colorblind-mode .password-requirements {
+    color: #000000 !important;
+}
+body.dark-mode .password-requirements {
+    color: #9ec5ab !important;
+}
 
 /* La fila con los botones de guardar y cancelar */
 .botones-popup {
