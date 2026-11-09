@@ -833,6 +833,47 @@ body.colorblind-mode .notificacion-no-leida {
     border-bottom: 2px solid #000000 !important; 
 }
 
+body.colorblind-mode .notificaciones-lista__tabla,
+body.colorblind-mode .notificaciones-admin__form,
+body.colorblind-mode .notis-tabs-container {
+    border: 2px solid #000000 !important;
+    background-color: #FFFFFF !important;
+}
+
+body.colorblind-mode .notis-tab {
+    border: 2px solid #000000 !important;
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+}
+
+body.colorblind-mode .notis-tab.active {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+}
+
+body.colorblind-mode .notificaciones-lista tbody tr,
+body.colorblind-mode .notificaciones-lista tbody tr:nth-child(even),
+body.colorblind-mode .notificaciones-lista tbody tr:hover,
+body.colorblind-mode .notificaciones-lista tbody tr.notificacion-no-leida {
+    border-bottom: 2px solid #000000 !important;
+    background-color: #FFFFFF !important;
+}
+
+body.colorblind-mode .notificaciones-lista__estado {
+    border: 2px solid #000000 !important;
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+}
+
+body.colorblind-mode .notificaciones-lista__mensaje,
+body.colorblind-mode .notificaciones-admin__campo {
+    color: #000000 !important;
+}
+
+body.colorblind-mode .notificaciones-lista__mensaje--error {
+    color: #872200 !important;
+}
+
 /* 8.29 DALTONISMO: Modales y Popups (Fondo blanco, borde negro) */
 body.colorblind-mode .ubi-modal-contenido, 
 body.colorblind-mode .popup-contenido, 
@@ -1326,4 +1367,61 @@ body.dark-mode .notification-menu__item h3 {
 body.dark-mode .notification-menu__item p,
 body.dark-mode .notification-menu__date {
     color: #9ec5ab !important;
+}
+
+body.dark-mode .notificaciones-lista__tabla,
+body.dark-mode .notificaciones-admin__form {
+    border-color: #3e4a42 !important;
+    background-color: #393d3b !important;
+}
+
+body.dark-mode .notis-tabs-container {
+    border-color: #133020 !important;
+    background-color: #022203 !important;
+}
+
+body.dark-mode .notis-tab {
+    border-color: #133020 !important;
+    background-color: transparent !important;
+    color: #9CA3AF !important;
+}
+
+body.dark-mode .notis-tab:hover {
+    background-color: #252e29 !important;
+    color: #FFFFFF !important;
+}
+
+body.dark-mode .notis-tab.active {
+    background-color: #383d3a !important;
+    color: #d5f6e0 !important;
+}
+
+body.dark-mode .notificaciones-lista tbody tr,
+body.dark-mode .notificaciones-lista tbody tr:nth-child(even),
+body.dark-mode .notificaciones-lista tbody tr:hover,
+body.dark-mode .notificaciones-lista tbody tr.notificacion-no-leida {
+    background-color: #252e29 !important;
+}
+
+body.dark-mode .notificaciones-lista tbody tr:nth-child(odd) {
+    background-color: #393d3b !important;
+}
+
+body.dark-mode .notificaciones-lista tbody tr:hover {
+    background-color: #303632 !important;
+}
+
+body.dark-mode .notificaciones-lista__estado {
+    border-color: #005720 !important;
+    background-color: #021c04 !important;
+    color: #FFFFFF !important;
+}
+
+body.dark-mode .notificaciones-lista__mensaje,
+body.dark-mode .notificaciones-admin__campo {
+    color: #9ec5ab !important;
+}
+
+body.dark-mode .notificaciones-lista__mensaje--error {
+    color: #fca5a5 !important;
 }
