@@ -472,3 +472,15 @@ summary::-webkit-details-marker {
     font-size: 14px;
     font-weight: 500;
 }
+
+/* ENLACE HACIA EQUIPAMIENTOS */
+.ubi-enlace-equipo {
+    text-decoration: none;
+    color: inherit; /* Hereda el color del texto normal */
+}
+
+/* Efecto de resaltado */
+.row-highlight td {
+    background-color: #fef08a !important;
+    transition: background-color 0.5s ease;
+}

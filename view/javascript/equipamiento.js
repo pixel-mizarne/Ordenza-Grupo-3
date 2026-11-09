@@ -425,3 +425,27 @@ if (formCrear) {
             searchInput.focus(); 
         });
     }
+
+/*-----------------------------------------
+    RESALTAR EQUIPO DESDE UBI
+------------------------------------------*/
+    const parametros = new URLSearchParams(window.location.search);
+    const idResaltar = parametros.get('id');
+
+    if (idResaltar) {
+        // Damos 100ms al navegador para que dibuje la tabla HTML antes de buscar la fila
+        setTimeout(() => {
+            const fila = document.getElementById(`row-${idResaltar}`);
+            
+            if (fila) {
+                fila.classList.add('row-highlight');
+                fila.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // A los 3 segundos, quitamos el color y limpiamos la URL silenciosamente
+                setTimeout(() => {
+                    fila.classList.remove('row-highlight');
+                    window.history.replaceState({}, document.title, "index.html?page=equipamientos");
+                }, 3000);
+            }
+        }, 100);
+    }
