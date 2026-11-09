@@ -8,6 +8,14 @@ let listaUbicaciones = [];
 async function iniciarEquipamientos() {
     const rolUsuario = window.ROL ? window.ROL.toUpperCase() : 'USER';
     const btnCreate = document.getElementById('btn-crear-equipamiento');
+    const esAdmin = rolUsuario === 'ADMIN';
+
+    // Separa la vista antigua de administración del nuevo selector exclusivo para usuarios.
+    currentCategoryFilter = '';
+    document.getElementById('eq-admin-controls').hidden = !esAdmin;
+    document.getElementById('eq-admin-tabs').hidden = !esAdmin;
+    document.getElementById('eq-category-browser').hidden = esAdmin;
+    document.getElementById('eq-table-section').hidden = !esAdmin;
     if (btnCreate) btnCreate.style.display = (rolUsuario === 'ADMIN') ? 'flex' : 'none';
 
     // Cargar ubicaciones
@@ -48,12 +56,41 @@ async function iniciarEquipamientos() {
         // Si llegamos aquí, todo está perfecto
         todosLosEquipos = data;
         actualizarEstadisticas();
-        renderizarTabla(); 
+        if (esAdmin) renderizarTabla();
+
+        // Si el historial enlaza a un equipo concreto, abrimos directamente su categoría y lo resaltamos.
+        const idEquipoSolicitado = new URLSearchParams(window.location.search).get('id');
+        const equipoSolicitado = todosLosEquipos.find(e => String(e.id_equipamiento) === idEquipoSolicitado);
+        if (equipoSolicitado) {
+            if (!esAdmin) {
+                const tarjetaCategoria = [...document.querySelectorAll('.eq-category-card')]
+                    .find(tarjeta => tarjeta.dataset.category === equipoSolicitado.categoria);
+                seleccionarCategoria(
+                    equipoSolicitado.categoria,
+                    tarjetaCategoria ? tarjetaCategoria.dataset.label : equipoSolicitado.categoria
+                );
+            }
+            resaltarEquipoDesdeUbicacion(idEquipoSolicitado);
+        }
 
     } catch (err) {
         alert("Error de red al intentar cargar equipos.");
         console.error(err);
     }
+}
+
+// Muestra únicamente los equipos de la categoría elegida y conserva accesible el regreso al selector.
+function seleccionarCategoria(categoria, etiqueta) {
+    currentCategoryFilter = categoria;
+    document.getElementById('eq-category-browser').hidden = true;
+    document.getElementById('eq-user-results-header').hidden = false;
+    document.getElementById('eq-table-section').hidden = false;
+    document.getElementById('eq-selected-category').textContent = etiqueta;
+
+    const filterLocation = document.getElementById('filter-location');
+    if (filterLocation) filterLocation.value = '';
+
+    renderizarTabla();
 }
 
 // ==========================================
@@ -403,11 +440,30 @@ if (formCrear) {
     const filterLoc = document.getElementById('filter-location');
     if (filterLoc) filterLoc.addEventListener('change', renderizarTabla);
 
-    document.querySelectorAll('.eq-tab').forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            document.querySelectorAll('.eq-tab').forEach(t => t.classList.remove('active'));
-            e.target.classList.add('active');
-            currentCategoryFilter = e.target.getAttribute('data-category');
+    // Cada tarjeta abre la tabla filtrada; así el inventario completo no aparece al entrar en la vista.
+    document.querySelectorAll('.eq-category-card').forEach(tarjeta => {
+        tarjeta.addEventListener('click', () => {
+            seleccionarCategoria(tarjeta.dataset.category, tarjeta.dataset.label);
+        });
+    });
+
+    // Permite volver a cambiar de categoría sin recargar la página.
+    const btnVolverCategorias = document.getElementById('eq-back-categories');
+    if (btnVolverCategorias) {
+        btnVolverCategorias.addEventListener('click', () => {
+            currentCategoryFilter = '';
+            document.getElementById('eq-user-results-header').hidden = true;
+            document.getElementById('eq-table-section').hidden = true;
+            document.getElementById('eq-category-browser').hidden = false;
+        });
+    }
+
+    // Mantiene la navegación original de pestañas disponible únicamente para administradores.
+    document.querySelectorAll('#eq-admin-tabs .eq-tab').forEach(tab => {
+        tab.addEventListener('click', event => {
+            document.querySelectorAll('#eq-admin-tabs .eq-tab').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            currentCategoryFilter = event.currentTarget.getAttribute('data-category') || '';
             renderizarTabla();
         });
     });
@@ -426,26 +482,19 @@ if (formCrear) {
         });
     }
 
-/*-----------------------------------------
-    RESALTAR EQUIPO DESDE UBI
-------------------------------------------*/
-    const parametros = new URLSearchParams(window.location.search);
-    const idResaltar = parametros.get('id');
+// Se ejecuta después de abrir la categoría para que el equipo enlazado desde Ubicaciones ya esté en el DOM.
+function resaltarEquipoDesdeUbicacion(idEquipo) {
+    setTimeout(() => {
+        const fila = document.getElementById(`row-${idEquipo}`);
 
-    if (idResaltar) {
-        // Damos 100ms al navegador para que dibuje la tabla HTML antes de buscar la fila
-        setTimeout(() => {
-            const fila = document.getElementById(`row-${idResaltar}`);
-            
-            if (fila) {
-                fila.classList.add('row-highlight');
-                fila.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // A los 3 segundos, quitamos el color y limpiamos la URL silenciosamente
-                setTimeout(() => {
-                    fila.classList.remove('row-highlight');
-                    window.history.replaceState({}, document.title, "index.html?page=equipamientos");
-                }, 3000);
-            }
-        }, 100);
-    }
+        if (fila) {
+            fila.classList.add('row-highlight');
+            fila.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            setTimeout(() => {
+                fila.classList.remove('row-highlight');
+                window.history.replaceState({}, document.title, "index.html?page=equipamientos");
+            }, 3000);
+        }
+    }, 100);
+}
