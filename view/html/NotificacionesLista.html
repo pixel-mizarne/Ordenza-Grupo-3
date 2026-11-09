@@ -21,7 +21,39 @@
             <section class="notificaciones-lista">
                 <div class="notificaciones-lista__controles">
                     <h1>Notificaciones</h1>
+                    <button type="button" class="notificaciones-lista__accion" id="btn-anadir-notificacion" hidden>
+                        <i class="fa-solid fa-plus" aria-hidden="true"></i> Añadir notificación
+                    </button>
                 </div>
+                <dialog class="notificaciones-modal" id="modal-anadir-notificacion" aria-labelledby="modal-notificacion-titulo">
+                    <div class="notificaciones-modal__contenido">
+                        <h2 id="modal-notificacion-titulo">Añadir notificación</h2>
+                        <form class="notificaciones-admin__form" id="form-anadir-notificacion">
+                            <label class="notificaciones-admin__campo" for="notificacion-titulo">Título:
+                                <input type="text" id="notificacion-titulo" name="titulo" maxlength="255" required>
+                            </label>
+                            <label class="notificaciones-admin__campo" for="notificacion-mensaje">Mensaje:
+                                <textarea id="notificacion-mensaje" name="descripcion" rows="5" required></textarea>
+                            </label>
+                            <p class="notificaciones-modal__error" id="notificacion-error" role="alert" hidden></p>
+                            <div class="notificaciones-admin__acciones">
+                                <button type="button" class="notificaciones-modal__cancelar" id="btn-cancelar-notificacion">Cancelar</button>
+                                <button type="submit" class="notificaciones-lista__accion">Añadir</button>
+                            </div>
+                        </form>
+                    </div>
+                </dialog>
+                <dialog class="notificaciones-modal" id="modal-eliminar-notificacion" aria-labelledby="modal-eliminar-titulo">
+                    <div class="notificaciones-modal__contenido">
+                        <h2 id="modal-eliminar-titulo">¿Eliminar notificación?</h2>
+                        <p class="notificaciones-modal__confirmacion">Esta acción no se puede deshacer.</p>
+                        <p class="notificaciones-modal__error" id="notificacion-eliminar-error" role="alert" hidden></p>
+                        <div class="notificaciones-admin__acciones">
+                            <button type="button" class="notificaciones-modal__cancelar" id="btn-cancelar-eliminar-notificacion">Cancelar</button>
+                            <button type="button" class="notificaciones-lista__accion notificaciones-lista__accion--eliminar" id="btn-confirmar-eliminar-notificacion">Eliminar</button>
+                        </div>
+                    </div>
+                </dialog>
                 <div class="notis-tabs-container">
                     <div class="notis-tabs">
                         <button type="button" class="notis-tab active" data-category="TODO">Todos</button>
@@ -40,6 +72,7 @@
                                 <th>Título</th>
                                 <th>Mensaje</th>
                                 <th>Estado</th>
+                                <th id="notificaciones-acciones-header" hidden>Acciones</th>
                             </tr>
                         </thead>
                         <!-- Filas que se rellenarán con los datos de las notificaciones. -->

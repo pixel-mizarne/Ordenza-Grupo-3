@@ -2,7 +2,20 @@
     const cuerpoTabla = document.querySelector('.notificaciones-lista tbody');
     if (!cuerpoTabla) return;
 
-    const esAdmin = window.ROL === 'ADMIN';
+    const rolUsuario = typeof window.ROL === 'string' ? window.ROL.toUpperCase() : '';
+    const esAdmin = rolUsuario === 'ADMIN';
+    const botonAnadir = document.getElementById('btn-anadir-notificacion');
+    const modalAnadir = document.getElementById('modal-anadir-notificacion');
+    const formularioAnadir = document.getElementById('form-anadir-notificacion');
+    const mensajeError = document.getElementById('notificacion-error');
+    const tituloModal = document.getElementById('modal-notificacion-titulo');
+    const botonSubmitFormulario = formularioAnadir.querySelector('[type="submit"]');
+    const modalEliminar = document.getElementById('modal-eliminar-notificacion');
+    const mensajeErrorEliminar = document.getElementById('notificacion-eliminar-error');
+    const botonConfirmarEliminar = document.getElementById('btn-confirmar-eliminar-notificacion');
+    const encabezadoAcciones = document.getElementById('notificaciones-acciones-header');
+    let idNotificacionEliminar = null;
+    let idNotificacionEditar = null;
     let notificacionesCargadas = [];
     let filtroEstado = 'TODO';
     const estados = [
@@ -10,6 +23,28 @@
         { valor: 'EN_PROCESO', etiqueta: 'En proceso' },
         { valor: 'REALIZADA', etiqueta: 'Completada' }
     ];
+
+    if (rolUsuario === 'USER' && botonAnadir && modalAnadir && formularioAnadir) {
+        encabezadoAcciones.hidden = false;
+        botonAnadir.hidden = false;
+        botonAnadir.addEventListener('click', abrirFormularioCrear);
+        document.getElementById('btn-cancelar-notificacion').addEventListener('click', () => {
+            modalAnadir.close();
+            resetearFormulario();
+        });
+        modalAnadir.addEventListener('click', evento => {
+            if (evento.target === modalAnadir) modalAnadir.close();
+        });
+        formularioAnadir.addEventListener('submit', crearNotificacion);
+        document.getElementById('btn-cancelar-eliminar-notificacion').addEventListener('click', () => {
+            modalEliminar.close();
+            mensajeErrorEliminar.hidden = true;
+        });
+        modalEliminar.addEventListener('click', evento => {
+            if (evento.target === modalEliminar) modalEliminar.close();
+        });
+        botonConfirmarEliminar.addEventListener('click', eliminarNotificacion);
+    }
 
     document.querySelectorAll('.notis-tab').forEach(tab => {
         tab.addEventListener('click', () => {
@@ -23,6 +58,94 @@
     });
 
     cargarNotificaciones();
+
+    function abrirFormularioCrear() {
+        resetearFormulario();
+        tituloModal.textContent = 'Añadir notificación';
+        botonSubmitFormulario.textContent = 'Añadir';
+        modalAnadir.showModal();
+    }
+
+    function abrirFormularioEditar(notificacion) {
+        resetearFormulario();
+        idNotificacionEditar = notificacion.id_notificacion;
+        formularioAnadir.elements.titulo.value = notificacion.titulo;
+        formularioAnadir.elements.descripcion.value = notificacion.descripcion;
+        tituloModal.textContent = 'Editar notificación';
+        botonSubmitFormulario.textContent = 'Guardar';
+        modalAnadir.showModal();
+    }
+
+    function resetearFormulario() {
+        formularioAnadir.reset();
+        mensajeError.hidden = true;
+        idNotificacionEditar = null;
+    }
+
+    async function crearNotificacion(evento) {
+        evento.preventDefault();
+        botonSubmitFormulario.disabled = true;
+        mensajeError.hidden = true;
+
+        try {
+            const respuesta = await fetch('api/NotificacionesAPI.php', {
+                method: idNotificacionEditar === null ? 'POST' : 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id_notificacion: idNotificacionEditar,
+                    titulo: formularioAnadir.elements.titulo.value.trim(),
+                    descripcion: formularioAnadir.elements.descripcion.value.trim()
+                })
+            });
+            const datos = await respuesta.json();
+            if (!respuesta.ok) {
+                throw new Error(datos.error || `No se pudo guardar la notificación (${respuesta.status}).`);
+            }
+
+            resetearFormulario();
+            modalAnadir.close();
+            await cargarNotificaciones();
+        } catch (error) {
+            console.error('Error al guardar la notificación:', error);
+            mensajeError.textContent = error.message || 'No se pudo guardar la notificación. Inténtalo de nuevo.';
+            mensajeError.hidden = false;
+        } finally {
+            botonSubmitFormulario.disabled = false;
+        }
+    }
+
+    function confirmarEliminar(notificacion) {
+        idNotificacionEliminar = notificacion.id_notificacion;
+        mensajeErrorEliminar.hidden = true;
+        modalEliminar.showModal();
+    }
+
+    async function eliminarNotificacion() {
+        if (idNotificacionEliminar === null) return;
+        botonConfirmarEliminar.disabled = true;
+        mensajeErrorEliminar.hidden = true;
+
+        try {
+            const respuesta = await fetch(
+                `api/NotificacionesAPI.php?id=${encodeURIComponent(idNotificacionEliminar)}`,
+                { method: 'DELETE' }
+            );
+            const datos = await respuesta.json();
+            if (!respuesta.ok) {
+                throw new Error(datos.error || `No se pudo eliminar la notificación (${respuesta.status}).`);
+            }
+
+            modalEliminar.close();
+            idNotificacionEliminar = null;
+            await cargarNotificaciones();
+        } catch (error) {
+            console.error('Error al eliminar la notificación:', error);
+            mensajeErrorEliminar.textContent = error.message || 'No se pudo eliminar la notificación. Inténtalo de nuevo.';
+            mensajeErrorEliminar.hidden = false;
+        } finally {
+            botonConfirmarEliminar.disabled = false;
+        }
+    }
 
     async function cargarNotificaciones() {
         try {
@@ -65,15 +188,20 @@
         notificacionesFiltradas.forEach(notificacion => {
             const fila = document.createElement('tr');
 
-            [
-                notificacion.fecha_creacion,
-                notificacion.titulo,
-                notificacion.descripcion
-            ].forEach(valor => {
-                const celda = document.createElement('td');
-                celda.textContent = valor;
-                fila.appendChild(celda);
-            });
+            const celdaFecha = document.createElement('td');
+            celdaFecha.textContent = notificacion.fecha_creacion;
+            fila.appendChild(celdaFecha);
+
+            const celdaTitulo = document.createElement('td');
+            celdaTitulo.textContent = notificacion.titulo;
+            celdaTitulo.title = notificacion.titulo;
+            fila.appendChild(celdaTitulo);
+
+            const celdaDescripcion = document.createElement('td');
+            celdaDescripcion.className = 'notificaciones-lista__descripcion';
+            celdaDescripcion.textContent = notificacion.descripcion;
+            celdaDescripcion.title = notificacion.descripcion;
+            fila.appendChild(celdaDescripcion);
 
             const celdaEstado = document.createElement('td');
             if (esAdmin) {
@@ -98,6 +226,32 @@
                 celdaEstado.textContent = etiquetaEstado(notificacion.estado);
             }
             fila.appendChild(celdaEstado);
+
+            if (rolUsuario === 'USER') {
+                const celdaAcciones = document.createElement('td');
+                const acciones = document.createElement('div');
+                acciones.className = 'notificaciones-lista__acciones';
+
+                const botonEditar = document.createElement('button');
+                botonEditar.type = 'button';
+                botonEditar.className = 'notificaciones-lista__boton-accion';
+                botonEditar.setAttribute('aria-label', `Editar notificación ${notificacion.titulo}`);
+                botonEditar.title = 'Editar notificación';
+                botonEditar.innerHTML = '<i class="fa-solid fa-pen" aria-hidden="true"></i>';
+                botonEditar.addEventListener('click', () => abrirFormularioEditar(notificacion));
+
+                const botonEliminar = document.createElement('button');
+                botonEliminar.type = 'button';
+                botonEliminar.className = 'notificaciones-lista__boton-accion notificaciones-lista__boton-accion--eliminar';
+                botonEliminar.setAttribute('aria-label', `Eliminar notificación ${notificacion.titulo}`);
+                botonEliminar.title = 'Eliminar notificación';
+                botonEliminar.innerHTML = '<i class="fa-regular fa-trash-can" aria-hidden="true"></i>';
+                botonEliminar.addEventListener('click', () => confirmarEliminar(notificacion));
+
+                acciones.append(botonEditar, botonEliminar);
+                celdaAcciones.appendChild(acciones);
+                fila.appendChild(celdaAcciones);
+            }
             cuerpoTabla.appendChild(fila);
         });
     }
@@ -137,7 +291,7 @@
     function mostrarMensaje(mensaje, tipo) {
         const fila = document.createElement('tr');
         const celda = document.createElement('td');
-        celda.colSpan = 4;
+        celda.colSpan = rolUsuario === 'USER' ? 5 : 4;
         celda.className = `notificaciones-lista__mensaje notificaciones-lista__mensaje--${tipo}`;
         celda.textContent = mensaje;
         fila.appendChild(celda);

@@ -30,7 +30,11 @@
             $stmt->bindValue(':id_usuario', $notificacion->getIdUsuario());
 
             // boton verde
-            return $stmt->execute();
+            if (!$stmt->execute()) {
+                return false;
+            }
+
+            return $stmt->rowCount() > 0 || $this->perteneceAUsuario($id, $idUsuario);
         }
 
         // READ TODAS
@@ -127,6 +131,44 @@
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
             return $stmt->execute();
+        }
+
+        public function perteneceAUsuario(int $id, int $idUsuario): bool {
+            $sql = "SELECT 1 FROM notificaciones
+                    WHERE id_notificacion = :id AND id_usuario = :id_usuario";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->bindValue(':id_usuario', $idUsuario, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchColumn() !== false;
+        }
+
+        public function actualizarContenidoPropio(int $id, int $idUsuario, string $titulo, string $descripcion): bool {
+            $sql = "UPDATE notificaciones
+                    SET titulo = :titulo, descripcion = :descripcion
+                    WHERE id_notificacion = :id AND id_usuario = :id_usuario";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bindValue(':titulo', $titulo);
+            $stmt->bindValue(':descripcion', $descripcion);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->bindValue(':id_usuario', $idUsuario, PDO::PARAM_INT);
+
+            if (!$stmt->execute()) {
+                return false;
+            }
+
+            return $stmt->rowCount() > 0 || $this->perteneceAUsuario($id, $idUsuario);
+        }
+
+        public function borrarPropia(int $id, int $idUsuario): bool {
+            $sql = "DELETE FROM notificaciones
+                    WHERE id_notificacion = :id AND id_usuario = :id_usuario";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->bindValue(':id_usuario', $idUsuario, PDO::PARAM_INT);
+
+            return $stmt->execute() && $stmt->rowCount() > 0;
         }
 
         // DELETE

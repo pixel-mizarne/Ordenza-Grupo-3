@@ -6,6 +6,7 @@ const contenedorUsuarios = document.getElementById('contenedorUsuarios');
 const btnAnadir = document.getElementById('btnAnadir');
 const dialogPopup = document.getElementById('popupUsuario');
 const formUsuario = document.getElementById('formularioUsuario');
+const passwordInput = document.getElementById('password');
 const btnCerrarPopup = document.getElementById('btnCerrarPopUp');
 const tituloPopup = document.getElementById('popupTitulo');
 const estadisticaTotal = document.getElementById('estadisticaTotal');
@@ -16,6 +17,13 @@ const inputEliminarId = document.getElementById('eliminarUsuId');
 const dialogAvisoCuenta = document.getElementById('popupAvisoCuenta');
 const mensajeAvisoCuenta = document.getElementById('mensajeAvisoCuenta');
 const btnCerrarAvisoCuenta = document.getElementById('btnCerrarAvisoCuenta');
+
+passwordInput.addEventListener('invalid', evento => {
+    evento.preventDefault();
+    mostrarAvisoPersonalizado(passwordInput.value
+        ? 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y uno de estos caracteres: . - _'
+        : 'Debes introducir una contraseña.');
+});
 
 // GET
 async function cargarUsuarios() {
@@ -134,9 +142,13 @@ window.abrirEditar = function(id, nombre, apellido, username, rolActual) {
 }
 
 function mostrarAvisoCuenta(accion) {
-    mensajeAvisoCuenta.textContent = accion === 'editar'
+    mostrarAvisoPersonalizado(accion === 'editar'
         ? 'No puedes editar tu propia cuenta mientras tienes la sesión iniciada.'
-        : 'No puedes eliminar tu propia cuenta mientras tienes la sesión iniciada.';
+        : 'No puedes eliminar tu propia cuenta mientras tienes la sesión iniciada.');
+}
+
+function mostrarAvisoPersonalizado(mensaje) {
+    mensajeAvisoCuenta.textContent = mensaje;
     dialogAvisoCuenta.showModal();
 }
 
@@ -158,7 +170,7 @@ formUsuario.addEventListener('submit', async (evento) => {
     
     const urlPeticion = id ? `${apiUrl}?id=${id}` : apiUrl;
 
-    const password = document.getElementById('password').value;
+    const password = passwordInput.value;
     const datos = {
         nombre: document.getElementById('nombre').value,
         apellidos: document.getElementById('apellido').value,
@@ -180,7 +192,11 @@ formUsuario.addEventListener('submit', async (evento) => {
             await cargarUsuarios();
         } else {
             console.error("Error al guardar el usuario:", resultado.error);
-            alert(resultado.error || "Error al guardar el usuario.");
+            if (typeof resultado.error === 'string' && resultado.error.startsWith('La contraseña debe tener')) {
+                mostrarAvisoPersonalizado(resultado.error);
+            } else {
+                alert(resultado.error || "Error al guardar el usuario.");
+            }
         }
     } catch (error) {
         console.error("Error al comunicarse con la API:", error);
