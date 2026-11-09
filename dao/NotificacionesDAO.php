@@ -117,6 +117,18 @@
             return $stmt->execute();
         }
 
+        public function actualizarEstado(int $id, EstadoNotificaciones $estado): bool {
+            $sql = "UPDATE notificaciones
+                    SET estado = :estado
+                    WHERE id_notificacion = :id";
+
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bindValue(':estado', $estado->value);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+            return $stmt->execute();
+        }
+
         // DELETE
         public function borrar(int $id): bool {
             $sql = "DELETE FROM notificaciones WHERE id_notificacion = :id";
