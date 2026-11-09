@@ -10,6 +10,51 @@
     margin-bottom: 24px;
 }
 
+.notis-tabs-container {
+    position: relative;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+}
+
+.notis-tabs {
+    display: flex;
+    min-width: max-content;
+}
+
+.notis-tab {
+    position: relative;
+    flex: 1 0 auto;
+    padding: 16px 24px;
+    border: 0;
+    border-right: 1px solid #e5e7eb;
+    background: transparent;
+    color: #6b7280;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.notis-tab:last-child {
+    border-right: 0;
+}
+
+.notis-tab:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.notis-tab.active {
+    border-radius: 8px;
+    background: #0b1b42;
+    color: white;
+    font-weight: 600;
+}
+
 .notificaciones-lista h1,
 .notificaciones-admin h1 {
     margin: 0;
@@ -61,10 +106,11 @@
 .notificaciones-lista th {
     padding: 16px 20px;
     border-bottom: 1px solid #e5e7eb;
-    background: #fff79d;
-    color: #6b7280;
+    background: #0b1b42;
+    color: white;
     font-size: 13px;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .notificaciones-lista td {
@@ -79,13 +125,28 @@
     border-bottom: none;
 }
 
+.notificaciones-lista tbody tr:nth-child(even) {
+    background: #f9fafb;
+}
+
 .notificaciones-lista tbody tr:hover {
-    background: #fffbea;
+    background: #f3f4f6;
 }
 
 .notificaciones-lista tbody tr.notificacion-no-leida {
-    background: #fffbea;
+    background: #eff6ff;
     font-weight: 600;
+}
+
+.notificaciones-lista__estado {
+    min-width: 130px;
+    padding: 8px 32px 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: white;
+    color: #111827;
+    font: inherit;
+    font-size: 14px;
 }
 
 .notificaciones-lista__mensaje {
@@ -164,6 +225,14 @@
     .notificaciones-lista__controles {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .notis-tabs {
+        width: max-content;
+    }
+
+    .notis-tab {
+        padding: 14px 18px;
     }
 
     .notificaciones-admin__form {

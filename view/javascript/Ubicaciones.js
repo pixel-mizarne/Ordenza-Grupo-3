@@ -188,10 +188,9 @@ async function cargarEquiposUbicacion(idUbicacion) {
             equipos.forEach(equipo => {
             contenedorEquipos.innerHTML += `
                 <div class="item-equipo">
-                    <!-- Convertimos el nombre en un enlace que pasa el ID por la URL -->
-                    <a href="index.html?page=equipamientos&highlight=${equipo.id_equipamiento}" class="nombre-equipo" style="text-decoration: none; color: #0d1b2a;">
-                        <strong>${equipo.nombre}</strong>
-                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 12px; margin-left: 5px; color: #6b7280;"></i>
+                    <a href="index.html?page=equipamientos&id=${equipo.id_equipamiento}" class="ubi-enlace-equipo">
+                        <strong>${equipo.nombre}</strong> 
+                        <i class="fa-solid fa-link ubi-icono-enlace"></i>
                     </a>
                     <span class="ubi-estado-equipo">${equipo.estado || ''}</span>
                 </div>
