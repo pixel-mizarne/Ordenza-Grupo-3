@@ -38,6 +38,22 @@
             <!-- SUBMIT BUTTON -->
             <button type="submit" id="btnLogin">Iniciar sesión</button>
         </form>
-
+<!-- BOTÓN FLOTANTE PARA AJUSTES -->
+<div class="login-settings-wrapper">
+    <button class="login-settings-btn" onclick="document.getElementById('loginSettingsMenu').classList.toggle('show')">
+        <i class="fa-solid fa-palette"></i>
+    </button>
+    
+    <div class="login-settings-menu" id="loginSettingsMenu">
+        <div class="menu-option-daltonismo" onclick="toggleColorblind(event)">
+            <span>Daltonismo</span>
+            <div class="toggle-switch" id="colorblindSwitch"></div>
+        </div>
+        <div class="menu-option-daltonismo" onclick="toggleDarkMode(event)">
+            <span>Modo Oscuro</span>
+            <div class="toggle-switch" id="darkSwitch"></div>
+        </div>
+    </div>
+</div>
     </div>
 </div>
