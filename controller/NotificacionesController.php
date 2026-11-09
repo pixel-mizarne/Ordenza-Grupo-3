@@ -91,6 +91,14 @@
             return false;
         }
 
+        public function actualizarEstado(int $id, EstadoNotificaciones $estado): ?bool {
+            if ($this->notificacionesDAO->obtenerPorId($id) === null) {
+                return null;
+            }
+
+            return $this->notificacionesDAO->actualizarEstado($id, $estado);
+        }
+
         // DELETE
         public function eliminar(int $id): bool {
             return $this->notificacionesDAO->borrar($id);

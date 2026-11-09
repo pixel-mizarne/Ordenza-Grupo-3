@@ -65,7 +65,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             const notificationToggle = document.getElementById('notificationToggle');
-            notificationToggle.classList.toggle('is-current', page === 'notificaciones');
+            const isNotificationList = page === 'notificaciones' && (
+                user.rol !== 'ADMIN' ||
+                new URLSearchParams(window.location.search).get('vista') === 'lista'
+            );
+            notificationToggle.classList.toggle('is-current', isNotificationList);
             if (page === 'notificaciones') {
                 notificationToggle.setAttribute('aria-current', 'page');
             } else {
@@ -250,18 +254,24 @@ function toggleDarkMode(event) {
     
     localStorage.setItem('modoOscuro', isActive);
 }
-// Close modal when clicking outside
-document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById('perfilModal');
-    if (modal) {
-        modal.addEventListener("click", (e) => {
-            const rect = modal.getBoundingClientRect();
-            const isInDialog = (
-                e.clientX >= rect.left && e.clientX <= rect.right &&
-                e.clientY >= rect.top && e.clientY <= rect.bottom
-            );
-            if (!isInDialog) modal.close();
-        });
+document.addEventListener('click', event => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    if (target instanceof HTMLDialogElement && target.open) {
+        const rect = target.getBoundingClientRect();
+        const clickedOutside = (
+            event.clientX < rect.left ||
+            event.clientX > rect.right ||
+            event.clientY < rect.top ||
+            event.clientY > rect.bottom
+        );
+        if (clickedOutside) target.close();
+        return;
+    }
+
+    if (target.matches('.eq-modal') && getComputedStyle(target).display !== 'none') {
+        target.style.display = 'none';
     }
 });
 
@@ -295,7 +305,7 @@ function renderNotificationItems(items) {
 
     if (items.length === 0) {
         const message = document.createElement('p');
-        message.className = 'notification-menu__message';
+        message.className = 'notification-menu__message notification-menu__message--empty';
         message.textContent = 'No tienes notificaciones sin leer.';
         list.appendChild(message);
         return;
