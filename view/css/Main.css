@@ -669,6 +669,12 @@ body.colorblind-mode .eq-btn-guardar {
     border: 2px solid #000000 !important; 
 }
 
+body.colorblind-mode #popupEliminar #btnCancelarEliminar {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
 /* 8.10 DALTONISMO: Botones de Editar/Historial (Amarillo) */
 body.colorblind-mode .ubi-boton-editar, 
 body.colorblind-mode .btnEditar, 
