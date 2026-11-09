@@ -419,3 +419,26 @@ window.addEventListener('click', function(event) {
         }
     }
 });
+
+/* =========================================
+   LÓGICA DEL MENÚ MÓVIL
+   ========================================= */
+function toggleMobileMenu() {
+    const navTabs = document.getElementById('navTabs');
+    if (navTabs) {
+        navTabs.classList.toggle('show-mobile');
+    }
+}
+
+// Cerrar el menú móvil al hacer clic en un enlace
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-tabs a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const navTabs = document.getElementById('navTabs');
+            if (navTabs && navTabs.classList.contains('show-mobile')) {
+                navTabs.classList.remove('show-mobile');
+            }
+        });
+    });
+});
