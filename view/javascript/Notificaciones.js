@@ -187,26 +187,32 @@
 
         notificacionesFiltradas.forEach(notificacion => {
             const fila = document.createElement('tr');
+            if (esAdmin) fila.classList.add('notificaciones-lista__fila--admin');
 
             const celdaFecha = document.createElement('td');
+            celdaFecha.dataset.label = 'Fecha';
             celdaFecha.textContent = notificacion.fecha_creacion;
             fila.appendChild(celdaFecha);
 
             const celdaTitulo = document.createElement('td');
+            celdaTitulo.dataset.label = 'Título';
             celdaTitulo.textContent = notificacion.titulo;
             celdaTitulo.title = notificacion.titulo;
             fila.appendChild(celdaTitulo);
 
             const celdaDescripcion = document.createElement('td');
             celdaDescripcion.className = 'notificaciones-lista__descripcion';
+            celdaDescripcion.dataset.label = 'Mensaje';
             celdaDescripcion.textContent = notificacion.descripcion;
             celdaDescripcion.title = notificacion.descripcion;
             fila.appendChild(celdaDescripcion);
 
             const celdaEstado = document.createElement('td');
+            celdaEstado.dataset.label = 'Estado';
             if (esAdmin) {
                 const selector = document.createElement('select');
                 selector.className = 'notificaciones-lista__estado';
+                selector.dataset.estado = notificacion.estado;
                 selector.setAttribute('aria-label', `Estado de la notificación ${notificacion.titulo}`);
 
                 estados.forEach(estado => {
@@ -219,16 +225,22 @@
                 selector.value = notificacion.estado;
                 selector.disabled = notificacion.estado === 'REALIZADA';
                 selector.addEventListener('change', () => {
+                    selector.dataset.estado = selector.value;
                     actualizarEstado(notificacion, selector.value);
                 });
                 celdaEstado.appendChild(selector);
             } else {
-                celdaEstado.textContent = etiquetaEstado(notificacion.estado);
+                const etiqueta = document.createElement('span');
+                etiqueta.className = 'notificaciones-lista__estado notificaciones-lista__estado--etiqueta';
+                etiqueta.dataset.estado = notificacion.estado;
+                etiqueta.textContent = etiquetaEstado(notificacion.estado);
+                celdaEstado.appendChild(etiqueta);
             }
             fila.appendChild(celdaEstado);
 
             if (rolUsuario === 'USER') {
                 const celdaAcciones = document.createElement('td');
+                celdaAcciones.dataset.label = 'Acciones';
                 const acciones = document.createElement('div');
                 acciones.className = 'notificaciones-lista__acciones';
 
@@ -237,7 +249,7 @@
                 botonEditar.className = 'notificaciones-lista__boton-accion';
                 botonEditar.setAttribute('aria-label', `Editar notificación ${notificacion.titulo}`);
                 botonEditar.title = 'Editar notificación';
-                botonEditar.innerHTML = '<i class="fa-solid fa-pen" aria-hidden="true"></i>';
+                botonEditar.innerHTML = '<i class="fa-solid fa-pen" aria-hidden="true"></i><span class="notificaciones-lista__texto-accion">Editar</span>';
                 botonEditar.addEventListener('click', () => abrirFormularioEditar(notificacion));
 
                 const botonEliminar = document.createElement('button');
@@ -245,7 +257,7 @@
                 botonEliminar.className = 'notificaciones-lista__boton-accion notificaciones-lista__boton-accion--eliminar';
                 botonEliminar.setAttribute('aria-label', `Eliminar notificación ${notificacion.titulo}`);
                 botonEliminar.title = 'Eliminar notificación';
-                botonEliminar.innerHTML = '<i class="fa-regular fa-trash-can" aria-hidden="true"></i>';
+                botonEliminar.innerHTML = '<i class="fa-regular fa-trash-can" aria-hidden="true"></i><span class="notificaciones-lista__texto-accion">Eliminar</span>';
                 botonEliminar.addEventListener('click', () => confirmarEliminar(notificacion));
 
                 acciones.append(botonEditar, botonEliminar);
@@ -290,6 +302,7 @@
 
     function mostrarMensaje(mensaje, tipo) {
         const fila = document.createElement('tr');
+        fila.className = 'notificaciones-lista__fila-mensaje';
         const celda = document.createElement('td');
         celda.colSpan = rolUsuario === 'USER' ? 5 : 4;
         celda.className = `notificaciones-lista__mensaje notificaciones-lista__mensaje--${tipo}`;

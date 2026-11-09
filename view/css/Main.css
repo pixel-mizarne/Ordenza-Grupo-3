@@ -69,7 +69,7 @@ body {
 }
 /* Active */
 .nav-tabs a.active { 
-    background: #0b1b42; 
+    background: #0b1b42;
     color: white; 
 }
 
@@ -149,9 +149,9 @@ body {
 }
 
 /* 3.1.5 BOTÓN CAMPANA: Estado activo (página de notificaciones) */
-.notification-toggle.is-current { 
-    border-radius: 50%; 
-    background: #051BFF; 
+.notification-toggle.is-current {
+    border-radius: 50%;
+    background: #0b1b42;
 }
 .notification-toggle.is-current .bell { 
     color: white; 
@@ -673,7 +673,8 @@ body.colorblind-mode .eq-btn-guardar {
 body.colorblind-mode .ubi-boton-editar, 
 body.colorblind-mode .btnEditar, 
 body.colorblind-mode .eq-btn-edit, 
-body.colorblind-mode .eq-btn-history { 
+body.colorblind-mode .eq-btn-history,
+body.colorblind-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
     background-color: #FFCB00 !important; 
     color: #000000 !important; 
     border: 2px solid #000000 !important; 
@@ -689,7 +690,8 @@ body.colorblind-mode .eq-btn-cancelar,
 body.colorblind-mode .eq-btn-cancel, 
 body.colorblind-mode .ubi-btn-cancelar, 
 body.colorblind-mode .btn-cancelar, 
-body.colorblind-mode .eq-btn-secondary { 
+body.colorblind-mode .eq-btn-secondary,
+body.colorblind-mode .notificaciones-lista__boton-accion--eliminar {
     background-color: #872200 !important; 
     color: #FFFFFF !important; 
     border: 2px solid #000000 !important; 
@@ -1163,7 +1165,8 @@ body.dark-mode .ubi-boton-editar,
 body.dark-mode .btnEditar,
 body.dark-mode .eq-btn-edit, 
 body.dark-mode .eq-btn-history,
-body.dark-mode .eq-btn-save { 
+body.dark-mode .eq-btn-save,
+body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
     background-color: #2f2f2f !important; 
     color: #ffffff !important; 
     border: 1px solid #4c4c4c !important;
@@ -1171,7 +1174,8 @@ body.dark-mode .eq-btn-save {
 }
 body.dark-mode .ubi-boton-editar:hover, 
 body.dark-mode .eq-btn-edit:hover,
-body.dark-mode .eq-btn-history:hover {
+body.dark-mode .eq-btn-history:hover,
+body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar):hover {
     background-color: #9ec5ab !important;
     color: #011502 !important;
 }
@@ -1186,14 +1190,16 @@ body.dark-mode .eq-btn-cancel,
 body.dark-mode .eq-btn-cancelar,
 body.dark-mode .ubi-btn-cancelar,
 body.dark-mode .btn-cancelar,
-body.dark-mode .eq-btn-secondary {
+body.dark-mode .eq-btn-secondary,
+body.dark-mode .notificaciones-lista__boton-accion--eliminar {
     background-color: #1b241f !important; 
     color: #FFFFFF !important;
     border: none !important;
 }
 body.dark-mode .ubi-boton-eliminar:hover,
 body.dark-mode .eq-btn-delete:hover,
-body.dark-mode .btn-eliminar-confirmar:hover {
+body.dark-mode .btn-eliminar-confirmar:hover,
+body.dark-mode .notificaciones-lista__boton-accion--eliminar:hover {
     background-color: #b91c1c !important; /* Rojo */
 }
 
