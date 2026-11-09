@@ -1015,73 +1015,88 @@ body.colorblind-mode .search-clear-btn:hover {
 }
 
 /* =========================================
-   MODO OSCURO (DARK MODE) - PALETA VERDE
+   MODO OSCURO: ONYX CYBERPUNK GLASS
    ========================================= */
 
-/* 1. BASE Y FONDO */
+/* 0. FONDO ONYX CON RESPLANDOR NEÓN */
 body.dark-mode { 
-    background-color: #4c4c4c !important; /* Fondo principal */
-    color: #FFFFFF !important; 
+    background-color: #050505 !important; /* Onyx Black */
+    color: #e0e0e0 !important; 
+    /* Luces sutiles de fondo para que el cristal tenga qué desenfocar */
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.05), transparent 30%) !important;
+    background-attachment: fixed !important;
 }
 
-/* 2. NAVBAR Y FOOTER */
-body.dark-mode .top-navbar {
-    background-color: #403f3f !important; 
-}
+/* 1. NAVBAR Y FOOTER (Cristal Ahumado) */
+body.dark-mode .top-navbar,
 body.dark-mode footer {
-    background-color: #4c4c4c !important;
-    color: #9ec5ab !important;
+    background: rgba(10, 10, 10, 0.7) !important; 
+    backdrop-filter: blur(16px) !important; 
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.3) !important; 
+    border-top: 1px solid rgba(0, 240, 255, 0.3) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
 }
-body.dark-mode .login-logo-text { color: #FFFFFF !important; }
+body.dark-mode .login-logo-text { color: #ffffff !important; text-shadow: 0 0 8px rgba(0, 240, 255, 0.6) !important; }
 
-/* 3. NAVEGACIÓN (TABS) */
+/* 2. NAVEGACIÓN (TABS) */
 body.dark-mode .nav-tabs a {
-    background-color: #2e2e2e!important;
-    color: #d4e4d9 !important;
-    
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: #a0a0a0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(4px) !important;
 }
 body.dark-mode .nav-tabs a:hover {
-    background-color: #01200f !important;
-    color: #FFFFFF !important;
+    background: rgba(0, 240, 255, 0.1) !important;
+    color: #00f0ff !important;
+    border-color: rgba(0, 240, 255, 0.3) !important;
 }
 body.dark-mode .nav-tabs a.active {
-    background-color: #080808 !important; 
-    color: #FFFFFF !important;
-    border: 1px solid #007029 !important;
+    background: rgba(0, 240, 255, 0.15) !important; 
+    color: #00f0ff !important;
+    border: 1px solid #00f0ff !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important;
 }
 
-/* 4. MENÚ DE USUARIO Y AVATAR */
+/* 3. MENÚ DE USUARIO Y AVATAR */
 body.dark-mode .admin-dropdown { 
-    background-color: #2e2e2e !important; 
-    color: #FFFFFF !important; 
+    background: rgba(20, 20, 20, 0.6) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.2) !important;
+    backdrop-filter: blur(8px) !important;
+    color: #ffffff !important; 
 }
 body.dark-mode .admin-dropdown:hover {
-    background-color: #023015 !important; 
+    border-color: #00f0ff !important;
 }
 body.dark-mode .user-avatar {
-    background-color: #01200f !important; 
-    color: #9ec5ab !important;
+    background: rgba(0, 240, 255, 0.2) !important; 
+    color: #00f0ff !important;
+    border: 1px solid #00f0ff !important;
 }
 body.dark-mode .dropdown-menu {
-    background-color: #01200f !important;
-    border: 1px solid #9ec5ab !important;
+    background: rgba(10, 10, 10, 0.9) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(0, 240, 255, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
 }
 body.dark-mode .menu-option-perfil, 
 body.dark-mode .menu-option-daltonismo, 
 body.dark-mode .menu-option-salir {
-    color: #FFFFFF !important;
+    color: #e0e0e0 !important;
 }
 body.dark-mode .menu-option-perfil:hover, 
 body.dark-mode .menu-option-daltonismo:hover, 
 body.dark-mode .menu-option-salir:hover { 
-    background-color: #011502 !important; 
-    color: #e5eee8 !important;
+    background-color: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important;
 }
 body.dark-mode .menu-separator {
-    border-top: 1px solid #343d37 !important;
+    border-top: 1px solid rgba(0, 240, 255, 0.2) !important;
 }
 
-/* 5. BOTONES PRINCIPALES */
+/* 4. BOTONES PRINCIPALES (Crear, Guardar, etc.) */
 body.dark-mode .eq-btn-primary,
 body.dark-mode .eq-select,
 body.dark-mode .ubi-boton-añadir,
@@ -1091,38 +1106,42 @@ body.dark-mode .btn-aceptar,
 body.dark-mode .notificaciones-lista__accion,
 body.dark-mode .eq-btn-guardar,
 body.dark-mode .perfil-btn-cerrar { 
-    background-color: #1b241f !important; 
-    color: #FFFFFF !important; 
-    border: 1px solid #005720 !important; 
-    transition: 0.2s;
+    background: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid #00f0ff !important; 
+    backdrop-filter: blur(8px) !important;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
 }
 body.dark-mode .eq-btn-primary:hover,
 body.dark-mode .perfil-btn-cerrar:hover,
 body.dark-mode .ubi-btn-guardar:hover {
-    background-color: #01200f  !important; 
-    color: #ffffff !important; 
+    background: rgba(0, 240, 255, 0.3) !important; 
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important;
+    color: #ffffff !important;
 }
 
-/* 6. BOTONES DE ACCIÓN (Editar y Eliminar) */
-/* Editar (Icono en verde menta) */
+/* 5. BOTONES DE ACCIÓN (Editar y Eliminar) */
+/* Editar (Neón Cyan) */
 body.dark-mode .ubi-boton-editar, 
 body.dark-mode .btnEditar,
 body.dark-mode .eq-btn-edit, 
 body.dark-mode .eq-btn-history,
 body.dark-mode .eq-btn-save { 
-    background-color: #2f2f2f !important; 
-    color: #ffffff !important; 
-    border: 1px solid #4c4c4c !important;
-    transition: 0.2s;
+    background: rgba(0, 240, 255, 0.15) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid rgba(0, 240, 255, 0.5) !important;
+    transition: 0.3s;
 }
 body.dark-mode .ubi-boton-editar:hover, 
 body.dark-mode .eq-btn-edit:hover,
 body.dark-mode .eq-btn-history:hover {
-    background-color: #9ec5ab !important;
-    color: #011502 !important;
+    background: #00f0ff !important;
+    color: #050505 !important;
+    box-shadow: 0 0 15px #00f0ff !important;
 }
 
-/* Eliminar */
+/* Eliminar (Neón Rojo) */
 body.dark-mode .ubi-boton-eliminar, 
 body.dark-mode .btnEliminar,
 body.dark-mode .eq-btn-delete,
@@ -1133,26 +1152,29 @@ body.dark-mode .eq-btn-cancelar,
 body.dark-mode .ubi-btn-cancelar,
 body.dark-mode .btn-cancelar,
 body.dark-mode .eq-btn-secondary {
-    background-color: #1b241f !important; 
-    color: #FFFFFF !important;
-    border: none !important;
+    background: rgba(255, 0, 85, 0.1) !important; 
+    color: #ff0055 !important;
+    border: 1px solid rgba(255, 0, 85, 0.5) !important;
 }
 body.dark-mode .ubi-boton-eliminar:hover,
 body.dark-mode .eq-btn-delete:hover,
 body.dark-mode .btn-eliminar-confirmar:hover {
-    background-color: #b91c1c !important; /* Rojo */
+    background: #ff0055 !important; 
+    color: #ffffff !important;
+    box-shadow: 0 0 15px #ff0055 !important;
 }
 
-/* 7. INPUTS Y BUSCADORES */
+/* 6. INPUTS Y BUSCADORES (Fondo Hundido) */
 body.dark-mode input, 
 body.dark-mode select, 
 body.dark-mode textarea,
 body.dark-mode .eq-search-box, 
 body.dark-mode .ubi-buscador, 
 body.dark-mode .usu-buscador { 
-    background-color: #021c04 !important; 
-    color: #FFFFFF !important; 
-    border: 1px solid #01200f !important; 
+    background: rgba(0, 0, 0, 0.5) !important; 
+    color: #ffffff !important; 
+    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
+    backdrop-filter: blur(4px) !important;
 }
 body.dark-mode .eq-search-box input, 
 body.dark-mode .ubi-buscador input, 
@@ -1160,122 +1182,135 @@ body.dark-mode .usu-buscador input {
     background-color: transparent !important; 
     border: none !important;
 }
+body.dark-mode input:focus {
+    border-color: #00f0ff !important;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3) !important;
+    outline: none !important;
+}
 body.dark-mode input::placeholder {
-    color: #e2f4e8 !important;
+    color: #6b7280 !important;
 }
 body.dark-mode .search-clear-btn {
-    background-color: #01401e !important;
-    color: #ffffff !important;
+    background: rgba(0, 240, 255, 0.2) !important;
+    color: #00f0ff !important;
 }
 body.dark-mode .search-clear-btn:hover {
-    background-color: #9ec5ab !important;
-    color: #011502 !important;
+    background: #00f0ff !important;
+    color: #050505 !important;
 }
 
-/* 8. TABLAS Y TEXTOS */
+/* 7. TABLAS Y TEXTOS */
 body.dark-mode h1, 
 body.dark-mode h2, 
 body.dark-mode h3,
 body.dark-mode .eq-title,
 body.dark-mode .titulo-ubi,
 body.dark-mode .titulo-usu,
-body.dark-mode .subtitulo-ubi,
-body.dark-mode .subtitulo-usu,
 body.dark-mode .stat-number { 
-    color: #FFFFFF !important; 
+    color: #ffffff !important; 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
 }
 
 body.dark-mode .eq-stats-bar, 
 body.dark-mode .eq-stat {
-    color: #9ec5ab !important;
+    color: #a0a0a0 !important;
+}
+
+/* Contenedor de la tabla (Cristal) */
+body.dark-mode .eq-table-container {
+    background: rgba(10, 10, 10, 0.4) !important;
+    border: 1px solid rgba(0, 240, 255, 0.2) !important;
+    backdrop-filter: blur(12px) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Cabecera de las tablas */
 body.dark-mode .eq-table th, 
 body.dark-mode .notificaciones-lista__tabla th { 
-    background-color: #242726 !important;
-    color: #FFFFFF !important; 
+    background: rgba(0, 240, 255, 0.1) !important;
+    color: #00f0ff !important; 
     border: none !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Celdas de las tablas (Sin bordes) */
-body.dark-mode .eq-table-container {
-    background-color: transparent !important;
-    border: none !important;
-}
+/* Celdas de las tablas */
 body.dark-mode .eq-table td,
 body.dark-mode .notificaciones-lista__tabla td {
-    border-bottom: none !important; 
-    color: #FFFFFF !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.05) !important; 
+    color: #e0e0e0 !important;
 }
 
-/* Alternancia de colores en las filas (Cebra) */
+/* Alternancia de filas (Cyberpunk glow muy sutil) */
+body.dark-mode #eq-table-body tr:nth-child(even),
+body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+3) {
+    background-color: rgba(0, 240, 255, 0.03) !important; 
+}
 body.dark-mode #eq-table-body tr:nth-child(odd),
 body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+1) {
     background-color: transparent !important;
 }
-body.dark-mode #eq-table-body tr:nth-child(even),
-body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+3) {
-    background-color: #252e29 !important; 
-}
 
-/* ICONOS (Verde Menta) */
-body.dark-mode .eq-item-icon {
-    color: #aadab6 !important;
+/* ICONOS (Cyan Eléctrico) */
+body.dark-mode .eq-item-icon,
+body.dark-mode .eq-location i,
+body.dark-mode .eq-location-link i {
+    color: #00f0ff !important;
+    filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.5));
 }
 body.dark-mode .eq-location, 
-body.dark-mode .eq-location i,
-body.dark-mode .eq-location-link, 
-body.dark-mode .eq-location-link i {
-    color: #9ec5ab !important;
+body.dark-mode .eq-location-link {
+    color: #00f0ff !important;
 }
 
 /* Inputs de edición en la tabla */
 body.dark-mode .inline-edit:disabled {
-    color: #FFFFFF !important; 
+    color: #ffffff !important; 
     background-color: transparent !important;
     border: none !important;
 }
 body.dark-mode .inline-edit:not(:disabled) {
-    color: #FFFFFF !important;
-    background-color: #011502 !important;
-    border: 1px solid #9ec5ab !important;
+    color: #ffffff !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid #00f0ff !important;
+    box-shadow: inset 0 0 5px rgba(0, 240, 255, 0.2) !important;
 }
 
 /* Descripción truncada */
 body.dark-mode .desc-truncate {
-    color: #D1D5DB !important;
+    color: #a0a0a0 !important;
 }
 body.dark-mode .desc-truncate:hover {
-    color: #9ec5ab !important;
+    color: #00f0ff !important;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
 }
 
-/* Barra de Tabs de Categorías (Equipamientos) */
+/* Barra de Tabs de Categorías */
 body.dark-mode .eq-tabs-container {
-    background-color: #022203 !important;
-    border: none !important;
+    background: rgba(10, 10, 10, 0.5) !important;
+    border: 1px solid rgba(0, 240, 255, 0.2) !important;
+    backdrop-filter: blur(8px) !important;
 }
 body.dark-mode .eq-tab { 
     background-color: transparent !important; 
-    color: #9CA3AF !important; 
-    border-right: 1px solid #133020 !important; 
-}
-body.dark-mode .eq-tab:last-child {
-    border-right: none !important;
+    color: #a0a0a0 !important; 
+    border-right: 1px solid rgba(0, 240, 255, 0.1) !important; 
 }
 body.dark-mode .eq-tab.active { 
-    background-color: #383d3a !important; 
-    color: #d5f6e0 !important; 
+    background: rgba(0, 240, 255, 0.15) !important; 
+    color: #00f0ff !important; 
 }
 body.dark-mode .eq-tab.active::after { 
-    border-color: #01200f transparent transparent transparent !important; 
+    border-color: rgba(0, 240, 255, 0.15) transparent transparent transparent !important; 
 }
 body.dark-mode .eq-badge {
-    background-color: #01200f !important;
-    color: #9ec5ab !important;
+    background: rgba(0, 240, 255, 0.1) !important;
+    color: #00f0ff !important;
+    border: 1px solid rgba(0, 240, 255, 0.3) !important;
 }
 
-/* 9. MODALES, POPUPS Y TARJETAS (Ubicaciones y Usuarios) */
+/* 8. MODALES, POPUPS Y TARJETAS (Glass Cards) */
 body.dark-mode .eq-modal-content,
 body.dark-mode .perfil-modal-content,
 body.dark-mode .ubi-modal-contenido,
@@ -1283,47 +1318,53 @@ body.dark-mode .popup-contenido,
 body.dark-mode .popup-eliminar-contenido,
 body.dark-mode .tarjeta-usu,
 body.dark-mode .desplegable-planta { 
-    background-color: #393d3b !important; 
-    color: #FFFFFF !important;
-    border: 1px solid #3e4a42 !important; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+    background: rgba(15, 15, 15, 0.7) !important; 
+    color: #ffffff !important;
+    border: 1px solid rgba(0, 240, 255, 0.3) !important; 
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1) !important;
+    border-radius: 16px !important;
 }
 
 body.dark-mode .perfil-header {
-    background-color: #011502 !important;
-    border-bottom: 1px solid #9ec5ab !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2) !important;
 }
 body.dark-mode .perfil-row { 
-    border-bottom: 1px solid #01200f !important; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; 
 }
 body.dark-mode .perfil-label {
-    color: #9ec5ab !important;
+    color: #a0a0a0 !important;
 }
 body.dark-mode .perfil-avatar-icon {
-    background-color: #011502 !important;
-    border: 2px solid #9ec5ab !important;
-    color: #9ec5ab !important;
+    background: rgba(0, 240, 255, 0.1) !important;
+    border: 2px solid #00f0ff !important;
+    color: #00f0ff !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
 }
 body.dark-mode .tarjeta-usu:hover {
-    border-color: #9ec5ab !important;
+    border-color: #00f0ff !important;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2) !important;
 }
 body.dark-mode .tarjeta-info p {
-    color: #D1D5DB !important;
+    color: #a0a0a0 !important;
 }
 body.dark-mode .tarjeta-info strong {
-    color: #9ec5ab !important;
+    color: #00f0ff !important;
 }
 
-/* Notificaciones */
+/* 9. NOTIFICACIONES */
 body.dark-mode .notification-menu {
-    background-color: #01200f !important;
+    background: rgba(10, 10, 10, 0.9) !important;
+    border: 1px solid rgba(0, 240, 255, 0.3) !important;
 }
 body.dark-mode .notification-menu__title,
 body.dark-mode .notification-menu__item h3 {
-    color: #FFFFFF !important;
-    border-bottom-color: #9ec5ab !important;
+    color: #00f0ff !important;
+    border-bottom-color: rgba(0, 240, 255, 0.2) !important;
 }
 body.dark-mode .notification-menu__item p,
 body.dark-mode .notification-menu__date {
-    color: #9ec5ab !important;
+    color: #a0a0a0 !important;
 }
