@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head lang="es">
+        <!-- Metadatos de idioma, codificación y adaptación a pantallas. -->
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reto 2DAW - Notificaciones</title>
+
+        <!-- Fuentes e iconos de FontAwesome -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- Estilos compartidos con el panel de equipamientos y de esta lista. -->
+        <link rel="stylesheet" href="../css/Notificaciones.css">
+        <script src=""></script>
+    </head>
+    <body>
+        <main id="main">
+            <!-- Sección que presenta la lista de notificaciones enviadas. -->
+            <section class="notificaciones-lista">
+                <div class="notificaciones-lista__controles">
+                    <h1>Notificaciones</h1>
+                </div>
+                <div class="notis-tabs-container">
+                    <div class="notis-tabs">
+                        <button type="button" class="notis-tab active" data-category="TODO">Todos</button>
+                        <button type="button" class="notis-tab" data-category="REALIZADA">Completadas</button>
+                        <button type="button" class="notis-tab" data-category="PENDIENTE">Pendientes</button>
+                        <button type="button" class="notis-tab" data-category="EN_PROCESO">En proceso</button>
+                    </div>
+                </div>
+                <!-- Tabla con los datos de las notificaciones. -->
+                <div class="notificaciones-lista__tabla">
+                    <table>
+                        <!-- Encabezados de las columnas de la lista. -->
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Título</th>
+                                <th>Mensaje</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <!-- Filas que se rellenarán con los datos de las notificaciones. -->
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

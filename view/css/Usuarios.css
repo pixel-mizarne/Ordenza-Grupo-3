@@ -1,0 +1,472 @@
+/* -----------------------
+   CONFIGURACION GLOBAL
+   ---------------------- */
+
+/* Le damos el color amarillo de fondo y quitamos margenes por defecto */
+body { 
+    margin: 0; 
+    font-family: 'Inter', sans-serif; 
+    background-color: #fff7d3; 
+    color: #111827; 
+}
+
+/* Hacemos que la pagina ocupe la pantalla entera sin barras de scroll raras */
+html, body { 
+    height: auto; 
+    min-height: 100vh; 
+    overflow-x: hidden; 
+}
+
+/* Centramos todo para que respire y no se pegue a los bordes */
+main { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 40px 20px; /*para todo: funciona como las agujas del reloj, arriba, derecha... asi resumes el codigo en una linea*/
+}
+
+
+/* -------------------------------
+   BARRA DE NAVEGACION SUPERIOR 
+   ------------------------------- */
+
+/* Hover del raton en los links */
+.nav-tabs a:hover { 
+    background-color: #e5e1d5; 
+}
+
+/* El boton de la pagina en la que estas ahora mismo (se queda azul oscuro) */
+.nav-tabs a.active { 
+    background-color: #0b1b42; 
+    color: white; 
+}
+
+/* El logo del centro con las letras separadas */
+.nav-logo-centro { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+}
+.login-logo-img { 
+    width: 45px; 
+    height: 45px; 
+    object-fit: contain; 
+}
+.login-logo-texto { 
+    font-size: 18px; 
+    font-weight: 500; 
+    color: #11225b; 
+    letter-spacing: 8px; 
+}
+
+/* La zona de la derecha con tu avatar y la campanita */
+.nav-perfil {
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+    gap: 20px; 
+    flex: 1; 
+}
+.campana {
+    color: #6b7280; 
+    font-size: 18px; 
+    cursor: pointer; 
+}
+.user-avatar { 
+    width: 34px; height: 34px; 
+    background-color: #e0e7ff; 
+    color: #1d4ed8; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 12px; 
+    font-weight: 600; 
+}
+
+/* El desplegable de administracion pequeñito */
+.admin-dropdown { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    font-size: 14px; 
+    font-weight: 500; 
+    color: #374151; 
+    background-color: #efece3; 
+    padding: 8px 16px; 
+    border-radius: 20px; 
+    cursor: pointer; 
+}
+
+
+/* ----------------------------------
+   TITULO Y ESTADISTICAS DE USUARIOS
+   ------------------------------------ */
+
+/* El titulo de Gestion de Usuarios */
+.header-usu { 
+    margin-bottom: 24px; 
+}
+.titulo-usu { 
+    font-size: 32px; 
+    font-weight: 300; 
+    color: #111827; 
+    margin: 0; 
+    letter-spacing: -0.5px; 
+}
+
+/* La fila donde van las tres estadisticas */
+.usu-barra-estadisticas { 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+    margin-bottom: 32px; 
+    font-size: 15px; 
+    color: #6b7280; 
+}
+.usu-estadisticas { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+}
+
+/* El numero de la estadistica */
+.estadistica-numero { 
+    color: #6b7280; 
+    font-size: 15px; 
+    font-weight: 500; 
+}
+
+/* el texto que acompaña al numero */
+.estadistica-barra {
+    display: inline-block;
+    color: #6b7280;
+}
+
+/* El palito gris que separa una estadistica de la otra */
+.usu-estadisticas-division { 
+    width: 1px; 
+    height: 24px; 
+    background-color: #e5e7eb; 
+}
+
+
+/* --------------------------
+   BUSCADOR Y BOTON AÑADIR
+   -------------------------- */
+
+/* Caja invisible que empuja el buscador a un lado y el boton al otro */
+.usu-filtro-buscador { 
+    display: flex; 
+    gap: 12px; 
+    margin-bottom: 48px;
+    align-items: center; 
+    justify-content: space-between; 
+}
+
+/* La caja blanca del buscador */
+.usu-buscador { 
+    flex: 1; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    background-color: white; 
+    border: 1px solid #e5e7eb; 
+    border-radius: 8px; 
+    padding: 0 16px; 
+    max-width: 600px;
+    color: #9ca3af;
+}
+
+/* El input transparente para poder escribir sin que salga el borde feo por defecto */
+.usu-buscador input { 
+    border: none; 
+    outline: none; 
+    width: 100%; 
+    padding: 14px 0; 
+    font-size: 14px; 
+    color: #111827; 
+    background-color: transparent; 
+}
+
+/* El color del texto del placeholder */
+.usu-buscador input::placeholder { 
+    color: #9ca3af; 
+}
+
+/* Boton de añadir nuevo usuario  */
+.usu-boton-añadir { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    background-color: #0b1b42; 
+    color: white; 
+    border: none; 
+    padding: 12px 20px; 
+    border-radius: 8px; 
+    font-size: 14px; 
+    font-weight: 500; 
+    cursor: pointer; 
+    transition: 0.2s; 
+}
+.usu-boton-añadir:hover { 
+    background-color: #1e293b; 
+}
+
+
+/* --------------------------
+   TARJETAS DE LOS USUARIOS 
+   ------------------------- */
+
+/* Columnas: administradores a la izquierda y usuarios a la derecha */
+.usu-grupos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+}
+
+.usu-grupo:first-child {
+    padding-right: 24px;
+    border-right: 2px solid #343a40;
+}
+
+.usu-grupo:last-child {
+    padding-left: 24px;
+}
+
+.usu-grupo-titulo {
+    margin: 0 0 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #343a40;
+    font-size: 20px;
+    font-weight: 500;
+    color: #111827;
+    text-align: center;
+}
+
+/* La cuadricula de cada grupo */
+.usu-contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+/* El color de rol se aplica a la tarjeta; la franja de acciones queda blanca. */
+.tarjeta-usu {
+    border: 1px solid #292929;
+    border-radius: 8px;
+    padding: 20px;
+    transition: 0.2s;
+}
+
+.tarjeta-info {
+    color: inherit;
+}
+
+.tarjeta-usu.admin {
+    background-color: #11225b;
+    color: #ffffff;
+}
+
+.tarjeta-usu.usuario {
+    background-color: #256725;
+    color: #fff5f2;
+}
+
+/* Efecto SUPER CHULI al pasar el raton: borde azulito y levita un pelin */
+.tarjeta-usu:hover {
+    border-color: #111827;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.08);
+    transform: translateY(-2px);
+}
+
+/* El texto dentro de las tarjetas */
+.tarjeta-info p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: inherit;
+}
+.tarjeta-info strong {
+    color: inherit;
+    margin-right: 6px;
+}
+
+/* La zona de abajo de la tarjeta con los dos botones */
+.tarjetaAccion {
+    margin: 20px -20px -20px;
+    display: flex;
+    gap: 6px;
+    border-top: 1px solid #292929;
+    border-radius: 0 0 7px 7px;
+    background-color: white;
+    padding: 15px 20px;
+}
+
+/* Formato comun para los botoncitos pequeños de la tarjeta */
+.tarjetaAccion button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 32px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Boton de editar */
+.tarjetaAccion .btnEditar {
+    background-color: #f69f3d;
+}
+.tarjetaAccion .btnEditar:hover {
+    background-color: #d17000;
+}
+
+/* Boton de borrar */
+.tarjetaAccion .btnEliminar {
+    background-color: #ff3939;
+}
+.tarjetaAccion .btnEliminar:hover {
+    background-color: #ba1313;
+}
+
+
+
+
+/* -----------------------------
+   POP UP PARA EDITAR O CREAR
+   ---------------------------- */
+
+/* Fondo oscuro transparente que tapa toda la pantalla */
+.popup {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.popup-eliminar {
+    width: min(400px, calc(100vw - 32px));
+}
+
+.popup::backdrop {
+    background-color: rgba(0, 0, 0, 0.4); /* Pone la pantalla en negro al 40% */
+}
+
+/* La caja blanca del formulario */
+.popup-contenido {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.popup-eliminar-contenido {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.popup-eliminar-contenido h2 {
+    margin: 0 0 12px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.popup-eliminar-contenido p {
+    margin-bottom: 20px;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.popup-eliminar-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-eliminar-confirmar {
+    background-color: #ff3939;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.btn-eliminar-confirmar:hover {
+    background-color: #ba1313;
+}
+
+.popup-contenido h2 {
+    margin: 0 0 20px 0;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/* Las cajas de texto de los inputs */
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.grupo-input label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+.grupo-input input {
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+.grupo-input input:focus {
+    border-color: #2563eb; /* Se pone azul al hacer click dentro */
+}
+
+/* La fila con los botones de guardar y cancelar */
+.botones-popup {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+.btn-cancelar {
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #111827;
+}
+.btn-aceptar {
+    background-color: #0b1b42; 
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-aceptar:hover {
+    background-color: #1e293b;
+}

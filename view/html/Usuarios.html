@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión - Usuarios</title>
+    
+    <!-- Fuentes e iconos de FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
+    <link rel="stylesheet" href="../css/Usuarios.css">
+</head>
+<body>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <!-- Titulo de la seccion -->
+        <div class="header-usu">
+            <h1 class="titulo-usu">Gestión de Usuarios</h1>
+        </div>
+
+        <!-- Tarjetas de estadísticas -->
+        <div class="usu-barra-estadisticas">
+            <div class="usu-estadisticas">
+                <i class="fa-solid fa-users"></i> 
+                <span class="estadistica-numero" id="estadisticaTotal">0</span> 
+                <span class="estadistica-barra">usuarios en total</span>
+            </div>
+            <div class="usu-estadisticas-division"></div>
+            <div class="usu-estadisticas">
+                <i class="fa-solid fa-user-tie"></i>
+                <span class="estadistica-numero">3</span> 
+                <span class="estadistica-barra">administradores</span>
+            </div>
+        </div>
+
+        <!-- Buscador y botón de añadir -->
+        <div class="usu-filtro-buscador">
+            <div class="usu-buscador">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="buscarUsuario" placeholder="Buscar usuario por nombre o ID...">
+            </div>
+            
+            <button class="usu-boton-añadir" id="btnAnadir">
+                <i class="fa-solid fa-plus"></i> Añadir Usuario
+            </button>
+        </div>
+
+        <!-- Usuarios agrupados por rol -->
+        <div class="usu-grupos">
+            <section class="usu-grupo">
+                <h2 class="usu-grupo-titulo">Administradores</h2>
+                <div class="usu-contenedor-tarjetas" id="contenedorAdmins"></div>
+            </section>
+            <section class="usu-grupo">
+                <h2 class="usu-grupo-titulo">Usuarios</h2>
+                <div class="usu-contenedor-tarjetas" id="contenedorUsuarios"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- POP UP PARA AÑADIR/EDITAR -->
+    <dialog id="popupUsuario" class="popup">
+        <div class="popup-contenido">
+            <h2 id="popupTitulo">Nuevo Usuario</h2>
+            <form id="formularioUsuario">
+                <input type="hidden" id="userId">
+                
+                <div class="grupo-input">
+                    <label for="nombre">NOMBRE</label>
+                    <input type="text" id="nombre" required>
+                </div>
+                
+                <div class="grupo-input">
+                    <label for="apellido">APELLIDO</label>
+                    <input type="text" id="apellido" required>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="username">USER NAME</label>
+                    <input type="text" id="username" required>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="password">CONTRASEÑA</label>
+                    <input type="password" id="password" required>
+                </div>
+
+                <div class="botones-popup">
+                    <button type="button" class="btn-cancelar" id="btnCerrarPopUp">Cancelar</button>
+                    <button type="submit" class="btn-aceptar">Aceptar</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Pop-up para Eliminar -->
+    <dialog id="popupEliminar" class="popup popup-eliminar">
+        <div class="popup-eliminar-contenido">
+            <h2>¿Eliminar usuario?</h2>
+            <p>¿Seguro que quieres borrar este usuario? Esta acción no se puede deshacer.</p>
+            <input type="hidden" id="eliminarUsuId">
+            <div class="popup-eliminar-acciones">
+                <button type="button" class="btn-cancelar" id="btnCancelarEliminar">Cancelar</button>
+                <button type="button" class="btn-eliminar-confirmar" id="btnConfirmarEliminar">Eliminar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="popupAvisoCuenta" class="popup popup-eliminar">
+        <div class="popup-eliminar-contenido">
+            <h2>Acción no permitida</h2>
+            <p id="mensajeAvisoCuenta"></p>
+            <div class="popup-eliminar-acciones">
+                <button type="button" class="btn-cancelar" id="btnCerrarAvisoCuenta">Cerrar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="../javascript/Usuarios.js"></script>
+
+</body>
+</html>
