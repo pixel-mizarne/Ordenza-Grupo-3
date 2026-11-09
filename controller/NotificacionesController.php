@@ -99,6 +99,22 @@
             return $this->notificacionesDAO->actualizarEstado($id, $estado);
         }
 
+        public function actualizarContenidoPropio(int $id, int $idUsuario, string $titulo, string $descripcion): ?bool {
+            if (!$this->notificacionesDAO->perteneceAUsuario($id, $idUsuario)) {
+                return null;
+            }
+
+            return $this->notificacionesDAO->actualizarContenidoPropio($id, $idUsuario, $titulo, $descripcion);
+        }
+
+        public function eliminarPropia(int $id, int $idUsuario): ?bool {
+            if (!$this->notificacionesDAO->perteneceAUsuario($id, $idUsuario)) {
+                return null;
+            }
+
+            return $this->notificacionesDAO->borrarPropia($id, $idUsuario);
+        }
+
         // DELETE
         public function eliminar(int $id): bool {
             return $this->notificacionesDAO->borrar($id);

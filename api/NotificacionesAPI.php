@@ -55,14 +55,44 @@
             break;
 
         case 'POST':
+            if (!isset($_SESSION['usuario_id'])) {
+                http_response_code(401);
+                echo json_encode(["error" => "Es necesario iniciar sesion"]);
+                break;
+            }
+
+            if (($_SESSION['rol'] ?? null) !== 'USER') {
+                http_response_code(403);
+                echo json_encode(["error" => "Solo los usuarios pueden crear notificaciones"]);
+                break;
+            }
+
             $contenido = file_get_contents("php://input");
             $datos = json_decode($contenido, true);
-            
-            $exito = $controlador->crear($datos);
-            
+
+            if (
+                !is_array($datos) ||
+                !is_string($datos['titulo'] ?? null) ||
+                !is_string($datos['descripcion'] ?? null) ||
+                trim($datos['titulo']) === '' ||
+                trim($datos['descripcion']) === ''
+            ) {
+                http_response_code(400);
+                echo json_encode(["error" => "El titulo y el mensaje son obligatorios"]);
+                break;
+            }
+
+            $exito = $controlador->crear([
+                'titulo' => trim($datos['titulo']),
+                'descripcion' => trim($datos['descripcion']),
+                'fecha_creacion' => date('Y-m-d H:i:s'),
+                'estado' => \enumNotificaciones\EstadoNotificaciones::PENDIENTE->value,
+                'id_usuario' => (int) $_SESSION['usuario_id']
+            ]);
+
             if ($exito) {
                 http_response_code(201); 
-                echo json_encode(["mensaje" => "Notificacion creada con exito"]);
+                echo json_encode(["mensaje" => "Notificacion creada con exito"], JSON_UNESCAPED_UNICODE);
             } else {
                 http_response_code(400); 
                 echo json_encode(["error" => "Faltan datos o el estado es invalido"]);
@@ -112,35 +142,88 @@
             break;
 
         case 'PUT':
-            $contenido = file_get_contents("php://input");
-            $datos = json_decode($contenido, true);
+            if (!isset($_SESSION['usuario_id'])) {
+                http_response_code(401);
+                echo json_encode(["error" => "Es necesario iniciar sesion"]);
+                break;
+            }
 
-            $exito = $controlador->actualizar($datos);
-            
-            if ($exito) {
-                http_response_code(200);
-                echo json_encode(["mensaje" => "Notificacion actualizada correctamente"]);
-            } else {
+            if (($_SESSION['rol'] ?? null) !== 'USER') {
+                http_response_code(403);
+                echo json_encode(["error" => "Solo los usuarios pueden editar sus notificaciones"]);
+                break;
+            }
+
+            $contenido = file_get_contents("php://input");
+            $datos = json_decode($contenido === false ? '' : $contenido, true);
+            $id = is_array($datos)
+                ? filter_var($datos['id_notificacion'] ?? null, FILTER_VALIDATE_INT)
+                : false;
+
+            if (
+                $id === false ||
+                $id < 1 ||
+                !is_array($datos) ||
+                !is_string($datos['titulo'] ?? null) ||
+                !is_string($datos['descripcion'] ?? null) ||
+                trim($datos['titulo']) === '' ||
+                trim($datos['descripcion']) === ''
+            ) {
                 http_response_code(400);
-                echo json_encode(["error" => "Faltan datos o el estado es invalido"]);
+                echo json_encode(["error" => "El ID, el titulo y el mensaje son obligatorios"]);
+                break;
+            }
+
+            $exito = $controlador->actualizarContenidoPropio(
+                $id,
+                (int) $_SESSION['usuario_id'],
+                trim($datos['titulo']),
+                trim($datos['descripcion'])
+            );
+
+            if ($exito === null) {
+                http_response_code(404);
+                echo json_encode(["error" => "No se encontro la notificacion"]);
+            } elseif ($exito) {
+                http_response_code(200);
+                echo json_encode(["mensaje" => "Notificacion actualizada correctamente"], JSON_UNESCAPED_UNICODE);
+            } else {
+                http_response_code(500);
+                echo json_encode(["error" => "No se pudo actualizar la notificacion"]);
             }
             break;
 
         case 'DELETE':
-            if (isset($_GET['id'])) {
-                $id = intval($_GET['id']);
-                $exito = $controlador->eliminar($id);
-                
-                if ($exito) {
-                    http_response_code(200);
-                    echo json_encode(["mensaje" => "Notificacion eliminada correctamente"]);
-                } else {
-                    http_response_code(500);
-                    echo json_encode(["error" => "Error al eliminar la notificacion"]);
-                }
-            } else {
+            if (!isset($_SESSION['usuario_id'])) {
+                http_response_code(401);
+                echo json_encode(["error" => "Es necesario iniciar sesion"]);
+                break;
+            }
+
+            if (($_SESSION['rol'] ?? null) !== 'USER') {
+                http_response_code(403);
+                echo json_encode(["error" => "Solo los usuarios pueden eliminar sus notificaciones"]);
+                break;
+            }
+
+            $id = filter_var($_GET['id'] ?? null, FILTER_VALIDATE_INT);
+            if ($id === false || $id < 1) {
                 http_response_code(400);
-                echo json_encode(["error" => "Falta el ID de la notificacion a eliminar"]);
+                echo json_encode(["error" => "El ID de la notificacion no es valido"]);
+                break;
+            }
+
+            $exito = $controlador->eliminarPropia($id, (int) $_SESSION['usuario_id']);
+
+            if ($exito === null) {
+                http_response_code(404);
+                echo json_encode(["error" => "No se encontro la notificacion"]);
+            } elseif ($exito) {
+                http_response_code(200);
+                echo json_encode(["mensaje" => "Notificacion eliminada correctamente"], JSON_UNESCAPED_UNICODE);
+            } else {
+                http_response_code(500);
+                echo json_encode(["error" => "No se pudo eliminar la notificacion"]);
             }
             break;
             

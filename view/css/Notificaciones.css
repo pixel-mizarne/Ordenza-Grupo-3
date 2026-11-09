@@ -89,6 +89,93 @@
     border-color: #e5e7eb;
 }
 
+.notificaciones-lista__accion:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.notificaciones-modal {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(520px, calc(100% - 32px));
+    max-width: none;
+    max-height: calc(100% - 32px);
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+}
+
+.notificaciones-modal::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.notificaciones-modal__contenido {
+    overflow-y: auto;
+    max-height: calc(100vh - 32px);
+    padding: 28px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.notificaciones-modal__contenido h2 {
+    margin: 0 0 20px;
+    color: #111827;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.notificaciones-modal .notificaciones-admin__form {
+    max-width: none;
+    padding: 0;
+    border: 0;
+}
+
+body.colorblind-mode .notificaciones-modal__contenido {
+    border: 2px solid #000;
+}
+
+body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
+    border: 0 !important;
+}
+
+.notificaciones-modal__cancelar {
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    color: #374151;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.notificaciones-modal__cancelar:hover {
+    background: #f3f4f6;
+}
+
+.notificaciones-modal__error {
+    margin: 0;
+    color: #dc2626;
+    font-size: 14px;
+}
+
+.notificaciones-modal__confirmacion {
+    margin: 0 0 24px;
+    color: #4b5563;
+    font-size: 14px;
+}
+
+.notificaciones-lista__accion--eliminar,
+.notificaciones-lista__accion--eliminar:hover {
+    border-color: #dc2626;
+    background: #dc2626;
+    color: white;
+}
+
 .notificaciones-lista__tabla {
     overflow-x: auto;
     border: 1px solid #e5e7eb;
@@ -98,9 +185,35 @@
 
 .notificaciones-lista table {
     width: 100%;
-    min-width: 720px;
+    min-width: 700px;
+    table-layout: fixed;
     border-collapse: collapse;
     text-align: left;
+}
+
+.notificaciones-lista th:nth-child(1),
+.notificaciones-lista td:nth-child(1) {
+    width: 16%;
+}
+
+.notificaciones-lista th:nth-child(2),
+.notificaciones-lista td:nth-child(2) {
+    width: 18%;
+}
+
+.notificaciones-lista th:nth-child(3),
+.notificaciones-lista td:nth-child(3) {
+    width: 28%;
+}
+
+.notificaciones-lista th:nth-child(4),
+.notificaciones-lista td:nth-child(4) {
+    width: 18%;
+}
+
+.notificaciones-lista th:nth-child(5),
+.notificaciones-lista td:nth-child(5) {
+    width: 20%;
 }
 
 .notificaciones-lista th {
@@ -119,6 +232,45 @@
     color: #111827;
     font-size: 14px;
     vertical-align: middle;
+}
+
+.notificaciones-lista__descripcion {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notificaciones-lista__acciones {
+    display: flex;
+    gap: 8px;
+}
+
+.notificaciones-lista__boton-accion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: white;
+    color: #374151;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.notificaciones-lista__boton-accion:hover {
+    background: #f3f4f6;
+}
+
+.notificaciones-lista__boton-accion--eliminar {
+    border-color: #fecaca;
+    color: #b91c1c;
+}
+
+.notificaciones-lista__boton-accion--eliminar:hover {
+    background: #fef2f2;
 }
 
 .notificaciones-lista tbody tr:last-child td {
@@ -208,6 +360,12 @@
 .notificaciones-admin__acciones {
     display: flex;
     justify-content: flex-end;
+    gap: 12px;
+}
+
+.notificaciones-modal .notificaciones-admin__acciones {
+    margin: 8px 0 0;
+    padding: 8px 10px 10px;
 }
 
 .notificaciones-admin__acciones .notificaciones-lista__accion {
@@ -248,6 +406,10 @@
     .notificaciones-lista__accion {
         justify-content: center;
         flex: 1;
+    }
+
+    .notificaciones-lista__boton-accion {
+        padding: 8px;
     }
 }
 
