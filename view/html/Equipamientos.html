@@ -19,15 +19,39 @@
     </div>
 </div>
 
-<!-- Este control conserva la creación para administradores sin mezclarla con las tarjetas de categoría. -->
-<div class="eq-filters-bar eq-category-actions">
+<!-- Los filtros, búsqueda y creación conservan la vista original de administración. -->
+<div class="eq-filters-bar eq-admin-controls" id="eq-admin-controls" hidden>
+    <div class="eq-search-box" style="position: relative;">
+        <i class="fa-solid fa-magnifying-glass" style="color: #9ca3af;"></i>
+        <input type="text" id="search-input" placeholder="Buscar por nombre, ID, marca o modelo...">
+        <button type="button" class="search-clear-btn" id="clear-search-eq">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <select id="filter-location" class="eq-select">
+        <option value="">Ubicación: Todas</option>
+    </select>
+
     <button class="eq-btn-primary" id="btn-crear-equipamiento" onclick="abrirModalCrear()" style="display: none;">
         <i class="fa-solid fa-plus"></i> Crear equipamiento
     </button>
 </div>
 
-<!-- Este panel inicial reemplaza la tabla general por filtros en tarjetas de dos columnas. -->
-<section class="eq-category-browser" id="eq-category-browser" aria-label="Filtrar equipamientos por categoría">
+<!-- Administración mantiene las pestañas de categoría que ya tenía antes del nuevo diseño. -->
+<div class="eq-tabs-container" id="eq-admin-tabs" hidden>
+    <div class="eq-tabs">
+        <button class="eq-tab active" data-category="">Todos</button>
+        <button class="eq-tab" data-category="PORTATIL">Portátil</button>
+        <button class="eq-tab" data-category="SOBREMESA">Sobremesa</button>
+        <button class="eq-tab" data-category="PERIFERICO">Periférico</button>
+        <button class="eq-tab" data-category="AUDIOVISUAL">Audiovisual</button>
+        <button class="eq-tab" data-category="OTROS">Otros</button>
+    </div>
+</div>
+
+<!-- Solo los usuarios ven las tarjetas de categoría como entrada a su inventario. -->
+<section class="eq-category-browser" id="eq-category-browser" aria-label="Filtrar equipamientos por categoría" hidden>
     <button type="button" class="eq-category-card" data-category="" data-label="Todos">
         <span class="eq-category-icon"><i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i></span>
         <span>Todos</span>
@@ -54,34 +78,16 @@
     </button>
 </section>
 
-<!-- La tabla solo se muestra después de seleccionar una categoría para evitar cargar el inventario completo al entrar. -->
-<section class="eq-category-results" id="eq-category-results" hidden>
-    <div class="eq-results-header">
-        <button type="button" class="eq-back-categories" id="eq-back-categories">
-            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Categorías
-        </button>
-        <h2 class="eq-results-title" id="eq-selected-category"></h2>
-    </div>
+<!-- Este encabezado solo aparece al usuario después de elegir una categoría. -->
+<div class="eq-results-header" id="eq-user-results-header" hidden>
+    <button type="button" class="eq-back-categories" id="eq-back-categories">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Categorías
+    </button>
+    <h2 class="eq-results-title" id="eq-selected-category"></h2>
+</div>
 
-    <!-- Búsqueda conservada en comentario para poder reactivarla cuando vuelva a ser necesaria.
-    <div class="eq-filters-bar">
-        <div class="eq-search-box" style="position: relative;">
-            <i class="fa-solid fa-magnifying-glass" style="color: #9ca3af;"></i>
-            <input type="text" id="search-input" placeholder="Buscar por nombre, ID, marca o modelo...">
-            <button type="button" class="search-clear-btn" id="clear-search-eq">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-    </div>
-    -->
-
-    <!-- El filtro de ubicación permanece disponible dentro de la categoría seleccionada. -->
-    <div class="eq-filters-bar eq-results-filters">
-        <select id="filter-location" class="eq-select">
-            <option value="">Ubicación: Todas</option>
-        </select>
-    </div>
-
+<!-- La tabla se comparte: administración la ve de entrada y el usuario tras elegir un botón. -->
+<section class="eq-table-section" id="eq-table-section" hidden>
     <div class="eq-table-container">
         <table class="eq-table">
             <thead>

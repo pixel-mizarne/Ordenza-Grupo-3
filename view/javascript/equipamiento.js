@@ -8,6 +8,14 @@ let listaUbicaciones = [];
 async function iniciarEquipamientos() {
     const rolUsuario = window.ROL ? window.ROL.toUpperCase() : 'USER';
     const btnCreate = document.getElementById('btn-crear-equipamiento');
+    const esAdmin = rolUsuario === 'ADMIN';
+
+    // Separa la vista antigua de administración del nuevo selector exclusivo para usuarios.
+    currentCategoryFilter = '';
+    document.getElementById('eq-admin-controls').hidden = !esAdmin;
+    document.getElementById('eq-admin-tabs').hidden = !esAdmin;
+    document.getElementById('eq-category-browser').hidden = esAdmin;
+    document.getElementById('eq-table-section').hidden = !esAdmin;
     if (btnCreate) btnCreate.style.display = (rolUsuario === 'ADMIN') ? 'flex' : 'none';
 
     // Cargar ubicaciones
@@ -48,17 +56,20 @@ async function iniciarEquipamientos() {
         // Si llegamos aquí, todo está perfecto
         todosLosEquipos = data;
         actualizarEstadisticas();
+        if (esAdmin) renderizarTabla();
 
         // Si el historial enlaza a un equipo concreto, abrimos directamente su categoría y lo resaltamos.
         const idEquipoSolicitado = new URLSearchParams(window.location.search).get('id');
         const equipoSolicitado = todosLosEquipos.find(e => String(e.id_equipamiento) === idEquipoSolicitado);
         if (equipoSolicitado) {
-            const tarjetaCategoria = [...document.querySelectorAll('.eq-category-card')]
-                .find(tarjeta => tarjeta.dataset.category === equipoSolicitado.categoria);
-            seleccionarCategoria(
-                equipoSolicitado.categoria,
-                tarjetaCategoria ? tarjetaCategoria.dataset.label : equipoSolicitado.categoria
-            );
+            if (!esAdmin) {
+                const tarjetaCategoria = [...document.querySelectorAll('.eq-category-card')]
+                    .find(tarjeta => tarjeta.dataset.category === equipoSolicitado.categoria);
+                seleccionarCategoria(
+                    equipoSolicitado.categoria,
+                    tarjetaCategoria ? tarjetaCategoria.dataset.label : equipoSolicitado.categoria
+                );
+            }
             resaltarEquipoDesdeUbicacion(idEquipoSolicitado);
         }
 
@@ -72,7 +83,8 @@ async function iniciarEquipamientos() {
 function seleccionarCategoria(categoria, etiqueta) {
     currentCategoryFilter = categoria;
     document.getElementById('eq-category-browser').hidden = true;
-    document.getElementById('eq-category-results').hidden = false;
+    document.getElementById('eq-user-results-header').hidden = false;
+    document.getElementById('eq-table-section').hidden = false;
     document.getElementById('eq-selected-category').textContent = etiqueta;
 
     const filterLocation = document.getElementById('filter-location');
@@ -440,10 +452,21 @@ if (formCrear) {
     if (btnVolverCategorias) {
         btnVolverCategorias.addEventListener('click', () => {
             currentCategoryFilter = '';
-            document.getElementById('eq-category-results').hidden = true;
+            document.getElementById('eq-user-results-header').hidden = true;
+            document.getElementById('eq-table-section').hidden = true;
             document.getElementById('eq-category-browser').hidden = false;
         });
     }
+
+    // Mantiene la navegación original de pestañas disponible únicamente para administradores.
+    document.querySelectorAll('#eq-admin-tabs .eq-tab').forEach(tab => {
+        tab.addEventListener('click', event => {
+            document.querySelectorAll('#eq-admin-tabs .eq-tab').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            currentCategoryFilter = event.currentTarget.getAttribute('data-category') || '';
+            renderizarTabla();
+        });
+    });
 
     const clearSearchBtn = document.getElementById('clear-search-eq');
     if (searchInput && clearSearchBtn) {

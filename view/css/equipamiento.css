@@ -795,7 +795,6 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 /* 4. Create Button */
 .eq-filters-bar .eq-btn-primary { 
     flex: 0 0 auto !important; 
-    /* Sin !important, el display inline permite que JS oculte la creación a los usuarios. */
     display: flex;
     align-items: center !important; 
     justify-content: center !important; 
@@ -813,10 +812,6 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 }
 
 /* La vista inicial presenta categorías en dos columnas y evita mostrar toda la tabla de entrada. */
-.eq-category-actions {
-    justify-content: flex-end;
-}
-
 .eq-category-browser {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -862,8 +857,12 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     line-height: 1;
 }
 
-/* La tabla se mantiene fuera de la vista hasta que el usuario elige un filtro. */
-.eq-category-results[hidden] {
+/* El display grid/flex declarado más abajo no debe anular el estado oculto según el rol. */
+.eq-category-browser[hidden],
+#eq-admin-controls[hidden],
+#eq-admin-tabs[hidden],
+#eq-user-results-header[hidden],
+#eq-table-section[hidden] {
     display: none !important;
 }
 
@@ -934,24 +933,4 @@ body.dark-mode .eq-category-card:hover,
 body.dark-mode .eq-back-categories:hover {
     background: rgba(0, 240, 255, 0.12) !important;
     border-color: #00f0ff !important;
-}
-
-@media (max-width: 560px) {
-    .eq-category-browser {
-        gap: 12px;
-    }
-
-    .eq-category-card {
-        min-height: 145px;
-        font-size: 15px;
-    }
-
-    .eq-category-icon {
-        font-size: 40px;
-    }
-
-    .eq-results-header {
-        align-items: flex-start;
-        flex-direction: column;
-    }
 }
