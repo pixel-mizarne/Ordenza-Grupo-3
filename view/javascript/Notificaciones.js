@@ -104,8 +104,8 @@
 
     async function actualizarEstado(notificacion, estado) {
         try {
-            const respuesta = await fetch('api/NotificacionesAPI.php', {
-                method: 'PATCH',
+            const respuesta = await fetch('api/NotificacionesAPI.php?action=update-state', {
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     id_notificacion: notificacion.id_notificacion,
