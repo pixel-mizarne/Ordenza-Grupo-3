@@ -12,6 +12,7 @@ async function iniciarEquipamientos() {
 
     // Separa la vista antigua de administración del nuevo selector exclusivo para usuarios.
     currentCategoryFilter = '';
+    document.getElementById('eq-admin-summary').hidden = !esAdmin;
     document.getElementById('eq-admin-controls').hidden = !esAdmin;
     document.getElementById('eq-admin-tabs').hidden = !esAdmin;
     document.getElementById('eq-category-browser').hidden = esAdmin;
