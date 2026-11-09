@@ -85,7 +85,18 @@
 
                 <div class="grupo-input">
                     <label for="password">CONTRASEÑA</label>
-                    <input type="password" id="password" required>
+                    <input
+                        type="password"
+                        id="password"
+                        required
+                        minlength="8"
+                        pattern="(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[0-9])(?=.*[._-]).{8,}"
+                        title="Mínimo 8 caracteres, una mayúscula, una minúscula, un número y uno de estos caracteres: . - _"
+                        aria-describedby="password-requirements"
+                        autocomplete="new-password">
+                    <small id="password-requirements" class="password-requirements">
+                        Mínimo 8 caracteres, una mayúscula, una minúscula, un número y uno de estos caracteres: . - _
+                    </small>
                 </div>
 
                 <div class="botones-popup">
