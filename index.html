@@ -24,25 +24,19 @@
     <link rel="stylesheet" href="view/css/Notificaciones.css">  <!--Victor-->
 </head>
 
-<!-----------------Los numeros que he puesto que corresponde a cada elemento es lo mismo en el CSS-------------------->
 <body>
     <!------------------------------------------------------------->
     <!-------------------------NAVBAR------------------------------>
     <!------------------------------------------------------------->
     <nav class="top-navbar" id="main-navbar">
-          <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-        <i class="fa-solid fa-bars"></i>
-    </button>
-
-
-    <div class="nav-tabs" id="navTabs">
-        <a href="index.html?page=equipamientos" class="nav-link" data-page="equipamientos">Equipamiento</a>
-    </div>
-
-    <!-- ... el resto del navbar (logo, perfil, etc) ... -->
+        
+        <!-- 0. BOTÓN MÓVIL (Oculto en PC) -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
         <!-----------------------1. NAV TABS-------------------------->
-        <div class="nav-tabs">
+        <div class="nav-tabs" id="navTabs">
             <a href="index.html?page=equipamientos" class="nav-link" data-page="equipamientos">Equipamiento</a>
             <a href="index.html?page=usuarios" class="nav-link" data-page="usuarios" id="nav-usuarios">Usuarios</a>
             <a href="index.html?page=ubicaciones" class="nav-link" data-page="ubicaciones" id="nav-ubicaciones">Ubicaciones</a>
@@ -109,7 +103,7 @@
                     <!-- Separador -->
                     <div class="menu-separator"></div>
                     
-                    <!-- 3.Opcion: Salir -->
+                    <!-- 4.Opcion: Salir -->
                     <a class="menu-option-salir" onclick="logout()">
                         <i class="fa-solid fa-right-from-bracket"></i> Salir
                     </a>
@@ -168,9 +162,7 @@
         </div>
     </dialog>
 
-    <nav class="top-navbar" id="main-navbar">
-</nav>
-
+    <!-- SCRIPTS -->
     <script src="view/javascript/Main.js"></script>
 </body>
 </html>
