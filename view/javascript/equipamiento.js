@@ -10,16 +10,19 @@ async function iniciarEquipamientos() {
     const btnCreate = document.getElementById('btn-crear-equipamiento');
     const esAdmin = rolUsuario === 'ADMIN';
     //  MOSTRAMOS EL BUSCADOR PARA TODOS 
+     // CONTROL DEL BUSCADOR
     const adminControls = document.getElementById('eq-admin-controls');
     if (adminControls) {
-        adminControls.hidden = false; // Quitamos el hidden para que el buscador se vea
+        // Si es admin, se muestra siempre. Si es user, se oculta al principio (porque ve las categorías).
+        adminControls.hidden = !esAdmin; 
+        
         // Ocultamos el filtro de ubicación y el botón crear si no es admin
         const filterSelect = document.querySelector('.eq-select');
         if (filterSelect) filterSelect.style.display = esAdmin ? 'block' : 'none';
         if (btnCreate) btnCreate.style.display = esAdmin ? 'flex' : 'none';
     }
 
-     if (esAdmin) {
+    if (esAdmin) {
         document.body.classList.add('role-admin');
         document.body.classList.remove('role-user');
     } else {
@@ -27,9 +30,8 @@ async function iniciarEquipamientos() {
         document.body.classList.remove('role-admin');
     }
 
-    // Separa la vista antigua de administración del nuevo selector exclusivo para usuarios.
-     currentCategoryFilter = '';
-    document.getElementById('eq-admin-controls').hidden = !esAdmin;
+    // Separamos la vista
+    currentCategoryFilter = '';
     document.getElementById('eq-admin-tabs').hidden = !esAdmin;
     document.getElementById('eq-category-browser').hidden = esAdmin;
     document.getElementById('eq-table-section').hidden = !esAdmin;
@@ -102,6 +104,7 @@ function seleccionarCategoria(categoria, etiqueta) {
     document.getElementById('eq-user-results-header').hidden = false;
     document.getElementById('eq-table-section').hidden = false;
     document.getElementById('eq-selected-category').textContent = etiqueta;
+    document.getElementById('eq-admin-controls').hidden = false; 
 
     const filterLocation = document.getElementById('filter-location');
     if (filterLocation) filterLocation.value = '';
@@ -484,6 +487,15 @@ if (formCrear) {
             document.getElementById('eq-user-results-header').hidden = true;
             document.getElementById('eq-table-section').hidden = true;
             document.getElementById('eq-category-browser').hidden = false;
+             document.getElementById('eq-admin-controls').hidden = true; // Ocultar buscador
+            
+            // Limpiar el buscador
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.value = '';
+                const clearSearchBtn = document.getElementById('clear-search-eq');
+                if (clearSearchBtn) clearSearchBtn.classList.remove('visible');
+            }
         });
     }
 

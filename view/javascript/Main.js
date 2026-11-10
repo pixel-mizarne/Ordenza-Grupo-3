@@ -401,8 +401,10 @@ function toggleMobileMenu() {
     }
 }
 
+// Cerrar el menú móvil al hacer clic en un enlace (pero NO en los switches)
 document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-user-options a, .mobile-user-options .menu-option-daltonismo');
+    // Al no incluir '.menu-option-daltonismo', los switches no cerrarán el menú
+    const navLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-user-options a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             const drawer = document.getElementById('mobileDrawer');

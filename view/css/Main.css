@@ -14,13 +14,18 @@ body {
 }
 
 /* Oculta navbar y footer hasta que JS verifique la sesión */
-#main-navbar, #main-footer { display: none; }
+#main-navbar, #main-footer { 
+    display: none; 
+}
 
-#app-content { min-height: 60vh; }
+#app-content { 
+    min-height: 60vh; 
+}
 
-#app-loading { text-align: center; margin-top: 50px; }
-
-/* Los numeros que he puesto que corresponde a cada elemento es lo mismo en el HTML - Miz */
+#app-loading { 
+    text-align: center; 
+    margin-top: 50px; 
+}
 
 
 /* ------------------------------------------------------------- */
@@ -65,9 +70,11 @@ body {
     transition: 0.2s;
     background: #F5F4ED;
 }
+
 .nav-tabs a:hover {
     background: #e5e1d5;
 }
+
 .nav-tabs a.active {
     background: #0b1b42;
     color: white;
@@ -152,6 +159,7 @@ body {
     border-radius: 50%;
     background: #0b1b42;
 }
+
 .notification-toggle.is-current .bell {
     color: white;
 }
@@ -178,21 +186,73 @@ body {
     text-align: center;
 }
 
-.notification-menu { width: min(360px, calc(100vw - 32px)); padding: 0; overflow: hidden; }
-.notification-menu__title { padding: 16px 18px; border-bottom: 1px solid #e5e7eb; color: #111827; font-size: 16px; font-weight: 600; }
-.notification-menu__list { max-height: 340px; overflow-y: auto; }
-.notification-menu__item { padding: 14px 18px; border-bottom: 1px solid #f3f4f6; }
-.notification-menu__item:last-child { border-bottom: 0; }
-.notification-menu__item h3 { margin-bottom: 5px; color: #111827; font-size: 14px; font-weight: 600; }
-.notification-menu__item p, .notification-menu__date, .notification-menu__message { color: #6b7280; font-size: 12px; line-height: 1.5; }
-.notification-menu__date { display: block; margin-top: 7px; }
-.notification-menu__message { padding: 18px; text-align: center; }
+.notification-menu {
+    width: min(360px, calc(100vw - 32px));
+    padding: 0;
+    overflow: hidden;
+}
+
+.notification-menu__title {
+    padding: 16px 18px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #111827;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.notification-menu__list {
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.notification-menu__item {
+    padding: 14px 18px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.notification-menu__item:last-child {
+    border-bottom: 0;
+}
+
+.notification-menu__item h3 {
+    margin-bottom: 5px;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.notification-menu__item p, 
+.notification-menu__date, 
+.notification-menu__message {
+    color: #6b7280;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.notification-menu__date {
+    display: block;
+    margin-top: 7px;
+}
+
+.notification-menu__message {
+    padding: 18px;
+    text-align: center;
+}
 
 .notification-menu__footer {
-    display: block; padding: 13px 18px; border-top: 1px solid #e5e7eb; color: #1d4ed8;
-    font-size: 13px; font-weight: 600; text-align: center; text-decoration: none;
+    display: block;
+    padding: 13px 18px;
+    border-top: 1px solid #e5e7eb;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
 }
-.notification-menu__footer:hover { background: #f9fafb; }
+
+.notification-menu__footer:hover {
+    background: #f9fafb;
+}
 
 /* --- 3.2 AVATAR --- */
 .user-avatar {
@@ -226,7 +286,10 @@ body {
     cursor: pointer;
     transition: 0.2s;
 }
-.admin-dropdown:hover { background: #e5e1d5; }
+
+.admin-dropdown:hover {
+    background: #e5e1d5;
+}
 
 .dropdown-menu {
     display: none;
@@ -241,7 +304,10 @@ body {
     padding: 8px 0;
     z-index: 1001;
 }
-.dropdown-menu.show { display: block; }
+
+.dropdown-menu.show {
+    display: block;
+}
 
 .menu-option-perfil,
 .menu-option-daltonismo,
@@ -254,6 +320,7 @@ body {
     font-weight: 500;
     cursor: pointer;
 }
+
 .menu-option-perfil:hover,
 .menu-option-daltonismo:hover,
 .menu-option-salir:hover {
@@ -264,6 +331,7 @@ body {
     align-items: center;
     gap: 8px;
 }
+
 .menu-option-daltonismo {
     justify-content: space-between;
     align-items: center;
@@ -271,8 +339,7 @@ body {
     padding-right: 20px;
 }
 
-.menu-option-daltonismo
-.toggle-switch {
+.menu-option-daltonismo .toggle-switch {
     width: 34px;
     height: 18px;
     background-color: #d1d5db;
@@ -280,9 +347,10 @@ body {
     position: relative;
     transition: 0.3s;
 }
-.menu-option-daltonismo
-.toggle-switch::after {
-    content: ''; position: absolute;
+
+.menu-option-daltonismo .toggle-switch::after {
+    content: ''; 
+    position: absolute;
     top: 2px;
     left: 2px;
     width: 14px;
@@ -292,12 +360,12 @@ body {
     transition: 0.3s;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
-.menu-option-daltonismo
-.toggle-switch.active {
+
+.menu-option-daltonismo .toggle-switch.active {
     background-color: #051BFF;
 }
-.menu-option-daltonismo
-.toggle-switch.active::after {
+
+.menu-option-daltonismo .toggle-switch.active::after {
     left: 18px;
 }
 
@@ -305,6 +373,7 @@ body {
     border-top: 1px solid #e5e7eb;
     margin: 5px 0;
 }
+
 .menu-option-salir {
     align-items: center;
     gap: 8px;
@@ -321,6 +390,7 @@ main {
     padding: 40px 20px;
     box-sizing: border-box;
 }
+
 main#app-content {
     flex: 1;
     width: 95%;
@@ -412,6 +482,7 @@ footer {
 .perfil-body {
     padding: 20px 30px;
 }
+
 .perfil-row {
     display: flex;
     justify-content: space-between;
@@ -419,9 +490,11 @@ footer {
     padding: 12px 0;
     border-bottom: 1px solid #e5dcc3;
 }
+
 .perfil-row:last-child {
     border-bottom: none;
 }
+
 .perfil-label {
     font-size: 13px;
     color: #8B5A2B;
@@ -430,6 +503,7 @@ footer {
     align-items: center;
     gap: 10px;
 }
+
 .perfil-label i {
     width: 16px;
     text-align: center;
@@ -441,13 +515,16 @@ footer {
     color: #000000;
     font-weight: 600;
 }
+
 #perfil-rol {
     font-weight: bold;
     color: #2563eb;
 }
+
 .perfil-footer {
     padding: 20px 30px 30px;
 }
+
 .perfil-btn-cerrar {
     width: 100%;
     background: #0b1b42;
@@ -460,16 +537,22 @@ footer {
     cursor: pointer;
     transition: 0.2s;
 }
+
 .perfil-btn-cerrar:hover {
     background: #1e293b;
     transform: translateY(-1px);
-
 }
-@keyframes modalFadeIn { from {
-    opacity: 0;
-    transform: scale(0.95) translateY(10px); } to {
+
+@keyframes modalFadeIn { 
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px); 
+    } 
+    to {
         opacity: 1;
-        transform: scale(1) translateY(0); } }
+        transform: scale(1) translateY(0); 
+    } 
+}
 
 /* =========================================
    (X) EN LA BARRA DE BUSQUEDA
@@ -495,9 +578,11 @@ footer {
     margin: 0 !important;
     box-shadow: none !important;
 }
+
 .search-clear-btn.visible {
     display: flex !important;
 }
+
 .search-clear-btn:hover {
     background-color: #d1d5db !important;
     color: #000000 !important;
@@ -506,45 +591,221 @@ footer {
 /* =========================================
    MODO DALTONISMO
    ========================================= */
-body.colorblind-mode { background-color: #FFFFFF !important; color: #000000 !important; font-weight: 500 !important; }
-body.colorblind-mode .top-navbar { background-color: #FFCB00 !important; border-bottom: 2px solid #000000 !important; }
-body.colorblind-mode .nav-tabs a { background-color: #872200 !important; color: #FFFFFF !important; border: 2px solid #000000 !important; }
-body.colorblind-mode .nav-tabs a.active, body.colorblind-mode .nav-tabs a:hover { background-color: #051BFF !important; color: #FFFFFF !important; }
-body.colorblind-mode .login-logo-text { color: #000000 !important; }
-body.colorblind-mode .admin-dropdown { background-color: #872200 !important; color: #FFFFFF !important; }
-body.colorblind-mode .notification-toggle .bell, body.colorblind-mode .notification-toggle i { color: #000000 !important; -webkit-text-stroke: 1.5px #000000; font-weight: 900 !important; }
-body.colorblind-mode .notification-toggle.is-current .bell, body.colorblind-mode .notification-toggle.is-current i { color: #FFFFFF !important; -webkit-text-stroke: 0; }
+body.colorblind-mode .eq-table th {
+    border: none !important;
+    border-bottom: 2px solid #000000 !important;
+    border-right: 1px solid #000000 !important; 
+    padding: 10px 5px !important;
+    box-sizing: border-box !important;
+}
 
-body.colorblind-mode input, body.colorblind-mode select, body.colorblind-mode textarea, body.colorblind-mode .eq-search-box, body.colorblind-mode .ubi-buscador, body.colorblind-mode .usu-buscador { border: 2px solid #000000 !important; background-color: #FFFFFF !important; color: #000000 !important; }
-body.colorblind-mode .eq-search-box input, body.colorblind-mode .ubi-buscador input, body.colorblind-mode .usu-buscador input { border: none !important; background-color: transparent !important; outline: none !important; box-shadow: none !important; }
-body.colorblind-mode .eq-search-box, body.colorblind-mode .ubi-buscador, body.colorblind-mode .usu-buscador { border: 2px solid #000000 !important; background-color: #FFFFFF !important; }
+body.colorblind-mode .top-navbar { 
+    background-color: #FFCB00 !important; 
+    border-bottom: 2px solid #000000 !important; 
+}
 
-body.colorblind-mode .eq-btn-primary, body.colorblind-mode .ubi-boton-añadir, body.colorblind-mode .usu-boton-añadir, body.colorblind-mode .ubi-btn-guardar, body.colorblind-mode .btn-aceptar, body.colorblind-mode .notificaciones-lista__accion, body.colorblind-mode .notificaciones-admin__acciones input[type="submit"], body.colorblind-mode .eq-btn-guardar, body.colorblind-mode .perfil-btn-cerrar { background-color: #051BFF !important; color: #FFFFFF !important; border: 2px solid #000000 !important; }
-body.colorblind-mode .ubi-boton-editar, body.colorblind-mode .btnEditar, body.colorblind-mode .eq-btn-edit, body.colorblind-mode .eq-btn-history { background-color: #FFCB00 !important; color: #000000 !important; border: 2px solid #000000 !important; }
-body.colorblind-mode .ubi-boton-eliminar, body.colorblind-mode .btnEliminar, body.colorblind-mode .eq-btn-delete, body.colorblind-mode .ubi-btn-peligro, body.colorblind-mode .btn-eliminar-confirmar, body.colorblind-mode .eq-btn-cancelar, body.colorblind-mode .eq-btn-cancel, body.colorblind-mode .ubi-btn-cancelar, body.colorblind-mode .btn-cancelar, body.colorblind-mode .eq-btn-secondary { background-color: #872200 !important; color: #FFFFFF !important; border: 2px solid #000000 !important; }
+body.colorblind-mode .nav-tabs a { 
+    background-color: #872200 !important; 
+    color: #FFFFFF !important; 
+    border: 2px solid #000000 !important; 
+}
 
-body.colorblind-mode h1, body.colorblind-mode h2, body.colorblind-mode h3 { color: #000000 !important; }
-body.colorblind-mode .eq-table th, body.colorblind-mode .notificaciones-lista__tabla th { background-color: #FFCB00 !important; color: #000000 !important; border: 2px solid #000000 !important; }
-body.colorblind-mode .eq-tab { background-color: #FFFFFF !important; color: #000000 !important; border: 2px solid #000000 !important; }
-body.colorblind-mode .eq-tab.active { background-color: #872200 !important; color: #FFFFFF !important; }
-body.colorblind-mode .eq-tab.active::after { border-color: #872200 transparent transparent transparent !important; }
-body.colorblind-mode .eq-badge { background-color: #872200 !important; color: #FFFFFF !important; }
+body.colorblind-mode .nav-tabs a.active, 
+body.colorblind-mode .nav-tabs a:hover { 
+    background-color: #051BFF !important; 
+    color: #FFFFFF !important; 
+}
 
-body.colorblind-mode .desplegable-planta, body.colorblind-mode .tarjeta-usu, body.colorblind-mode .notificaciones-lista__tabla table { border: 2px solid #000000 !important; }
-body.colorblind-mode .notificacion-leida, body.colorblind-mode .notificacion-no-leida { background-color: #FFFFFF !important; border-bottom: 2px solid #000000 !important; }
+body.colorblind-mode .login-logo-text { 
+    color: #000000 !important; 
+}
 
-body.colorblind-mode .ubi-modal-contenido, body.colorblind-mode .popup-contenido, body.colorblind-mode .popup-eliminar-contenido, body.colorblind-mode .perfil-modal-content, body.colorblind-mode .eq-modal-content { background-color: #FFFFFF !important; border: 2px solid #000000 !important; }
-body.colorblind-mode footer { background-color: #FFCB00 !important; color: #000000 !important; border-top: 2px solid #000000 !important; }
-body.colorblind-mode .perfil-header { background-color: #FFFFFF !important; border-bottom: 2px solid #000000 !important; }
-body.colorblind-mode .perfil-row { border-bottom: 2px solid #000000 !important; }
-body.colorblind-mode .perfil-avatar-icon { background-color: #FFCB00 !important; color: #000000 !important; border: 2px solid #000000 !important; box-shadow: none !important; }
-body.colorblind-mode .perfil-header h3, body.colorblind-mode .perfil-subtitle, body.colorblind-mode .perfil-value, body.colorblind-mode #perfil-rol { color: #000000 !important; font-weight: 700 !important; opacity: 1 !important; }
-body.colorblind-mode .perfil-label, body.colorblind-mode .perfil-label i { color: #872200 !important; font-weight: 700 !important; }
-body.colorblind-mode .search-clear-btn { background-color: #000000 !important; color: #FFFFFF !important; }
-body.colorblind-mode .search-clear-btn:hover { background-color: #872200 !important; }
+body.colorblind-mode .admin-dropdown { 
+    background-color: #872200 !important; 
+    color: #FFFFFF !important; 
+}
+
+body.colorblind-mode .notification-toggle .bell, 
+body.colorblind-mode .notification-toggle i { 
+    color: #000000 !important; 
+    -webkit-text-stroke: 1.5px #000000; 
+    font-weight: 900 !important; 
+}
+
+body.colorblind-mode .notification-toggle.is-current .bell, 
+body.colorblind-mode .notification-toggle.is-current i { 
+    color: #FFFFFF !important; 
+    -webkit-text-stroke: 0; 
+}
+
+body.colorblind-mode input, 
+body.colorblind-mode select, 
+body.colorblind-mode textarea, 
+body.colorblind-mode .eq-search-box, 
+body.colorblind-mode .ubi-buscador, 
+body.colorblind-mode .usu-buscador { 
+    border: 2px solid #000000 !important; 
+    background-color: #FFFFFF !important; 
+    color: #000000 !important; 
+}
+
+body.colorblind-mode .eq-search-box input, 
+body.colorblind-mode .ubi-buscador input, 
+body.colorblind-mode .usu-buscador input { 
+    border: none !important; 
+    background-color: transparent !important; 
+    outline: none !important; 
+    box-shadow: none !important; 
+}
+
+body.colorblind-mode .eq-search-box, 
+body.colorblind-mode .ubi-buscador, 
+body.colorblind-mode .usu-buscador { 
+    border: 2px solid #000000 !important; 
+    background-color: #FFFFFF !important; 
+}
+
+body.colorblind-mode .eq-btn-primary, 
+body.colorblind-mode .ubi-boton-añadir, 
+body.colorblind-mode .usu-boton-añadir, 
+body.colorblind-mode .ubi-btn-guardar, 
+body.colorblind-mode .btn-aceptar, 
+body.colorblind-mode .notificaciones-lista__accion, 
+body.colorblind-mode .notificaciones-admin__acciones input[type="submit"], 
+body.colorblind-mode .eq-btn-guardar, 
+body.colorblind-mode .perfil-btn-cerrar { 
+    background-color: #051BFF !important; 
+    color: #FFFFFF !important; 
+    border: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .ubi-boton-editar, 
+body.colorblind-mode .btnEditar, 
+body.colorblind-mode .eq-btn-edit, 
+body.colorblind-mode .eq-btn-history { 
+    background-color: #FFCB00 !important; 
+    color: #000000 !important; 
+    border: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .ubi-boton-eliminar, 
+body.colorblind-mode .btnEliminar, 
+body.colorblind-mode .eq-btn-delete, 
+body.colorblind-mode .ubi-btn-peligro, 
+body.colorblind-mode .btn-eliminar-confirmar, 
+body.colorblind-mode .eq-btn-cancelar, 
+body.colorblind-mode .eq-btn-cancel, 
+body.colorblind-mode .ubi-btn-cancelar, 
+body.colorblind-mode .btn-cancelar, 
+body.colorblind-mode .eq-btn-secondary { 
+    background-color: #872200 !important; 
+    color: #FFFFFF !important; 
+    border: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode h1, 
+body.colorblind-mode h2, 
+body.colorblind-mode h3 { 
+    color: #000000 !important; 
+}
+
+body.colorblind-mode .eq-table th,
+body.colorblind-mode .notificaciones-lista__tabla th { 
+    background-color: #FFCB00 !important; 
+    color: #000000 !important; 
+    border: 1px solid #000000 !important; 
+    border-bottom: 2px solid #000000 !important;
+    padding: 10px 8px !important;
+}
+
+body.colorblind-mode .eq-tab { 
+    background-color: #FFFFFF !important; 
+    color: #000000 !important; 
+    border: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .eq-tab.active { 
+    background-color: #872200 !important; 
+    color: #FFFFFF !important; 
+}
+
+body.colorblind-mode .eq-tab.active::after { 
+    border-color: #872200 transparent transparent transparent !important; 
+}
+
+body.colorblind-mode .eq-badge { 
+    background-color: #872200 !important; 
+    color: #FFFFFF !important; 
+}
+
+body.colorblind-mode .desplegable-planta, 
+body.colorblind-mode .tarjeta-usu, 
+body.colorblind-mode .notificaciones-lista__tabla table { 
+    border: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .notificacion-leida, 
+body.colorblind-mode .notificacion-no-leida { 
+    background-color: #FFFFFF !important; 
+    border-bottom: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .ubi-modal-contenido, 
+body.colorblind-mode .popup-contenido, 
+body.colorblind-mode .popup-eliminar-contenido, 
+body.colorblind-mode .perfil-modal-content, 
+body.colorblind-mode .eq-modal-content { 
+    background-color: #FFFFFF !important; 
+    border: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode footer { 
+    background-color: #FFCB00 !important; 
+    color: #000000 !important; 
+    border-top: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .perfil-header { 
+    background-color: #FFFFFF !important; 
+    border-bottom: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .perfil-row { 
+    border-bottom: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .perfil-avatar-icon { 
+    background-color: #FFCB00 !important; 
+    color: #000000 !important; 
+    border: 2px solid #000000 !important; 
+    box-shadow: none !important; 
+}
+
+body.colorblind-mode .perfil-header h3, 
+body.colorblind-mode .perfil-subtitle, 
+body.colorblind-mode .perfil-value, 
+body.colorblind-mode #perfil-rol { 
+    color: #000000 !important; 
+    font-weight: 700 !important; 
+    opacity: 1 !important; 
+}
+
+body.colorblind-mode .perfil-label, 
+body.colorblind-mode .perfil-label i { 
+    color: #872200 !important; 
+    font-weight: 700 !important; 
+}
+
+body.colorblind-mode .search-clear-btn { 
+    background-color: #000000 !important; 
+    color: #FFFFFF !important; 
+}
+
+body.colorblind-mode .search-clear-btn:hover { 
+    background-color: #872200 !important; 
+}
 
 /* 1. BODY */
-/* 8.1 DALTONISMO: Fondo y texto global */
 body.colorblind-mode {
     background-color: #FFFFFF !important;
     color: #000000 !important;
@@ -552,7 +813,6 @@ body.colorblind-mode {
 }
 
 /* --- 2. NAVBAR --- */
-/* 8.2 DALTONISMO: Barra de navegación (Amarillo) */
 body.colorblind-mode .top-navbar {
     background-color: #FFCB00 !important;
     border-bottom: 2px solid #000000 !important;
@@ -600,7 +860,6 @@ body.colorblind-mode .notification-toggle.is-current i {
 /* --- 3. FORMULARIOS Y BOTONES GENERALES --- */
 
 /* 8.8 DALTONISMO: Inputs y cajas de búsqueda (Borde negro grueso) */
-/*-----Barra de busqueda: Equipamientos, Ubicaciones, Usuarios-----*/
 body.colorblind-mode input,
 body.colorblind-mode select,
 body.colorblind-mode textarea,
@@ -771,7 +1030,6 @@ body.colorblind-mode .usu-buscador input::placeholder {
 }
 
 /* 8.24 DALTONISMO: Borde del Select (Equipamientos) */
-/*Select option eq*/
 body.colorblind-mode .eq-select {
     border: 2px solid #000000 !important;
 }
@@ -1035,23 +1293,206 @@ body.colorblind-mode .search-clear-btn:hover {
 
 
 /* =========================================
+   MODO DALTONISMO: MENÚ HAMBURGUESA (MÓVIL)
+   ========================================= */
+
+/* 1. Fondo del cajón lateral */
+body.colorblind-mode .mobile-drawer {
+    background-color: #FFFFFF !important;
+    border-right: 2px solid #000000 !important;
+}
+
+/* 2. Cabecera del menú (Fondo Amarillo, texto negro) */
+body.colorblind-mode .mobile-drawer-header {
+    background-color: #FFCB00 !important;
+    color: #000000 !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+/* 3. Enlaces de navegación (Fondo Marrón, texto blanco) */
+body.colorblind-mode .mobile-nav-links a {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+    border-bottom: 1px solid #000000 !important;
+    font-weight: 700 !important;
+    padding: 15px 20px !important;
+}
+
+/* Enlace activo (Fondo Azul) */
+body.colorblind-mode .mobile-nav-links a.active {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+}
+
+/* 4. Opciones de usuario (Perfil, Daltonismo, Salir) - Fondo blanco, texto negro */
+body.colorblind-mode .mobile-user-options .menu-option-perfil,
+body.colorblind-mode .mobile-user-options .menu-option-daltonismo,
+body.colorblind-mode .mobile-user-options .menu-option-salir {
+    border: none !important;
+    border-bottom: 1px solid #000000 !important;
+    padding: 15px 20px !important; 
+    background-color: #FFFFFF !important; 
+    color: #000000 !important; 
+    font-weight: 700 !important;
+}
+
+/* Hover de las opciones */
+body.colorblind-mode .mobile-user-options .menu-option-perfil:hover,
+body.colorblind-mode .mobile-user-options .menu-option-daltonismo:hover,
+body.colorblind-mode .mobile-user-options .menu-option-salir:hover {
+    background-color: #FFCB00 !important;
+}
+
+/* 5. Separador */
+body.colorblind-mode .menu-separator {
+    border-top: 2px solid #000000 !important;
+    margin: 0 !important;
+}
+
+/* 6. Interruptores (Switches) */
+body.colorblind-mode .mobile-user-options .toggle-switch {
+    width: 40px !important; 
+    height: 22px !important;
+    border: 2px solid #000000 !important;
+    background-color: #FFFFFF !important;
+    box-sizing: border-box !important; 
+    border-radius: 20px !important;
+    position: relative !important;
+}
+
+body.colorblind-mode .mobile-user-options .toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 2px;
+    left: 2px;
+    background-color: #000000;
+    border-radius: 50%;
+    transition: left 0.3s ease, background-color 0.3s ease;
+    box-shadow: none;
+}
+
+body.colorblind-mode .mobile-user-options .toggle-switch.active {
+    background-color: #051BFF;
+}
+
+body.colorblind-mode .mobile-user-options .toggle-switch.active::after {
+    background-color: #FFFFFF;
+    left: 20px;
+}
+
+
+/* =========================================
    9. MODO OSCURO
    ========================================= */
-body.dark-mode { background-color: #050505 !important; color: #e0e0e0 !important; background-image: radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05), transparent 30%), radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.05), transparent 30%) !important; background-attachment: fixed !important; }
-body.dark-mode .top-navbar, body.dark-mode footer { background: rgba(10, 10, 10, 0.7) !important; backdrop-filter: blur(16px) !important; -webkit-backdrop-filter: blur(16px) !important; border-bottom: 1px solid rgba(0, 240, 255, 0.3) !important; border-top: 1px solid rgba(0, 240, 255, 0.3) !important; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important; }
-body.dark-mode .login-logo-text { color: #ffffff !important; text-shadow: 0 0 8px rgba(0, 240, 255, 0.6) !important; }
-body.dark-mode .nav-tabs a { background: rgba(255, 255, 255, 0.03) !important; color: #a0a0a0 !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; backdrop-filter: blur(4px) !important; }
-body.dark-mode .nav-tabs a:hover { background: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; border-color: rgba(0, 240, 255, 0.3) !important; }
-body.dark-mode .nav-tabs a.active { background: rgba(0, 240, 255, 0.15) !important; color: #00f0ff !important; border: 1px solid #00f0ff !important; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important; }
-body.dark-mode .admin-dropdown { background: rgba(20, 20, 20, 0.6) !important; border: 1px solid rgba(0, 240, 255, 0.2) !important; backdrop-filter: blur(8px) !important; color: #ffffff !important; }
-body.dark-mode .admin-dropdown:hover { border-color: #00f0ff !important; }
-body.dark-mode .user-avatar { background: rgba(0, 240, 255, 0.2) !important; color: #00f0ff !important; border: 1px solid #00f0ff !important; }
-body.dark-mode .dropdown-menu { background: rgba(10, 10, 10, 0.9) !important; backdrop-filter: blur(20px) !important; border: 1px solid rgba(0, 240, 255, 0.4) !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important; }
-body.dark-mode .menu-option-perfil, body.dark-mode .menu-option-daltonismo, body.dark-mode .menu-option-salir { color: #e0e0e0 !important; }
-body.dark-mode .menu-option-perfil:hover, body.dark-mode .menu-option-daltonismo:hover, body.dark-mode .menu-option-salir:hover { background-color: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; }
-body.dark-mode .menu-separator { border-top: 1px solid rgba(0, 240, 255, 0.2) !important; }
-body.dark-mode .eq-btn-primary, body.dark-mode .eq-select, body.dark-mode .ubi-boton-añadir, body.dark-mode .usu-boton-añadir, body.dark-mode .ubi-btn-guardar, body.dark-mode .btn-aceptar, body.dark-mode .notificaciones-lista__accion, body.dark-mode .eq-btn-guardar, body.dark-mode .perfil-btn-cerrar { background: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; border: 1px solid #00f0ff !important; backdrop-filter: blur(8px) !important; transition: all 0.3s ease; text-shadow: 0 0 5px rgba(0, 240, 255, 0.5); }
-body.dark-mode .eq-btn-primary:hover, body.dark-mode .perfil-btn-cerrar:hover, body.dark-mode .ubi-btn-guardar:hover { background: rgba(0, 240, 255, 0.3) !important; box-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important; color: #ffffff !important; }
+body.dark-mode { 
+    background-color: #050505 !important; 
+    color: #e0e0e0 !important; 
+    background-image: radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05), transparent 30%), radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.05), transparent 30%) !important; 
+    background-attachment: fixed !important; 
+}
+
+body.dark-mode .top-navbar, 
+body.dark-mode footer { 
+    background: rgba(10, 10, 10, 0.7) !important; 
+    backdrop-filter: blur(16px) !important; 
+    -webkit-backdrop-filter: blur(16px) !important; 
+    border-bottom: 1px solid rgba(0, 240, 255, 0.3) !important; 
+    border-top: 1px solid rgba(0, 240, 255, 0.3) !important; 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important; 
+}
+
+body.dark-mode .login-logo-text { 
+    color: #ffffff !important; 
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6) !important; 
+}
+
+body.dark-mode .nav-tabs a { 
+    background: rgba(255, 255, 255, 0.03) !important; 
+    color: #a0a0a0 !important; 
+    border: 1px solid rgba(255, 255, 255, 0.05) !important; 
+    backdrop-filter: blur(4px) !important; 
+}
+
+body.dark-mode .nav-tabs a:hover { 
+    background: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
+    border-color: rgba(0, 240, 255, 0.3) !important; 
+}
+
+body.dark-mode .nav-tabs a.active { 
+    background: rgba(0, 240, 255, 0.15) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid #00f0ff !important; 
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important; 
+}
+
+body.dark-mode .admin-dropdown { 
+    background: rgba(20, 20, 20, 0.6) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
+    backdrop-filter: blur(8px) !important; 
+    color: #ffffff !important; 
+}
+
+body.dark-mode .admin-dropdown:hover { 
+    border-color: #00f0ff !important; 
+}
+
+body.dark-mode .user-avatar { 
+    background: rgba(0, 240, 255, 0.2) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid #00f0ff !important; 
+}
+
+body.dark-mode .dropdown-menu { 
+    background: rgba(10, 10, 10, 0.9) !important; 
+    backdrop-filter: blur(20px) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.4) !important; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important; 
+}
+
+body.dark-mode .menu-option-perfil, 
+body.dark-mode .menu-option-daltonismo, 
+body.dark-mode .menu-option-salir { 
+    color: #e0e0e0 !important; 
+}
+
+body.dark-mode .menu-option-perfil:hover, 
+body.dark-mode .menu-option-daltonismo:hover, 
+body.dark-mode .menu-option-salir:hover { 
+    background-color: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
+}
+
+body.dark-mode .menu-separator { 
+    border-top: 1px solid rgba(0, 240, 255, 0.2) !important; 
+}
+
+body.dark-mode .eq-btn-primary, 
+body.dark-mode .eq-select, 
+body.dark-mode .ubi-boton-añadir, 
+body.dark-mode .usu-boton-añadir, 
+body.dark-mode .ubi-btn-guardar, 
+body.dark-mode .btn-aceptar, 
+body.dark-mode .notificaciones-lista__accion, 
+body.dark-mode .eq-btn-guardar, 
+body.dark-mode .perfil-btn-cerrar { 
+    background: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid #00f0ff !important; 
+    backdrop-filter: blur(8px) !important; 
+    transition: all 0.3s ease; 
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.5); 
+}
+
+body.dark-mode .eq-btn-primary:hover, 
+body.dark-mode .perfil-btn-cerrar:hover, 
+body.dark-mode .ubi-btn-guardar:hover { 
+    background: rgba(0, 240, 255, 0.3) !important; 
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important; 
+    color: #ffffff !important; 
+}
 
 /* 6. BOTONES DE ACCIÓN (Editar y Eliminar) */
 body.dark-mode .ubi-boton-editar,
@@ -1065,6 +1506,7 @@ body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__bo
     border: 1px solid #4c4c4c !important;
     transition: 0.2s;
 }
+
 body.dark-mode .ubi-boton-editar:hover,
 body.dark-mode .eq-btn-edit:hover,
 body.dark-mode .eq-btn-history:hover,
@@ -1088,6 +1530,7 @@ body.dark-mode .notificaciones-lista__boton-accion--eliminar {
     color: #FFFFFF !important;
     border: none !important;
 }
+
 body.dark-mode .ubi-boton-eliminar:hover,
 body.dark-mode .eq-btn-delete:hover,
 body.dark-mode .btn-eliminar-confirmar:hover,
@@ -1095,47 +1538,261 @@ body.dark-mode .notificaciones-lista__boton-accion--eliminar:hover {
     background-color: #b91c1c !important;
 }
 
+body.dark-mode .ubi-boton-editar, 
+body.dark-mode .btnEditar, 
+body.dark-mode .eq-btn-edit, 
+body.dark-mode .eq-btn-history, 
+body.dark-mode .eq-btn-save { 
+    background: rgba(0, 240, 255, 0.15) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid rgba(0, 240, 255, 0.5) !important; 
+    transition: 0.3s; 
+}
 
-body.dark-mode .ubi-boton-editar, body.dark-mode .btnEditar, body.dark-mode .eq-btn-edit, body.dark-mode .eq-btn-history, body.dark-mode .eq-btn-save { background: rgba(0, 240, 255, 0.15) !important; color: #00f0ff !important; border: 1px solid rgba(0, 240, 255, 0.5) !important; transition: 0.3s; }
-body.dark-mode .ubi-boton-editar:hover, body.dark-mode .eq-btn-edit:hover, body.dark-mode .eq-btn-history:hover { background: #00f0ff !important; color: #050505 !important; box-shadow: 0 0 15px #00f0ff !important; }
-body.dark-mode .ubi-boton-eliminar, body.dark-mode .btnEliminar, body.dark-mode .eq-btn-delete, body.dark-mode .ubi-btn-peligro, body.dark-mode .btn-eliminar-confirmar, body.dark-mode .eq-btn-cancel, body.dark-mode .eq-btn-cancelar, body.dark-mode .ubi-btn-cancelar, body.dark-mode .btn-cancelar, body.dark-mode .eq-btn-secondary { background: rgba(255, 0, 85, 0.1) !important; color: #ff0055 !important; border: 1px solid rgba(255, 0, 85, 0.5) !important; }
-body.dark-mode .ubi-boton-eliminar:hover, body.dark-mode .eq-btn-delete:hover, body.dark-mode .btn-eliminar-confirmar:hover { background: #ff0055 !important; color: #ffffff !important; box-shadow: 0 0 15px #ff0055 !important; }
+body.dark-mode .ubi-boton-editar:hover, 
+body.dark-mode .eq-btn-edit:hover, 
+body.dark-mode .eq-btn-history:hover { 
+    background: #00f0ff !important; 
+    color: #050505 !important; 
+    box-shadow: 0 0 15px #00f0ff !important; 
+}
 
-body.dark-mode input, body.dark-mode select, body.dark-mode textarea, body.dark-mode .eq-search-box, body.dark-mode .ubi-buscador, body.dark-mode .usu-buscador { background: rgba(0, 0, 0, 0.5) !important; color: #ffffff !important; border: 1px solid rgba(0, 240, 255, 0.2) !important; backdrop-filter: blur(4px) !important; }
-body.dark-mode .eq-search-box input, body.dark-mode .ubi-buscador input, body.dark-mode .usu-buscador input { background-color: transparent !important; border: none !important; }
-body.dark-mode input:focus { border-color: #00f0ff !important; box-shadow: 0 0 10px rgba(0, 240, 255, 0.3) !important; outline: none !important; }
-body.dark-mode input::placeholder { color: #6b7280 !important; }
-body.dark-mode .search-clear-btn { background: rgba(0, 240, 255, 0.2) !important; color: #00f0ff !important; }
-body.dark-mode .search-clear-btn:hover { background: #00f0ff !important; color: #050505 !important; }
-body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode .eq-title, body.dark-mode .titulo-ubi, body.dark-mode .titulo-usu, body.dark-mode .stat-number { color: #ffffff !important; text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important; }
-body.dark-mode .eq-stats-bar, body.dark-mode .eq-stat { color: #a0a0a0 !important; }
-body.dark-mode .eq-table-container { background: rgba(10, 10, 10, 0.4) !important; border: 1px solid rgba(0, 240, 255, 0.2) !important; backdrop-filter: blur(12px) !important; border-radius: 12px !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important; }
-body.dark-mode .eq-table th, body.dark-mode .notificaciones-lista__tabla th { background: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; border: none !important; text-transform: uppercase; letter-spacing: 1px; }
-body.dark-mode .eq-table td, body.dark-mode .notificaciones-lista__tabla td { border-bottom: 1px solid rgba(0, 240, 255, 0.05) !important; color: #e0e0e0 !important; }
-body.dark-mode #eq-table-body tr:nth-child(even), body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+3) { background-color: rgba(0, 240, 255, 0.03) !important; }
-body.dark-mode #eq-table-body tr:nth-child(odd), body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+1) { background-color: transparent !important; }
-body.dark-mode .eq-item-icon, body.dark-mode .eq-location i, body.dark-mode .eq-location-link i { color: #00f0ff !important; filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.5)); }
-body.dark-mode .eq-location, body.dark-mode .eq-location-link { color: #00f0ff !important; }
-body.dark-mode .inline-edit:disabled { color: #ffffff !important; background-color: transparent !important; border: none !important; }
-body.dark-mode .inline-edit:not(:disabled) { color: #ffffff !important; background-color: rgba(0, 0, 0, 0.6) !important; border: 1px solid #00f0ff !important; box-shadow: inset 0 0 5px rgba(0, 240, 255, 0.2) !important; }
-body.dark-mode .desc-truncate { color: #a0a0a0 !important; }
-body.dark-mode .desc-truncate:hover { color: #00f0ff !important; text-shadow: 0 0 8px rgba(0, 240, 255, 0.5); }
-body.dark-mode .eq-tabs-container { background: rgba(10, 10, 10, 0.5) !important; border: 1px solid rgba(0, 240, 255, 0.2) !important; backdrop-filter: blur(8px) !important; }
-body.dark-mode .eq-tab { background-color: transparent !important; color: #a0a0a0 !important; border-right: 1px solid rgba(0, 240, 255, 0.1) !important; }
-body.dark-mode .eq-tab.active { background: rgba(0, 240, 255, 0.15) !important; color: #00f0ff !important; }
-body.dark-mode .eq-tab.active::after { border-color: rgba(0, 240, 255, 0.15) transparent transparent transparent !important; }
-body.dark-mode .eq-badge { background: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; border: 1px solid rgba(0, 240, 255, 0.3) !important; }
-body.dark-mode .eq-modal-content, body.dark-mode .perfil-modal-content, body.dark-mode .ubi-modal-contenido, body.dark-mode .popup-contenido, body.dark-mode .popup-eliminar-contenido, body.dark-mode .tarjeta-usu, body.dark-mode .desplegable-planta { background: rgba(15, 15, 15, 0.7) !important; color: #ffffff !important; border: 1px solid rgba(0, 240, 255, 0.3) !important; backdrop-filter: blur(20px) !important; -webkit-backdrop-filter: blur(20px) !important; box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1) !important; border-radius: 16px !important; }
-body.dark-mode .perfil-header { background: rgba(0, 0, 0, 0.3) !important; border-bottom: 1px solid rgba(0, 240, 255, 0.2) !important; }
-body.dark-mode .perfil-row { border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; }
-body.dark-mode .perfil-label { color: #a0a0a0 !important; }
-body.dark-mode .perfil-avatar-icon { background: rgba(0, 240, 255, 0.1) !important; border: 2px solid #00f0ff !important; color: #00f0ff !important; box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important; }
-body.dark-mode .tarjeta-usu:hover { border-color: #00f0ff !important; box-shadow: 0 0 20px rgba(0, 240, 255, 0.2) !important; }
-body.dark-mode .tarjeta-info p { color: #a0a0a0 !important; }
-body.dark-mode .tarjeta-info strong { color: #00f0ff !important; }
-body.dark-mode .notification-menu { background: rgba(10, 10, 10, 0.9) !important; border: 1px solid rgba(0, 240, 255, 0.3) !important; }
-body.dark-mode .notification-menu__title, body.dark-mode .notification-menu__item h3 { color: #00f0ff !important; border-bottom-color: rgba(0, 240, 255, 0.2) !important; }
-body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__date { color: #a0a0a0 !important; }
+body.dark-mode .ubi-boton-eliminar, 
+body.dark-mode .btnEliminar, 
+body.dark-mode .eq-btn-delete, 
+body.dark-mode .ubi-btn-peligro, 
+body.dark-mode .btn-eliminar-confirmar, 
+body.dark-mode .eq-btn-cancel, 
+body.dark-mode .eq-btn-cancelar, 
+body.dark-mode .ubi-btn-cancelar, 
+body.dark-mode .btn-cancelar, 
+body.dark-mode .eq-btn-secondary { 
+    background: rgba(255, 0, 85, 0.1) !important; 
+    color: #ff0055 !important; 
+    border: 1px solid rgba(255, 0, 85, 0.5) !important; 
+}
+
+body.dark-mode .ubi-boton-eliminar:hover, 
+body.dark-mode .eq-btn-delete:hover, 
+body.dark-mode .btn-eliminar-confirmar:hover { 
+    background: #ff0055 !important; 
+    color: #ffffff !important; 
+    box-shadow: 0 0 15px #ff0055 !important; 
+}
+
+body.dark-mode input, 
+body.dark-mode select, 
+body.dark-mode textarea, 
+body.dark-mode .eq-search-box, 
+body.dark-mode .ubi-buscador, 
+body.dark-mode .usu-buscador { 
+    background: rgba(0, 0, 0, 0.5) !important; 
+    color: #ffffff !important; 
+    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
+    backdrop-filter: blur(4px) !important; 
+}
+
+body.dark-mode .eq-search-box input, 
+body.dark-mode .ubi-buscador input, 
+body.dark-mode .usu-buscador input { 
+    background-color: transparent !important; 
+    border: none !important; 
+}
+
+body.dark-mode input:focus { 
+    border-color: #00f0ff !important; 
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3) !important; 
+    outline: none !important; 
+}
+
+body.dark-mode input::placeholder { 
+    color: #6b7280 !important; 
+}
+
+body.dark-mode .search-clear-btn { 
+    background: rgba(0, 240, 255, 0.2) !important; 
+    color: #00f0ff !important; 
+}
+
+body.dark-mode .search-clear-btn:hover { 
+    background: #00f0ff !important; 
+    color: #050505 !important; 
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode .eq-title, 
+body.dark-mode .titulo-ubi, 
+body.dark-mode .titulo-usu, 
+body.dark-mode .stat-number { 
+    color: #ffffff !important; 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important; 
+}
+
+body.dark-mode .eq-stats-bar, 
+body.dark-mode .eq-stat { 
+    color: #a0a0a0 !important; 
+}
+
+body.dark-mode .eq-table-container { 
+    background: rgba(10, 10, 10, 0.4) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
+    backdrop-filter: blur(12px) !important; 
+    border-radius: 12px !important; 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important; 
+}
+
+body.dark-mode .eq-table th, 
+body.dark-mode .notificaciones-lista__tabla th { 
+    background: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
+    border: none !important; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+}
+
+body.dark-mode .eq-table td, 
+body.dark-mode .notificaciones-lista__tabla td { 
+    border-bottom: 1px solid rgba(0, 240, 255, 0.05) !important; 
+    color: #e0e0e0 !important; 
+}
+
+body.dark-mode #eq-table-body tr:nth-child(even), 
+body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+3) { 
+    background-color: rgba(0, 240, 255, 0.03) !important; 
+}
+
+body.dark-mode #eq-table-body tr:nth-child(odd), 
+body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+1) { 
+    background-color: transparent !important; 
+}
+
+body.dark-mode .eq-item-icon, 
+body.dark-mode .eq-location i, 
+body.dark-mode .eq-location-link i { 
+    color: #00f0ff !important; 
+    filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.5)); 
+}
+
+body.dark-mode .eq-location, 
+body.dark-mode .eq-location-link { 
+    color: #00f0ff !important; 
+}
+
+body.dark-mode .inline-edit:disabled { 
+    color: #ffffff !important; 
+    background-color: transparent !important; 
+    border: none !important; 
+}
+
+body.dark-mode .inline-edit:not(:disabled) { 
+    color: #ffffff !important; 
+    background-color: rgba(0, 0, 0, 0.6) !important; 
+    border: 1px solid #00f0ff !important; 
+    box-shadow: inset 0 0 5px rgba(0, 240, 255, 0.2) !important; 
+}
+
+body.dark-mode .desc-truncate { 
+    color: #a0a0a0 !important; 
+}
+
+body.dark-mode .desc-truncate:hover { 
+    color: #00f0ff !important; 
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.5); 
+}
+
+body.dark-mode .eq-tabs-container { 
+    background: rgba(10, 10, 10, 0.5) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
+    backdrop-filter: blur(8px) !important; 
+}
+
+body.dark-mode .eq-tab { 
+    background-color: transparent !important; 
+    color: #a0a0a0 !important; 
+    border-right: 1px solid rgba(0, 240, 255, 0.1) !important; 
+}
+
+body.dark-mode .eq-tab.active { 
+    background: rgba(0, 240, 255, 0.15) !important; 
+    color: #00f0ff !important; 
+}
+
+body.dark-mode .eq-tab.active::after { 
+    border-color: rgba(0, 240, 255, 0.15) transparent transparent transparent !important; 
+}
+
+body.dark-mode .eq-badge { 
+    background: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid rgba(0, 240, 255, 0.3) !important; 
+}
+
+body.dark-mode .eq-modal-content, 
+body.dark-mode .perfil-modal-content, 
+body.dark-mode .ubi-modal-contenido, 
+body.dark-mode .popup-contenido, 
+body.dark-mode .popup-eliminar-contenido, 
+body.dark-mode .tarjeta-usu, 
+body.dark-mode .desplegable-planta { 
+    background: rgba(15, 15, 15, 0.7) !important; 
+    color: #ffffff !important; 
+    border: 1px solid rgba(0, 240, 255, 0.3) !important; 
+    backdrop-filter: blur(20px) !important; 
+    -webkit-backdrop-filter: blur(20px) !important; 
+    box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1) !important; 
+    border-radius: 16px !important; 
+}
+
+body.dark-mode .perfil-header { 
+    background: rgba(0, 0, 0, 0.3) !important; 
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2) !important; 
+}
+
+body.dark-mode .perfil-row { 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; 
+}
+
+body.dark-mode .perfil-label { 
+    color: #a0a0a0 !important; 
+}
+
+body.dark-mode .perfil-avatar-icon { 
+    background: rgba(0, 240, 255, 0.1) !important; 
+    border: 2px solid #00f0ff !important; 
+    color: #00f0ff !important; 
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important; 
+}
+
+body.dark-mode .tarjeta-usu:hover { 
+    border-color: #00f0ff !important; 
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2) !important; 
+}
+
+body.dark-mode .tarjeta-info p { 
+    color: #a0a0a0 !important; 
+}
+
+body.dark-mode .tarjeta-info strong { 
+    color: #00f0ff !important; 
+}
+
+body.dark-mode .notification-menu { 
+    background: rgba(10, 10, 10, 0.9) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.3) !important; 
+}
+
+body.dark-mode .notification-menu__title, 
+body.dark-mode .notification-menu__item h3 { 
+    color: #00f0ff !important; 
+    border-bottom-color: rgba(0, 240, 255, 0.2) !important; 
+}
+
+body.dark-mode .notification-menu__item p, 
+body.dark-mode .notification-menu__date { 
+    color: #a0a0a0 !important; 
+}
 
 /* =========================================
    RESPONSIVE
@@ -1144,6 +1801,7 @@ body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__da
     main#app-content {
         padding: 20px 10px !important;
     }
+    
     .eq-filters-bar,
     .ubi-filtro-buscador,
     .usu-filtro-buscador {
@@ -1167,10 +1825,12 @@ body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__da
     .usu-contenedor-tarjetas {
         grid-template-columns: 1fr !important;
     }
+    
     .ubi-boton-editar-eliminar {
         flex-direction: column !important;
         gap: 5px !important;
     }
+    
     .ubi-boton-editar,
     .ubi-boton-eliminar {
         width: 100% !important;
@@ -1192,7 +1852,9 @@ body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__da
 /* --------------------- MÓVIL MENÚ HAMBURGUESA --------------- */
 /* ------------------------------------------------------------- */
 
-.mobile-drawer { display: none; }
+.mobile-drawer { 
+    display: none; 
+}
 
 @media (max-width: 900px) {
     .nav-tabs,
@@ -1203,7 +1865,8 @@ body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__da
 
     .mobile-menu-btn {
         display: block !important;
-        order: 1; font-size: 24px;
+        order: 1; 
+        font-size: 24px;
         background: transparent;
         border: none;
         cursor: pointer;
@@ -1217,6 +1880,7 @@ body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__da
         flex: 1 !important;
         justify-content: center !important;
     }
+    
     .login-logo-text {
         display: none !important;
     }
@@ -1242,25 +1906,65 @@ body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__da
         overflow-y: auto;
     }
 
-    .mobile-drawer.show { left: 0 !important; }
-
-    .mobile-drawer-header {
-        display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 20px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #11225b; letter-spacing: 4px;
+    .mobile-drawer.show { 
+        left: 0 !important; 
     }
 
-    .mobile-nav-links, .mobile-user-options { display: flex; flex-direction: column; padding: 10px 0; }
+    .mobile-drawer-header {
+        display: flex; 
+        align-items: center; 
+        justify-content: flex-end; 
+        gap: 10px; 
+        padding: 20px; 
+        border-bottom: 1px solid #e5e7eb; 
+        font-weight: 600; 
+        color: #11225b; 
+        letter-spacing: 4px;
+    }
+
+    .mobile-nav-links, 
+    .mobile-user-options { 
+        display: flex; 
+        flex-direction: column; 
+        padding: 10px 0; 
+    }
 
     .mobile-nav-links a {
-        padding: 15px 20px; text-decoration: none; color: #111827; font-weight: 500; font-size: 15px; text-align: left;
+        padding: 15px 20px; 
+        text-decoration: none; 
+        color: #111827; 
+        font-weight: 500; 
+        font-size: 15px; 
+        text-align: left;
     }
 
     .mobile-nav-links a.active {
-        background: #e5e7eb; color: #0b1b42; border-left: 4px solid #0b1b42;
+        background: #e5e7eb; 
+        color: #0b1b42; 
+        border-left: 4px solid #0b1b42;
     }
 
-    body.dark-mode .mobile-drawer { background: rgba(20, 20, 20, 0.98); border-left: 1px solid rgba(0, 240, 255, 0.2); }
-    body.dark-mode .mobile-drawer-header { border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff; }
-    body.dark-mode .mobile-nav-links a { color: #e0e0e0; }
-    body.dark-mode .mobile-nav-links a.active { background: rgba(0, 240, 255, 0.1); color: #00f0ff; border-left-color: #00f0ff; }
-    body.dark-mode .mobile-menu-btn { color: #ffffff; }
+    body.dark-mode .mobile-drawer { 
+        background: rgba(20, 20, 20, 0.98); 
+        border-left: 1px solid rgba(0, 240, 255, 0.2); 
+    }
+    
+    body.dark-mode .mobile-drawer-header { 
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+        color: #ffffff; 
+    }
+    
+    body.dark-mode .mobile-nav-links a { 
+        color: #e0e0e0; 
+    }
+    
+    body.dark-mode .mobile-nav-links a.active { 
+        background: rgba(0, 240, 255, 0.1); 
+        color: #00f0ff; 
+        border-left-color: #00f0ff; 
+    }
+    
+    body.dark-mode .mobile-menu-btn { 
+        color: #ffffff; 
+    }
 }

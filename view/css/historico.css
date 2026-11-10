@@ -2,14 +2,55 @@
    HISTORICO PAGE DESIGN
    ========================================= */
 
-.horizontal-timeline { display: flex; align-items: flex-start; overflow-x: auto; padding: 20px 10px; gap: 0; }
-.ht-node { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 120px; }
-.ht-icon { width: 32px; height: 32px; background: #f3f4f6; color: #6b7280; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; border: 2px solid #e5e7eb; z-index: 2; }
-.ht-icon.current { background: #eff6ff; color: #1a6a0a; border-color: #bfdbfe; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
-.ht-location { font-weight: 600; color: #111827; margin-top: 8px; font-size: 13px; }
-.ht-date { font-size: 11px; color: #6b7280; margin-top: 2px; line-height: 1.2; }
-.ht-line { flex: 1; height: 2px; background: #d1d5db; margin-top: 16px; min-width: 50px; }
+/* 1. TIMELINE VERTICAL (Para PC y Móvil) */
+.horizontal-timeline { 
+    display: flex; 
+    flex-direction: column; 
+    padding: 10px 0 10px 15px; 
+    border-left: 2px solid #e5e7eb; 
+    margin-left: 15px; 
+    gap: 20px; 
+    overflow: visible; 
+}
 
+.ht-node { 
+    position: relative; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    text-align: left; 
+    padding-left: 15px; 
+}
+
+.ht-icon { 
+    position: absolute; 
+    left: -33px; 
+    top: 0; 
+    width: 32px; 
+    height: 32px; 
+    background: #ffffff; 
+    border: 2px solid #e5e7eb; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 2; 
+}
+
+.ht-icon.current { 
+    border-color: #178427 !important; 
+    color: #1fa934 !important; 
+    box-shadow: 0 0 0 4px rgba(31, 169, 52, 0.1); 
+}
+
+.ht-line { display: none; } /* Ocultamos la línea horizontal */
+
+.ht-content { display: flex; flex-direction: column; }
+.ht-location { font-weight: 600; font-size: 14px; color: #111827; margin-top: 0; }
+.ht-date { font-size: 12px; color: #6b7280; margin-top: 2px; }
+
+
+/* 2. TABLA (Estilos base) */
 tr[id^="history-row-"] { background-color: #fffdf5 !important; }
 tr[id^="history-row-"] td { border-bottom: 2px solid #e5e7eb; }
 
@@ -41,8 +82,9 @@ tr[id^="history-row-"] td { border-bottom: 2px solid #e5e7eb; }
 .row-highlight { background-color: #fef08a !important; transition: background-color 1s ease; }
 .row-highlight td { border-bottom: 1px solid #fde047 !important; }
 
+
 /* =========================================
-   HISTORIAL: DISEÑO MÓVIL (BALANCEADO Y ARREGLADO)
+   HISTORIAL: DISEÑO MÓVIL (Solo ajustes de tabla)
    ========================================= */
 
 @media (max-width: 850px) {
@@ -56,21 +98,19 @@ tr[id^="history-row-"] td { border-bottom: 2px solid #e5e7eb; }
     .eq-tab.active { background: #0b1b42 !important; color: #ffffff !important; border-color: #0b1b42 !important; }
     .eq-tab.active::after { display: none !important; }
 
-    /* 2. TABLA (CON ESPACIADO BALANCEADO) */
+    /* 2. TABLA EN MÓVIL */
     .eq-table-container { overflow-x: hidden !important; width: 100% !important; }
     #tabla-historico { min-width: 100% !important; width: 100% !important; table-layout: fixed !important; }
     
-    /* Ocultar ID */
-    #tabla-historico th:nth-child(1), #tabla-historico td:nth-child(1) { display: none !important; }
-    
-    /* Forzar columnas y darles padding para que no toquen los bordes */
-    #tabla-historico th:nth-child(2), #tabla-historico td:nth-child(2) { display: table-cell !important; width: 42% !important; padding: 12px 6px !important; font-size: 13px !important; }
-    #tabla-historico th:nth-child(3), #tabla-historico td:nth-child(3) { display: table-cell !important; width: 33% !important; padding: 12px 6px !important; font-size: 13px !important; }
-    #tabla-historico th:nth-child(4), #tabla-historico td:nth-child(4) { display: table-cell !important; width: 25% !important; padding: 12px 10px 12px 6px !important; text-align: right !important; } 
+    /* Repartir anchos de las columnas */
+    #tabla-historico th:nth-child(1), #tabla-historico td:nth-child(1) { display: table-cell !important; width: 15% !important; padding: 12px 6px !important; text-align: center !important; } /* ID */
+    #tabla-historico th:nth-child(2), #tabla-historico td:nth-child(2) { display: table-cell !important; width: 35% !important; padding: 12px 6px !important; } /* Nombre */
+    #tabla-historico th:nth-child(3), #tabla-historico td:nth-child(3) { display: table-cell !important; width: 25% !important; padding: 12px 6px !important; } /* Ubicación */
+    #tabla-historico th:nth-child(4), #tabla-historico td:nth-child(4) { display: table-cell !important; width: 25% !important; padding: 12px 10px 12px 6px !important; text-align: right !important; } /* Acciones */
 
     #tabla-historico tr[id^="history-row-"] td { display: table-cell !important; }
 
-    /* Botón más grande para que sea fácil de tocar */
+    /* Botón más grande para móvil */
     #tabla-historico .eq-btn-history {
         width: 100% !important; 
         min-height: 32px !important;
@@ -81,14 +121,4 @@ tr[id^="history-row-"] td { border-bottom: 2px solid #e5e7eb; }
         font-size: 12px !important;
         touch-action: manipulation !important;
     }
-
-    /* 3. TIMELINE VERTICAL */
-    .horizontal-timeline { display: flex !important; flex-direction: column !important; padding: 10px 0 10px 15px !important; border-left: 2px solid #e5e7eb !important; margin-left: 15px !important; gap: 20px !important; overflow: visible !important; }
-    .ht-node { position: relative !important; display: flex !important; flex-direction: column !important; align-items: flex-start !important; text-align: left !important; padding-left: 15px !important; }
-    .ht-icon { position: absolute !important; left: -33px !important; top: 0 !important; width: 32px !important; height: 32px !important; background: #ffffff !important; border: 2px solid #e5e7eb !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 2; }
-    .ht-icon.current { border-color: #178427 !important; color: #1fa934 !important; }
-    .ht-line { display: none !important; }
-    .ht-content { display: flex; flex-direction: column; }
-    .ht-location { font-weight: 600 !important; font-size: 14px !important; color: #111827 !important; margin-top: 0 !important; }
-    .ht-date { font-size: 12px !important; color: #6b7280 !important; margin-top: 2px !important; }
 }
