@@ -955,3 +955,131 @@ body.dark-mode .eq-back-categories:hover {
     background: rgba(0, 240, 255, 0.12) !important;
     border-color: #00f0ff !important;
 }
+/* =========================================
+   TABLA EN MÓVIL (USUARIO)
+   ========================================= */
+
+@media (max-width: 850px) {
+    
+    /* 1. Quitamos el scroll horizontal a la fuerza */
+    .eq-table-container {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+    /* 2. Forzamos a la tabla a medir el 100% de la pantalla */
+    .eq-table {
+        min-width: 100% !important;
+        width: 100% !important;
+        table-layout: fixed !important; /* 👈 CLAVE: Ajusta las columnas al espacio */
+    }
+
+    /* 3. Ocultamos las columnas que no queremos */
+    /* Columna 3: Marca, Columna 4: Modelo, Columna 5: Categoría, Columna 7: Descripción */
+    .eq-table th:nth-child(3), .eq-table td:nth-child(3),
+    .eq-table th:nth-child(4), .eq-table td:nth-child(4),
+    .eq-table th:nth-child(5), .eq-table td:nth-child(5),
+    .eq-table th:nth-child(7), .eq-table td:nth-child(7) {
+        display: none !important;
+    }
+
+    /* 4. Repartimos el ancho exacto de las 4 columnas que quedan */
+    .eq-table th:nth-child(1), .eq-table td:nth-child(1) { width: 15% !important; padding: 8px 4px !important; } /* ID */
+    .eq-table th:nth-child(2), .eq-table td:nth-child(2) { width: 40% !important; padding: 8px 4px !important; } /* Nombre */
+    .eq-table th:nth-child(6), .eq-table td:nth-child(6) { width: 25% !important; padding: 8px 4px !important; } /* Ubicación */
+    .eq-table th:nth-child(8), .eq-table td:nth-child(8) { width: 20% !important; padding: 8px 4px !important; text-align: center !important; } /* Acciones */
+
+    /* 5. Ocultamos el icono del equipo para ganar espacio */
+    .eq-item-icon {
+        display: none !important;
+    }
+
+    /* 6. Ajustamos el botón de "Asignar" para que no se salga */
+    .eq-action-btn {
+        width: auto !important;
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+        height: 28px !important;
+    }
+
+    /* 7. Ajustamos el texto de la ubicación para que no se desborde */
+    .eq-location-link {
+        font-size: 11px !important;
+        gap: 4px !important;
+    }
+}
+/* =========================================
+   OCULTAR COLUMNAS PARA EL ROL USER (CONSERJE)
+   ========================================= */
+
+/* 1. Ocultamos las columnas Marca (3), Modelo (4), Categoría (5) y Descripción (7) */
+body.role-user .eq-table th:nth-child(3), body.role-user .eq-table td:nth-child(3),
+body.role-user .eq-table th:nth-child(4), body.role-user .eq-table td:nth-child(4),
+body.role-user .eq-table th:nth-child(5), body.role-user .eq-table td:nth-child(5),
+body.role-user .eq-table th:nth-child(7), body.role-user .eq-table td:nth-child(7) {
+    display: none !important;
+}
+
+/* 2. Ajustamos el ancho de las columnas que SÍ se ven para que quede perfecto */
+body.role-user .eq-table th:nth-child(1), body.role-user .eq-table td:nth-child(1) { width: 15% !important; } /* ID */
+body.role-user .eq-table th:nth-child(2), body.role-user .eq-table td:nth-child(2) { width: 40% !important; } /* Nombre */
+body.role-user .eq-table th:nth-child(6), body.role-user .eq-table td:nth-child(6) { width: 25% !important; } /* Ubicación */
+body.role-user .eq-table th:nth-child(8), body.role-user .eq-table td:nth-child(8) { width: 20% !important; } /* Acciones */
+
+/* 3. Ajustes específicos para Móvil */
+@media (max-width: 850px) {
+    .eq-table-container {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+    .eq-table {
+        min-width: 100% !important;
+        table-layout: fixed !important; /* Fuerza a respetar los porcentajes */
+    }
+    /* Ocultamos el icono del portátil para ganar espacio */
+    body.role-user .eq-item-icon {
+        display: none !important;
+    }
+    /* Ajustamos el botón para que no se desborde */
+    body.role-user .eq-action-btn {
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+        height: 28px !important;
+    }
+}
+/* =========================================
+   BOTÓN ASIGNAR (USUARIO/CONSERJE)
+   ========================================= */
+
+.btn-asignar-user {
+    background-color: #2563eb !important; /* Azul moderno */
+    color: white !important;
+    width: auto !important;
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3) !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer;
+}
+
+.btn-asignar-user:hover {
+    background-color: #1d4ed8 !important; /* Azul más oscuro */
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Ajuste para móvil (botón un poco más compacto) */
+@media (max-width: 850px) {
+    .btn-asignar-user {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+        width: 100% !important; /* En móvil ocupa el ancho de su celda */
+    }
+}

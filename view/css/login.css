@@ -12,16 +12,13 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { font-family: "Poppins", sans-serif; }
-body {
-    background-color: var(--bg-body) !important;
-}
+body { background-color: var(--bg-body) !important; }
+
 .yellow-glow {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-70%, -70%); 
-    width: 800px;
-    height: 800px;
+    width: 800px; height: 800px;
     background: radial-gradient(circle, var(--glow-yellow) 0%, rgba(253, 250, 231, 0) 60%);
     filter: blur(40px);
     z-index: 1 !important; 
@@ -33,25 +30,12 @@ body {
    ========================================================== */
 .brand-logo {
     position: fixed;
-    top: 40px;
-    left: 40px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    top: 40px; left: 40px;
+    display: flex; align-items: center; gap: 15px;
     z-index: 100;
 }
-.logo-img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    border-radius: 14px; 
-}
-.logo-text {
-    font-size: 18px;
-    font-weight: 500;
-    color: #11225b;
-    letter-spacing: 8px;
-}
+.logo-img { width: 50px; height: 50px; object-fit: contain; border-radius: 14px; }
+.logo-text { font-size: 18px; font-weight: 500; color: #11225b; letter-spacing: 8px; }
 
 /* ==========================================================
    3. CÍRCULO
@@ -59,29 +43,20 @@ body {
 .login-wrapper {
     position: fixed !important;
     top: 0; left: 0;
-    width: 100vw !important;
-    height: 100vh !important;
+    width: 100vw !important; height: 100vh !important;
     background-color: transparent !important; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; justify-content: center; align-items: center;
     transform: translateY(-30px);
-    z-index: 10; 
-    overflow: hidden;
+    z-index: 10; overflow: hidden;
 }
 
 .glass-circle {
     position: relative;
-    width: 520px;
-    height: 520px;
+    width: 520px; height: 520px;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; justify-content: center; align-items: center;
     background: var(--circle-bg);
-    box-shadow:
-        -15px -15px 35px rgba(255,255,255,0.8),
-        15px 15px 35px rgba(0,0,0,0.08);
+    box-shadow: -15px -15px 35px rgba(255,255,255,0.8), 15px 15px 35px rgba(0,0,0,0.08);
     z-index: 20;
 }
 
@@ -104,322 +79,270 @@ body {
 /* ==========================================================
    4. TEXTOS
    ========================================================== */
-.login-form h1 {
-    color: var(--azul);
-    font-size: 38px;
-    font-weight: 700;
-    letter-spacing: .5px;
-    margin-bottom: 5px;
-    text-align: center;
-}
-.login-form .subtitle {
-    text-align: center;
-    color: #6b7280;
-    font-size: 12.5px;
-    font-weight: 500;
-    letter-spacing: .3px;
-    margin-bottom: 30px;
-}
+.login-form h1 { color: var(--azul); font-size: 38px; font-weight: 700; letter-spacing: .5px; margin-bottom: 5px; text-align: center; }
+.login-form .subtitle { text-align: center; color: #6b7280; font-size: 12.5px; font-weight: 500; letter-spacing: .3px; margin-bottom: 30px; }
 
 /* ==========================================================
    5. CAMPOS INPUT
    ========================================================== */
-.input-box {
-    position: relative !important;
-    margin-bottom: 18px;
-    width: 100%;
-}
-.input-box i {
-    position: absolute;
-    left: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--azul-icono);
-    font-size: 15px;
-    z-index: 2;
-    transition: color .35s ease;
-}
+.input-box { position: relative !important; margin-bottom: 18px; width: 100%; }
+.input-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--azul-icono); font-size: 15px; z-index: 2; transition: color .35s ease; }
 .input-box input {
-    width: 100%;
-    height: 48px;
-    padding: 0 40px 0 45px; 
-    border: none;
-    outline: none;
-    background: var(--circle-bg);
-    color: var(--texto-escrito);
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: .2px;
+    width: 100%; height: 48px; padding: 0 40px 0 45px; 
+    border: none; outline: none; background: var(--circle-bg); color: var(--texto-escrito);
+    font-family: inherit; font-size: 14px; font-weight: 500; letter-spacing: .2px;
     border-radius: 12px;
-    box-shadow:
-        inset 4px 4px 8px rgba(0,0,0,0.05),
-        inset -4px -4px 8px rgba(255,255,255,0.9);
+    box-shadow: inset 4px 4px 8px rgba(0,0,0,0.05), inset -4px -4px 8px rgba(255,255,255,0.9);
     transition: box-shadow .4s ease, transform .4s ease;
 }
 .input-box input::placeholder { color: #9ca3af; font-weight: 400; }
-.input-box input:focus {
-    transform: translateY(-1px);
-    box-shadow:
-        inset 6px 6px 10px rgba(0,0,0,0.08),
-        inset -6px -6px 10px rgba(255,255,255,1);
-}
-.input-box input:focus + i,
-.input-box:focus-within i { color: var(--azul); }
+.input-box input:focus { transform: translateY(-1px); box-shadow: inset 6px 6px 10px rgba(0,0,0,0.08), inset -6px -6px 10px rgba(255,255,255,1); }
+.input-box input:focus + i, .input-box:focus-within i { color: var(--azul); }
 
 /* ==========================================================
-   6. BOTÓN SUBMIT 
+   6. OPCIONES DE TEMA (NUEVOS INTERRUPTORES)
+   ========================================================== */
+.login-theme-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 0 5px;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--azul);
+    cursor: pointer;
+    user-select: none;
+}
+
+.theme-option .toggle-switch {
+    width: 36px; height: 18px; background-color: #d1d5db; border-radius: 20px; position: relative; transition: 0.3s;
+}
+.theme-option .toggle-switch::after {
+    content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 14px; background: white; border-radius: 50%; transition: 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.theme-option .toggle-switch.active { background-color: #051BFF; }
+.theme-option .toggle-switch.active::after { left: 18px; }
+
+/* ==========================================================
+   7. BOTÓN SUBMIT Y ANIMACIÓN
    ========================================================== */
 .login-form button[type="submit"] {
-    position: relative;
-    width: 100%;
-    height: 48px;
-    display: block;
-    margin: auto;
-    overflow: hidden;
-    border: none;
-    outline: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    
-    color: var(--azul); /* Dark text */
-    background: var(--circle-bg); 
-    box-shadow:
-        -5px -5px 12px rgba(255, 255, 255, 0.9),
-         5px 5px 12px rgba(0,0,0,0.08);
+    position: relative; width: 100%; height: 48px; display: block; margin: auto; overflow: hidden;
+    border: none; outline: none; border-radius: 12px; cursor: pointer; font-family: inherit;
+    font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--azul); background: var(--circle-bg); 
+    box-shadow: -5px -5px 12px rgba(255, 255, 255, 0.9), 5px 5px 12px rgba(0,0,0,0.08);
     transition: color .4s ease, background .4s ease, box-shadow .4s ease, transform .25s ease;
 }
 
-/* ==========================================================
-   ANIMATION 
-   ========================================================== */
 .login-form button[type="submit"]::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -60%;
-    width: 40%;
-    height: 100%;
+    content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
     background: linear-gradient(115deg, transparent, rgb(249, 251, 118), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.6s ease;
+    transform: skewX(-20deg); transition: left 0.6s ease;
 }
-
-.login-form button[type="submit"]:hover::before {
-    left: 130%;
-}
-
-/* ==========================================================
-   HOVER STATE 
-   ========================================================== */
+.login-form button[type="submit"]:hover::before { left: 130%; }
 .login-form button[type="submit"]:hover {
-    transform: translateY(-2px);
-    
-    /* Dark text to contrast with the yellow */
-    color: var(--azul); 
-    
-    /* 👇 THIS MAKES THE BACKGROUND YELLOW ON HOVER 👇 */
-    background: #fcf178; 
-    
-    box-shadow: 0 8px 15px rgba(252, 241, 120, 0.5);
+    transform: translateY(-2px); color: var(--azul); background: #fcf178; box-shadow: 0 8px 15px rgba(252, 241, 120, 0.5);
 }
+.login-form button[type="submit"]:active { transform: translateY(0) scale(0.98); box-shadow: inset 4px 4px 8px rgba(0,0,0,0.1); }
 
 /* ==========================================================
-   CLICK STATE 
-   ========================================================== */
-.login-form button[type="submit"]:active {
-    transform: translateY(0) scale(0.98);
-    box-shadow: inset 4px 4px 8px rgba(0,0,0,0.1);
-}
-
-/* ==========================================================
-   7. CLEAR (X) BUTTON 
+   8. BOTÓN LIMPIAR (X) Y ERROR
    ========================================================== */
 .clear-input {
-    position: absolute !important;
-    right: 15px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    width: auto !important;
-    height: auto !important;
-    padding: 5px !important;
-    margin: 0 !important;
-    
-    color: #9ca3af;
-    font-size: 14px;
-    cursor: pointer;
-    display: none; 
-    z-index: 5 !important;
-    transition: color 0.2s;
+    position: absolute !important; right: 25px !important; top: 50% !important; transform: translateY(-50%) !important;
+    width: 24px !important; height: 24px !important; padding: 0 !important; margin: 0 !important;
+    background: transparent !important; border: none !important; box-shadow: none !important;
+    color: #9ca3af !important; font-size: 16px !important; line-height: 1 !important; cursor: pointer;
+    display: none; z-index: 10 !important; transition: color 0.2s;
 }
+.clear-input:hover { color: #000855 !important; }
 
-.clear-input:hover {
-    color: var(--azul); 
-}
-
-/* ==========================================================
-   8. LOGIN ERROR MESSAGE
-   ========================================================== */
 .login-error {
-    display: none;
-    color: #dc2626;
-    font-size: 12.5px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 15px;
-    margin-top: -10px;
-    line-height: 1.4;
-    animation: shake 0.3s ease-in-out;
+    display: none; color: #dc2626; font-size: 12.5px; font-weight: 600; text-align: center;
+    margin-bottom: 15px; margin-top: -10px; line-height: 1.4; animation: shake 0.3s ease-in-out;
 }
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-/* ==========================================================
-   X BUTTON 
-   ========================================================== */
-
-.input-box {
-    position: relative !important; 
-}
-
-.clear-input {
-    position: absolute !important;
-    right: 25px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    
-    /* Force a small box */
-    width: 24px !important; 
-    height: 24px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    
-    /* Remove all backgrounds and borders */
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    
-    color: #9ca3af !important;
-    font-size: 16px !important;
-    line-height: 1 !important;
-    cursor: pointer;
-    display: none; 
-    z-index: 10 !important;
-    transition: color 0.2s;
-}
-
-.clear-input:hover {
-    color: #000855 !important; 
-}
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 
 /* ==========================================================
-   DISEÑO RESPONSIVE LOGIN 
+   9. DISEÑO RESPONSIVE PERFECTO (MÓVILES)
    ========================================================== */
-
-/* Tablets y Móviles */
 @media (max-width: 600px) {
-    
-    /* 1. El círculo de cristal se adapta al ancho de la pantalla */
-    .glass-circle {
-        width: 85vw !important;
-        height: 85vw !important;
-        max-width: 380px !important;
-        max-height: 380px !important;
-    }
-
-    /* 2. El formulario ocupa más espacio dentro del círculo */
-    .login-form {
-        width: 75% !important; 
-    }
-
-    /* 3. tamaño del título */
-    .login-form h1 {
-        font-size: 32px !important;
-    }
-
-    /* 4. inputs y el botón para que no se vean gigantes */
-    .input-box input {
-        height: 44px !important;
-    }
-    
-    .login-form button[type="submit"] {
-        height: 44px !important;
-        font-size: 13px !important;
-    }
-
-    /* 5. El logo se hace más pequeño y se acerca a la esquina */
-    .brand-logo {
-        top: 20px !important;
-        left: 20px !important;
-        gap: 10px !important;
-    }
-    .logo-img {
-        width: 40px !important;
-        height: 40px !important;
-    }
-    .logo-text {
-        font-size: 16px !important;
-        letter-spacing: 5px !important;
-    }
-}
-
-/* Móviles Pequeños */
-@media (max-width: 400px) {
-    
+    /* El círculo ocupa el 90% de la pantalla para que se vea grande */
     .glass-circle {
         width: 90vw !important;
         height: 90vw !important;
+        max-width: 400px !important;
+        max-height: 400px !important;
+        min-width: 300px !important;
+        min-height: 300px !important;
     }
 
-    .login-form {
-        width: 80% !important;
-    }
+    /* El formulario ocupa más espacio dentro */
+    .login-form { width: 80% !important; max-width: 280px !important; }
+    
+    .login-form h1 { font-size: 32px !important; }
+    .login-form .subtitle { margin-bottom: 20px !important; }
 
-    .login-form h1 {
-        font-size: 26px !important;
-    }
+    /* Inputs y botón un poco más pequeños para que quepan con los interruptores */
+    .input-box input { height: 44px !important; }
+    .login-form button[type="submit"] { height: 44px !important; font-size: 13px !important; }
 
-    .login-form .subtitle {
-        font-size: 11px !important;
-        margin-bottom: 20px !important;
-    }
+    /* Ajustes de los interruptores en móvil */
+    .login-theme-options { margin-bottom: 15px; }
+    .theme-option { font-size: 12.5px; gap: 6px; }
 
-    /* Ocultamos el texto del logo en pantallas súper pequeñas para que no estorbe */
-    .logo-text {
-        display: none !important;
-    }
+    /* Logo */
+    .brand-logo { top: 20px !important; left: 20px !important; gap: 10px !important; }
+    .logo-img { width: 40px !important; height: 40px !important; }
+    .logo-text { font-size: 16px !important; letter-spacing: 5px !important; }
+}
+
+@media (max-width: 400px) {
+    .glass-circle { width: 95vw !important; height: 95vw !important; }
+    .login-form { width: 85% !important; }
+    .login-form h1 { font-size: 26px !important; }
+    .logo-text { display: none !important; }
 }
 /* ==========================================================
-   AJUSTES FLOTANTES EN EL LOGIN
+   10. MODO OSCURO PARA EL LOGIN (CYBERPUNK GLASS)
    ========================================================== */
-.login-settings-wrapper { position: fixed; top: 30px; right: 30px; z-index: 1000; }
-.login-settings-btn {
-    width: 45px; height: 45px; border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-    font-size: 18px; color: #0f172a; transition: all 0.3s ease;
-}
-.login-settings-btn:hover { background: rgba(255, 255, 255, 0.6); transform: translateY(-2px); }
-.login-settings-menu {
-    display: none; position: absolute; top: 55px; right: 0;
-    background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px);
-    border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 8px 0;
-    min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-.login-settings-menu.show { display: block; animation: modalFadeIn 0.2s ease-out; }
 
-body.dark-mode .login-settings-btn { background: rgba(0, 0, 0, 0.4); color: #ffffff; border-color: rgba(255, 255, 255, 0.2); }
-body.dark-mode .login-settings-menu { background: rgba(20, 20, 20, 0.9); border-color: rgba(255, 255, 255, 0.1); }
+/* 1. Fondo general y resplandor */
+body.dark-mode .yellow-glow {
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 60%);
+    opacity: 0.8;
+}
+
+body.dark-mode .logo-text {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+}
+
+/* 2. El Círculo de Cristal */
+body.dark-mode .glass-circle {
+    background: rgba(15, 15, 15, 0.7); /* Fondo oscuro translúcido */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 
+        0 8px 32px rgba(0, 240, 255, 0.1),
+        inset 0 0 20px rgba(0, 240, 255, 0.05);
+}
+
+body.dark-mode .glass-circle::before {
+    border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+/* 3. Textos */
+body.dark-mode .login-form h1 {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+body.dark-mode .login-form .subtitle {
+    color: #a0a0a0 !important;
+}
+
+/* 4. Inputs y sus iconos */
+body.dark-mode .input-box input {
+    background: rgba(0, 0, 0, 0.5) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(0, 240, 255, 0.2) !important;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .input-box input::placeholder {
+    color: #6b7280 !important;
+}
+
+body.dark-mode .input-box i {
+    color: #00f0ff !important;
+}
+
+body.dark-mode .input-box input:focus {
+    border-color: #00f0ff !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important;
+}
+
+/* 5. Opciones de Tema (Modo Oscuro y Daltonismo) */
+body.dark-mode .theme-option {
+    color: #ffffff !important;
+}
+
+body.dark-mode .theme-option .toggle-switch {
+    background-color: #374151 !important; /* Fondo del switch apagado */
+}
+
+body.dark-mode .theme-option .toggle-switch.active {
+    background-color: #00f0ff;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+.theme-option .toggle-switch.active::after {
+    left: 18px; 
+}
+
+/* 6. Botón de Iniciar Sesión */
+body.dark-mode .login-form button[type="submit"] {
+    background: rgba(0, 240, 255, 0.1) !important;
+    color: #00f0ff !important;
+    border: 1px solid #00f0ff !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important;
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
+}
+
+body.dark-mode .login-form button[type="submit"]:hover {
+    background: rgba(0, 240, 255, 0.3) !important;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6) !important;
+    color: #ffffff !important;
+}
+
+/* 7. Botón de limpiar (X) */
+body.dark-mode .clear-input {
+    color: #00f0ff !important;
+}
+/* ==========================================================
+   FIX DEFINITIVO: INTERRUPTORES ENCENDIDOS
+   ========================================================== */
+
+/* Estado encendido para Modo Oscuro y Daltonismo */
+.theme-option .toggle-switch.active {
+    background-color: #00f0ff !important; /* Cyan brillante */
+    border-color: #00f0ff !important;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5) !important;
+}
+
+.theme-option .toggle-switch.active::after {
+    left: 18px !important; /* 👈 Esto hace que el círculo salte a la derecha */
+    background-color: #ffffff !important; /* Círculo blanco */
+}
+/* ==========================================================
+   BOTÓN INICIAR SESIÓN EN MODO DALTONISMO
+   ========================================================== */
+
+/* 1. Estado normal */
+body.colorblind-mode .login-form button[type="submit"] {
+    border: 2px solid #000000 !important; /* Borde negro grueso */
+    background-color: #FFFFFF !important; /* Fondo blanco */
+    color: #000000 !important; /* Texto negro */
+    box-shadow: none !important; /* Quitamos la sombra neumórfica */
+    font-weight: 700 !important; /* Texto más grueso para resaltar */
+}
+
+/* 2. Estado Hover (cuando pasas el ratón) */
+body.colorblind-mode .login-form button[type="submit"]:hover {
+    background-color: #FFCB00 !important; /* Fondo Amarillo de la paleta */
+    color: #000000 !important;
+    transform: translateY(-2px); /* Mantenemos el efecto de elevación */
+}
+
+/* 3. Quitar la animación del brillo (shimmer) en modo daltonismo */
+body.colorblind-mode .login-form button[type="submit"]::before {
+    display: none !important; 
+}
