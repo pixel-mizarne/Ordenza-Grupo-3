@@ -58,7 +58,12 @@
                 </button>
                 
                 <div class="dropdown-menu notification-menu" id="notificationMenu">
-                    <h2 class="notification-menu__title">Notificaciones</h2>
+                    <div class="notification-menu__header">
+                        <h2 class="notification-menu__title">Notificaciones</h2>
+                        <button type="button" class="notification-menu__mark-read" id="markAllNotificationsRead" disabled>
+                            Marcar como leído
+                        </button>
+                    </div>
                     <div class="notification-menu__list" id="notificationList" aria-live="polite">
                         <p class="notification-menu__message">Cargando notificaciones...</p>
                     </div>

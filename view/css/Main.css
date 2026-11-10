@@ -184,8 +184,33 @@ body {
 /* 3.1.8 MENÚ NOTIFICACIONES: Caja desplegable */
 .notification-menu { width: min(360px, calc(100vw - 32px)); padding: 0; overflow: hidden; }
 
-/* 3.1.9 MENÚ NOTIFICACIONES: Título ("Notificaciones") */
-.notification-menu__title { padding: 16px 18px; border-bottom: 1px solid #e5e7eb; color: #111827; font-size: 16px; font-weight: 600; }
+/* 3.1.9 MENÚ NOTIFICACIONES: Cabecera y acción de lectura */
+.notification-menu__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 12px 8px 18px;
+    border-bottom: 1px solid #e5e7eb;
+}
+.notification-menu__title { margin: 0; color: #111827; font-size: 16px; font-weight: 600; }
+
+.notification-menu__mark-read {
+    flex: 0 0 auto;
+    padding: 7px 9px;
+    border: 0;
+    border-radius: 6px;
+    background: #0b1b42;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.notification-menu__mark-read:hover { background: #1e293b; }
+.notification-menu__mark-read:disabled { background: #9ca3af; cursor: not-allowed; }
+.notification-menu__mark-read:focus-visible { outline: 2px solid #111827; outline-offset: 2px; }
 
 /* 3.1.10 MENÚ NOTIFICACIONES: Lista con scroll */
 .notification-menu__list { max-height: 340px; overflow-y: auto; }
@@ -662,6 +687,7 @@ body.colorblind-mode .usu-boton-añadir,
 body.colorblind-mode .ubi-btn-guardar, 
 body.colorblind-mode .btn-aceptar, 
 body.colorblind-mode .notificaciones-lista__accion, 
+body.colorblind-mode .notification-menu__mark-read:not(:disabled),
 body.colorblind-mode .notificaciones-admin__acciones input[type="submit"], 
 body.colorblind-mode .eq-btn-guardar { 
     background-color: #051BFF !important; 
@@ -1145,6 +1171,7 @@ body.dark-mode .usu-boton-añadir,
 body.dark-mode .ubi-btn-guardar,
 body.dark-mode .btn-aceptar,
 body.dark-mode .notificaciones-lista__accion,
+body.dark-mode .notification-menu__mark-read:not(:disabled),
 body.dark-mode .eq-btn-guardar,
 body.dark-mode .perfil-btn-cerrar { 
     background-color: #1b241f !important; 
@@ -1154,7 +1181,8 @@ body.dark-mode .perfil-btn-cerrar {
 }
 body.dark-mode .eq-btn-primary:hover,
 body.dark-mode .perfil-btn-cerrar:hover,
-body.dark-mode .ubi-btn-guardar:hover {
+body.dark-mode .ubi-btn-guardar:hover,
+body.dark-mode .notification-menu__mark-read:not(:disabled):hover {
     background-color: #01200f  !important; 
     color: #ffffff !important; 
 }

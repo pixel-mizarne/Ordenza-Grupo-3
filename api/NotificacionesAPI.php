@@ -48,6 +48,18 @@
                     echo json_encode(["error" => "No se encontro la notificacion"]);
                 }
             } else {
+                if (!isset($_SESSION['usuario_id'])) {
+                    http_response_code(401);
+                    echo json_encode(["error" => "Es necesario iniciar sesion"]);
+                    break;
+                }
+
+                if (($_SESSION['rol'] ?? null) !== 'ADMIN') {
+                    http_response_code(403);
+                    echo json_encode(["error" => "Solo los administradores pueden consultar todas las notificaciones"]);
+                    break;
+                }
+
                 $resultado = $controlador->obtenerTodas();
                 http_response_code(200);
                 echo json_encode($resultado, JSON_UNESCAPED_UNICODE);

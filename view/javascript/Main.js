@@ -294,9 +294,26 @@ function updateNotificationBadge() {
     const badge = document.getElementById('notificationBadge');
     const readIds = getReadNotificationIds();
     const unreadCount = notifications.filter(notification => !readIds.has(String(notification.id_notificacion))).length;
+    const markReadButton = document.getElementById('markAllNotificationsRead');
 
     badge.textContent = unreadCount > 99 ? '99+' : String(unreadCount);
     badge.hidden = unreadCount === 0;
+    markReadButton.disabled = unreadCount === 0;
+}
+
+function markAllNotificationsRead(event) {
+    event.stopPropagation();
+    const readIds = getReadNotificationIds();
+    const unreadNotifications = notifications.filter(
+        notification => !readIds.has(String(notification.id_notificacion))
+    );
+
+    if (unreadNotifications.length === 0) return;
+
+    unreadNotifications.forEach(notification => readIds.add(String(notification.id_notificacion)));
+    localStorage.setItem(notificationStorageKey(), JSON.stringify([...readIds]));
+    renderNotificationItems([]);
+    updateNotificationBadge();
 }
 
 function renderNotificationItems(items) {
@@ -334,7 +351,10 @@ function renderNotificationItems(items) {
 }
 
 async function fetchNotifications() {
-    const response = await fetch('api/NotificacionesAPI.php?mine=1');
+    const endpoint = window.ROL === 'ADMIN'
+        ? 'api/NotificacionesAPI.php?all=1'
+        : 'api/NotificacionesAPI.php?mine=1';
+    const response = await fetch(endpoint);
     if (!response.ok) throw new Error(`No se pudieron cargar las notificaciones (${response.status}).`);
 
     const result = await response.json();
@@ -346,6 +366,7 @@ async function fetchNotifications() {
 
 function initializeNotificationDropdown(userId) {
     notificationUserId = userId;
+    document.getElementById('markAllNotificationsRead').addEventListener('click', markAllNotificationsRead);
     fetchNotifications().catch(error => console.error('Error al cargar las notificaciones:', error));
 }
 
@@ -378,9 +399,6 @@ async function toggleNotifications(event) {
         );
 
         renderNotificationItems(unreadNotifications);
-        unreadNotifications.forEach(notification => readIds.add(String(notification.id_notificacion)));
-        localStorage.setItem(notificationStorageKey(), JSON.stringify([...readIds]));
-        updateNotificationBadge();
     } catch (error) {
         console.error('Error al abrir las notificaciones:', error);
         list.replaceChildren();
