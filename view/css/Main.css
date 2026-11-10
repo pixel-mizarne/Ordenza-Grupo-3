@@ -1968,3 +1968,40 @@ body.dark-mode .notification-menu__date {
         color: #ffffff; 
     }
 }
+/* =========================================
+   SCROLL EN LOGO Y TEXTO
+   ========================================= */
+
+.nav-logo-center {
+    display: flex !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+    overflow: hidden !important; 
+}
+
+.login-logo-img {
+    position: relative;
+    z-index: 2; 
+    flex-shrink: 0;
+}
+
+.login-logo-text {
+    position: relative;
+    z-index: 1; 
+    margin-left: 15px !important; 
+    max-width: 200px !important; 
+    white-space: nowrap;
+    opacity: 1;
+    overflow: hidden;
+    
+    transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease, 
+                margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* se activa con JS */
+body.scrolled .login-logo-text {
+    max-width: 0 !important;
+    opacity: 0;
+    margin-left: 0 !important;
+}
