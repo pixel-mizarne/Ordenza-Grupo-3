@@ -84,6 +84,11 @@
     transition: background 0.2s, border-color 0.2s;
 }
 
+.notificaciones-lista__accion[hidden],
+.notificaciones-lista th[hidden] {
+    display: none;
+}
+
 .notificaciones-lista__accion:hover {
     background: #fff79d;
     border-color: #e5e7eb;
@@ -251,26 +256,25 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     justify-content: center;
     gap: 6px;
     padding: 8px;
-    border: 1px solid #d1d5db;
+    border: 0;
     border-radius: 6px;
-    background: white;
-    color: #374151;
+    background: #f69f3d;
+    color: white;
     font: inherit;
     font-size: 14px;
     cursor: pointer;
 }
 
 .notificaciones-lista__boton-accion:hover {
-    background: #f3f4f6;
+    background: #d17000;
 }
 
 .notificaciones-lista__boton-accion--eliminar {
-    border-color: #fecaca;
-    color: #b91c1c;
+    background: #ff3939;
 }
 
 .notificaciones-lista__boton-accion--eliminar:hover {
-    background: #fef2f2;
+    background: #ba1313;
 }
 
 .notificaciones-lista tbody tr:last-child td {
@@ -291,14 +295,42 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
 }
 
 .notificaciones-lista__estado {
+    display: inline-flex;
+    align-items: center;
     min-width: 130px;
     padding: 8px 32px 8px 12px;
-    border: 1px solid #d1d5db;
+    border: 1px solid transparent;
     border-radius: 6px;
-    background-color: white;
-    color: #111827;
+    font-weight: 600;
+}
+
+.notificaciones-lista__estado--etiqueta {
+    box-sizing: border-box;
+    padding-right: 12px;
+}
+
+.notificaciones-lista__estado[data-estado="REALIZADA"] {
+    border-color: #86efac;
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.notificaciones-lista__estado[data-estado="EN_PROCESO"] {
+    border-color: #fcd34d;
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.notificaciones-lista__estado[data-estado="PENDIENTE"] {
+    border-color: #fecaca;
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.notificaciones-lista select.notificaciones-lista__estado {
     font: inherit;
     font-size: 14px;
+    font-weight: 600;
 }
 
 .notificaciones-lista__mensaje {
@@ -380,17 +412,206 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
 }
 
 @media (max-width: 600px) {
+    #app-content {
+        width: 100%;
+        padding: 20px 12px;
+    }
+
+    #app-content > #main {
+        width: 100%;
+        padding: 20px 0;
+    }
+
     .notificaciones-lista__controles {
         align-items: flex-start;
         flex-direction: column;
     }
 
+    .notificaciones-lista__controles .notificaciones-lista__accion {
+        width: 100%;
+    }
+
     .notis-tabs {
-        width: max-content;
+        width: 100%;
     }
 
     .notis-tab {
-        padding: 14px 18px;
+        flex: 1 0 auto;
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+
+    .notificaciones-lista__tabla {
+        overflow: visible;
+        border: 0;
+        background: transparent;
+    }
+
+    .notificaciones-lista table {
+        display: block;
+        min-width: 0;
+    }
+
+    .notificaciones-lista thead {
+        display: none;
+    }
+
+    .notificaciones-lista tbody {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .notificaciones-lista tbody tr:not(.notificaciones-lista__fila-mensaje) {
+        display: grid;
+        grid-template-areas:
+            "fecha titulo estado"
+            "mensaje mensaje mensaje"
+            "acciones acciones acciones";
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.5fr) minmax(0, 1.2fr);
+        overflow: hidden;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0 2px 6px rgba(17, 24, 39, 0.06);
+    }
+
+    .notificaciones-lista tbody tr.notificaciones-lista__fila--admin {
+        grid-template-areas:
+            "fecha titulo estado"
+            "mensaje mensaje mensaje";
+    }
+
+    .notificaciones-lista tbody tr:not(.notificaciones-lista__fila-mensaje):hover {
+        background: white;
+    }
+
+    .notificaciones-lista tbody tr:not(.notificaciones-lista__fila-mensaje) > td {
+        box-sizing: border-box;
+        width: auto;
+        min-width: 0;
+    }
+
+    .notificaciones-lista td:nth-child(1),
+    .notificaciones-lista td:nth-child(2),
+    .notificaciones-lista td:nth-child(4) {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        gap: 4px;
+        padding: 12px 10px;
+        border-right: 1px solid #e5e7eb;
+        border-bottom: 1px solid #e5e7eb;
+        overflow-wrap: anywhere;
+    }
+
+    .notificaciones-lista td:nth-child(1) {
+        grid-area: fecha;
+    }
+
+    .notificaciones-lista td:nth-child(2) {
+        grid-area: titulo;
+        order: initial;
+        padding: 12px 10px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .notificaciones-lista td:nth-child(4) {
+        grid-area: estado;
+        border-right: 0;
+    }
+
+    .notificaciones-lista td:nth-child(1)::before,
+    .notificaciones-lista td:nth-child(2)::before,
+    .notificaciones-lista td:nth-child(4)::before {
+        font-size: 11px;
+    }
+
+    .notificaciones-lista td:nth-child(2),
+    .notificaciones-lista td:nth-child(3) {
+        display: block;
+        padding: 12px 16px;
+        overflow-wrap: anywhere;
+    }
+
+    .notificaciones-lista td:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        padding: 12px 10px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .notificaciones-lista td::before {
+        content: attr(data-label);
+        color: #6b7280;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .notificaciones-lista td:nth-child(3) {
+        grid-area: mensaje;
+        display: block;
+        padding: 14px 16px;
+        border-bottom: 1px solid #e5e7eb;
+        line-height: 1.5;
+    }
+
+    .notificaciones-lista td:nth-child(3)::before {
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .notificaciones-lista__descripcion {
+        white-space: normal;
+    }
+
+    .notificaciones-lista__acciones {
+        display: flex;
+        width: 100%;
+        gap: 0;
+    }
+
+    .notificaciones-lista__boton-accion {
+        justify-content: center;
+        flex: 1;
+        width: auto;
+        min-height: 40px;
+        border-radius: 0;
+    }
+
+    .notificaciones-lista__boton-accion:first-child {
+        border-right: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .notificaciones-lista__estado {
+        box-sizing: border-box;
+        justify-content: center;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        padding: 6px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .notificaciones-lista td:nth-child(5) {
+        grid-area: acciones;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        border-bottom: 0;
+    }
+
+    .notificaciones-lista td:nth-child(5)::before {
+        display: none;
+    }
+
+    .notificaciones-lista__fila-mensaje td {
+        display: block;
+        width: auto;
+        border: 0;
+        padding: 20px 16px;
     }
 
     .notificaciones-admin__form {

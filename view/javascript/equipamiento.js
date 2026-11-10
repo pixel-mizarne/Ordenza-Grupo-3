@@ -9,16 +9,31 @@ async function iniciarEquipamientos() {
     const rolUsuario = window.ROL ? window.ROL.toUpperCase() : 'USER';
     const btnCreate = document.getElementById('btn-crear-equipamiento');
     const esAdmin = rolUsuario === 'ADMIN';
+    //  MOSTRAMOS EL BUSCADOR PARA TODOS 
+    const adminControls = document.getElementById('eq-admin-controls');
+    if (adminControls) {
+        adminControls.hidden = false; // Quitamos el hidden para que el buscador se vea
+        // Ocultamos el filtro de ubicación y el botón crear si no es admin
+        const filterSelect = document.querySelector('.eq-select');
+        if (filterSelect) filterSelect.style.display = esAdmin ? 'block' : 'none';
+        if (btnCreate) btnCreate.style.display = esAdmin ? 'flex' : 'none';
+    }
+
+     if (esAdmin) {
+        document.body.classList.add('role-admin');
+        document.body.classList.remove('role-user');
+    } else {
+        document.body.classList.add('role-user');
+        document.body.classList.remove('role-admin');
+    }
 
     // Separa la vista antigua de administración del nuevo selector exclusivo para usuarios.
-    currentCategoryFilter = '';
-    document.getElementById('eq-admin-summary').hidden = !esAdmin;
+     currentCategoryFilter = '';
     document.getElementById('eq-admin-controls').hidden = !esAdmin;
     document.getElementById('eq-admin-tabs').hidden = !esAdmin;
     document.getElementById('eq-category-browser').hidden = esAdmin;
     document.getElementById('eq-table-section').hidden = !esAdmin;
     if (btnCreate) btnCreate.style.display = (rolUsuario === 'ADMIN') ? 'flex' : 'none';
-
     // Cargar ubicaciones
     try {
         const resUbi = await fetch('api/UbicacionesAPI.php'); 
@@ -138,7 +153,7 @@ function renderizarTabla() {
         } else {
             // Botón Asignar (Conserje)
             const safeUbi = (e.ubicacion || 'Almacén').replace(/'/g, "\\'");
-            btns += `<button class="eq-action-btn" style="background-color: #2563eb; color: white; width: auto; padding: 0 12px; font-size: 13px;" onclick="abrirModalAsignar(${e.id_equipamiento}, '${safeUbi}')"><i class="fa-solid fa-location-dot"></i> Asignar</button>`;
+             btns += `<button class="eq-action-btn btn-asignar-user" onclick="abrirModalAsignar(${e.id_equipamiento}, '${safeUbi}')"><i class="fa-solid fa-location-dot"></i> Asignar</button>`;
         }
         btns += '</div>';
 
@@ -229,7 +244,20 @@ document.addEventListener('submit', async (e) => {
 
             if (res.ok) {
                 cerrarModalAsignar();
-                location.reload(); 
+                const equipo = todosLosEquipos.find(e => e.id_equipamiento == idEquipo);
+                if (equipo) {
+                    // 2. Sacamos el nombre del aula seleccionada del <select>
+                    const select = document.getElementById('asignar-ubicacion-select');
+                    const nuevoNombreUbi = select.options[select.selectedIndex].text;
+                    
+                    // 3. Actualizamos el array
+                    equipo.ubicacion = nuevoNombreUbi;
+                    equipo.id_ubicacion_actual = nuevaUbicacionId;
+                }
+
+                // 4. Volvemos a dibujar la tabla con los nuevos datos
+                renderizarTabla();
+                
             } else {
                 const err = await res.json();
                 alert("Error al guardar: " + (err.error || "Desconocido"));

@@ -1,33 +1,24 @@
-/* =========================================
-   1. GLOBAL VARIABLES & SETUP
-   ========================================= */
 const appCssBaseUrl = new URL('../css/', document.currentScript.src);
 let notificationUserId = null;
 let notifications = [];
 
-/* =========================================
-   2. INITIALIZATION & SESSION CHECK
-   ========================================= */
 document.addEventListener("DOMContentLoaded", async () => {
     const urlParams = new URLSearchParams(window.location.search);
     let page = urlParams.get('page') || 'login';
 
-    // --- COLORBLIND Dark Mode ---
     const isColorblind = localStorage.getItem('modoDaltonismo') === 'true';
     const isDarkMode = localStorage.getItem('modoOscuro') === 'true';
 
     if (isColorblind) {
         document.body.classList.add('colorblind-mode');
-        const switchEl = document.getElementById('colorblindSwitch');
-        if (switchEl) switchEl.classList.add('active');
+        document.querySelectorAll('.cb-switch-toggle').forEach(sw => sw.classList.add('active'));
     }
 
     if (isDarkMode) {
         document.body.classList.add('dark-mode');
-        const darkSwitchEl = document.getElementById('darkSwitch');
-        if (darkSwitchEl) darkSwitchEl.classList.add('active');
+        document.querySelectorAll('.dark-switch-toggle').forEach(sw => sw.classList.add('active'));
     }
-
+    
     try {
         const res = await fetch('api/Login.php', { method: 'GET' });
         const sessionData = await res.json();
@@ -37,6 +28,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 window.location.href = 'index.html?page=login';
                 return;
             }
+            document.getElementById('main-navbar').style.display = 'none';
+            document.getElementById('main-footer').style.display = 'none';
+            
             loadView('login');
         } else {
             const user = sessionData.usuario;
@@ -49,19 +43,28 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return;
             }
 
-            // Security Check 
             if ((page === 'usuarios' || page === 'ubicaciones') && user.rol !== 'ADMIN') {
                 window.location.href = 'index.html?page=equipamientos';
                 return;
             }
+
             document.getElementById('main-navbar').style.display = 'flex';
             document.getElementById('main-footer').style.display = 'block';
+            
             document.getElementById('nav-username').textContent = user.nombre;
             document.getElementById('nav-avatar').textContent = user.nombre.substring(0, 2).toUpperCase();
+
+            const mobUbi = document.getElementById('mobile-nav-ubicaciones');
+            const mobUsu = document.getElementById('mobile-nav-usuarios');
 
             if (user.rol === 'ADMIN') {
                 document.getElementById('nav-ubicaciones').style.display = 'block';
                 document.getElementById('nav-usuarios').style.display = 'block';
+                if (mobUbi) mobUbi.style.display = 'block';
+                if (mobUsu) mobUsu.style.display = 'block';
+            } else {
+                if (mobUbi) mobUbi.style.display = 'none';
+                if (mobUsu) mobUsu.style.display = 'none';
             }
 
             const notificationToggle = document.getElementById('notificationToggle');
@@ -70,6 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 new URLSearchParams(window.location.search).get('vista') === 'lista'
             );
             notificationToggle.classList.toggle('is-current', isNotificationList);
+            
             if (page === 'notificaciones') {
                 notificationToggle.setAttribute('aria-current', 'page');
             } else {
@@ -91,9 +95,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-/* =========================================
-   3. DYNAMIC VIEW LOADER
-   ========================================= */
 async function loadView(pageName, role) {
     const mainContent = document.getElementById('app-content');
     mainContent.innerHTML = '<p style="text-align:center; margin-top:50px;">Cargando vista...</p>';
@@ -153,14 +154,11 @@ function loadPageJS(jsFileName) {
         const script = document.createElement('script');
         script.id = 'dynamic-script';
         script.src = `view/javascript/${jsFileName}.js`;
-        script.onerror = () => console.error(`❌ ERROR 404: No se pudo cargar view/javascript/${jsFileName}.js`);
+        script.onerror = () => console.error(`ERROR 404: No se pudo cargar view/javascript/${jsFileName}.js`);
         document.body.appendChild(script);
     }
 }
 
-/* =========================================
-   4. NAVBAR UTILITIES and USER SETTINGS
-   ========================================= */
 function toggleDropdown(event) {
     event.stopPropagation();
     document.getElementById('adminMenu').classList.toggle('show');
@@ -168,12 +166,8 @@ function toggleDropdown(event) {
 
 async function logout() {
     try {
-        const response = await fetch('api/Login.php', { method: 'DELETE' });
-        if (response.ok) {
-            window.location.href = 'index.html?page=login';
-        } else {
-            window.location.href = 'index.html?page=login';
-        }
+        await fetch('api/Login.php', { method: 'DELETE' });
+        window.location.href = 'index.html?page=login';
     } catch (error) {
         window.location.href = 'index.html?page=login';
     }
@@ -217,43 +211,34 @@ function cerrarPerfil() {
 
 function toggleColorblind(event) {
     if (event) event.stopPropagation();
-
     const body = document.body;
-    const switchEl = document.getElementById('colorblindSwitch');
-    const darkSwitch = document.getElementById('darkSwitch');
-    
     const isActive = body.classList.toggle('colorblind-mode');
-    if (switchEl) switchEl.classList.toggle('active', isActive);
-    
-    // Si enciende Daltonismo, apagamos el Modo Oscuro
+
+    document.querySelectorAll('.cb-switch-toggle').forEach(sw => sw.classList.toggle('active', isActive));
+
     if (isActive) {
         body.classList.remove('dark-mode');
-        if (darkSwitch) darkSwitch.classList.remove('active');
+        document.querySelectorAll('.dark-switch-toggle').forEach(sw => sw.classList.remove('active'));
         localStorage.setItem('modoOscuro', 'false');
     }
-    
     localStorage.setItem('modoDaltonismo', isActive);
 }
 
 function toggleDarkMode(event) {
     if (event) event.stopPropagation();
-
     const body = document.body;
-    const darkSwitch = document.getElementById('darkSwitch');
-    const cbSwitch = document.getElementById('colorblindSwitch');
-    
     const isActive = body.classList.toggle('dark-mode');
-    if (darkSwitch) darkSwitch.classList.toggle('active', isActive);
-    
-    // Si enciende Modo Oscuro, apagamos Daltonismo
+
+    document.querySelectorAll('.dark-switch-toggle').forEach(sw => sw.classList.toggle('active', isActive));
+
     if (isActive) {
         body.classList.remove('colorblind-mode');
-        if (cbSwitch) cbSwitch.classList.remove('active');
+        document.querySelectorAll('.cb-switch-toggle').forEach(sw => sw.classList.remove('active'));
         localStorage.setItem('modoDaltonismo', 'false');
     }
-    
     localStorage.setItem('modoOscuro', isActive);
 }
+
 document.addEventListener('click', event => {
     const target = event.target;
     if (!(target instanceof Element)) return;
@@ -275,9 +260,6 @@ document.addEventListener('click', event => {
     }
 });
 
-/* =========================================
-   5. NOTIFICATIONS SYSTEM
-   ========================================= */
 function notificationStorageKey() {
     return `ordenza-notificaciones-leidas-${notificationUserId}`;
 }
@@ -390,13 +372,8 @@ async function toggleNotifications(event) {
         list.appendChild(message);
     }
 }
-/* =========================================
-   CERRAR MENUS AL HACER CLIC FUERA para todos
-   ========================================= */
 
 window.addEventListener('click', function(event) {
-    
-    // MENÚ DE USUARIO (Perfil, Daltonismo, Salir)
     const adminMenu = document.getElementById('adminMenu');
     const adminBtn = document.querySelector('.admin-dropdown'); 
 
@@ -406,7 +383,6 @@ window.addEventListener('click', function(event) {
         }
     }
 
-    // MENÚ DE NOTIFICACIONES 
     const notifMenu = document.getElementById('notificationMenu');
     const notifBtn = document.getElementById('notificationToggle'); 
 
@@ -418,24 +394,20 @@ window.addEventListener('click', function(event) {
     }
 });
 
-/* =========================================
-   LÓGICA del hamburguesa
-   ========================================= */
 function toggleMobileMenu() {
-    const navTabs = document.getElementById('navTabs');
-    if (navTabs) {
-        navTabs.classList.toggle('show-mobile');
+    const drawer = document.getElementById('mobileDrawer');
+    if (drawer) {
+        drawer.classList.toggle('show');
     }
 }
 
-// Cerrar el menú móvil al hacer clic en un enlace
 document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.nav-tabs a');
+    const navLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-user-options a, .mobile-user-options .menu-option-daltonismo');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            const navTabs = document.getElementById('navTabs');
-            if (navTabs && navTabs.classList.contains('show-mobile')) {
-                navTabs.classList.remove('show-mobile');
+            const drawer = document.getElementById('mobileDrawer');
+            if (drawer && drawer.classList.contains('show')) {
+                drawer.classList.remove('show');
             }
         });
     });

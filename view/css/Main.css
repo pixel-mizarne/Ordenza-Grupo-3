@@ -1,13 +1,9 @@
-/* =========================================
-   GLOBALES
-   ========================================= */
-
-/* 1. GLOBAL */
+/* GLOBAL */
 html, body {
     overflow-x: clip !important;
 }
 
-/* 2. GLOBAL BASE */
+/* BASE */
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -31,12 +27,10 @@ body {
 /* ------------------------- NAV BAR --------------------------- */
 /* ------------------------------------------------------------- */
 
-/* ------------------------- 1. NAV TABS ----------------------- */
-
-/* 1.1 NAVBAR sticky */
+/* NAVBAR sticky */
 .top-navbar {
     background: #fff198 !important;
-    display: flex !important;
+    display: flex;
     justify-content: space-between !important;
     align-items: center !important;
     height: 84px !important;
@@ -46,12 +40,12 @@ body {
     z-index: 1000 !important;
 }
 
-/* 1.1.1 BOTÓN MÓVIL (Oculto por defecto en PC) */
+/* BOTÓN MÓVIL */
 .mobile-menu-btn {
     display: none !important;
 }
 
-/* 1.2 TABS IZQUIERDA */
+/* ------------------------- 1. NAV TABS ----------------------- */
 .nav-tabs {
     display: flex !important;
     flex-direction: row !important;
@@ -60,7 +54,7 @@ body {
     flex: 1 !important;
 }
 
-/* 1.3 TABS IZQUIERDA: Aspecto normal */
+/* TABS IZQUIERDA: normal */
 .nav-tabs a {
     text-decoration: none;
     color: #5f5f5f;
@@ -79,7 +73,7 @@ body {
     color: white;
 }
 
-/* Ocultar enlaces de admin por defecto (JS los muestra si eres ADMIN) */
+/* Oculta enlaces de admin por defecto en JS los muestra si eres ADMIN */
 .nav-tabs a#nav-usuarios,
 .nav-tabs a#nav-ubicaciones {
     display: none;
@@ -88,7 +82,7 @@ body {
 
 /* -------------------------- 2. LOGO -------------------------- */
 
-/* 2.1 LOGO */
+/* LOGO */
 .nav-logo-center {
     display: flex !important;
     align-items: center !important;
@@ -96,14 +90,14 @@ body {
     flex: 0 0 auto !important;
 }
 
-/* 2.2 Imagen del logo */
+/* Image */
 .login-logo-img {
     width: 45px;
     height: 45px;
     object-fit: contain;
 }
 
-/* 2.3 Texto "r d e n z a" */
+/* Texto "r d e n z a" */
 .login-logo-text {
     font-size: 18px;
     font-weight: 500;
@@ -114,7 +108,7 @@ body {
 
 /* ----------------- 3. NOTIF, AVATAR, MENU -------------------- */
 
-/* 3.0 CONTENEDOR PERFIL */
+/* CONTENEDOR PERFIL */
 .nav-profile {
     display: flex !important;
     flex-direction: row !important;
@@ -124,7 +118,7 @@ body {
     flex: 1 !important;
 }
 
-/* --- 3.1 NOTIFICACIONES --- */
+/* --- NOTIFICACIONES --- */
 .nav-profile .bell {
     color: #6b7280;
     font-size: 18px;
@@ -156,7 +150,7 @@ body {
 
 .notification-toggle.is-current {
     border-radius: 50%;
-    background: #051BFF;
+    background: #0b1b42;
 }
 .notification-toggle.is-current .bell {
     color: white;
@@ -277,7 +271,8 @@ body {
     padding-right: 20px;
 }
 
-.menu-option-daltonismo .toggle-switch {
+.menu-option-daltonismo
+.toggle-switch {
     width: 34px;
     height: 18px;
     background-color: #d1d5db;
@@ -285,7 +280,8 @@ body {
     position: relative;
     transition: 0.3s;
 }
-.menu-option-daltonismo .toggle-switch::after {
+.menu-option-daltonismo
+.toggle-switch::after {
     content: ''; position: absolute;
     top: 2px;
     left: 2px;
@@ -296,10 +292,12 @@ body {
     transition: 0.3s;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
-.menu-option-daltonismo .toggle-switch.active {
+.menu-option-daltonismo
+.toggle-switch.active {
     background-color: #051BFF;
 }
-.menu-option-daltonismo .toggle-switch.active::after {
+.menu-option-daltonismo
+.toggle-switch.active::after {
     left: 18px;
 }
 
@@ -312,58 +310,6 @@ body {
     gap: 8px;
 }
 
-
-/* =========================================
-   DISEÑO MÓVIL
-   ========================================= */
-@media (max-width: 900px) {
-
-    /* hamburguesa */
-    .mobile-menu-btn {
-        display: block !important;
-        font-size: 24px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        color: #0f172a;
-    }
-
-    /* Ocultar el texto "rdenza" */
-    .login-logo-text {
-        display: none !important;
-    }
-
-    /* Menú desplegable en móvil */
-    .nav-tabs {
-        display: none !important;
-        position: absolute !important;
-        top: 84px !important;
-        left: 0 !important;
-        width: 100vw !important;
-        flex-direction: column !important;
-        background: rgba(255, 241, 152, 0.98) !important;
-        backdrop-filter: blur(10px) !important;
-        padding: 20px !important;
-        gap: 10px !important;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
-        z-index: 999 !important;
-    }
-
-    /* Mostrar menú al hacer clic en JS */
-    .nav-tabs.show-mobile {
-        display: flex !important;
-    }
-
-    /* Modo oscuro para el menú móvil */
-    body.dark-mode .nav-tabs {
-        background: rgba(30, 30, 30, 0.98) !important;
-    }
-    body.dark-mode .mobile-menu-btn {
-        color: #ffffff !important;
-    }
-}
-
-
 /* =========================================
    4. MAIN CONTENT
    ========================================= */
@@ -375,7 +321,6 @@ main {
     padding: 40px 20px;
     box-sizing: border-box;
 }
-
 main#app-content {
     flex: 1;
     width: 95%;
@@ -384,7 +329,6 @@ main#app-content {
     padding: 40px 20px;
     box-sizing: border-box;
 }
-
 
 /* =========================================
    5. FOOTER
@@ -400,9 +344,8 @@ footer {
     box-sizing: border-box;
 }
 
-
 /* =========================================
-   6. MODAL DE PERFIL
+   MODAL DE PERFIL
    ========================================= */
 .perfil-modal {
     margin: auto;
@@ -452,26 +395,84 @@ footer {
     box-shadow: 0 4px 10px rgba(139, 90, 43, 0.15);
 }
 
-.perfil-header h3 { margin: 0; font-size: 20px; color: #000000; font-weight: 600; }
-.perfil-subtitle { margin: 5px 0 0; font-size: 13px; color: #000000; opacity: 0.7; }
+.perfil-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #000000;
+    font-weight: 600;
+}
 
-.perfil-body { padding: 20px 30px; }
-.perfil-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #e5dcc3; }
-.perfil-row:last-child { border-bottom: none; }
-.perfil-label { font-size: 13px; color: #8B5A2B; font-weight: 500; display: flex; align-items: center; gap: 10px; }
-.perfil-label i { width: 16px; text-align: center; color: #8B5A2B; }
-.perfil-value { font-size: 14px; color: #000000; font-weight: 600; }
-#perfil-rol { font-weight: bold; color: #2563eb; }
+.perfil-subtitle {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: #000000;
+    opacity: 0.7;
+}
 
-.perfil-footer { padding: 20px 30px 30px; }
-.perfil-btn-cerrar { width: 100%; background: #0b1b42; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s; }
-.perfil-btn-cerrar:hover { background: #1e293b; transform: translateY(-1px); }
+.perfil-body {
+    padding: 20px 30px;
+}
+.perfil-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5dcc3;
+}
+.perfil-row:last-child {
+    border-bottom: none;
+}
+.perfil-label {
+    font-size: 13px;
+    color: #8B5A2B;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.perfil-label i {
+    width: 16px;
+    text-align: center;
+    color: #8B5A2B;
+}
 
-@keyframes modalFadeIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.perfil-value {
+    font-size: 14px;
+    color: #000000;
+    font-weight: 600;
+}
+#perfil-rol {
+    font-weight: bold;
+    color: #2563eb;
+}
+.perfil-footer {
+    padding: 20px 30px 30px;
+}
+.perfil-btn-cerrar {
+    width: 100%;
+    background: #0b1b42;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.perfil-btn-cerrar:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
 
+}
+@keyframes modalFadeIn { from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px); } to {
+        opacity: 1;
+        transform: scale(1) translateY(0); } }
 
 /* =========================================
-   7. (X) EN LA BARRA DE BUSQUEDA
+   (X) EN LA BARRA DE BUSQUEDA
    ========================================= */
 .search-clear-btn {
     position: absolute !important;
@@ -494,15 +495,18 @@ footer {
     margin: 0 !important;
     box-shadow: none !important;
 }
-.search-clear-btn.visible { display: flex !important; }
-.search-clear-btn:hover { background-color: #d1d5db !important; color: #000000 !important; }
-
+.search-clear-btn.visible {
+    display: flex !important;
+}
+.search-clear-btn:hover {
+    background-color: #d1d5db !important;
+    color: #000000 !important;
+}
 
 /* =========================================
-   8. MODO DALTONISMO
+   MODO DALTONISMO
    ========================================= */
 body.colorblind-mode { background-color: #FFFFFF !important; color: #000000 !important; font-weight: 500 !important; }
-
 body.colorblind-mode .top-navbar { background-color: #FFCB00 !important; border-bottom: 2px solid #000000 !important; }
 body.colorblind-mode .nav-tabs a { background-color: #872200 !important; color: #FFFFFF !important; border: 2px solid #000000 !important; }
 body.colorblind-mode .nav-tabs a.active, body.colorblind-mode .nav-tabs a:hover { background-color: #051BFF !important; color: #FFFFFF !important; }
@@ -531,7 +535,6 @@ body.colorblind-mode .notificacion-leida, body.colorblind-mode .notificacion-no-
 
 body.colorblind-mode .ubi-modal-contenido, body.colorblind-mode .popup-contenido, body.colorblind-mode .popup-eliminar-contenido, body.colorblind-mode .perfil-modal-content, body.colorblind-mode .eq-modal-content { background-color: #FFFFFF !important; border: 2px solid #000000 !important; }
 body.colorblind-mode footer { background-color: #FFCB00 !important; color: #000000 !important; border-top: 2px solid #000000 !important; }
-
 body.colorblind-mode .perfil-header { background-color: #FFFFFF !important; border-bottom: 2px solid #000000 !important; }
 body.colorblind-mode .perfil-row { border-bottom: 2px solid #000000 !important; }
 body.colorblind-mode .perfil-avatar-icon { background-color: #FFCB00 !important; color: #000000 !important; border: 2px solid #000000 !important; box-shadow: none !important; }
@@ -539,7 +542,6 @@ body.colorblind-mode .perfil-header h3, body.colorblind-mode .perfil-subtitle, b
 body.colorblind-mode .perfil-label, body.colorblind-mode .perfil-label i { color: #872200 !important; font-weight: 700 !important; }
 body.colorblind-mode .search-clear-btn { background-color: #000000 !important; color: #FFFFFF !important; }
 body.colorblind-mode .search-clear-btn:hover { background-color: #872200 !important; }
-
 
 /* 1. BODY */
 /* 8.1 DALTONISMO: Fondo y texto global */
@@ -634,7 +636,8 @@ body.colorblind-mode #popupEliminar #btnCancelarEliminar {
 body.colorblind-mode .ubi-boton-editar,
 body.colorblind-mode .btnEditar,
 body.colorblind-mode .eq-btn-edit,
-body.colorblind-mode .eq-btn-history {
+body.colorblind-mode .eq-btn-history,
+body.colorblind-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
     background-color: #FFCB00 !important;
     color: #000000 !important;
     border: 2px solid #000000 !important;
@@ -650,7 +653,8 @@ body.colorblind-mode .eq-btn-cancelar,
 body.colorblind-mode .eq-btn-cancel,
 body.colorblind-mode .ubi-btn-cancelar,
 body.colorblind-mode .btn-cancelar,
-body.colorblind-mode .eq-btn-secondary {
+body.colorblind-mode .eq-btn-secondary,
+body.colorblind-mode .notificaciones-lista__boton-accion--eliminar {
     background-color: #872200 !important;
     color: #FFFFFF !important;
     border: 2px solid #000000 !important;
@@ -1029,27 +1033,16 @@ body.colorblind-mode .search-clear-btn:hover {
     background-color: #872200 !important;
 }
 
+
 /* =========================================
    9. MODO OSCURO
    ========================================= */
-body.dark-mode {
-    background-color: #050505 !important;
-    color: #e0e0e0 !important;
-    background-image: radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05), transparent 30%), radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.05), transparent 30%) !important;
-    background-attachment: fixed !important;
-}
-
-body.dark-mode .top-navbar, body.dark-mode footer {
-    background: rgba(10, 10, 10, 0.7) !important; backdrop-filter: blur(16px) !important; -webkit-backdrop-filter: blur(16px) !important;
-    border-bottom: 1px solid rgba(0, 240, 255, 0.3) !important; border-top: 1px solid rgba(0, 240, 255, 0.3) !important;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
-}
+body.dark-mode { background-color: #050505 !important; color: #e0e0e0 !important; background-image: radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05), transparent 30%), radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.05), transparent 30%) !important; background-attachment: fixed !important; }
+body.dark-mode .top-navbar, body.dark-mode footer { background: rgba(10, 10, 10, 0.7) !important; backdrop-filter: blur(16px) !important; -webkit-backdrop-filter: blur(16px) !important; border-bottom: 1px solid rgba(0, 240, 255, 0.3) !important; border-top: 1px solid rgba(0, 240, 255, 0.3) !important; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important; }
 body.dark-mode .login-logo-text { color: #ffffff !important; text-shadow: 0 0 8px rgba(0, 240, 255, 0.6) !important; }
-
 body.dark-mode .nav-tabs a { background: rgba(255, 255, 255, 0.03) !important; color: #a0a0a0 !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; backdrop-filter: blur(4px) !important; }
 body.dark-mode .nav-tabs a:hover { background: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; border-color: rgba(0, 240, 255, 0.3) !important; }
 body.dark-mode .nav-tabs a.active { background: rgba(0, 240, 255, 0.15) !important; color: #00f0ff !important; border: 1px solid #00f0ff !important; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important; }
-
 body.dark-mode .admin-dropdown { background: rgba(20, 20, 20, 0.6) !important; border: 1px solid rgba(0, 240, 255, 0.2) !important; backdrop-filter: blur(8px) !important; color: #ffffff !important; }
 body.dark-mode .admin-dropdown:hover { border-color: #00f0ff !important; }
 body.dark-mode .user-avatar { background: rgba(0, 240, 255, 0.2) !important; color: #00f0ff !important; border: 1px solid #00f0ff !important; }
@@ -1057,13 +1050,54 @@ body.dark-mode .dropdown-menu { background: rgba(10, 10, 10, 0.9) !important; ba
 body.dark-mode .menu-option-perfil, body.dark-mode .menu-option-daltonismo, body.dark-mode .menu-option-salir { color: #e0e0e0 !important; }
 body.dark-mode .menu-option-perfil:hover, body.dark-mode .menu-option-daltonismo:hover, body.dark-mode .menu-option-salir:hover { background-color: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; }
 body.dark-mode .menu-separator { border-top: 1px solid rgba(0, 240, 255, 0.2) !important; }
-
 body.dark-mode .eq-btn-primary, body.dark-mode .eq-select, body.dark-mode .ubi-boton-añadir, body.dark-mode .usu-boton-añadir, body.dark-mode .ubi-btn-guardar, body.dark-mode .btn-aceptar, body.dark-mode .notificaciones-lista__accion, body.dark-mode .eq-btn-guardar, body.dark-mode .perfil-btn-cerrar { background: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; border: 1px solid #00f0ff !important; backdrop-filter: blur(8px) !important; transition: all 0.3s ease; text-shadow: 0 0 5px rgba(0, 240, 255, 0.5); }
 body.dark-mode .eq-btn-primary:hover, body.dark-mode .perfil-btn-cerrar:hover, body.dark-mode .ubi-btn-guardar:hover { background: rgba(0, 240, 255, 0.3) !important; box-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important; color: #ffffff !important; }
 
+/* 6. BOTONES DE ACCIÓN (Editar y Eliminar) */
+body.dark-mode .ubi-boton-editar,
+body.dark-mode .btnEditar,
+body.dark-mode .eq-btn-edit,
+body.dark-mode .eq-btn-history,
+body.dark-mode .eq-btn-save,
+body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
+    background-color: #2f2f2f !important;
+    color: #ffffff !important;
+    border: 1px solid #4c4c4c !important;
+    transition: 0.2s;
+}
+body.dark-mode .ubi-boton-editar:hover,
+body.dark-mode .eq-btn-edit:hover,
+body.dark-mode .eq-btn-history:hover,
+body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar):hover {
+    background-color: #9ec5ab !important;
+    color: #011502 !important;
+}
+
+body.dark-mode .ubi-boton-eliminar,
+body.dark-mode .btnEliminar,
+body.dark-mode .eq-btn-delete,
+body.dark-mode .ubi-btn-peligro,
+body.dark-mode .btn-eliminar-confirmar,
+body.dark-mode .eq-btn-cancel,
+body.dark-mode .eq-btn-cancelar,
+body.dark-mode .ubi-btn-cancelar,
+body.dark-mode .btn-cancelar,
+body.dark-mode .eq-btn-secondary,
+body.dark-mode .notificaciones-lista__boton-accion--eliminar {
+    background-color: #1b241f !important;
+    color: #FFFFFF !important;
+    border: none !important;
+}
+body.dark-mode .ubi-boton-eliminar:hover,
+body.dark-mode .eq-btn-delete:hover,
+body.dark-mode .btn-eliminar-confirmar:hover,
+body.dark-mode .notificaciones-lista__boton-accion--eliminar:hover {
+    background-color: #b91c1c !important;
+}
+
+
 body.dark-mode .ubi-boton-editar, body.dark-mode .btnEditar, body.dark-mode .eq-btn-edit, body.dark-mode .eq-btn-history, body.dark-mode .eq-btn-save { background: rgba(0, 240, 255, 0.15) !important; color: #00f0ff !important; border: 1px solid rgba(0, 240, 255, 0.5) !important; transition: 0.3s; }
 body.dark-mode .ubi-boton-editar:hover, body.dark-mode .eq-btn-edit:hover, body.dark-mode .eq-btn-history:hover { background: #00f0ff !important; color: #050505 !important; box-shadow: 0 0 15px #00f0ff !important; }
-
 body.dark-mode .ubi-boton-eliminar, body.dark-mode .btnEliminar, body.dark-mode .eq-btn-delete, body.dark-mode .ubi-btn-peligro, body.dark-mode .btn-eliminar-confirmar, body.dark-mode .eq-btn-cancel, body.dark-mode .eq-btn-cancelar, body.dark-mode .ubi-btn-cancelar, body.dark-mode .btn-cancelar, body.dark-mode .eq-btn-secondary { background: rgba(255, 0, 85, 0.1) !important; color: #ff0055 !important; border: 1px solid rgba(255, 0, 85, 0.5) !important; }
 body.dark-mode .ubi-boton-eliminar:hover, body.dark-mode .eq-btn-delete:hover, body.dark-mode .btn-eliminar-confirmar:hover { background: #ff0055 !important; color: #ffffff !important; box-shadow: 0 0 15px #ff0055 !important; }
 
@@ -1073,29 +1107,24 @@ body.dark-mode input:focus { border-color: #00f0ff !important; box-shadow: 0 0 1
 body.dark-mode input::placeholder { color: #6b7280 !important; }
 body.dark-mode .search-clear-btn { background: rgba(0, 240, 255, 0.2) !important; color: #00f0ff !important; }
 body.dark-mode .search-clear-btn:hover { background: #00f0ff !important; color: #050505 !important; }
-
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode .eq-title, body.dark-mode .titulo-ubi, body.dark-mode .titulo-usu, body.dark-mode .stat-number { color: #ffffff !important; text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important; }
 body.dark-mode .eq-stats-bar, body.dark-mode .eq-stat { color: #a0a0a0 !important; }
-
 body.dark-mode .eq-table-container { background: rgba(10, 10, 10, 0.4) !important; border: 1px solid rgba(0, 240, 255, 0.2) !important; backdrop-filter: blur(12px) !important; border-radius: 12px !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important; }
 body.dark-mode .eq-table th, body.dark-mode .notificaciones-lista__tabla th { background: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; border: none !important; text-transform: uppercase; letter-spacing: 1px; }
 body.dark-mode .eq-table td, body.dark-mode .notificaciones-lista__tabla td { border-bottom: 1px solid rgba(0, 240, 255, 0.05) !important; color: #e0e0e0 !important; }
 body.dark-mode #eq-table-body tr:nth-child(even), body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+3) { background-color: rgba(0, 240, 255, 0.03) !important; }
 body.dark-mode #eq-table-body tr:nth-child(odd), body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+1) { background-color: transparent !important; }
-
 body.dark-mode .eq-item-icon, body.dark-mode .eq-location i, body.dark-mode .eq-location-link i { color: #00f0ff !important; filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.5)); }
 body.dark-mode .eq-location, body.dark-mode .eq-location-link { color: #00f0ff !important; }
 body.dark-mode .inline-edit:disabled { color: #ffffff !important; background-color: transparent !important; border: none !important; }
 body.dark-mode .inline-edit:not(:disabled) { color: #ffffff !important; background-color: rgba(0, 0, 0, 0.6) !important; border: 1px solid #00f0ff !important; box-shadow: inset 0 0 5px rgba(0, 240, 255, 0.2) !important; }
 body.dark-mode .desc-truncate { color: #a0a0a0 !important; }
 body.dark-mode .desc-truncate:hover { color: #00f0ff !important; text-shadow: 0 0 8px rgba(0, 240, 255, 0.5); }
-
 body.dark-mode .eq-tabs-container { background: rgba(10, 10, 10, 0.5) !important; border: 1px solid rgba(0, 240, 255, 0.2) !important; backdrop-filter: blur(8px) !important; }
 body.dark-mode .eq-tab { background-color: transparent !important; color: #a0a0a0 !important; border-right: 1px solid rgba(0, 240, 255, 0.1) !important; }
 body.dark-mode .eq-tab.active { background: rgba(0, 240, 255, 0.15) !important; color: #00f0ff !important; }
 body.dark-mode .eq-tab.active::after { border-color: rgba(0, 240, 255, 0.15) transparent transparent transparent !important; }
 body.dark-mode .eq-badge { background: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; border: 1px solid rgba(0, 240, 255, 0.3) !important; }
-
 body.dark-mode .eq-modal-content, body.dark-mode .perfil-modal-content, body.dark-mode .ubi-modal-contenido, body.dark-mode .popup-contenido, body.dark-mode .popup-eliminar-contenido, body.dark-mode .tarjeta-usu, body.dark-mode .desplegable-planta { background: rgba(15, 15, 15, 0.7) !important; color: #ffffff !important; border: 1px solid rgba(0, 240, 255, 0.3) !important; backdrop-filter: blur(20px) !important; -webkit-backdrop-filter: blur(20px) !important; box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1) !important; border-radius: 16px !important; }
 body.dark-mode .perfil-header { background: rgba(0, 0, 0, 0.3) !important; border-bottom: 1px solid rgba(0, 240, 255, 0.2) !important; }
 body.dark-mode .perfil-row { border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; }
@@ -1104,23 +1133,17 @@ body.dark-mode .perfil-avatar-icon { background: rgba(0, 240, 255, 0.1) !importa
 body.dark-mode .tarjeta-usu:hover { border-color: #00f0ff !important; box-shadow: 0 0 20px rgba(0, 240, 255, 0.2) !important; }
 body.dark-mode .tarjeta-info p { color: #a0a0a0 !important; }
 body.dark-mode .tarjeta-info strong { color: #00f0ff !important; }
-
 body.dark-mode .notification-menu { background: rgba(10, 10, 10, 0.9) !important; border: 1px solid rgba(0, 240, 255, 0.3) !important; }
 body.dark-mode .notification-menu__title, body.dark-mode .notification-menu__item h3 { color: #00f0ff !important; border-bottom-color: rgba(0, 240, 255, 0.2) !important; }
 body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__date { color: #a0a0a0 !important; }
 
-
 /* =========================================
-   10. RESPONSIVE
+   RESPONSIVE
    ========================================= */
 @media (max-width: 850px) {
-
-    /* 1. CONTENEDOR PRINCIPAL */
     main#app-content {
         padding: 20px 10px !important;
     }
-
-    /* 2. FILTROS Y BARRAS DE BÚSQUEDA */
     .eq-filters-bar,
     .ubi-filtro-buscador,
     .usu-filtro-buscador {
@@ -1141,40 +1164,9 @@ body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__da
         box-sizing: border-box !important;
     }
 
-    /* 3. TABLAS RESPONSIVE */
-    .eq-table-container,
-    .notificaciones-lista__tabla {
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        border-radius: 8px !important;
-        width: 100% !important;
-    }
-
-    .eq-table {
-        min-width: 800px !important;
-    }
-    .notificaciones-lista__tabla table {
-        min-width: 700px !important;
-    }
-
-    /* 4. PESTAÑAS DE CATEGORÍA */
-    .eq-tabs-container {
-        overflow-x: auto !important;
-        white-space: nowrap !important;
-    }
-    .eq-tabs {
-        display: inline-flex !important;
-        flex-wrap: nowrap !important;
-    }
-    .eq-tab {
-        padding: 15px 25px !important;
-    }
-
-    /* 5. TARJETAS */
     .usu-contenedor-tarjetas {
         grid-template-columns: 1fr !important;
     }
-
     .ubi-boton-editar-eliminar {
         flex-direction: column !important;
         gap: 5px !important;
@@ -1185,7 +1177,6 @@ body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__da
         justify-content: center !important;
     }
 
-    /* 6. MODALES Y POPUPS */
     .eq-modal-content,
     .ubi-modal-contenido,
     .popup-contenido,
@@ -1197,7 +1188,79 @@ body.dark-mode .notification-menu__item p, body.dark-mode .notification-menu__da
     }
 }
 
-body.dark-mode .notis-tab:hover {
-    background-color: #252e29 !important;
-    color: #FFFFFF !important;
+/* ------------------------------------------------------------- */
+/* --------------------- MÓVIL MENÚ HAMBURGUESA --------------- */
+/* ------------------------------------------------------------- */
+
+.mobile-drawer { display: none; }
+
+@media (max-width: 900px) {
+    .nav-tabs,
+    .desktop-user-menu,
+    #nav-avatar {
+        display: none !important;
+    }
+
+    .mobile-menu-btn {
+        display: block !important;
+        order: 1; font-size: 24px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #0f172a;
+        z-index: 2001;
+        margin-left: 10px !important;
+    }
+
+    .nav-logo-center {
+        order: 2;
+        flex: 1 !important;
+        justify-content: center !important;
+    }
+    .login-logo-text {
+        display: none !important;
+    }
+
+    .nav-profile {
+        order: 3;
+        flex: 0 0 auto !important;
+        gap: 10px !important;
+    }
+
+    .mobile-drawer {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: #fffdf0;
+        box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+        z-index: 2000;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+    }
+
+    .mobile-drawer.show { left: 0 !important; }
+
+    .mobile-drawer-header {
+        display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 20px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #11225b; letter-spacing: 4px;
+    }
+
+    .mobile-nav-links, .mobile-user-options { display: flex; flex-direction: column; padding: 10px 0; }
+
+    .mobile-nav-links a {
+        padding: 15px 20px; text-decoration: none; color: #111827; font-weight: 500; font-size: 15px; text-align: left;
+    }
+
+    .mobile-nav-links a.active {
+        background: #e5e7eb; color: #0b1b42; border-left: 4px solid #0b1b42;
+    }
+
+    body.dark-mode .mobile-drawer { background: rgba(20, 20, 20, 0.98); border-left: 1px solid rgba(0, 240, 255, 0.2); }
+    body.dark-mode .mobile-drawer-header { border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff; }
+    body.dark-mode .mobile-nav-links a { color: #e0e0e0; }
+    body.dark-mode .mobile-nav-links a.active { background: rgba(0, 240, 255, 0.1); color: #00f0ff; border-left-color: #00f0ff; }
+    body.dark-mode .mobile-menu-btn { color: #ffffff; }
 }
