@@ -739,21 +739,21 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 }
 
 #modal-crear .eq-btn-cancelar {
-    background: #0f172a;
-    color: white;
-    border: none;
-}
-#modal-crear .eq-btn-cancelar:hover {
-    background: #1e293b;
-}
-
-#modal-crear .eq-btn-guardar {
     background: #f3f4f6;
     color: #111827;
     border: 1px solid #e5e7eb;
 }
-#modal-crear .eq-btn-guardar:hover {
+#modal-crear .eq-btn-cancelar:hover {
     background: #e5e7eb;
+}
+
+#modal-crear .eq-btn-guardar {
+    background: #0b1b42;
+    color: white;
+    border: none;
+}
+#modal-crear .eq-btn-guardar:hover {
+    background: #1e293b;
 }
 
 .search-clear-btn {
@@ -827,4 +827,259 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     font-weight: 500 !important; 
     cursor: pointer; 
     white-space: nowrap !important; 
+}
+
+/* La vista inicial presenta categorías en dos columnas y evita mostrar toda la tabla de entrada. */
+.eq-category-browser {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 860px;
+    margin: 0 auto 32px;
+}
+
+.eq-category-card {
+    display: flex;
+    /* En pantallas móviles altas, las tres filas crecen con el ancho y la altura visibles; en PC se conserva el tamaño base. */
+    height: clamp(180px, min(calc(600px - 30vw), calc((100dvh - 40rem) / 3)), 300px);
+    min-height: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 3vw, 24px);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #111827;
+    font: inherit;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.eq-category-card:hover {
+    transform: translateY(-2px);
+    border-color: #2563eb;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+}
+
+.eq-category-card:focus-visible,
+.eq-back-categories:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+/* Reutiliza el lenguaje visual de los iconos de equipo, ampliándolos para que identifiquen cada filtro. */
+.eq-category-icon {
+    color: #814017;
+    /* El icono aumenta en pantallas estrechas y altas, mientras en pantallas de escritorio permanece en 48px. */
+    font-size: clamp(48px, min(calc(120px - 4vw), calc(24px + 3vh)), 80px);
+    line-height: 1;
+}
+
+/* El display grid/flex declarado más abajo no debe anular el estado oculto según el rol. */
+.eq-category-browser[hidden],
+#eq-admin-controls[hidden],
+#eq-admin-tabs[hidden],
+#eq-user-results-header[hidden],
+#eq-table-section[hidden] {
+    display: none !important;
+}
+
+.eq-results-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.eq-results-title {
+    margin: 0;
+    color: #111827;
+    font-size: 24px;
+}
+
+.eq-back-categories {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #111827;
+    font: inherit;
+    cursor: pointer;
+}
+
+.eq-back-categories:hover {
+    background: #f3f4f6;
+}
+
+.eq-results-filters {
+    justify-content: flex-end;
+}
+
+/* En modo daltonismo se usan blanco, negro y borde grueso para mantener el contraste de los filtros. */
+body.colorblind-mode .eq-category-card,
+body.colorblind-mode .eq-back-categories {
+    border: 2px solid #000000 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+body.colorblind-mode .eq-category-icon {
+    color: #000000 !important;
+}
+
+body.colorblind-mode .eq-category-card:hover,
+body.colorblind-mode .eq-back-categories:hover {
+    background: #ffcb00 !important;
+}
+
+/* El modo oscuro conserva sus tonos oscuros y resalta los filtros con el cian usado en el inventario. */
+body.dark-mode .eq-category-card,
+body.dark-mode .eq-back-categories {
+    border: 1px solid rgba(0, 240, 255, 0.3) !important;
+    background: rgba(15, 15, 15, 0.7) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .eq-category-icon {
+    color: #00f0ff !important;
+}
+
+body.dark-mode .eq-category-card:hover,
+body.dark-mode .eq-back-categories:hover {
+    background: rgba(0, 240, 255, 0.12) !important;
+    border-color: #00f0ff !important;
+}
+/* =========================================
+   TABLA EN MÓVIL (USUARIO)
+   ========================================= */
+
+@media (max-width: 850px) {
+    
+    /* 1. Quitamos el scroll horizontal a la fuerza */
+    .eq-table-container {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+    /* 2. Forzamos a la tabla a medir el 100% de la pantalla */
+    .eq-table {
+        min-width: 100% !important;
+        width: 100% !important;
+        table-layout: fixed !important; /* 👈 CLAVE: Ajusta las columnas al espacio */
+    }
+
+    /* 3. Ocultamos las columnas que no queremos */
+    /* Columna 3: Marca, Columna 4: Modelo, Columna 5: Categoría, Columna 7: Descripción */
+    .eq-table th:nth-child(3), .eq-table td:nth-child(3),
+    .eq-table th:nth-child(4), .eq-table td:nth-child(4),
+    .eq-table th:nth-child(5), .eq-table td:nth-child(5),
+    .eq-table th:nth-child(7), .eq-table td:nth-child(7) {
+        display: none !important;
+    }
+
+    /* 4. Repartimos el ancho exacto de las 4 columnas que quedan */
+    .eq-table th:nth-child(1), .eq-table td:nth-child(1) { width: 15% !important; padding: 8px 4px !important; } /* ID */
+    .eq-table th:nth-child(2), .eq-table td:nth-child(2) { width: 40% !important; padding: 8px 4px !important; } /* Nombre */
+    .eq-table th:nth-child(6), .eq-table td:nth-child(6) { width: 25% !important; padding: 8px 4px !important; } /* Ubicación */
+    .eq-table th:nth-child(8), .eq-table td:nth-child(8) { width: 20% !important; padding: 8px 4px !important; text-align: center !important; } /* Acciones */
+
+    /* 5. Ocultamos el icono del equipo para ganar espacio */
+    .eq-item-icon {
+        display: none !important;
+    }
+
+    /* 6. Ajustamos el botón de "Asignar" para que no se salga */
+    .eq-action-btn {
+        width: auto !important;
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+        height: 28px !important;
+    }
+
+    /* 7. Ajustamos el texto de la ubicación para que no se desborde */
+    .eq-location-link {
+        font-size: 11px !important;
+        gap: 4px !important;
+    }
+}
+/* =========================================
+   OCULTAR COLUMNAS PARA EL ROL USER (CONSERJE)
+   ========================================= */
+
+/* 1. Ocultamos las columnas Marca (3), Modelo (4), Categoría (5) y Descripción (7) */
+body.role-user .eq-table th:nth-child(3), body.role-user .eq-table td:nth-child(3),
+body.role-user .eq-table th:nth-child(4), body.role-user .eq-table td:nth-child(4),
+body.role-user .eq-table th:nth-child(5), body.role-user .eq-table td:nth-child(5),
+body.role-user .eq-table th:nth-child(7), body.role-user .eq-table td:nth-child(7) {
+    display: none !important;
+}
+
+/* 2. Ajustamos el ancho de las columnas que SÍ se ven para que quede perfecto */
+body.role-user .eq-table th:nth-child(1), body.role-user .eq-table td:nth-child(1) { width: 15% !important; } /* ID */
+body.role-user .eq-table th:nth-child(2), body.role-user .eq-table td:nth-child(2) { width: 40% !important; } /* Nombre */
+body.role-user .eq-table th:nth-child(6), body.role-user .eq-table td:nth-child(6) { width: 25% !important; } /* Ubicación */
+body.role-user .eq-table th:nth-child(8), body.role-user .eq-table td:nth-child(8) { width: 20% !important; } /* Acciones */
+
+/* 3. Ajustes específicos para Móvil */
+@media (max-width: 850px) {
+    .eq-table-container {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+    .eq-table {
+        min-width: 100% !important;
+        table-layout: fixed !important; /* Fuerza a respetar los porcentajes */
+    }
+    /* Ocultamos el icono del portátil para ganar espacio */
+    body.role-user .eq-item-icon {
+        display: none !important;
+    }
+    /* Ajustamos el botón para que no se desborde */
+    body.role-user .eq-action-btn {
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+        height: 28px !important;
+    }
+}
+/* =========================================
+   BOTÓN ASIGNAR (USUARIO/CONSERJE)
+   ========================================= */
+
+.btn-asignar-user {
+    background-color: #2563eb !important; /* Azul moderno */
+    color: white !important;
+    width: auto !important;
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3) !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer;
+}
+
+.btn-asignar-user:hover {
+    background-color: #1d4ed8 !important; /* Azul más oscuro */
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Ajuste para móvil (botón un poco más compacto) */
+@media (max-width: 850px) {
+    .btn-asignar-user {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+        width: 100% !important; /* En móvil ocupa el ancho de su celda */
+    }
 }
