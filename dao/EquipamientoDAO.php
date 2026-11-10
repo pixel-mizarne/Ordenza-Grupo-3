@@ -30,20 +30,61 @@ class EquipamientoDAO {
         $fila = $stmt->fetch(PDO::FETCH_ASSOC);
         return $fila ?: null;
     }
-
+//(ADRIAN)
     public function crear(string $nombre, string $descripcion, string $marca, string $modelo, string $categoria): bool {
-        $query = "INSERT INTO equipamientos (nombre, descripcion, marca, modelo, categoria, id_ubicacion_actual) 
-                  VALUES (:nombre, :descripcion, :marca, :modelo, :categoria, 1)";
-        $stmt = $this->dbConnection->prepare($query);
-        return $stmt->execute([
-            ':nombre' => $nombre,
-            ':descripcion' => $descripcion,
-            ':marca' => $marca,
-            ':modelo' => $modelo,
-            ':categoria' => $categoria
-        ]);
-    }
+        // Reservamos el alta para que dos personas no reciban el mismo ID 
+        $bloqueo = $this->dbConnection->query(
+            "SELECT GET_LOCK('ordenza_reto2daw_equipamientos_id', 10)"
+        )->fetchColumn();
 
+        if ((int) $bloqueo !== 1) {
+            throw new RuntimeException('No se pudo reservar el ID del equipamiento', 500);
+        }
+
+        try {
+            $idsUsados = $this->dbConnection->query(
+                'SELECT id_equipamiento FROM equipamientos
+                 UNION
+                 SELECT id_equipamiento FROM historico_ubicaciones
+                 ORDER BY id_equipamiento'
+            )->fetchAll(PDO::FETCH_COLUMN);
+
+            // Saltamos IDs que aun tengan historial para no mezclar equipos
+            $idNuevo = 1;
+            foreach ($idsUsados as $idUsado) {
+                $idUsado = (int) $idUsado;
+                if ($idUsado < $idNuevo) {
+                    continue;
+                }
+                if ($idUsado > $idNuevo) {
+                    break;
+                }
+                $idNuevo++;
+            }
+
+            $query = "INSERT INTO equipamientos
+                      (id_equipamiento, nombre, descripcion, marca, modelo, categoria, id_ubicacion_actual)
+                      VALUES (:id, :nombre, :descripcion, :marca, :modelo, :categoria, 1)";
+            $stmt = $this->dbConnection->prepare($query);
+            return $stmt->execute([
+                ':id' => $idNuevo,
+                ':nombre' => $nombre,
+                ':descripcion' => $descripcion,
+                ':marca' => $marca,
+                ':modelo' => $modelo,
+                ':categoria' => $categoria
+            ]);
+        } finally {
+            $bloqueoLiberado = $this->dbConnection->query(
+                "SELECT RELEASE_LOCK('ordenza_reto2daw_equipamientos_id')"
+            )->fetchColumn();
+
+            if ((int) $bloqueoLiberado !== 1) {
+                throw new RuntimeException('No se pudo liberar el turno para crear equipamientos', 500);
+            }
+        }
+    }
+//(ADRIAN)
     public function actualizar(int $id, string $nombre, string $descripcion, string $marca, string $modelo, string $categoria, ?int $id_ubicacion = null): bool {
         if ($id_ubicacion !== null) {
             $query = "UPDATE equipamientos SET nombre = :nombre, descripcion = :descripcion, 

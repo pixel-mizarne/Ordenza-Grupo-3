@@ -10,6 +10,8 @@ const passwordInput = document.getElementById('password');
 const btnCerrarPopup = document.getElementById('btnCerrarPopUp');
 const tituloPopup = document.getElementById('popupTitulo');
 const estadisticaTotal = document.getElementById('estadisticaTotal');
+const estadisticaAdmins = document.getElementById('estadisticaAdmins');
+const inputBuscador = document.getElementById('buscarUsuario');
 const dialogEliminar = document.getElementById('popupEliminar');
 const btnCancelarEliminar = document.getElementById('btnCancelarEliminar');
 const btnConfirmarEliminar = document.getElementById('btnConfirmarEliminar');
@@ -35,11 +37,18 @@ async function cargarUsuarios() {
         contenedorAdmins.innerHTML = '';
         contenedorUsuarios.innerHTML = '';
         if (estadisticaTotal) estadisticaTotal.textContent = usuarios.length; // Actualiza el contador
+        if (estadisticaAdmins) {
+            estadisticaAdmins.textContent = usuarios.filter(
+                usuario => String(usuario.rol).trim().toUpperCase() === 'ADMIN'
+            ).length;
+        }
 
         usuarios.forEach(usuario => {
             const article = document.createElement('article');
-            const esAdmin = String(usuario.rol).toUpperCase() === 'ADMIN';
+            const esAdmin = String(usuario.rol).trim().toUpperCase() === 'ADMIN';
             article.className = `tarjeta-usu ${esAdmin ? 'admin' : 'usuario'}`;
+            article.dataset.nombre = String(usuario.nombre ?? '').trim().toLowerCase();
+            article.dataset.id = String(usuario.id_usuario ?? '').trim().toLowerCase();
             const detalles = document.createElement('div');
             detalles.className = 'tarjeta-info';
 
@@ -106,9 +115,31 @@ async function cargarUsuarios() {
             article.append(detalles, acciones);
             (esAdmin ? contenedorAdmins : contenedorUsuarios).appendChild(article);
         });
+
+        // Al recargar, mantenemos el filtro que ya estaba escrito.
+        filtrarUsuarios(inputBuscador ? inputBuscador.value : '');
     } catch (error) {
         console.error("Error al cargar:", error);
     }
+}
+
+function filtrarUsuarios(texto) {
+    const textoBuscado = texto.trim().toLowerCase();
+
+    // Buscamos por nombre o ID sin sacar la tarjeta de su grupo.
+    [contenedorAdmins, contenedorUsuarios].forEach(contenedor => {
+        contenedor.querySelectorAll('.tarjeta-usu').forEach(tarjeta => {
+            const coincide = tarjeta.dataset.nombre.startsWith(textoBuscado)
+                || tarjeta.dataset.id.startsWith(textoBuscado);
+            tarjeta.style.display = coincide ? '' : 'none';
+        });
+    });
+}
+
+if (inputBuscador) {
+    inputBuscador.addEventListener('input', evento => {
+        filtrarUsuarios(evento.target.value);
+    });
 }
 
 // POPUP CREAR
