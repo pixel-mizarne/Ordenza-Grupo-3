@@ -2,190 +2,93 @@
    HISTORICO PAGE DESIGN
    ========================================= */
 
-/* =========================================
-   1. LÍNEA DE TIEMPO (TIMELINE)
-   ========================================= */
-.horizontal-timeline {
-    display: flex;
-    align-items: flex-start;
-    overflow-x: auto;
-    padding: 20px 10px;
-    gap: 0;
-}
+.horizontal-timeline { display: flex; align-items: flex-start; overflow-x: auto; padding: 20px 10px; gap: 0; }
+.ht-node { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 120px; }
+.ht-icon { width: 32px; height: 32px; background: #f3f4f6; color: #6b7280; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; border: 2px solid #e5e7eb; z-index: 2; }
+.ht-icon.current { background: #eff6ff; color: #1a6a0a; border-color: #bfdbfe; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+.ht-location { font-weight: 600; color: #111827; margin-top: 8px; font-size: 13px; }
+.ht-date { font-size: 11px; color: #6b7280; margin-top: 2px; line-height: 1.2; }
+.ht-line { flex: 1; height: 2px; background: #d1d5db; margin-top: 16px; min-width: 50px; }
 
-.ht-node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-width: 120px;
-}
+tr[id^="history-row-"] { background-color: #fffdf5 !important; }
+tr[id^="history-row-"] td { border-bottom: 2px solid #e5e7eb; }
 
-.ht-icon {
-    width: 32px;
-    height: 32px;
-    background: #f3f4f6;
-    color: #6b7280;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    border: 2px solid #e5e7eb;
-    z-index: 2;
-}
+#historico-table-body tr[id^="row-"]:nth-child(4n+1) { background-color: #ffffff; }
+#historico-table-body tr[id^="row-"]:nth-child(4n+3) { background-color: #f0f0f0; }
+#historico-table-body tr[id^="row-"]:hover { background-color: #f3f4f6 !important; transition: background-color 0.2s ease; }
+#historico-table-body .eq-location { color: #1a6a0a !important; font-weight: 600; }
+#historico-table-body .eq-location i { color: #1a6a0a !important; }
 
-/* Icono de la ubicación actual (Destacado en verde) */
-.ht-icon.current {
-    background: #eff6ff;
-    color: #1a6a0a;
-    border-color: #bfdbfe;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-}
-
-.ht-location {
-    font-weight: 600;
-    color: #111827;
-    margin-top: 8px;
-    font-size: 13px;
-}
-
-.ht-date {
-    font-size: 11px;
-    color: #6b7280;
-    margin-top: 2px;
-    line-height: 1.2;
-}
-
-.ht-line {
-    flex: 1;
-    height: 2px;
-    background: #d1d5db;
-    margin-top: 16px;
-    min-width: 50px;
-}
-
-/* Fila contenedora del historial desplegado */
-tr[id^="history-row-"] {
-    background-color: #fffdf5 !important;
-}
-
-tr[id^="history-row-"] td {
-    border-bottom: 2px solid #e5e7eb;
-}
-
-/* =========================================
-   2. TABLA (Filas, Colores y Hover)
-   ========================================= */
-
-/* Filas alternas (Zebra) - Saltamos de 4 en 4 porque cada equipo tiene 2 filas (visible + oculta) */
-#historico-table-body tr[id^="row-"]:nth-child(4n+1) {
-    background-color: #ffffff;
-}
-
-#historico-table-body tr[id^="row-"]:nth-child(4n+3) {
-    background-color: #f0f0f0;
-}
-
-/* Efecto hover al pasar el ratón por la fila */
-#historico-table-body tr[id^="row-"]:hover {
-    background-color: #f3f4f6 !important; 
-    transition: background-color 0.2s ease;
-}
-
-/* Color del texto de la ubicación (Verde) */
-#historico-table-body .eq-location {
-    color: #1a6a0a !important;
-    font-weight: 600;
-}
-
-#historico-table-body .eq-location i {
-    color: #1a6a0a !important;
-}
-
-#historico-table-body .eq-location:hover {
-    text-decoration: underline;
-}
-
-/* =========================================
-   3. BOTÓN "VER HISTORIAL"
-   ========================================= */
 .eq-btn-history {
-    /* El clic lo recibe la fila, no el botón */
-    pointer-events: none; 
+    pointer-events: auto !important; 
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background-color: #f69f3d;
-    color: rgb(255, 255, 255);
-    border: 1px solid #f69f3d;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-/* Cuando pasas el ratón por la fila, el botón se ilumina */
-#historico-table-body tr[id^="row-"]:hover .eq-btn-history {
-    background-color: #d17000;
-    color: white;
-    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-    transform: translateY(-1px);
-}
-
-/* =========================================
-   4. RESALTADO (Highlight 5 segundos)
-   ========================================= */
-.row-highlight {
-    background-color: #fef08a !important; /* Amarillo suave */
-    transition: background-color 1s ease;
-}
-
-.row-highlight td {
-    border-bottom: 1px solid #fde047 !important;
-}
-
-/* =========================================
-   FIX SEARCH BAR CLEAR (X) BUTTON
-   ========================================= */
-
-/* 1. Force the search box to be the reference point */
-.eq-search-box {
-    position: relative !important; 
-}
-
-/* 2. Force the X button to stay inside on the right */
-.search-clear-btn {
-    position: absolute !important;
-    right: 12px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    
-    width: 24px !important;
-    height: 24px !important;
-    border-radius: 50% !important;
-    background-color: #e5e7eb !important;
-    
-    display: none; 
-    align-items: center !important;
-    justify-content: center !important;
-    
+    justify-content: center;
+    gap: 6px;
+    background-color: #f69f3d !important;
+    color: white !important;
     border: none !important;
-    color: #6b7280 !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
     font-size: 12px !important;
-    cursor: pointer !important;
-    z-index: 10 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-.search-clear-btn.visible {
-    display: flex !important; 
-}
+#historico-table-body tr[id^="row-"]:hover .eq-btn-history { background-color: #d17000 !important; }
 
-.search-clear-btn:hover {
-    background-color: #d1d5db !important;
-    color: #000000 !important;
+.row-highlight { background-color: #fef08a !important; transition: background-color 1s ease; }
+.row-highlight td { border-bottom: 1px solid #fde047 !important; }
+
+/* =========================================
+   HISTORIAL: DISEÑO MÓVIL (BALANCEADO Y ARREGLADO)
+   ========================================= */
+
+@media (max-width: 850px) {
+    .eq-stats-bar { display: none !important; }
+
+    /* 1. CATEGORÍAS */
+    .eq-tabs-container { background: transparent !important; border: none !important; margin-bottom: 20px !important; }
+    .eq-tabs { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px !important; width: 100% !important; padding: 0 !important; }
+    .eq-tab { border: 1px solid #e5e7eb !important; border-radius: 8px !important; background: #ffffff !important; padding: 12px 0 !important; text-align: center !important; font-size: 13px !important; color: #111827 !important; font-weight: 600 !important; }
+    .eq-tab[data-category=""], .eq-tab[data-category="OTROS"] { grid-column: span 2 !important; }
+    .eq-tab.active { background: #0b1b42 !important; color: #ffffff !important; border-color: #0b1b42 !important; }
+    .eq-tab.active::after { display: none !important; }
+
+    /* 2. TABLA (CON ESPACIADO BALANCEADO) */
+    .eq-table-container { overflow-x: hidden !important; width: 100% !important; }
+    #tabla-historico { min-width: 100% !important; width: 100% !important; table-layout: fixed !important; }
+    
+    /* Ocultar ID */
+    #tabla-historico th:nth-child(1), #tabla-historico td:nth-child(1) { display: none !important; }
+    
+    /* Forzar columnas y darles padding para que no toquen los bordes */
+    #tabla-historico th:nth-child(2), #tabla-historico td:nth-child(2) { display: table-cell !important; width: 42% !important; padding: 12px 6px !important; font-size: 13px !important; }
+    #tabla-historico th:nth-child(3), #tabla-historico td:nth-child(3) { display: table-cell !important; width: 33% !important; padding: 12px 6px !important; font-size: 13px !important; }
+    #tabla-historico th:nth-child(4), #tabla-historico td:nth-child(4) { display: table-cell !important; width: 25% !important; padding: 12px 10px 12px 6px !important; text-align: right !important; } 
+
+    #tabla-historico tr[id^="history-row-"] td { display: table-cell !important; }
+
+    /* Botón más grande para que sea fácil de tocar */
+    #tabla-historico .eq-btn-history {
+        width: 100% !important; 
+        min-height: 32px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 4px !important;
+        font-size: 12px !important;
+        touch-action: manipulation !important;
+    }
+
+    /* 3. TIMELINE VERTICAL */
+    .horizontal-timeline { display: flex !important; flex-direction: column !important; padding: 10px 0 10px 15px !important; border-left: 2px solid #e5e7eb !important; margin-left: 15px !important; gap: 20px !important; overflow: visible !important; }
+    .ht-node { position: relative !important; display: flex !important; flex-direction: column !important; align-items: flex-start !important; text-align: left !important; padding-left: 15px !important; }
+    .ht-icon { position: absolute !important; left: -33px !important; top: 0 !important; width: 32px !important; height: 32px !important; background: #ffffff !important; border: 2px solid #e5e7eb !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 2; }
+    .ht-icon.current { border-color: #178427 !important; color: #1fa934 !important; }
+    .ht-line { display: none !important; }
+    .ht-content { display: flex; flex-direction: column; }
+    .ht-location { font-weight: 600 !important; font-size: 14px !important; color: #111827 !important; margin-top: 0 !important; }
+    .ht-date { font-size: 12px !important; color: #6b7280 !important; margin-top: 2px !important; }
 }
