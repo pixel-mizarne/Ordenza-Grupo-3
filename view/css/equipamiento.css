@@ -882,6 +882,7 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 .eq-category-browser[hidden],
 #eq-admin-controls[hidden],
 #eq-admin-tabs[hidden],
+#eq-admin-summary[hidden],
 #eq-user-results-header[hidden],
 #eq-table-section[hidden] {
     display: none !important;
