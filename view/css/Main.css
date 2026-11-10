@@ -156,7 +156,7 @@ body {
 
 .notification-toggle.is-current {
     border-radius: 50%;
-    background: #051BFF;
+    background: #0b1b42;
 }
 .notification-toggle.is-current .bell {
     color: white;
@@ -634,7 +634,8 @@ body.colorblind-mode #popupEliminar #btnCancelarEliminar {
 body.colorblind-mode .ubi-boton-editar,
 body.colorblind-mode .btnEditar,
 body.colorblind-mode .eq-btn-edit,
-body.colorblind-mode .eq-btn-history {
+body.colorblind-mode .eq-btn-history,
+body.colorblind-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
     background-color: #FFCB00 !important;
     color: #000000 !important;
     border: 2px solid #000000 !important;
@@ -650,7 +651,8 @@ body.colorblind-mode .eq-btn-cancelar,
 body.colorblind-mode .eq-btn-cancel,
 body.colorblind-mode .ubi-btn-cancelar,
 body.colorblind-mode .btn-cancelar,
-body.colorblind-mode .eq-btn-secondary {
+body.colorblind-mode .eq-btn-secondary,
+body.colorblind-mode .notificaciones-lista__boton-accion--eliminar {
     background-color: #872200 !important;
     color: #FFFFFF !important;
     border: 2px solid #000000 !important;
@@ -1061,11 +1063,47 @@ body.dark-mode .menu-separator { border-top: 1px solid rgba(0, 240, 255, 0.2) !i
 body.dark-mode .eq-btn-primary, body.dark-mode .eq-select, body.dark-mode .ubi-boton-añadir, body.dark-mode .usu-boton-añadir, body.dark-mode .ubi-btn-guardar, body.dark-mode .btn-aceptar, body.dark-mode .notificaciones-lista__accion, body.dark-mode .eq-btn-guardar, body.dark-mode .perfil-btn-cerrar { background: rgba(0, 240, 255, 0.1) !important; color: #00f0ff !important; border: 1px solid #00f0ff !important; backdrop-filter: blur(8px) !important; transition: all 0.3s ease; text-shadow: 0 0 5px rgba(0, 240, 255, 0.5); }
 body.dark-mode .eq-btn-primary:hover, body.dark-mode .perfil-btn-cerrar:hover, body.dark-mode .ubi-btn-guardar:hover { background: rgba(0, 240, 255, 0.3) !important; box-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important; color: #ffffff !important; }
 
-body.dark-mode .ubi-boton-editar, body.dark-mode .btnEditar, body.dark-mode .eq-btn-edit, body.dark-mode .eq-btn-history, body.dark-mode .eq-btn-save { background: rgba(0, 240, 255, 0.15) !important; color: #00f0ff !important; border: 1px solid rgba(0, 240, 255, 0.5) !important; transition: 0.3s; }
-body.dark-mode .ubi-boton-editar:hover, body.dark-mode .eq-btn-edit:hover, body.dark-mode .eq-btn-history:hover { background: #00f0ff !important; color: #050505 !important; box-shadow: 0 0 15px #00f0ff !important; }
+/* 6. BOTONES DE ACCIÓN (Editar y Eliminar) */
+body.dark-mode .ubi-boton-editar,
+body.dark-mode .btnEditar,
+body.dark-mode .eq-btn-edit,
+body.dark-mode .eq-btn-history,
+body.dark-mode .eq-btn-save,
+body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
+    background-color: #2f2f2f !important;
+    color: #ffffff !important;
+    border: 1px solid #4c4c4c !important;
+    transition: 0.2s;
+}
+body.dark-mode .ubi-boton-editar:hover,
+body.dark-mode .eq-btn-edit:hover,
+body.dark-mode .eq-btn-history:hover,
+body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar):hover {
+    background-color: #9ec5ab !important;
+    color: #011502 !important;
+}
 
-body.dark-mode .ubi-boton-eliminar, body.dark-mode .btnEliminar, body.dark-mode .eq-btn-delete, body.dark-mode .ubi-btn-peligro, body.dark-mode .btn-eliminar-confirmar, body.dark-mode .eq-btn-cancel, body.dark-mode .eq-btn-cancelar, body.dark-mode .ubi-btn-cancelar, body.dark-mode .btn-cancelar, body.dark-mode .eq-btn-secondary { background: rgba(255, 0, 85, 0.1) !important; color: #ff0055 !important; border: 1px solid rgba(255, 0, 85, 0.5) !important; }
-body.dark-mode .ubi-boton-eliminar:hover, body.dark-mode .eq-btn-delete:hover, body.dark-mode .btn-eliminar-confirmar:hover { background: #ff0055 !important; color: #ffffff !important; box-shadow: 0 0 15px #ff0055 !important; }
+body.dark-mode .ubi-boton-eliminar,
+body.dark-mode .btnEliminar,
+body.dark-mode .eq-btn-delete,
+body.dark-mode .ubi-btn-peligro,
+body.dark-mode .btn-eliminar-confirmar,
+body.dark-mode .eq-btn-cancel,
+body.dark-mode .eq-btn-cancelar,
+body.dark-mode .ubi-btn-cancelar,
+body.dark-mode .btn-cancelar,
+body.dark-mode .eq-btn-secondary,
+body.dark-mode .notificaciones-lista__boton-accion--eliminar {
+    background-color: #1b241f !important;
+    color: #FFFFFF !important;
+    border: none !important;
+}
+body.dark-mode .ubi-boton-eliminar:hover,
+body.dark-mode .eq-btn-delete:hover,
+body.dark-mode .btn-eliminar-confirmar:hover,
+body.dark-mode .notificaciones-lista__boton-accion--eliminar:hover {
+    background-color: #b91c1c !important;
+}
 
 body.dark-mode input, body.dark-mode select, body.dark-mode textarea, body.dark-mode .eq-search-box, body.dark-mode .ubi-buscador, body.dark-mode .usu-buscador { background: rgba(0, 0, 0, 0.5) !important; color: #ffffff !important; border: 1px solid rgba(0, 240, 255, 0.2) !important; backdrop-filter: blur(4px) !important; }
 body.dark-mode .eq-search-box input, body.dark-mode .ubi-buscador input, body.dark-mode .usu-buscador input { background-color: transparent !important; border: none !important; }
