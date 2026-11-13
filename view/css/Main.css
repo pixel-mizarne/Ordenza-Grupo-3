@@ -580,6 +580,35 @@ footer {
     color: #000000 !important;
 }
 
+/* Botones de editar y eliminar con colores de alto contraste */
+body:not(.dark-mode):not(.colorblind-mode) .ubi-boton-editar,
+body:not(.dark-mode):not(.colorblind-mode) .btnEditar,
+body:not(.dark-mode):not(.colorblind-mode) .eq-btn-edit {
+    background-color: #1d4ed8 !important;
+    color: #ffffff !important;
+    border: 2px solid #1e3a8a !important;
+}
+
+body:not(.dark-mode):not(.colorblind-mode) .ubi-boton-editar:hover,
+body:not(.dark-mode):not(.colorblind-mode) .btnEditar:hover,
+body:not(.dark-mode):not(.colorblind-mode) .eq-btn-edit:hover {
+    background-color: #1e40af !important;
+}
+
+body:not(.dark-mode):not(.colorblind-mode) .ubi-boton-eliminar,
+body:not(.dark-mode):not(.colorblind-mode) .btnEliminar,
+body:not(.dark-mode):not(.colorblind-mode) .eq-btn-delete {
+    background-color: #b91c1c !important;
+    color: #ffffff !important;
+    border: 2px solid #7f1d1d !important;
+}
+
+body:not(.dark-mode):not(.colorblind-mode) .ubi-boton-eliminar:hover,
+body:not(.dark-mode):not(.colorblind-mode) .btnEliminar:hover,
+body:not(.dark-mode):not(.colorblind-mode) .eq-btn-delete:hover {
+    background-color: #991b1b !important;
+}
+
 /* =========================================
    MODO DALTONISMO
    ========================================= */
@@ -734,12 +763,6 @@ body.colorblind-mode .desplegable-planta,
 body.colorblind-mode .tarjeta-usu, 
 body.colorblind-mode .notificaciones-lista__tabla table { 
     border: 2px solid #000000 !important; 
-}
-
-body.colorblind-mode .notificacion-leida, 
-body.colorblind-mode .notificacion-no-leida { 
-    background-color: #FFFFFF !important; 
-    border-bottom: 2px solid #000000 !important; 
 }
 
 body.colorblind-mode .ubi-modal-contenido, 
@@ -959,16 +982,10 @@ body.colorblind-mode .eq-badge {
 }
 
 /* 8.19 DALTONISMO: Textos grises secundarios (Marrón) */
-body.colorblind-mode .subtitulo-ubi,
-body.colorblind-mode .subtitulo-usu,
-body.colorblind-mode .ubi-estadisticas,
-body.colorblind-mode .ubi-estadisticas i,
 body.colorblind-mode .usu-estadisticas,
 body.colorblind-mode .usu-estadisticas i,
 body.colorblind-mode .estadistica-numero,
 body.colorblind-mode .estadistica-barra,
-body.colorblind-mode .tarjetaInfo p,
-body.colorblind-mode .tarjetaInfo strong,
 body.colorblind-mode .notificaciones-lista__tabla td,
 body.colorblind-mode .notificaciones-admin__campo label,
 body.colorblind-mode .perfil-label,
@@ -982,9 +999,6 @@ body.colorblind-mode .eq-stats-bar,
 body.colorblind-mode .eq-stat,
 body.colorblind-mode .eq-stat i,
 body.colorblind-mode .stat-number,
-body.colorblind-mode .ubi-barra-estadisticas,
-body.colorblind-mode .ubi-estadisticas,
-body.colorblind-mode .ubi-estadisticas i,
 body.colorblind-mode .estadistica-numero,
 body.colorblind-mode .estadistica-barra,
 body.colorblind-mode .usu-barra-estadisticas,
@@ -1046,14 +1060,7 @@ body.colorblind-mode .notificaciones-lista__tabla table {
     border: 2px solid #000000 !important;
 }
 
-/* 8.28 DALTONISMO: Notificaciones (Filas) */
-body.colorblind-mode .notificacion-leida,
-body.colorblind-mode .notificacion-no-leida {
-    background-color: #FFFFFF !important;
-    border-bottom: 2px solid #000000 !important;
-}
-
-body.colorblind-mode .ubi-modal-contenido, 
+body.colorblind-mode .ubi-modal-contenido,
 body.colorblind-mode .popup-contenido, 
 body.colorblind-mode .popup-eliminar-contenido, 
 body.colorblind-mode .perfil-modal-content, 
@@ -1264,16 +1271,10 @@ body.colorblind-mode .eq-badge {
 }
 
 /* 8.19 DALTONISMO: Textos grises secundarios (Marrón) */
-body.colorblind-mode .subtitulo-ubi,
-body.colorblind-mode .subtitulo-usu,
-body.colorblind-mode .ubi-estadisticas,
-body.colorblind-mode .ubi-estadisticas i,
 body.colorblind-mode .usu-estadisticas,
 body.colorblind-mode .usu-estadisticas i,
 body.colorblind-mode .estadistica-numero,
 body.colorblind-mode .estadistica-barra,
-body.colorblind-mode .tarjetaInfo p,
-body.colorblind-mode .tarjetaInfo strong,
 body.colorblind-mode .notificaciones-lista__tabla td,
 body.colorblind-mode .notificaciones-admin__campo label,
 body.colorblind-mode .perfil-label,
@@ -1287,9 +1288,6 @@ body.colorblind-mode .eq-stats-bar,
 body.colorblind-mode .eq-stat,
 body.colorblind-mode .eq-stat i,
 body.colorblind-mode .stat-number,
-body.colorblind-mode .ubi-barra-estadisticas,
-body.colorblind-mode .ubi-estadisticas,
-body.colorblind-mode .ubi-estadisticas i,
 body.colorblind-mode .estadistica-numero,
 body.colorblind-mode .estadistica-barra,
 body.colorblind-mode .usu-barra-estadisticas,
@@ -1351,13 +1349,6 @@ body.colorblind-mode .notificaciones-lista__tabla table {
     border: 2px solid #000000 !important;
 }
 
-/* 8.28 DALTONISMO: Notificaciones (Filas) */
-body.colorblind-mode .notificacion-leida,
-body.colorblind-mode .notificacion-no-leida {
-    background-color: #FFFFFF !important;
-    border-bottom: 2px solid #000000 !important;
-}
-
 body.colorblind-mode .notificaciones-lista__tabla,
 body.colorblind-mode .notificaciones-admin__form,
 body.colorblind-mode .notis-tabs-container {
@@ -1378,8 +1369,7 @@ body.colorblind-mode .notis-tab.active {
 
 body.colorblind-mode .notificaciones-lista tbody tr,
 body.colorblind-mode .notificaciones-lista tbody tr:nth-child(even),
-body.colorblind-mode .notificaciones-lista tbody tr:hover,
-body.colorblind-mode .notificaciones-lista tbody tr.notificacion-no-leida {
+body.colorblind-mode .notificaciones-lista tbody tr:hover {
     border-bottom: 2px solid #000000 !important;
     background-color: #FFFFFF !important;
 }
@@ -1401,10 +1391,6 @@ body.colorblind-mode .notification-menu__message--empty {
 
 body.colorblind-mode .notification-menu__title {
     color: #000000 !important;
-}
-
-body.colorblind-mode .notificaciones-lista__mensaje--error {
-    color: #872200 !important;
 }
 
 /* 8.29 DALTONISMO: Modales y Popups (Fondo blanco, borde negro) */
@@ -1569,8 +1555,6 @@ body.colorblind-mode .nav-tabs a {
 body.colorblind-mode p,
 body.colorblind-mode td,
 body.colorblind-mode .eq-stat,
-body.colorblind-mode .subtitulo-ubi,
-body.colorblind-mode .subtitulo-usu,
 body.colorblind-mode .stat-number {
     font-weight: 500 !important;
 }
@@ -1683,8 +1667,7 @@ body.colorblind-mode .mobile-user-options .toggle-switch.active::after {
 /* =========================================
    9. MODO OSCURO
    ========================================= */
-<<<<<<< HEAD
-/* Usamos tonos tranquilos y botones claros para que se lea todo mejor */
+/* Tema oscuro neutro con acentos de alto contraste */
 body.dark-mode {
     --oscuro-fondo: #202124;
     --oscuro-superficie: #292a2d;
@@ -1693,7 +1676,6 @@ body.dark-mode {
     --oscuro-texto: #e8eaed;
     --oscuro-texto-suave: #bdc1c6;
     --oscuro-acento: #8ab4f8;
-    --oscuro-error: #f28b82;
     background: var(--oscuro-fondo) !important;
     background-image: none !important;
     color: var(--oscuro-texto) !important;
@@ -1814,114 +1796,6 @@ body.dark-mode .ubi-btn-cancelar {
     color: var(--oscuro-texto) !important;
     border: 1px solid var(--oscuro-borde) !important;
     text-shadow: none !important;
-=======
-body.dark-mode { 
-    background-color: #050505 !important; 
-    color: #e0e0e0 !important; 
-    background-image: radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05), transparent 30%), radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.05), transparent 30%) !important; 
-    background-attachment: fixed !important; 
-}
-
-body.dark-mode .top-navbar, 
-body.dark-mode footer { 
-    background: rgba(10, 10, 10, 0.7) !important; 
-    backdrop-filter: blur(16px) !important; 
-    -webkit-backdrop-filter: blur(16px) !important; 
-    border-bottom: 1px solid rgba(0, 240, 255, 0.3) !important; 
-    border-top: 1px solid rgba(0, 240, 255, 0.3) !important; 
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important; 
-}
-
-body.dark-mode .login-logo-text { 
-    color: #ffffff !important; 
-    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6) !important; 
-}
-
-body.dark-mode .nav-tabs a { 
-    background: rgba(255, 255, 255, 0.03) !important; 
-    color: #a0a0a0 !important; 
-    border: 1px solid rgba(255, 255, 255, 0.05) !important; 
-    backdrop-filter: blur(4px) !important; 
-}
-
-body.dark-mode .nav-tabs a:hover { 
-    background: rgba(0, 240, 255, 0.1) !important; 
-    color: #00f0ff !important; 
-    border-color: rgba(0, 240, 255, 0.3) !important; 
-}
-
-body.dark-mode .nav-tabs a.active { 
-    background: rgba(0, 240, 255, 0.15) !important; 
-    color: #00f0ff !important; 
-    border: 1px solid #00f0ff !important; 
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important; 
-}
-
-body.dark-mode .admin-dropdown { 
-    background: rgba(20, 20, 20, 0.6) !important; 
-    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
-    backdrop-filter: blur(8px) !important; 
-    color: #ffffff !important; 
-}
-
-body.dark-mode .admin-dropdown:hover { 
-    border-color: #00f0ff !important; 
-}
-
-body.dark-mode .user-avatar { 
-    background: rgba(0, 240, 255, 0.2) !important; 
-    color: #00f0ff !important; 
-    border: 1px solid #00f0ff !important; 
-}
-
-body.dark-mode .dropdown-menu { 
-    background: rgba(10, 10, 10, 0.9) !important; 
-    backdrop-filter: blur(20px) !important; 
-    border: 1px solid rgba(0, 240, 255, 0.4) !important; 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important; 
-}
-
-body.dark-mode .menu-option-perfil, 
-body.dark-mode .menu-option-daltonismo, 
-body.dark-mode .menu-option-salir { 
-    color: #e0e0e0 !important; 
-}
-
-body.dark-mode .menu-option-perfil:hover, 
-body.dark-mode .menu-option-daltonismo:hover, 
-body.dark-mode .menu-option-salir:hover { 
-    background-color: rgba(0, 240, 255, 0.1) !important; 
-    color: #00f0ff !important; 
-}
-
-body.dark-mode .menu-separator { 
-    border-top: 1px solid rgba(0, 240, 255, 0.2) !important; 
-}
-
-body.dark-mode .eq-btn-primary, 
-body.dark-mode .eq-select, 
-body.dark-mode .ubi-boton-añadir, 
-body.dark-mode .usu-boton-añadir, 
-body.dark-mode .ubi-btn-guardar, 
-body.dark-mode .btn-aceptar, 
-body.dark-mode .notificaciones-lista__accion, 
-body.dark-mode .eq-btn-guardar, 
-body.dark-mode .perfil-btn-cerrar { 
-    background: rgba(0, 240, 255, 0.1) !important; 
-    color: #00f0ff !important; 
-    border: 1px solid #00f0ff !important; 
-    backdrop-filter: blur(8px) !important; 
-    transition: all 0.3s ease; 
-    text-shadow: 0 0 5px rgba(0, 240, 255, 0.5); 
-}
-
-body.dark-mode .eq-btn-primary:hover, 
-body.dark-mode .perfil-btn-cerrar:hover, 
-body.dark-mode .ubi-btn-guardar:hover { 
-    background: rgba(0, 240, 255, 0.3) !important; 
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important; 
-    color: #ffffff !important; 
->>>>>>> main
 }
 
 body.dark-mode .ubi-boton-editar,
@@ -1930,11 +1804,12 @@ body.dark-mode .eq-btn-edit,
 body.dark-mode .eq-btn-history,
 body.dark-mode .eq-btn-save,
 body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
-    background: #3c4043 !important;
-    color: var(--oscuro-acento) !important;
-    border: 1px solid var(--oscuro-borde) !important;
+    background: #1d4ed8 !important;
+    color: #ffffff !important;
+    border: 2px solid #1e3a8a !important;
     box-shadow: none !important;
 }
+
 
 body.dark-mode .ubi-boton-editar:hover,
 body.dark-mode .btnEditar:hover,
@@ -1942,8 +1817,7 @@ body.dark-mode .eq-btn-edit:hover,
 body.dark-mode .eq-btn-history:hover,
 body.dark-mode .eq-btn-save:hover,
 body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar):hover {
-    background: var(--oscuro-superficie-hover) !important;
-    color: var(--oscuro-texto) !important;
+    background: #1e40af !important;
 }
 
 body.dark-mode .ubi-boton-eliminar,
@@ -1952,9 +1826,9 @@ body.dark-mode .eq-btn-delete,
 body.dark-mode .ubi-btn-peligro,
 body.dark-mode .btn-eliminar-confirmar,
 body.dark-mode .notificaciones-lista__boton-accion--eliminar {
-    background: #3c2929 !important;
-    color: var(--oscuro-error) !important;
-    border: 1px solid #8c4a46 !important;
+    background: #b91c1c !important;
+    color: #ffffff !important;
+    border: 2px solid #7f1d1d !important;
     box-shadow: none !important;
 }
 
@@ -1963,11 +1837,9 @@ body.dark-mode .btnEliminar:hover,
 body.dark-mode .eq-btn-delete:hover,
 body.dark-mode .btn-eliminar-confirmar:hover,
 body.dark-mode .notificaciones-lista__boton-accion--eliminar:hover {
-    background: #5c3331 !important;
-    color: #f8c7c3 !important;
+    background-color: #991b1b !important;
 }
 
-<<<<<<< HEAD
 body.dark-mode input,
 body.dark-mode select,
 body.dark-mode textarea,
@@ -2142,266 +2014,6 @@ body.dark-mode .tarjeta-info p {
     color: var(--oscuro-texto) !important;
 }
 
-body.dark-mode .notification-menu__title {
-    border-bottom-color: var(--oscuro-borde) !important;
-=======
-body.dark-mode .ubi-boton-editar, 
-body.dark-mode .btnEditar, 
-body.dark-mode .eq-btn-edit, 
-body.dark-mode .eq-btn-history, 
-body.dark-mode .eq-btn-save { 
-    background: rgba(0, 240, 255, 0.15) !important; 
-    color: #00f0ff !important; 
-    border: 1px solid rgba(0, 240, 255, 0.5) !important; 
-    transition: 0.3s; 
-}
-
-body.dark-mode .ubi-boton-editar:hover, 
-body.dark-mode .eq-btn-edit:hover, 
-body.dark-mode .eq-btn-history:hover { 
-    background: #00f0ff !important; 
-    color: #050505 !important; 
-    box-shadow: 0 0 15px #00f0ff !important; 
-}
-
-body.dark-mode .ubi-boton-eliminar, 
-body.dark-mode .btnEliminar, 
-body.dark-mode .eq-btn-delete, 
-body.dark-mode .ubi-btn-peligro, 
-body.dark-mode .btn-eliminar-confirmar, 
-body.dark-mode .eq-btn-cancel, 
-body.dark-mode .eq-btn-cancelar, 
-body.dark-mode .ubi-btn-cancelar, 
-body.dark-mode .btn-cancelar, 
-body.dark-mode .eq-btn-secondary { 
-    background: rgba(255, 0, 85, 0.1) !important; 
-    color: #ff0055 !important; 
-    border: 1px solid rgba(255, 0, 85, 0.5) !important; 
-}
-
-body.dark-mode .ubi-boton-eliminar:hover, 
-body.dark-mode .eq-btn-delete:hover, 
-body.dark-mode .btn-eliminar-confirmar:hover { 
-    background: #ff0055 !important; 
-    color: #ffffff !important; 
-    box-shadow: 0 0 15px #ff0055 !important; 
-}
-
-body.dark-mode input, 
-body.dark-mode select, 
-body.dark-mode textarea, 
-body.dark-mode .eq-search-box, 
-body.dark-mode .ubi-buscador, 
-body.dark-mode .usu-buscador { 
-    background: rgba(0, 0, 0, 0.5) !important; 
-    color: #ffffff !important; 
-    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
-    backdrop-filter: blur(4px) !important; 
-}
-
-body.dark-mode .eq-search-box input, 
-body.dark-mode .ubi-buscador input, 
-body.dark-mode .usu-buscador input { 
-    background-color: transparent !important; 
-    border: none !important; 
-}
-
-body.dark-mode input:focus { 
-    border-color: #00f0ff !important; 
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3) !important; 
-    outline: none !important; 
-}
-
-body.dark-mode input::placeholder { 
-    color: #6b7280 !important; 
-}
-
-body.dark-mode .search-clear-btn { 
-    background: rgba(0, 240, 255, 0.2) !important; 
-    color: #00f0ff !important; 
-}
-
-body.dark-mode .search-clear-btn:hover { 
-    background: #00f0ff !important; 
-    color: #050505 !important; 
-}
-
-body.dark-mode h1, 
-body.dark-mode h2, 
-body.dark-mode h3, 
-body.dark-mode .eq-title, 
-body.dark-mode .titulo-ubi, 
-body.dark-mode .titulo-usu, 
-body.dark-mode .stat-number { 
-    color: #ffffff !important; 
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important; 
-}
-
-body.dark-mode .eq-stats-bar, 
-body.dark-mode .eq-stat { 
-    color: #a0a0a0 !important; 
-}
-
-body.dark-mode .eq-table-container { 
-    background: rgba(10, 10, 10, 0.4) !important; 
-    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
-    backdrop-filter: blur(12px) !important; 
-    border-radius: 12px !important; 
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important; 
-}
-
-body.dark-mode .eq-table th, 
-body.dark-mode .notificaciones-lista__tabla th { 
-    background: rgba(0, 240, 255, 0.1) !important; 
-    color: #00f0ff !important; 
-    border: none !important; 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-}
-
-body.dark-mode .eq-table td, 
-body.dark-mode .notificaciones-lista__tabla td { 
-    border-bottom: 1px solid rgba(0, 240, 255, 0.05) !important; 
-    color: #e0e0e0 !important; 
-}
-
-body.dark-mode #eq-table-body tr:nth-child(even), 
-body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+3) { 
-    background-color: rgba(0, 240, 255, 0.03) !important; 
-}
-
-body.dark-mode #eq-table-body tr:nth-child(odd), 
-body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+1) { 
-    background-color: transparent !important; 
-}
-
-body.dark-mode .eq-item-icon, 
-body.dark-mode .eq-location i, 
-body.dark-mode .eq-location-link i { 
-    color: #00f0ff !important; 
-    filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.5)); 
-}
-
-body.dark-mode .eq-location, 
-body.dark-mode .eq-location-link { 
-    color: #00f0ff !important; 
-}
-
-body.dark-mode .inline-edit:disabled { 
-    color: #ffffff !important; 
-    background-color: transparent !important; 
-    border: none !important; 
-}
-
-body.dark-mode .inline-edit:not(:disabled) { 
-    color: #ffffff !important; 
-    background-color: rgba(0, 0, 0, 0.6) !important; 
-    border: 1px solid #00f0ff !important; 
-    box-shadow: inset 0 0 5px rgba(0, 240, 255, 0.2) !important; 
-}
-
-body.dark-mode .desc-truncate { 
-    color: #a0a0a0 !important; 
-}
-
-body.dark-mode .desc-truncate:hover { 
-    color: #00f0ff !important; 
-    text-shadow: 0 0 8px rgba(0, 240, 255, 0.5); 
-}
-
-body.dark-mode .eq-tabs-container { 
-    background: rgba(10, 10, 10, 0.5) !important; 
-    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
-    backdrop-filter: blur(8px) !important; 
-}
-
-body.dark-mode .eq-tab { 
-    background-color: transparent !important; 
-    color: #a0a0a0 !important; 
-    border-right: 1px solid rgba(0, 240, 255, 0.1) !important; 
-}
-
-body.dark-mode .eq-tab.active { 
-    background: rgba(0, 240, 255, 0.15) !important; 
-    color: #00f0ff !important; 
-}
-
-body.dark-mode .eq-tab.active::after { 
-    border-color: rgba(0, 240, 255, 0.15) transparent transparent transparent !important; 
-}
-
-body.dark-mode .eq-badge { 
-    background: rgba(0, 240, 255, 0.1) !important; 
-    color: #00f0ff !important; 
-    border: 1px solid rgba(0, 240, 255, 0.3) !important; 
-}
-
-body.dark-mode .eq-modal-content, 
-body.dark-mode .perfil-modal-content, 
-body.dark-mode .ubi-modal-contenido, 
-body.dark-mode .popup-contenido, 
-body.dark-mode .popup-eliminar-contenido, 
-body.dark-mode .tarjeta-usu, 
-body.dark-mode .desplegable-planta { 
-    background: rgba(15, 15, 15, 0.7) !important; 
-    color: #ffffff !important; 
-    border: 1px solid rgba(0, 240, 255, 0.3) !important; 
-    backdrop-filter: blur(20px) !important; 
-    -webkit-backdrop-filter: blur(20px) !important; 
-    box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1) !important; 
-    border-radius: 16px !important; 
-}
-
-body.dark-mode .perfil-header { 
-    background: rgba(0, 0, 0, 0.3) !important; 
-    border-bottom: 1px solid rgba(0, 240, 255, 0.2) !important; 
-}
-
-body.dark-mode .perfil-row { 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; 
-}
-
-body.dark-mode .perfil-label { 
-    color: #a0a0a0 !important; 
-}
-
-body.dark-mode .perfil-avatar-icon { 
-    background: rgba(0, 240, 255, 0.1) !important; 
-    border: 2px solid #00f0ff !important; 
-    color: #00f0ff !important; 
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important; 
-}
-
-body.dark-mode .tarjeta-usu:hover { 
-    border-color: #00f0ff !important; 
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2) !important; 
-}
-
-body.dark-mode .tarjeta-info p { 
-    color: #a0a0a0 !important; 
-}
-
-body.dark-mode .tarjeta-info strong { 
-    color: #00f0ff !important; 
-}
-
-body.dark-mode .notification-menu { 
-    background: rgba(10, 10, 10, 0.9) !important; 
-    border: 1px solid rgba(0, 240, 255, 0.3) !important; 
-}
-
-body.dark-mode .notification-menu__title, 
-body.dark-mode .notification-menu__item h3 { 
-    color: #00f0ff !important; 
-    border-bottom-color: rgba(0, 240, 255, 0.2) !important; 
-}
-
-body.dark-mode .notification-menu__item p, 
-body.dark-mode .notification-menu__date { 
-    color: #a0a0a0 !important; 
->>>>>>> main
-}
-
 /* =========================================
    RESPONSIVE
    ========================================= */
@@ -2556,35 +2168,28 @@ body.dark-mode .notification-menu__date {
         border-left: 4px solid #0b1b42;
     }
 
-<<<<<<< HEAD
-    body.dark-mode .mobile-drawer { background: #292a2d !important; border-left: 1px solid #5f6368 !important; }
-    body.dark-mode .mobile-drawer-header { border-bottom: 1px solid #5f6368; color: #e8eaed; }
-    body.dark-mode .mobile-nav-links a { color: #bdc1c6; }
-    body.dark-mode .mobile-nav-links a.active { background: #3c4043 !important; color: #8ab4f8 !important; border-left-color: #8ab4f8 !important; }
-    body.dark-mode .mobile-menu-btn { color: #e8eaed; }
-=======
-    body.dark-mode .mobile-drawer { 
-        background: rgba(20, 20, 20, 0.98); 
-        border-left: 1px solid rgba(0, 240, 255, 0.2); 
+    body.dark-mode .mobile-drawer {
+        background: var(--oscuro-superficie);
+        border-left: 1px solid var(--oscuro-borde);
     }
-    
-    body.dark-mode .mobile-drawer-header { 
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-        color: #ffffff; 
+
+    body.dark-mode .mobile-drawer-header {
+        border-bottom: 1px solid var(--oscuro-borde);
+        color: var(--oscuro-texto);
     }
-    
-    body.dark-mode .mobile-nav-links a { 
-        color: #e0e0e0; 
+
+    body.dark-mode .mobile-nav-links a {
+        color: var(--oscuro-texto-suave);
     }
-    
-    body.dark-mode .mobile-nav-links a.active { 
-        background: rgba(0, 240, 255, 0.1); 
-        color: #00f0ff; 
-        border-left-color: #00f0ff; 
+
+    body.dark-mode .mobile-nav-links a.active {
+        background: #3c4043 !important;
+        color: var(--oscuro-acento) !important;
+        border-left-color: var(--oscuro-acento) !important;
     }
-    
-    body.dark-mode .mobile-menu-btn { 
-        color: #ffffff; 
+
+    body.dark-mode .mobile-menu-btn {
+        color: var(--oscuro-texto);
     }
 }
 /* =========================================
@@ -2623,5 +2228,4 @@ body.scrolled .login-logo-text {
     max-width: 0 !important;
     opacity: 0;
     margin-left: 0 !important;
->>>>>>> main
 }
