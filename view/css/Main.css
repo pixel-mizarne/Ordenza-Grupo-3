@@ -624,6 +624,12 @@ body.colorblind-mode .notification-toggle i {
     font-weight: 900 !important; 
 }
 
+body.colorblind-mode .notification-toggle.is-current .bell, 
+body.colorblind-mode .notification-toggle.is-current i { 
+    color: #FFFFFF !important; 
+    -webkit-text-stroke: 0; 
+}
+
 body.colorblind-mode input, 
 body.colorblind-mode select, 
 body.colorblind-mode textarea, 
@@ -734,6 +740,317 @@ body.colorblind-mode .notificacion-leida,
 body.colorblind-mode .notificacion-no-leida { 
     background-color: #FFFFFF !important; 
     border-bottom: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .ubi-modal-contenido, 
+body.colorblind-mode .popup-contenido, 
+body.colorblind-mode .popup-eliminar-contenido, 
+body.colorblind-mode .perfil-modal-content, 
+body.colorblind-mode .eq-modal-content { 
+    background-color: #FFFFFF !important; 
+    border: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode footer { 
+    background-color: #FFCB00 !important; 
+    color: #000000 !important; 
+    border-top: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .perfil-header { 
+    background-color: #FFFFFF !important; 
+    border-bottom: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .perfil-row { 
+    border-bottom: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .perfil-avatar-icon { 
+    background-color: #FFCB00 !important; 
+    color: #000000 !important; 
+    border: 2px solid #000000 !important; 
+    box-shadow: none !important; 
+}
+
+body.colorblind-mode .perfil-header h3, 
+body.colorblind-mode .perfil-subtitle, 
+body.colorblind-mode .perfil-value, 
+body.colorblind-mode #perfil-rol { 
+    color: #000000 !important; 
+    font-weight: 700 !important; 
+    opacity: 1 !important; 
+}
+
+body.colorblind-mode .perfil-label, 
+body.colorblind-mode .perfil-label i { 
+    color: #872200 !important; 
+    font-weight: 700 !important; 
+}
+
+body.colorblind-mode .search-clear-btn { 
+    background-color: #000000 !important; 
+    color: #FFFFFF !important; 
+}
+
+body.colorblind-mode .search-clear-btn:hover { 
+    background-color: #872200 !important; 
+}
+
+/* 1. BODY */
+body.colorblind-mode {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    font-weight: 500 !important;
+}
+
+/* --- 2. NAVBAR --- */
+body.colorblind-mode .top-navbar {
+    background-color: #FFCB00 !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+/* 8.3 DALTONISMO: Botones del menú (Marrón) */
+body.colorblind-mode .nav-tabs a {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.4 DALTONISMO: Botón activo/hover del menú (Azul) */
+body.colorblind-mode .nav-tabs a.active,
+body.colorblind-mode .nav-tabs a:hover {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+}
+
+/* 8.5 DALTONISMO: Texto del logo (Negro) */
+body.colorblind-mode .login-logo-text {
+    color: #000000 !important;
+}
+
+/* 8.6 DALTONISMO: Botón del perfil (Marrón) */
+body.colorblind-mode .admin-dropdown {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+}
+
+/* 8.7 DALTONISMO: Icono de la campana (Negro grueso) */
+body.colorblind-mode .notification-toggle .bell,
+body.colorblind-mode .notification-toggle i {
+    color: #000000 !important;
+    -webkit-text-stroke: 1.5px #000000;
+    font-weight: 900 !important;
+}
+
+body.colorblind-mode .notification-toggle.is-current .bell,
+body.colorblind-mode .notification-toggle.is-current i {
+    color: #FFFFFF !important;
+    -webkit-text-stroke: 0;
+}
+
+/* --- 3. FORMULARIOS Y BOTONES GENERALES --- */
+
+/* 8.8 DALTONISMO: Inputs y cajas de búsqueda (Borde negro grueso) */
+body.colorblind-mode input,
+body.colorblind-mode select,
+body.colorblind-mode textarea,
+body.colorblind-mode .eq-search-box,
+body.colorblind-mode .ubi-buscador,
+body.colorblind-mode .usu-buscador {
+    border: 2px solid #000000 !important;
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+}
+
+/* 8.9 DALTONISMO: Botones principales (Azul) */
+body.colorblind-mode .eq-btn-primary,
+body.colorblind-mode .ubi-boton-añadir,
+body.colorblind-mode .usu-boton-añadir,
+body.colorblind-mode .ubi-btn-guardar,
+body.colorblind-mode .btn-aceptar,
+body.colorblind-mode .notificaciones-lista__accion,
+body.colorblind-mode .notificaciones-admin__acciones input[type="submit"],
+body.colorblind-mode .eq-btn-guardar {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
+body.colorblind-mode #popupEliminar #btnCancelarEliminar {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.10 DALTONISMO: Botones de Editar/Historial (Amarillo) */
+body.colorblind-mode .ubi-boton-editar,
+body.colorblind-mode .btnEditar,
+body.colorblind-mode .eq-btn-edit,
+body.colorblind-mode .eq-btn-history,
+body.colorblind-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
+    background-color: #FFCB00 !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.11 DALTONISMO: Botones de Eliminar/Cancelar (Marrón) */
+body.colorblind-mode .ubi-boton-eliminar,
+body.colorblind-mode .btnEliminar,
+body.colorblind-mode .eq-btn-delete,
+body.colorblind-mode .ubi-btn-peligro,
+body.colorblind-mode .btn-eliminar-confirmar,
+body.colorblind-mode .eq-btn-cancelar,
+body.colorblind-mode .eq-btn-cancel,
+body.colorblind-mode .ubi-btn-cancelar,
+body.colorblind-mode .btn-cancelar,
+body.colorblind-mode .eq-btn-secondary,
+body.colorblind-mode .notificaciones-lista__boton-accion--eliminar {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.12 DALTONISMO: Botón Guardar inline (Azul) */
+body.colorblind-mode .eq-btn-save {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+}
+
+/* --- 9.3. TABLAS Y TEXTOS --- */
+
+/* 8.13 DALTONISMO: Títulos generales (Negro) */
+body.colorblind-mode h1,
+body.colorblind-mode h2,
+body.colorblind-mode h3 {
+    color: #000000 !important;
+}
+
+/* 8.14 DALTONISMO: Cabeceras de tablas (Amarillo) */
+body.colorblind-mode .eq-table th,
+body.colorblind-mode .notificaciones-lista__tabla th {
+    background-color: #FFCB00 !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.15 DALTONISMO: Pestañas (Tabs) de categorías */
+body.colorblind-mode .eq-tab {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.16 DALTONISMO: Pestaña activa (Marrón) */
+body.colorblind-mode .eq-tab.active {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+}
+
+/* 8.17 DALTONISMO: La flechita de la pestaña activa */
+body.colorblind-mode .eq-tab.active::after {
+    border-color: #872200 transparent transparent transparent !important;
+}
+
+/* 8.18 DALTONISMO: Badges de categoría (Marrón) */
+body.colorblind-mode .eq-badge {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+}
+
+/* 8.19 DALTONISMO: Textos grises secundarios (Marrón) */
+body.colorblind-mode .subtitulo-ubi,
+body.colorblind-mode .subtitulo-usu,
+body.colorblind-mode .ubi-estadisticas,
+body.colorblind-mode .ubi-estadisticas i,
+body.colorblind-mode .usu-estadisticas,
+body.colorblind-mode .usu-estadisticas i,
+body.colorblind-mode .estadistica-numero,
+body.colorblind-mode .estadistica-barra,
+body.colorblind-mode .tarjetaInfo p,
+body.colorblind-mode .tarjetaInfo strong,
+body.colorblind-mode .notificaciones-lista__tabla td,
+body.colorblind-mode .notificaciones-admin__campo label,
+body.colorblind-mode .perfil-label,
+body.colorblind-mode .perfil-label i,
+body.colorblind-mode .perfil-value {
+    color: #872200 !important;
+}
+
+/* 8.20 DALTONISMO: Textos de estadísticas (Negro) */
+body.colorblind-mode .eq-stats-bar,
+body.colorblind-mode .eq-stat,
+body.colorblind-mode .eq-stat i,
+body.colorblind-mode .stat-number,
+body.colorblind-mode .ubi-barra-estadisticas,
+body.colorblind-mode .ubi-estadisticas,
+body.colorblind-mode .ubi-estadisticas i,
+body.colorblind-mode .estadistica-numero,
+body.colorblind-mode .estadistica-barra,
+body.colorblind-mode .usu-barra-estadisticas,
+body.colorblind-mode .usu-estadisticas,
+body.colorblind-mode .usu-estadisticas i {
+    color: #000000 !important;
+}
+
+/* --- 9.4. MODALES Y BUSCADORES --- */
+
+/* 8.21 DALTONISMO: Quitar el borde interno de los buscadores */
+body.colorblind-mode .eq-search-box input,
+body.colorblind-mode .ubi-buscador input,
+body.colorblind-mode .usu-buscador input {
+    border: none !important;
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 8.22 DALTONISMO: Poner el borde negro al contenedor del buscador */
+body.colorblind-mode .eq-search-box,
+body.colorblind-mode .ubi-buscador,
+body.colorblind-mode .usu-buscador {
+    border: 2px solid #000000 !important;
+    background-color: #FFFFFF !important;
+}
+
+/* 8.23 DALTONISMO: Placeholder de los buscadores (Negro) */
+body.colorblind-mode .eq-search-box input::placeholder,
+body.colorblind-mode .ubi-buscador input::placeholder,
+body.colorblind-mode .usu-buscador input::placeholder {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+/* 8.24 DALTONISMO: Borde del Select (Equipamientos) */
+body.colorblind-mode .eq-select {
+    border: 2px solid #000000 !important;
+}
+
+/* 8.25 DALTONISMO: Placeholder general (Negro) */
+body.colorblind-mode input::placeholder,
+body.colorblind-mode textarea::placeholder {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+/* 8.26 DALTONISMO: Opciones de los Select (Blanco y Negro) */
+body.colorblind-mode select option {
+    color: #000000 !important;
+    background-color: #FFFFFF !important;
+}
+
+/* 8.27 DALTONISMO: Tarjetas y tablas (Ubicaciones, Usuarios) */
+body.colorblind-mode .desplegable-planta,
+body.colorblind-mode .tarjeta-usu,
+body.colorblind-mode .notificaciones-lista__tabla table {
+    border: 2px solid #000000 !important;
+}
+
+/* 8.28 DALTONISMO: Notificaciones (Filas) */
+body.colorblind-mode .notificacion-leida,
+body.colorblind-mode .notificacion-no-leida {
+    background-color: #FFFFFF !important;
+    border-bottom: 2px solid #000000 !important;
 }
 
 body.colorblind-mode .ubi-modal-contenido, 

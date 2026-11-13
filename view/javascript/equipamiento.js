@@ -8,8 +8,34 @@ let listaUbicaciones = [];
 async function iniciarEquipamientos() {
     const rolUsuario = window.ROL ? window.ROL.toUpperCase() : 'USER';
     const btnCreate = document.getElementById('btn-crear-equipamiento');
-    if (btnCreate) btnCreate.style.display = (rolUsuario === 'ADMIN') ? 'flex' : 'none';
+    const esAdmin = rolUsuario === 'ADMIN';
+    //  MOSTRAMOS EL BUSCADOR PARA TODOS 
+     // CONTROL DEL BUSCADOR
+    const adminControls = document.getElementById('eq-admin-controls');
+    if (adminControls) {
+        // Si es admin, se muestra siempre. Si es user, se oculta al principio (porque ve las categorías).
+        adminControls.hidden = !esAdmin; 
+        
+        // Ocultamos el filtro de ubicación y el botón crear si no es admin
+        const filterSelect = document.querySelector('.eq-select');
+        if (filterSelect) filterSelect.style.display = esAdmin ? 'block' : 'none';
+        if (btnCreate) btnCreate.style.display = esAdmin ? 'flex' : 'none';
+    }
 
+    if (esAdmin) {
+        document.body.classList.add('role-admin');
+        document.body.classList.remove('role-user');
+    } else {
+        document.body.classList.add('role-user');
+        document.body.classList.remove('role-admin');
+    }
+
+    // Separamos la vista
+    currentCategoryFilter = '';
+    document.getElementById('eq-admin-tabs').hidden = !esAdmin;
+    document.getElementById('eq-category-browser').hidden = esAdmin;
+    document.getElementById('eq-table-section').hidden = !esAdmin;
+    if (btnCreate) btnCreate.style.display = (rolUsuario === 'ADMIN') ? 'flex' : 'none';
     // Cargar ubicaciones
     try {
         const resUbi = await fetch('api/UbicacionesAPI.php'); 
@@ -48,12 +74,42 @@ async function iniciarEquipamientos() {
         // Si llegamos aquí, todo está perfecto
         todosLosEquipos = data;
         actualizarEstadisticas();
-        renderizarTabla(); 
+        if (esAdmin) renderizarTabla();
+
+        // Si el historial enlaza a un equipo concreto, abrimos directamente su categoría y lo resaltamos.
+        const idEquipoSolicitado = new URLSearchParams(window.location.search).get('id');
+        const equipoSolicitado = todosLosEquipos.find(e => String(e.id_equipamiento) === idEquipoSolicitado);
+        if (equipoSolicitado) {
+            if (!esAdmin) {
+                const tarjetaCategoria = [...document.querySelectorAll('.eq-category-card')]
+                    .find(tarjeta => tarjeta.dataset.category === equipoSolicitado.categoria);
+                seleccionarCategoria(
+                    equipoSolicitado.categoria,
+                    tarjetaCategoria ? tarjetaCategoria.dataset.label : equipoSolicitado.categoria
+                );
+            }
+            resaltarEquipoDesdeUbicacion(idEquipoSolicitado);
+        }
 
     } catch (err) {
         alert("Error de red al intentar cargar equipos.");
         console.error(err);
     }
+}
+
+// Muestra únicamente los equipos de la categoría elegida y conserva accesible el regreso al selector.
+function seleccionarCategoria(categoria, etiqueta) {
+    currentCategoryFilter = categoria;
+    document.getElementById('eq-category-browser').hidden = true;
+    document.getElementById('eq-user-results-header').hidden = false;
+    document.getElementById('eq-table-section').hidden = false;
+    document.getElementById('eq-selected-category').textContent = etiqueta;
+    document.getElementById('eq-admin-controls').hidden = false; 
+
+    const filterLocation = document.getElementById('filter-location');
+    if (filterLocation) filterLocation.value = '';
+
+    renderizarTabla();
 }
 
 // ==========================================
@@ -100,7 +156,7 @@ function renderizarTabla() {
         } else {
             // Botón Asignar (Conserje)
             const safeUbi = (e.ubicacion || 'Almacén').replace(/'/g, "\\'");
-            btns += `<button class="eq-action-btn" style="background-color: #2563eb; color: white; width: auto; padding: 0 12px; font-size: 13px;" onclick="abrirModalAsignar(${e.id_equipamiento}, '${safeUbi}')"><i class="fa-solid fa-location-dot"></i> Asignar</button>`;
+             btns += `<button class="eq-action-btn btn-asignar-user" onclick="abrirModalAsignar(${e.id_equipamiento}, '${safeUbi}')"><i class="fa-solid fa-location-dot"></i> Asignar</button>`;
         }
         btns += '</div>';
 
@@ -191,7 +247,20 @@ document.addEventListener('submit', async (e) => {
 
             if (res.ok) {
                 cerrarModalAsignar();
-                location.reload(); 
+                const equipo = todosLosEquipos.find(e => e.id_equipamiento == idEquipo);
+                if (equipo) {
+                    // 2. Sacamos el nombre del aula seleccionada del <select>
+                    const select = document.getElementById('asignar-ubicacion-select');
+                    const nuevoNombreUbi = select.options[select.selectedIndex].text;
+                    
+                    // 3. Actualizamos el array
+                    equipo.ubicacion = nuevoNombreUbi;
+                    equipo.id_ubicacion_actual = nuevaUbicacionId;
+                }
+
+                // 4. Volvemos a dibujar la tabla con los nuevos datos
+                renderizarTabla();
+                
             } else {
                 const err = await res.json();
                 alert("Error al guardar: " + (err.error || "Desconocido"));
@@ -403,11 +472,39 @@ if (formCrear) {
     const filterLoc = document.getElementById('filter-location');
     if (filterLoc) filterLoc.addEventListener('change', renderizarTabla);
 
-    document.querySelectorAll('.eq-tab').forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            document.querySelectorAll('.eq-tab').forEach(t => t.classList.remove('active'));
-            e.target.classList.add('active');
-            currentCategoryFilter = e.target.getAttribute('data-category');
+    // Cada tarjeta abre la tabla filtrada; así el inventario completo no aparece al entrar en la vista.
+    document.querySelectorAll('.eq-category-card').forEach(tarjeta => {
+        tarjeta.addEventListener('click', () => {
+            seleccionarCategoria(tarjeta.dataset.category, tarjeta.dataset.label);
+        });
+    });
+
+    // Permite volver a cambiar de categoría sin recargar la página.
+    const btnVolverCategorias = document.getElementById('eq-back-categories');
+    if (btnVolverCategorias) {
+        btnVolverCategorias.addEventListener('click', () => {
+            currentCategoryFilter = '';
+            document.getElementById('eq-user-results-header').hidden = true;
+            document.getElementById('eq-table-section').hidden = true;
+            document.getElementById('eq-category-browser').hidden = false;
+             document.getElementById('eq-admin-controls').hidden = true; // Ocultar buscador
+            
+            // Limpiar el buscador
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.value = '';
+                const clearSearchBtn = document.getElementById('clear-search-eq');
+                if (clearSearchBtn) clearSearchBtn.classList.remove('visible');
+            }
+        });
+    }
+
+    // Mantiene la navegación original de pestañas disponible únicamente para administradores.
+    document.querySelectorAll('#eq-admin-tabs .eq-tab').forEach(tab => {
+        tab.addEventListener('click', event => {
+            document.querySelectorAll('#eq-admin-tabs .eq-tab').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            currentCategoryFilter = event.currentTarget.getAttribute('data-category') || '';
             renderizarTabla();
         });
     });
@@ -425,3 +522,20 @@ if (formCrear) {
             searchInput.focus(); 
         });
     }
+
+// Se ejecuta después de abrir la categoría para que el equipo enlazado desde Ubicaciones ya esté en el DOM.
+function resaltarEquipoDesdeUbicacion(idEquipo) {
+    setTimeout(() => {
+        const fila = document.getElementById(`row-${idEquipo}`);
+
+        if (fila) {
+            fila.classList.add('row-highlight');
+            fila.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            setTimeout(() => {
+                fila.classList.remove('row-highlight');
+                window.history.replaceState({}, document.title, "index.html?page=equipamientos");
+            }, 3000);
+        }
+    }, 100);
+}

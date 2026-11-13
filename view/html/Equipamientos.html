@@ -1,51 +1,47 @@
-<div class="eq-header">
-    <h1 class="eq-title">Inventario de equipamientos</h1>
-</div>
+<section id="eq-admin-summary">
+    <div class="eq-header">
+        <h1 class="eq-title">Inventario de equipamientos</h1>
+    </div>
 
-<div class="eq-stats-bar">
-    <div class="eq-stat">
-        <i class="fa-solid fa-box" style="color: #9ca3af;"></i>
-        <span class="stat-number" id="stat-total">0</span> Equipos registrados
+    <div class="eq-stats-bar">
+        <div class="eq-stat">
+            <i class="fa-solid fa-box" style="color: #9ca3af;"></i>
+            <span class="stat-number" id="stat-total">0</span> Equipos registrados
+        </div>
+        <div class="eq-stat-divider"></div>
+        <div class="eq-stat">
+            <i class="fa-solid fa-layer-group" style="color: #9ca3af;"></i>
+            <span class="stat-number" id="stat-categories">0</span> Categorías
+        </div>
+        <div class="eq-stat-divider"></div>
+        <div class="eq-stat">
+            <i class="fa-solid fa-location-dot" style="color: #9ca3af;"></i>
+            <span class="stat-number" id="stat-locations">0</span> Ubicaciones
+        </div>
     </div>
-    <div class="eq-stat-divider"></div>
-    <div class="eq-stat">
-        <i class="fa-solid fa-layer-group" style="color: #9ca3af;"></i>
-        <span class="stat-number" id="stat-categories">0</span> Categorías
-    </div>
-    <div class="eq-stat-divider"></div>
-    <div class="eq-stat">
-        <i class="fa-solid fa-location-dot" style="color: #9ca3af;"></i>
-        <span class="stat-number" id="stat-locations">0</span> Ubicaciones
-    </div>
-</div>
+</section>
 
-<!-- FILTER BAR-->
-<div class="eq-filters-bar">
-    
-    <!-- 1. Search Box (X is now INSIDE the search box) -->
+<!-- Los filtros, búsqueda y creación conservan la vista original de administración. -->
+<div class="eq-filters-bar eq-admin-controls" id="eq-admin-controls" hidden>
     <div class="eq-search-box" style="position: relative;">
         <i class="fa-solid fa-magnifying-glass" style="color: #9ca3af;"></i>
         <input type="text" id="search-input" placeholder="Buscar por nombre, ID, marca o modelo...">
-        
         <button type="button" class="search-clear-btn" id="clear-search-eq">
             <i class="fa-solid fa-xmark"></i>
         </button>
     </div>
-    
-    <!-- 2. Location Dropdown -->
+
     <select id="filter-location" class="eq-select">
         <option value="">Ubicación: Todas</option>
     </select>
 
-    <!-- 3. Create Button -->
     <button class="eq-btn-primary" id="btn-crear-equipamiento" onclick="abrirModalCrear()" style="display: none;">
         <i class="fa-solid fa-plus"></i> Crear equipamiento
     </button>
-    
 </div>
 
-<!-- TABS CON FLECHA -->
-<div class="eq-tabs-container">
+<!-- Administración mantiene las pestañas de categoría que ya tenía antes del nuevo diseño. -->
+<div class="eq-tabs-container" id="eq-admin-tabs" hidden>
     <div class="eq-tabs">
         <button class="eq-tab active" data-category="">Todos</button>
         <button class="eq-tab" data-category="PORTATIL">Portátil</button>
@@ -56,32 +52,62 @@
     </div>
 </div>
 
-<div class="eq-table-container">
-    <table class="eq-table">
-        <thead>
-            <tr>
-                <th style="width: 60px;">ID</th>
-                <th>Nombre</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Categoría</th>
-                <th>Ubicación</th>
-                <th>Descripción</th>
-                <th style="text-align: right; width: 180px;">Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="eq-table-body"></tbody>
-    </table>
+<!-- Solo los usuarios ven las tarjetas de categoría como entrada a su inventario. -->
+<section class="eq-category-browser" id="eq-category-browser" aria-label="Filtrar equipamientos por categoría" hidden>
+    <button type="button" class="eq-category-card" data-category="" data-label="Todos">
+        <span class="eq-category-icon"><i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i></span>
+        <span>Todos</span>
+    </button>
+    <button type="button" class="eq-category-card" data-category="PORTATIL" data-label="Portátil">
+        <span class="eq-category-icon"><i class="fa-solid fa-laptop" aria-hidden="true"></i></span>
+        <span>Portátil</span>
+    </button>
+    <button type="button" class="eq-category-card" data-category="SOBREMESA" data-label="Sobremesa">
+        <span class="eq-category-icon"><i class="fa-solid fa-desktop" aria-hidden="true"></i></span>
+        <span>Sobremesa</span>
+    </button>
+    <button type="button" class="eq-category-card" data-category="PERIFERICO" data-label="Periféricos">
+        <span class="eq-category-icon"><i class="fa-solid fa-computer-mouse" aria-hidden="true"></i></span>
+        <span>Periféricos</span>
+    </button>
+    <button type="button" class="eq-category-card" data-category="AUDIOVISUAL" data-label="Audiovisual">
+        <span class="eq-category-icon"><i class="fa-solid fa-video" aria-hidden="true"></i></span>
+        <span>Audiovisual</span>
+    </button>
+    <button type="button" class="eq-category-card" data-category="OTROS" data-label="Otros">
+        <span class="eq-category-icon"><i class="fa-solid fa-box" aria-hidden="true"></i></span>
+        <span>Otros</span>
+    </button>
+</section>
+
+<!-- Este encabezado solo aparece al usuario después de elegir una categoría. -->
+<div class="eq-results-header" id="eq-user-results-header" hidden>
+    <button type="button" class="eq-back-categories" id="eq-back-categories">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Categorías
+    </button>
+    <h2 class="eq-results-title" id="eq-selected-category"></h2>
 </div>
 
-<div class="eq-footer">
-    <span id="eq-showing-text">Mostrando 0 de 0 equipamientos</span>
-    <div class="eq-pagination">
-        <button class="eq-page-btn"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="eq-page-btn active">1</button>
-        <button class="eq-page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+<!-- La tabla se comparte: administración la ve de entrada y el usuario tras elegir un botón. -->
+<section class="eq-table-section" id="eq-table-section" hidden>
+    <div class="eq-table-container">
+        <table class="eq-table">
+            <thead>
+                <tr>
+                    <th style="width: 60px;">ID</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Categoría</th>
+                    <th>Historial</th>
+                    <th>Descripción</th>
+                    <th style="text-align: right; width: 180px;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="eq-table-body"></tbody>
+        </table>
     </div>
-</div>
+</section>
 
 <!-- POP UP UNIFICADO PARA CREAR EQUIPO -->
 <dialog id="modal-crear" class="eq-modal">

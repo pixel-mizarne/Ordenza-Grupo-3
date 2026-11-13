@@ -32,6 +32,18 @@
                 </button>
             </div>
 
+            <!-- OPCIONES DE TEMA (MODO OSCURO Y DALTONISMO) -->
+            <div class="login-theme-options">
+    <div class="theme-option" onclick="toggleDarkMode(event)">
+        <span>Modo Oscuro</span>
+        <div class="toggle-switch dark-switch-toggle"></div>
+    </div>
+    <div class="theme-option" onclick="toggleColorblind(event)">
+        <span>Daltonismo</span>
+        <div class="toggle-switch cb-switch-toggle"></div>
+    </div>
+</div>
+
             <!-- ERROR MESSAGE -->
             <div id="login-error" class="login-error"></div>
 

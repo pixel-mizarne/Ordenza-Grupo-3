@@ -31,7 +31,7 @@
             <div class="usu-estadisticas-division"></div>
             <div class="usu-estadisticas">
                 <i class="fa-solid fa-user-tie"></i>
-                <span class="estadistica-numero">3</span> 
+                <span class="estadistica-numero" id="estadisticaAdmins">0</span> 
                 <span class="estadistica-barra">administradores</span>
             </div>
         </div>
@@ -82,6 +82,20 @@
                     <label for="username">USER NAME</label>
                     <input type="text" id="username" required>
                 </div>
+
+                <fieldset class="grupo-input grupo-rol">
+                    <legend>ROL</legend>
+                    <div class="rol-opciones">
+                        <label class="rol-opcion">
+                            <input type="radio" name="rol" value="USER" checked required>
+                            <span>Usuario</span>
+                        </label>
+                        <label class="rol-opcion">
+                            <input type="radio" name="rol" value="ADMIN" required>
+                            <span>Administrador</span>
+                        </label>
+                    </div>
+                </fieldset>
 
                 <div class="grupo-input">
                     <label for="password">CONTRASEÑA</label>

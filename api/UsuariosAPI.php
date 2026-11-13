@@ -251,6 +251,11 @@ try {
                 break;
             }
 
+            $rol = $datos['rol'] ?? 'USER';
+            if (!in_array($rol, ['ADMIN', 'USER'])) {
+                $rol = 'USER';
+            }
+            
             $actualizarPassword = isset($datos['password']) && $datos['password'] !== '';
             if ($actualizarPassword && !esContrasenaValidaUsuarios($datos['password'])) {
                 responderUsuarios([
