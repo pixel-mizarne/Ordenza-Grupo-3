@@ -939,22 +939,24 @@ body.colorblind-mode .eq-back-categories:hover {
     background: #ffcb00 !important;
 }
 
-/* El modo oscuro conserva sus tonos oscuros y resalta los filtros con el cian usado en el inventario. */
+/* En modo oscuro, las tarjetas usan superficies neutras y texto claro. */
 body.dark-mode .eq-category-card,
 body.dark-mode .eq-back-categories {
-    border: 1px solid rgba(0, 240, 255, 0.3) !important;
-    background: rgba(15, 15, 15, 0.7) !important;
-    color: #ffffff !important;
+    border: 0 !important;
+    background: #292a2d !important;
+    color: #e8eaed !important;
+    box-shadow: none !important;
 }
 
 body.dark-mode .eq-category-icon {
-    color: #00f0ff !important;
+    color: #ff8a80 !important;
 }
 
 body.dark-mode .eq-category-card:hover,
 body.dark-mode .eq-back-categories:hover {
-    background: rgba(0, 240, 255, 0.12) !important;
-    border-color: #00f0ff !important;
+    background: #3c4043 !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
 }
 /* =========================================
    TABLA EN MÓVIL (USUARIO)

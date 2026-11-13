@@ -211,116 +211,104 @@ body { background-color: var(--bg-body) !important; }
     .login-form h1 { font-size: 26px !important; }
     .logo-text { display: none !important; }
 }
-/* ==========================================================
-   10. MODO OSCURO PARA EL LOGIN (CYBERPUNK GLASS)
-   ========================================================== */
-
-/* 1. Fondo general y resplandor */
+/* Modo oscuro sencillo para el formulario de acceso */
 body.dark-mode .yellow-glow {
-    background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 60%);
-    opacity: 0.8;
+    display: none;
 }
 
 body.dark-mode .logo-text {
-    color: #ffffff !important;
-    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+    color: #e8eaed !important;
+    text-shadow: none;
 }
 
-/* 2. El Círculo de Cristal */
 body.dark-mode .glass-circle {
-    background: rgba(15, 15, 15, 0.7); /* Fondo oscuro translúcido */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 
-        0 8px 32px rgba(0, 240, 255, 0.1),
-        inset 0 0 20px rgba(0, 240, 255, 0.05);
+    background: #292a2d;
+    border: 1px solid #5f6368;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 body.dark-mode .glass-circle::before {
-    border: 1px solid rgba(0, 240, 255, 0.2);
+    display: none;
 }
 
-/* 3. Textos */
 body.dark-mode .login-form h1 {
-    color: #ffffff !important;
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    color: #e8eaed !important;
+    text-shadow: none;
 }
 
 body.dark-mode .login-form .subtitle {
-    color: #a0a0a0 !important;
+    color: #ff8a80 !important;
 }
 
-/* 4. Inputs y sus iconos */
 body.dark-mode .input-box input {
-    background: rgba(0, 0, 0, 0.5) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(0, 240, 255, 0.2) !important;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5) !important;
+    background: #303134 !important;
+    color: #e8eaed !important;
+    border: 1px solid #5f6368 !important;
+    box-shadow: none !important;
 }
 
 body.dark-mode .input-box input::placeholder {
-    color: #6b7280 !important;
+    color: #bdc1c6 !important;
 }
 
 body.dark-mode .input-box i {
-    color: #00f0ff !important;
+    color: #ff8a80 !important;
 }
 
 body.dark-mode .input-box input:focus {
-    border-color: #00f0ff !important;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important;
+    border-color: #8ab4f8 !important;
+    box-shadow: 0 0 0 2px rgba(138, 180, 248, 0.25) !important;
 }
 
-/* 5. Opciones de Tema (Modo Oscuro y Daltonismo) */
 body.dark-mode .theme-option {
-    color: #ffffff !important;
+    color: #e8eaed !important;
 }
 
 body.dark-mode .theme-option .toggle-switch {
-    background-color: #374151 !important; /* Fondo del switch apagado */
+    background-color: #5f6368 !important;
 }
 
 body.dark-mode .theme-option .toggle-switch.active {
-    background-color: #00f0ff;
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    background-color: #8ab4f8;
+    box-shadow: none;
 }
 .theme-option .toggle-switch.active::after {
     left: 18px; 
 }
 
-/* 6. Botón de Iniciar Sesión */
 body.dark-mode .login-form button[type="submit"] {
-    background: rgba(0, 240, 255, 0.1) !important;
-    color: #00f0ff !important;
-    border: 1px solid #00f0ff !important;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important;
-    text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
+    background: #8ab4f8 !important;
+    color: #202124 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none;
 }
 
 body.dark-mode .login-form button[type="submit"]:hover {
-    background: rgba(0, 240, 255, 0.3) !important;
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6) !important;
-    color: #ffffff !important;
+    background: #aecbfa !important;
+    box-shadow: none !important;
+    color: #202124 !important;
 }
 
-/* 7. Botón de limpiar (X) */
 body.dark-mode .clear-input {
-    color: #00f0ff !important;
+    color: #ff8a80 !important;
 }
 /* ==========================================================
    FIX DEFINITIVO: INTERRUPTORES ENCENDIDOS
    ========================================================== */
 
-/* Estado encendido para Modo Oscuro y Daltonismo */
-.theme-option .toggle-switch.active {
-    background-color: #00f0ff !important; /* Cyan brillante */
-    border-color: #00f0ff !important;
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5) !important;
+/* El interruptor activo mantiene el color corporativo en modo oscuro */
+body.dark-mode .theme-option .toggle-switch.active {
+    background-color: #8ab4f8 !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
 }
 
-.theme-option .toggle-switch.active::after {
-    left: 18px !important; /* 👈 Esto hace que el círculo salte a la derecha */
-    background-color: #ffffff !important; /* Círculo blanco */
+body.dark-mode .theme-option .toggle-switch.active::after {
+    left: 18px !important;
+    background-color: #ffffff !important;
 }
 /* ==========================================================
    BOTÓN INICIAR SESIÓN EN MODO DALTONISMO

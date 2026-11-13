@@ -445,6 +445,14 @@ function confirmarEliminar() {
 function abrirModalCrear() { document.getElementById('modal-crear').showModal(); }
 function cerrarModalCrear() { document.getElementById('modal-crear').close(); }
 
+const modalCrear = document.getElementById('modal-crear');
+if (modalCrear) {
+    modalCrear.addEventListener('click', evento => {
+        const contenido = modalCrear.querySelector('.eq-modal-content');
+        if (contenido && !contenido.contains(evento.target)) cerrarModalCrear();
+    });
+}
+
 const formCrear = document.getElementById('form-crear-eq');
 if (formCrear) {
     formCrear.addEventListener('submit', async (e) => {

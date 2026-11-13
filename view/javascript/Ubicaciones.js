@@ -66,6 +66,11 @@ btnCancelarUbicacion.addEventListener('click', () => {
     dialogPopup.close(); // Cierra el pop-up de añadir/editar
 });
 
+dialogPopup.addEventListener('click', evento => {
+    const contenido = dialogPopup.querySelector('.ubi-modal-contenido');
+    if (contenido && !contenido.contains(evento.target)) dialogPopup.close();
+});
+
 btnCancelarEliminar.addEventListener('click', () => {
     dialogEliminar.close(); // Cierra el pop-up de eliminar
 });
