@@ -15,6 +15,7 @@ fetch('api/Equipamiento.php')
     })
     .catch(err => console.error("Error al cargar equipos:", err));
 
+// Pestañas de categoría
 document.querySelectorAll('.eq-tab').forEach(tab => {
     tab.addEventListener('click', (e) => {
         document.querySelectorAll('.eq-tab').forEach(t => t.classList.remove('active'));
@@ -32,8 +33,12 @@ function renderizarTablaHistorico() {
     const search = searchInput ? normalizarTexto(searchInput.value) : '';
 
     const filtrados = todosLosEquipos.filter(e => {
+        // 👇 BÚSQUEDA AMPLIADA: Nombre, ID, Marca y Modelo 👇
         const matchSearch = normalizarTexto(e.nombre).includes(search) || 
-                            normalizarTexto(e.id_equipamiento).includes(search);
+                            normalizarTexto(e.id_equipamiento).includes(search) ||
+                            normalizarTexto(e.marca).includes(search) ||
+                            normalizarTexto(e.modelo).includes(search);
+                            
         const matchCat = currentCategoryFilter === '' || e.categoria === currentCategoryFilter;
         return matchSearch && matchCat;
     });
@@ -57,6 +62,7 @@ function renderizarTablaHistorico() {
                     </div>
                 </td>
                <td style="text-align: right;">
+                    <!-- Botón inicial en "Ver" -->
                     <button type="button" class="eq-btn-history" onclick="verHistorialExpandido(${e.id_equipamiento})">
                         Ver
                     </button>
@@ -70,6 +76,7 @@ function renderizarTablaHistorico() {
     
     tbody.innerHTML = html;
 
+    // Auto-abrir desde el enlace de Equipamientos
     const urlParams = new URLSearchParams(window.location.search);
     const idToHighlight = urlParams.get('id');
     if (idToHighlight) {
@@ -88,17 +95,21 @@ function renderizarTablaHistorico() {
 async function verHistorialExpandido(id) {
     const historyRow = document.getElementById(`history-row-${id}`);
     const contentDiv = document.getElementById(`history-content-${id}`);
+    const btn = document.querySelector(`#row-${id} .eq-btn-history`); // 👈 Capturamos el botón
 
     if (!historyRow) return;
 
-    // Si ya está abierto, lo cierra
+    // Si ya está abierto, lo cierra y cambia el texto a "Ver"
     if (historyRow.style.display !== 'none') {
         historyRow.style.display = 'none';
+        if (btn) btn.textContent = 'Ver';
         return;
     }
 
-    // Si está cerrado, lo abre
+    // Si está cerrado, lo abre y cambia el texto a "Ocultar"
     historyRow.style.display = 'table-row';
+    if (btn) btn.textContent = 'Ocultar';
+    
     contentDiv.innerHTML = '<p style="text-align:center; padding: 20px;">Buscando...</p>';
 
     try {
@@ -140,18 +151,25 @@ async function verHistorialExpandido(id) {
     }
 }
 
-// Buscador
+// 👇 EVENTOS DEL BUSCADOR 👇
 const searchHis = document.getElementById('search-input');
 const clearHis = document.getElementById('clear-search-his');
+
+if (searchHis) {
+    // Cuando el usuario escribe, se filtra la tabla al instante
+    searchHis.addEventListener('input', renderizarTablaHistorico); 
+}
 
 if (searchHis && clearHis) {
     searchHis.addEventListener('input', () => {
         clearHis.classList.toggle('visible', searchHis.value.length > 0);
     });
+    
     clearHis.addEventListener('click', () => {
         searchHis.value = '';
         clearHis.classList.remove('visible');
-        searchHis.dispatchEvent(new Event('input')); 
+        // Forzamos la actualización de la tabla
+        renderizarTablaHistorico(); 
         searchHis.focus();
     });
 }

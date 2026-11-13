@@ -63,7 +63,12 @@
                 </button>
                 
                 <div class="dropdown-menu notification-menu" id="notificationMenu">
-                    <h2 class="notification-menu__title">Notificaciones</h2>
+                    <div class="notification-menu__header">
+                        <h2 class="notification-menu__title">Notificaciones</h2>
+                        <button type="button" class="notification-menu__mark-read" id="markAllNotificationsRead" disabled>
+                            Marcar como leído
+                        </button>
+                    </div>
                     <div class="notification-menu__list" id="notificationList" aria-live="polite">
                         <p class="notification-menu__message">Cargando notificaciones...</p>
                     </div>
@@ -115,6 +120,7 @@
                 <a href="index.html?page=usuarios" class="nav-link" data-page="usuarios" id="mobile-nav-usuarios">Usuarios</a>
                 <a href="index.html?page=ubicaciones" class="nav-link" data-page="ubicaciones" id="mobile-nav-ubicaciones">Ubicaciones</a>
                 <a href="index.html?page=historico" class="nav-link" data-page="historico">Historial</a>
+                <a href="index.html?page=notificaciones" class="nav-link" data-page="notificaciones">Notificaciones/Mensajes</a>
             </div>
 
             <div class="menu-separator"></div>
