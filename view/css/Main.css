@@ -1,677 +1,632 @@
-/* =========================================
-   GLOBALES
-   ========================================= */
-
-/* 1. GLOBAL */
+/* GLOBAL */
 html, body {
-    overflow-x: clip !important; 
+    overflow-x: clip !important;
 }
 
-/* 2. GLOBAL BASE */
+/* BASE */
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #fffdf0 !important; 
+    background: #fffdf0 !important;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 /* Oculta navbar y footer hasta que JS verifique la sesión */
-#main-navbar, #main-footer { display: none; }
+#main-navbar, #main-footer { 
+    display: none; 
+}
 
-#app-content { min-height: 60vh; }
+#app-content { 
+    min-height: 60vh; 
+}
 
-#app-loading { text-align: center; margin-top: 50px; }
+#app-loading { 
+    text-align: center; 
+    margin-top: 50px; 
+}
 
-/* Los numeros que he puesto que corresponde a cada elemento es lo mismo en el HTML - Miz */
 
 /* ------------------------------------------------------------- */
 /* ------------------------- NAV BAR --------------------------- */
 /* ------------------------------------------------------------- */
 
+/* NAVBAR sticky */
+.top-navbar {
+    background: #fff198 !important;
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 84px !important;
+    padding: 0 40px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+}
+
+/* BOTÓN MÓVIL */
+.mobile-menu-btn {
+    display: none !important;
+}
+
 /* ------------------------- 1. NAV TABS ----------------------- */
-/* 1.1 NAVBAR sticky */
-.top-navbar { 
-    background: #fff198 !important; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    height: 84px; 
-    padding: 0 40px; 
-    position: sticky !important; 
-    top: 0 !important; 
-    z-index: 1000 !important; 
+.nav-tabs {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    align-items: center !important;
+    flex: 1 !important;
 }
 
-/* 1.2 TABS IZQUIERDA */
-.nav-tabs { 
-    display: flex; 
-    gap: 8px; 
-    align-items: center; 
-    flex: 1; 
+/* TABS IZQUIERDA: normal */
+.nav-tabs a {
+    text-decoration: none;
+    color: #5f5f5f;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: 0.2s;
+    background: #F5F4ED;
 }
 
-/* 1.3 TABS IZQUIERDA: Aspecto normal */
-.nav-tabs a { 
-    text-decoration: none; 
-    color: #5f5f5f; 
-    font-weight: 500; 
-    font-size: 14px; 
-    padding: 10px 20px; 
-    border-radius: 20px; 
-    transition: 0.2s; 
-    background: #F5F4ED; 
+.nav-tabs a:hover {
+    background: #e5e1d5;
 }
-/* Hover */
-.nav-tabs a:hover { 
-    background: #e5e1d5; 
-}
-/* Active */
-.nav-tabs a.active { 
+
+.nav-tabs a.active {
     background: #0b1b42;
-    color: white; 
+    color: white;
 }
 
-/* Ocultar enlaces de admin por defecto. JS los muestra si eres ADMIN */
-.nav-tabs a#nav-usuarios, 
-.nav-tabs a#nav-ubicaciones { 
-    display: none; 
+/* Oculta enlaces de admin por defecto en JS los muestra si eres ADMIN */
+.nav-tabs a#nav-usuarios,
+.nav-tabs a#nav-ubicaciones {
+    display: none;
 }
 
 
 /* -------------------------- 2. LOGO -------------------------- */
-/* 2.1 LOGO */
-.nav-logo-center { 
-    display: flex; 
-    align-items: center; 
-    gap: 15px; 
-    flex: 0 0 auto; 
+
+/* LOGO */
+.nav-logo-center {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    flex: 0 0 auto !important;
 }
 
-/* 2.2 Imagen del logo */
-.login-logo-img { 
-    width: 45px; 
-    height: 45px; 
-    object-fit: contain; 
+/* Image */
+.login-logo-img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
 }
 
-/* 2.3 Texto "r d e n z a" */
-.login-logo-text { 
-    font-size: 18px; 
-    font-weight: 500; 
-    color: #11225b; 
-    letter-spacing: 8px; 
+/* Texto "r d e n z a" */
+.login-logo-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #11225b;
+    letter-spacing: 8px;
 }
+
 
 /* ----------------- 3. NOTIF, AVATAR, MENU -------------------- */
-/* 3.0 CONTENEDOR PERFIL: Agrupa notificaciones, avatar y menú a la derecha */
-.nav-profile { 
-    display: flex; 
-    justify-content: flex-end; 
-    align-items: center; 
-    gap: 20px; 
-    flex: 1; 
+
+/* CONTENEDOR PERFIL */
+.nav-profile {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 20px !important;
+    flex: 1 !important;
 }
 
-/* --- 3.1 NOTIFICACIONES --- */
-/* 3.1.1 BOTÓN CAMPANA: Icono de la campana */
-.nav-profile .bell { 
-    color: #6b7280; 
-    font-size: 18px; 
-    cursor: pointer; 
-    transition: color 0.2s; 
+/* --- NOTIFICACIONES --- */
+.nav-profile .bell {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
-/* 3.1.2 BOTÓN CAMPANA: Contenedor del botón (para el badge de notificaciones) */
-.notification-toggle { 
-    position: relative; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    padding: 8px; 
-    border: 0; 
-    background: transparent; 
-    cursor: pointer; 
-}
-
-/* 3.1.3 BOTÓN CAMPANA: Hover y estado abierto */
-.notification-toggle:hover, 
-.notification-toggle[aria-expanded="true"] { 
-    border-radius: 50%; 
-    background: #e0e7ff; 
-}
-
-/* 3.1.4 BOTÓN CAMPANA: Cambio de color del icono en hover/abierto */
-.notification-toggle:hover .bell, 
-.notification-toggle[aria-expanded="true"] .bell { 
-    color: #1d4ed8; 
-}
-
-/* 3.1.5 BOTÓN CAMPANA: Estado activo (página de notificaciones) */
-.notification-toggle.is-current {
-    border-radius: 50%;
-    background: #0b1b42;
-}
-.notification-toggle.is-current .bell { 
-    color: white; 
-}
-
-/* 3.1.6 BOTÓN CAMPANA: Accesibilidad (foco del teclado) */
-.notification-toggle:focus-visible { 
-    outline: 2px solid #1d4ed8; 
-    outline-offset: 2px; 
-    border-radius: 50%; 
-}
-
-/* 3.1.7 BADGE ROJO: Círculo rojo con el número de notificaciones */
-.notification-badge { 
-    position: absolute; 
-    top: 0; 
-    right: 0; 
-    min-width: 17px; 
-    height: 17px; 
-    padding: 0 4px; 
-    border-radius: 9px; 
-    background: #dc2626; 
-    color: white; 
-    font-size: 10px; 
-    font-weight: 600; 
-    line-height: 17px; 
-    text-align: center; 
-}
-
-/* 3.1.8 MENÚ NOTIFICACIONES: Caja desplegable */
-.notification-menu { width: min(360px, calc(100vw - 32px)); padding: 0; overflow: hidden; }
-
-/* 3.1.9 MENÚ NOTIFICACIONES: Cabecera y acción de lectura */
-.notification-menu__header {
+.notification-toggle {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 8px 12px 8px 18px;
-    border-bottom: 1px solid #e5e7eb;
-}
-.notification-menu__title { margin: 0; color: #111827; font-size: 16px; font-weight: 600; }
-
-.notification-menu__mark-read {
-    flex: 0 0 auto;
-    padding: 7px 9px;
+    justify-content: center;
+    padding: 8px;
     border: 0;
-    border-radius: 6px;
+    border-radius: 50%;
     background: #0b1b42;
-    color: #ffffff;
     cursor: pointer;
-    font: inherit;
-    font-size: 11px;
+}
+
+.notification-toggle:hover,
+.notification-toggle[aria-expanded="true"] {
+    border-radius: 50%;
+    background: #e0e7ff;
+}
+
+.notification-toggle:hover .bell,
+.notification-toggle[aria-expanded="true"] .bell {
+    color: #1d4ed8;
+}
+
+.notification-toggle:focus-visible {
+    outline: 2px solid #1d4ed8;
+    outline-offset: 2px;
+    border-radius: 50%;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    border-radius: 9px;
+    background: #dc2626;
+    color: white;
+    font-size: 10px;
     font-weight: 600;
-    white-space: nowrap;
+    line-height: 17px;
+    text-align: center;
 }
-.notification-menu__mark-read:hover { background: #1e293b; }
-.notification-menu__mark-read:disabled { background: #9ca3af; cursor: not-allowed; }
-.notification-menu__mark-read:focus-visible { outline: 2px solid #111827; outline-offset: 2px; }
 
-/* 3.1.10 MENÚ NOTIFICACIONES: Lista con scroll */
-.notification-menu__list { max-height: 340px; overflow-y: auto; }
-
-/* 3.1.11 MENÚ NOTIFICACIONES: Cada elemento de la lista */
-.notification-menu__item { padding: 14px 18px; border-bottom: 1px solid #f3f4f6; }
-.notification-menu__item:last-child { border-bottom: 0; }
-
-/* 3.1.12 MENÚ NOTIFICACIONES: Título de la notificación */
-.notification-menu__item h3 { margin-bottom: 5px; color: #111827; font-size: 14px; font-weight: 600; }
-
-/* 3.1.13 MENÚ NOTIFICACIONES: Texto, fecha y mensajes */
-.notification-menu__item p, .notification-menu__date, .notification-menu__message { color: #6b7280; font-size: 12px; line-height: 1.5; }
-.notification-menu__date { display: block; margin-top: 7px; }
-.notification-menu__message { padding: 18px; text-align: center; }
-
-/* 3.1.14 MENÚ NOTIFICACIONES: Enlace "Ver todas las notificaciones" */
-.notification-menu__footer { 
-    display: block; padding: 13px 18px; border-top: 1px solid #e5e7eb; color: #1d4ed8; 
-    font-size: 13px; font-weight: 600; text-align: center; text-decoration: none; 
+.notification-menu {
+    width: min(360px, calc(100vw - 32px));
+    padding: 0;
+    overflow: hidden;
 }
-.notification-menu__footer:hover { background: #f9fafb; }
+
+.notification-menu__title {
+    padding: 16px 18px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #111827;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.notification-menu__list {
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.notification-menu__item {
+    padding: 14px 18px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.notification-menu__item:last-child {
+    border-bottom: 0;
+}
+
+.notification-menu__item h3 {
+    margin-bottom: 5px;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.notification-menu__item p, 
+.notification-menu__date, 
+.notification-menu__message {
+    color: #6b7280;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.notification-menu__date {
+    display: block;
+    margin-top: 7px;
+}
+
+.notification-menu__message {
+    padding: 18px;
+    text-align: center;
+}
+
+.notification-menu__footer {
+    display: block;
+    padding: 13px 18px;
+    border-top: 1px solid #e5e7eb;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+}
+
+.notification-menu__footer:hover {
+    background: #f9fafb;
+}
 
 /* --- 3.2 AVATAR --- */
-/* 3.2.1 AVATAR: Círculo con las iniciales del usuario */
-.user-avatar { 
-    width: 34px; 
-    height: 34px; 
-    background: #e0e7ff; 
-    color: #1d4ed8; 
-    border-radius: 50%; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-size: 12px; 
-    font-weight: 600; 
+.user-avatar {
+    width: 34px;
+    height: 34px;
+    background: #e0e7ff;
+    color: #1d4ed8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 /* --- 3.3 MENU DE USUARIO --- */
-/* 3.3.1 CONTENEDOR MENÚ: Posición relativa para el dropdown */
-.dropdown-container { 
-    position: relative; 
+.dropdown-container {
+    position: relative;
 }
 
-/* 3.3.2 BOTÓN MENÚ: El botón que dice el nombre del usuario (Mizarne) */
-.admin-dropdown { 
-    display: flex; 
-    align-items: center; 
-    gap: 8px; 
-    font-size: 14px; 
-    font-weight: 500; 
-    color: #374151; 
-    background: #efece3; 
-    padding: 8px 16px; 
-    border-radius: 20px; 
-    cursor: pointer; 
-    transition: 0.2s; 
-}
-.admin-dropdown:hover { 
-    background: #e5e1d5; 
+.admin-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    background: #efece3;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-/* 3.3.3 MENÚ DESPLEGABLE: La caja blanca del menú */
-.dropdown-menu { 
-    display: none; 
-    position: absolute; 
-    top: 110%; 
-    right: 0; 
-    background: white; 
-    border: 1px solid #e5e7eb; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-    min-width: 220px !important; 
-    padding: 8px 0; 
-    z-index: 1001; 
+.admin-dropdown:hover {
+    background: #e5e1d5;
 }
 
-/* 3.3.4 MENÚ DESPLEGABLE: Clase que añade JS para mostrar el menú */
-.dropdown-menu.show { 
-    display: block; 
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 220px !important;
+    padding: 8px 0;
+    z-index: 1001;
 }
 
-/* 3.3.5 OPCIONES DEL MENÚ: Base compartida (padding, fuente, hover) */
-.menu-option-perfil, 
-.menu-option-daltonismo, 
+.dropdown-menu.show {
+    display: block;
+}
+
+.menu-option-perfil,
+.menu-option-daltonismo,
 .menu-option-salir {
-    display: flex; 
-    padding: 10px 16px; 
-    color: #000000; 
-    text-decoration: none; 
-    font-size: 14px; 
-    font-weight: 500; 
-    cursor: pointer; 
+    display: flex;
+    padding: 10px 16px;
+    color: #000000;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-/* 3.3.6 OPCIONES DEL MENÚ: Hover para todas las opciones */
-.menu-option-perfil:hover, 
-.menu-option-daltonismo:hover, 
-.menu-option-salir:hover { 
-    background: #fef2f2; 
+.menu-option-perfil:hover,
+.menu-option-daltonismo:hover,
+.menu-option-salir:hover {
+    background: #fef2f2;
 }
 
-/* 1. Opcion: Perfil */
-/* 3.3.7 OPCIÓN PERFIL: Alineación del icono y texto */
-.menu-option-perfil { 
-    align-items: center; 
-    gap: 8px; 
+.menu-option-perfil {
+    align-items: center;
+    gap: 8px;
 }
 
-/* 2. Opcion: Daltonismo */
-/* 3.3.8 OPCIÓN DALTONISMO: Espaciado entre texto e interruptor */
-.menu-option-daltonismo { 
-    justify-content: space-between; 
-    align-items: center; 
-    gap: 20px; 
-    padding-right: 20px; 
+.menu-option-daltonismo {
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-right: 20px;
 }
 
-/* 3.3.9 INTERRUPTOR DALTONISMO: La píldora del switch */
-.menu-option-daltonismo .toggle-switch { 
-    width: 34px; 
-    height: 18px; 
-    background-color: #d1d5db; 
-    border-radius: 20px; 
-    position: relative; 
-    transition: 0.3s; 
+.menu-option-daltonismo .toggle-switch {
+    width: 34px;
+    height: 18px;
+    background-color: #d1d5db;
+    border-radius: 20px;
+    position: relative;
+    transition: 0.3s;
 }
 
-/* 3.3.10 INTERRUPTOR DALTONISMO: El círculo blanco que se mueve */
-.menu-option-daltonismo .toggle-switch::after { 
+.menu-option-daltonismo .toggle-switch::after {
     content: ''; 
-    position: absolute; 
-    top: 2px; 
-    left: 2px; 
-    width: 14px; 
-    height: 14px; 
-    background: white; 
-    border-radius: 50%; 
-    transition: 0.3s; 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2); 
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
-/* 3.3.11 INTERRUPTOR DALTONISMO: Color del switch cuando está encendido */
-.menu-option-daltonismo .toggle-switch.active { 
-    background-color: #051BFF; 
+.menu-option-daltonismo .toggle-switch.active {
+    background-color: #051BFF;
 }
 
-/* 3.3.12 INTERRUPTOR DALTONISMO: Movimiento del círculo a la derecha */
-.menu-option-daltonismo .toggle-switch.active::after { 
-    left: 18px; 
+.menu-option-daltonismo .toggle-switch.active::after {
+    left: 18px;
 }
 
-/* Separador */
-/* 3.3.13 SEPARADOR: Línea gris entre opciones */
-.menu-separator { 
-    border-top: 1px solid #e5e7eb; 
-    margin: 5px 0; 
+.menu-separator {
+    border-top: 1px solid #e5e7eb;
+    margin: 5px 0;
 }
 
-/* 3. Opcion: Salir */
-/* 3.3.14 OPCIÓN SALIR: Alineación del icono y texto */
-.menu-option-salir { 
-    align-items: center; 
-    gap: 8px; 
+.menu-option-salir {
+    align-items: center;
+    gap: 8px;
 }
-
 
 /* =========================================
    4. MAIN CONTENT
    ========================================= */
-/* 4.1 CONTENEDOR PRINCIPAL: Ancho estándar de la página */
-main { 
-    flex: 1; 
-    width: 95%; 
-    max-width: 1400px; 
-    margin: 0 auto; 
-    padding: 40px 20px; 
-    box-sizing: border-box; 
+main {
+    flex: 1;
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
 }
 
-/* 4.2 CONTENEDOR PRINCIPAL: Ancho máximo para vistas dinámicas (SPA) */
-main#app-content { 
-    flex: 1; 
-    width: 95%; 
-    max-width: 1800px; 
-    margin: 0 auto; 
-    padding: 40px 20px; 
-    box-sizing: border-box; 
+main#app-content {
+    flex: 1;
+    width: 95%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
 }
-
 
 /* =========================================
    5. FOOTER
    ========================================= */
-/* 5.1 PIE DE PÁGINA: Barra inferior */
-footer { 
-    background: #fff198 !important; 
-    width: 100%; 
-    text-align: center; 
-    padding: 20px; 
-    color: #6b7280; 
-    font-size: 14px; 
-    border-top: 1px solid rgba(0,0,0,0.04); 
-    box-sizing: border-box; 
+footer {
+    background: #fff198 !important;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: #6b7280;
+    font-size: 14px;
+    border-top: 1px solid rgba(0,0,0,0.04);
+    box-sizing: border-box;
 }
 
 /* =========================================
-   6. MODAL DE PERFIL
+   MODAL DE PERFIL
    ========================================= */
-/* 6.0 MODAL BASE: El contenedor <dialog> */
-.perfil-modal { 
-    margin: auto; 
+.perfil-modal {
+    margin: auto;
     border: none;
-    border-radius: 16px; 
-    padding: 0; 
-    background: transparent; 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
-    max-width: 400px; 
-    width: 90%; 
-    animation: modalFadeIn 0.3s ease-out; 
+    border-radius: 16px;
+    padding: 0;
+    background: transparent;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    max-width: 400px;
+    width: 90%;
+    animation: modalFadeIn 0.3s ease-out;
 }
 
-/* 6.0.1 MODAL BASE: El fondo oscuro detrás del modal */
-.perfil-modal::backdrop { 
-    background: rgba(15, 23, 42, 0.6); 
-    backdrop-filter: blur(4px); 
+.perfil-modal::backdrop {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
 }
 
-/* 6.0.2 MODAL BASE: La caja de contenido real */
-.perfil-modal-content { 
-    background: #fffdf0; 
-    border-radius: 16px; 
-    overflow: hidden; 
-    display: flex; 
-    flex-direction: column; 
+.perfil-modal-content {
+    background: #fffdf0;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- 6.1 Cabecera del perfil --- */
-/* 6.1.1 CABECERA: Contenedor del avatar y títulos */
-.perfil-header { 
+.perfil-header {
     background: #fff8d3;
-    padding: 30px 20px 20px; 
-    text-align: center; 
-    border-bottom: 1px solid #e5dcc3; 
+    padding: 30px 20px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e5dcc3;
 }
 
-/* 6.1.2 CABECERA: El círculo con las iniciales (Avatar) */
-.perfil-avatar-icon { 
-    background: #f5e6d3; 
-    color: #8B5A2B; 
-    font-size: 24px; 
-    font-weight: 700; 
-    width: 70px; 
-    height: 70px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    border-radius: 50%; 
-    margin: 0 auto 15px; 
-    border: 3px solid #d4b896; 
-    box-shadow: 0 4px 10px rgba(139, 90, 43, 0.15); 
+.perfil-avatar-icon {
+    background: #f5e6d3;
+    color: #8B5A2B;
+    font-size: 24px;
+    font-weight: 700;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    border: 3px solid #d4b896;
+    box-shadow: 0 4px 10px rgba(139, 90, 43, 0.15);
 }
 
-/* 6.1.3 CABECERA: El título "Mi Perfil" */
-.perfil-header h3 { 
-    margin: 0; 
-    font-size: 20px; 
-    color: #000000; 
-    font-weight: 600; 
+.perfil-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #000000;
+    font-weight: 600;
 }
 
-/* 6.1.4 CABECERA: El subtítulo "Información de la cuenta" */
-.perfil-subtitle { 
-    margin: 5px 0 0; 
-    font-size: 13px; 
-    color: #000000; 
-    opacity: 0.7; 
+.perfil-subtitle {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: #000000;
+    opacity: 0.7;
 }
 
-/* --- 6.2 Datos del usuario --- */
-/* 6.2.1 CUERPO: Contenedor de los datos */
-.perfil-body { 
-    padding: 20px 30px; 
+.perfil-body {
+    padding: 20px 30px;
 }
 
-/* 6.2.2 CUERPO: Cada fila (Nombre, Apellidos, etc.) */
-.perfil-row { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 12px 0; 
-    border-bottom: 1px solid #e5dcc3; 
-}
-.perfil-row:last-child { 
-    border-bottom: none; 
+.perfil-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5dcc3;
 }
 
-/* 6.2.3 CUERPO: Etiqueta de la fila (Ej: "Nombre") */
-.perfil-label { 
-    font-size: 13px; 
-    color: #8B5A2B; 
-    font-weight: 500; 
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
+.perfil-row:last-child {
+    border-bottom: none;
 }
 
-/* 6.2.4 CUERPO: Icono de la etiqueta */
-.perfil-label i { 
-    width: 16px; 
-    text-align: center; 
-    color: #8B5A2B; 
+.perfil-label {
+    font-size: 13px;
+    color: #8B5A2B;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* 6.2.5 CUERPO: El valor real (Ej: "Juan") */
-.perfil-value { 
-    font-size: 14px; 
-    color: #000000; 
-    font-weight: 600; 
+.perfil-label i {
+    width: 16px;
+    text-align: center;
+    color: #8B5A2B;
 }
 
-/* 6.2.6 CUERPO: El color específico para el Rol */
-#perfil-rol { 
-    font-weight: bold; 
-    color: #2563eb; 
+.perfil-value {
+    font-size: 14px;
+    color: #000000;
+    font-weight: 600;
 }
 
-/* --- 6.3 Botón de cerrar --- */
-/* 6.3.1 PIE DEL MODAL: Contenedor del botón */
-.perfil-footer { 
-    padding: 20px 30px 30px; 
+#perfil-rol {
+    font-weight: bold;
+    color: #2563eb;
 }
 
-/* 6.3.2 PIE DEL MODAL: Botón "Cerrar" */
-.perfil-btn-cerrar { 
-    width: 100%; 
-    background: #0b1b42; 
-    color: white; 
-    border: none; 
-    padding: 12px; 
-    border-radius: 8px; 
-    font-size: 14px; 
-    font-weight: 600; 
-    cursor: pointer; 
-    transition: 0.2s; 
-}
-.perfil-btn-cerrar:hover { 
-    background: #1e293b; 
-    transform: translateY(-1px); 
+.perfil-footer {
+    padding: 20px 30px 30px;
 }
 
-/* 6.4 ANIMACIÓN: Efecto de entrada del modal */
-@keyframes modalFadeIn { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.perfil-btn-cerrar {
+    width: 100%;
+    background: #0b1b42;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
 
+.perfil-btn-cerrar:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+}
+
+@keyframes modalFadeIn { 
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px); 
+    } 
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0); 
+    } 
+}
 
 /* =========================================
-    (X) EN LA BARRA DE BUSQUEDA
+   (X) EN LA BARRA DE BUSQUEDA
    ========================================= */
-/* 7.1 BOTÓN LIMPIAR (X): Círculo absoluto dentro del input */
 .search-clear-btn {
-    position: absolute !important; 
-    right: 12px !important; 
-    top: 50% !important; 
+    position: absolute !important;
+    right: 12px !important;
+    top: 50% !important;
     transform: translateY(-50%) !important;
-    width: 24px !important; 
-    height: 24px !important; 
-    border-radius: 50% !important; 
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
     background-color: #e5e7eb !important;
-    display: none; 
-    align-items: center !important; 
+    display: none;
+    align-items: center !important;
     justify-content: center !important;
-    border: none !important; 
-    color: #6b7280 !important; 
-    font-size: 12px !important; 
+    border: none !important;
+    color: #6b7280 !important;
+    font-size: 12px !important;
     cursor: pointer !important;
-    z-index: 10 !important; 
-    padding: 0 !important; 
-    margin: 0 !important; 
+    z-index: 10 !important;
+    padding: 0 !important;
+    margin: 0 !important;
     box-shadow: none !important;
 }
 
-/* 7.2 BOTÓN LIMPIAR (X): Clase que añade JS para hacerlo visible */
-.search-clear-btn.visible { 
-    display: flex !important; 
+.search-clear-btn.visible {
+    display: flex !important;
 }
 
-/* 7.3 BOTÓN LIMPIAR (X): Hover */
-.search-clear-btn:hover { 
-    background-color: #d1d5db !important; 
-    color: #000000 !important; 
+.search-clear-btn:hover {
+    background-color: #d1d5db !important;
+    color: #000000 !important;
 }
-
-/* ==============
-   PALETAS
-   =============*/
 
 /* =========================================
    MODO DALTONISMO
    ========================================= */
-
-/* 1. BODY */
-/* 8.1 DALTONISMO: Fondo y texto global */
-body.colorblind-mode { 
-    background-color: #FFFFFF !important; 
-    color: #000000 !important; 
-    font-weight: 500 !important; 
+body.colorblind-mode .eq-table th {
+    border: none !important;
+    border-bottom: 2px solid #000000 !important;
+    border-right: 1px solid #000000 !important; 
+    padding: 10px 5px !important;
+    box-sizing: border-box !important;
 }
 
-/* --- 2. NAVBAR --- */
-/* 8.2 DALTONISMO: Barra de navegación (Amarillo) */
 body.colorblind-mode .top-navbar { 
     background-color: #FFCB00 !important; 
     border-bottom: 2px solid #000000 !important; 
 }
 
-/* 8.3 DALTONISMO: Botones del menú (Marrón) */
 body.colorblind-mode .nav-tabs a { 
     background-color: #872200 !important; 
     color: #FFFFFF !important; 
     border: 2px solid #000000 !important; 
 }
 
-/* 8.4 DALTONISMO: Botón activo/hover del menú (Azul) */
 body.colorblind-mode .nav-tabs a.active, 
 body.colorblind-mode .nav-tabs a:hover { 
     background-color: #051BFF !important; 
     color: #FFFFFF !important; 
 }
 
-/* 8.5 DALTONISMO: Texto del logo (Negro) */
 body.colorblind-mode .login-logo-text { 
     color: #000000 !important; 
 }
 
-/* 8.6 DALTONISMO: Botón del perfil (Marrón) */
 body.colorblind-mode .admin-dropdown { 
     background-color: #872200 !important; 
     color: #FFFFFF !important; 
 }
 
-/* 8.7 DALTONISMO: Icono de la campana (Negro grueso) */
 body.colorblind-mode .notification-toggle .bell, 
 body.colorblind-mode .notification-toggle i { 
-    color: #000000 !important; 
-    -webkit-text-stroke: 1.5px #000000; 
+    color: #FFFFFF !important; 
+    -webkit-text-stroke: 0; 
     font-weight: 900 !important; 
 }
 
-body.colorblind-mode .notification-toggle.is-current .bell,
-body.colorblind-mode .notification-toggle.is-current i {
-    color: #FFFFFF !important;
-    -webkit-text-stroke: 0;
-}
-
-/* --- 3. FORMULARIOS Y BOTONES GENERALES --- */
-
-/* 8.8 DALTONISMO: Inputs y cajas de búsqueda (Borde negro grueso) */
-/*-----Barra de busqueda: Equipamientos, Ubicaciones, Usuarios-----*/
 body.colorblind-mode input, 
 body.colorblind-mode select, 
-body.colorblind-mode textarea,
+body.colorblind-mode textarea, 
 body.colorblind-mode .eq-search-box, 
 body.colorblind-mode .ubi-buscador, 
 body.colorblind-mode .usu-buscador { 
@@ -680,134 +635,6 @@ body.colorblind-mode .usu-buscador {
     color: #000000 !important; 
 }
 
-/* 8.9 DALTONISMO: Botones principales (Azul) */
-body.colorblind-mode .eq-btn-primary, 
-body.colorblind-mode .ubi-boton-añadir, 
-body.colorblind-mode .usu-boton-añadir, 
-body.colorblind-mode .ubi-btn-guardar, 
-body.colorblind-mode .btn-aceptar, 
-body.colorblind-mode .notificaciones-lista__accion, 
-body.colorblind-mode .notification-menu__mark-read:not(:disabled),
-body.colorblind-mode .notificaciones-admin__acciones input[type="submit"], 
-body.colorblind-mode .eq-btn-guardar { 
-    background-color: #051BFF !important; 
-    color: #FFFFFF !important; 
-    border: 2px solid #000000 !important; 
-}
-
-/* 8.10 DALTONISMO: Botones de Editar/Historial (Amarillo) */
-body.colorblind-mode .ubi-boton-editar, 
-body.colorblind-mode .btnEditar, 
-body.colorblind-mode .eq-btn-edit, 
-body.colorblind-mode .eq-btn-history,
-body.colorblind-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
-    background-color: #FFCB00 !important; 
-    color: #000000 !important; 
-    border: 2px solid #000000 !important; 
-}
-
-/* 8.11 DALTONISMO: Botones de Eliminar/Cancelar (Marrón) */
-body.colorblind-mode .ubi-boton-eliminar, 
-body.colorblind-mode .btnEliminar, 
-body.colorblind-mode .eq-btn-delete, 
-body.colorblind-mode .ubi-btn-peligro, 
-body.colorblind-mode .btn-eliminar-confirmar, 
-body.colorblind-mode .eq-btn-cancelar, 
-body.colorblind-mode .eq-btn-cancel, 
-body.colorblind-mode .ubi-btn-cancelar, 
-body.colorblind-mode .btn-cancelar, 
-body.colorblind-mode .eq-btn-secondary,
-body.colorblind-mode .notificaciones-lista__boton-accion--eliminar {
-    background-color: #872200 !important; 
-    color: #FFFFFF !important; 
-    border: 2px solid #000000 !important; 
-}
-
-/* 8.12 DALTONISMO: Botón Guardar inline (Azul) */
-body.colorblind-mode .eq-btn-save { 
-    background-color: #051BFF !important; 
-    color: #FFFFFF !important; 
-}
-
-/* --- 9.3. TABLAS Y TEXTOS --- */
-
-/* 8.13 DALTONISMO: Títulos generales (Negro) */
-body.colorblind-mode h1, 
-body.colorblind-mode h2, 
-body.colorblind-mode h3 { 
-    color: #000000 !important; 
-}
-
-/* 8.14 DALTONISMO: Cabeceras de tablas (Amarillo) */
-body.colorblind-mode .eq-table th, 
-body.colorblind-mode .notificaciones-lista__tabla th { 
-    background-color: #FFCB00 !important; 
-    color: #000000 !important; 
-    border: 2px solid #000000 !important; 
-}
-
-/* 8.15 DALTONISMO: Pestañas (Tabs) de categorías */
-body.colorblind-mode .eq-tab { 
-    background-color: #FFFFFF !important; 
-    color: #000000 !important; 
-    border: 2px solid #000000 !important; 
-}
-
-/* 8.16 DALTONISMO: Pestaña activa (Marrón) */
-body.colorblind-mode .eq-tab.active { 
-    background-color: #872200 !important; 
-    color: #FFFFFF !important; 
-}
-
-/* 8.17 DALTONISMO: La flechita de la pestaña activa */
-body.colorblind-mode .eq-tab.active::after { 
-    border-color: #872200 transparent transparent transparent !important; 
-}
-
-/* 8.18 DALTONISMO: Badges de categoría (Marrón) */
-body.colorblind-mode .eq-badge { 
-    background-color: #872200 !important; 
-    color: #FFFFFF !important; 
-}
-
-/* 8.19 DALTONISMO: Textos grises secundarios (Marrón) */
-body.colorblind-mode .subtitulo-ubi, 
-body.colorblind-mode .subtitulo-usu, 
-body.colorblind-mode .ubi-estadisticas, 
-body.colorblind-mode .ubi-estadisticas i, 
-body.colorblind-mode .usu-estadisticas, 
-body.colorblind-mode .usu-estadisticas i, 
-body.colorblind-mode .estadistica-numero, 
-body.colorblind-mode .estadistica-barra, 
-body.colorblind-mode .tarjetaInfo p, 
-body.colorblind-mode .tarjetaInfo strong, 
-body.colorblind-mode .notificaciones-lista__tabla td, 
-body.colorblind-mode .notificaciones-admin__campo label, 
-body.colorblind-mode .perfil-label, 
-body.colorblind-mode .perfil-label i, 
-body.colorblind-mode .perfil-value { 
-    color: #872200 !important; 
-}
-
-/* 8.20 DALTONISMO: Textos de estadísticas (Negro) */
-body.colorblind-mode .eq-stats-bar, 
-body.colorblind-mode .eq-stat, 
-body.colorblind-mode .eq-stat i, 
-body.colorblind-mode .stat-number, 
-body.colorblind-mode .ubi-barra-estadisticas, 
-body.colorblind-mode .ubi-estadisticas, 
-body.colorblind-mode .ubi-estadisticas i, 
-body.colorblind-mode .estadistica-numero, 
-body.colorblind-mode .estadistica-barra, 
-body.colorblind-mode .usu-barra-estadisticas, 
-body.colorblind-mode .usu-estadisticas, 
-body.colorblind-mode .usu-estadisticas i { 
-    color: #000000 !important; 
-}
-
-/* --- 9.4. MODALES Y BUSCADORES --- */
-
-/* 8.21 DALTONISMO: Quitar el borde interno de los buscadores */
 body.colorblind-mode .eq-search-box input, 
 body.colorblind-mode .ubi-buscador input, 
 body.colorblind-mode .usu-buscador input { 
@@ -817,7 +644,6 @@ body.colorblind-mode .usu-buscador input {
     box-shadow: none !important; 
 }
 
-/* 8.22 DALTONISMO: Poner el borde negro al contenedor del buscador */
 body.colorblind-mode .eq-search-box, 
 body.colorblind-mode .ubi-buscador, 
 body.colorblind-mode .usu-buscador { 
@@ -825,45 +651,394 @@ body.colorblind-mode .usu-buscador {
     background-color: #FFFFFF !important; 
 }
 
-/* 8.23 DALTONISMO: Placeholder de los buscadores (Negro) */
-body.colorblind-mode .eq-search-box input::placeholder, 
-body.colorblind-mode .ubi-buscador input::placeholder, 
-body.colorblind-mode .usu-buscador input::placeholder { 
-    color: #000000 !important; 
-    opacity: 1 !important; 
-}
-
-/* 8.24 DALTONISMO: Borde del Select (Equipamientos) */
-/*Select option eq*/
-body.colorblind-mode .eq-select {
+body.colorblind-mode .eq-btn-primary, 
+body.colorblind-mode .ubi-boton-añadir, 
+body.colorblind-mode .usu-boton-añadir, 
+body.colorblind-mode .ubi-btn-guardar, 
+body.colorblind-mode .btn-aceptar, 
+body.colorblind-mode .notificaciones-lista__accion, 
+body.colorblind-mode .notificaciones-admin__acciones input[type="submit"], 
+body.colorblind-mode .eq-btn-guardar, 
+body.colorblind-mode .perfil-btn-cerrar { 
+    background-color: #051BFF !important; 
+    color: #FFFFFF !important; 
     border: 2px solid #000000 !important; 
 }
 
-/* 8.25 DALTONISMO: Placeholder general (Negro) */
-body.colorblind-mode input::placeholder, 
-body.colorblind-mode textarea::placeholder { 
+body.colorblind-mode .ubi-boton-editar, 
+body.colorblind-mode .btnEditar, 
+body.colorblind-mode .eq-btn-edit, 
+body.colorblind-mode .eq-btn-history { 
+    background-color: #FFCB00 !important; 
     color: #000000 !important; 
-    opacity: 1 !important; 
+    border: 2px solid #000000 !important; 
 }
 
-/* 8.26 DALTONISMO: Opciones de los Select (Blanco y Negro) */
-body.colorblind-mode select option { 
+body.colorblind-mode .ubi-boton-eliminar, 
+body.colorblind-mode .btnEliminar, 
+body.colorblind-mode .eq-btn-delete, 
+body.colorblind-mode .ubi-btn-peligro, 
+body.colorblind-mode .btn-eliminar-confirmar, 
+body.colorblind-mode .eq-btn-cancelar, 
+body.colorblind-mode .eq-btn-cancel, 
+body.colorblind-mode .ubi-btn-cancelar, 
+body.colorblind-mode .btn-cancelar, 
+body.colorblind-mode .eq-btn-secondary { 
+    background-color: #872200 !important; 
+    color: #FFFFFF !important; 
+    border: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode h1, 
+body.colorblind-mode h2, 
+body.colorblind-mode h3 { 
     color: #000000 !important; 
+}
+
+body.colorblind-mode .eq-table th,
+body.colorblind-mode .notificaciones-lista__tabla th { 
+    background-color: #FFCB00 !important; 
+    color: #000000 !important; 
+    border: 1px solid #000000 !important; 
+    border-bottom: 2px solid #000000 !important;
+    padding: 10px 8px !important;
+}
+
+body.colorblind-mode .eq-tab { 
     background-color: #FFFFFF !important; 
+    color: #000000 !important; 
+    border: 2px solid #000000 !important; 
 }
 
-/* 8.27 DALTONISMO: Tarjetas y tablas (Ubicaciones, Usuarios) */
+body.colorblind-mode .eq-tab.active { 
+    background-color: #872200 !important; 
+    color: #FFFFFF !important; 
+}
+
+body.colorblind-mode .eq-tab.active::after { 
+    border-color: #872200 transparent transparent transparent !important; 
+}
+
+body.colorblind-mode .eq-badge { 
+    background-color: #872200 !important; 
+    color: #FFFFFF !important; 
+}
+
 body.colorblind-mode .desplegable-planta, 
 body.colorblind-mode .tarjeta-usu, 
 body.colorblind-mode .notificaciones-lista__tabla table { 
     border: 2px solid #000000 !important; 
 }
 
-/* 8.28 DALTONISMO: Notificaciones (Filas) */
 body.colorblind-mode .notificacion-leida, 
 body.colorblind-mode .notificacion-no-leida { 
     background-color: #FFFFFF !important; 
     border-bottom: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .ubi-modal-contenido, 
+body.colorblind-mode .popup-contenido, 
+body.colorblind-mode .popup-eliminar-contenido, 
+body.colorblind-mode .perfil-modal-content, 
+body.colorblind-mode .eq-modal-content { 
+    background-color: #FFFFFF !important; 
+    border: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode footer { 
+    background-color: #FFCB00 !important; 
+    color: #000000 !important; 
+    border-top: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .perfil-header { 
+    background-color: #FFFFFF !important; 
+    border-bottom: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .perfil-row { 
+    border-bottom: 2px solid #000000 !important; 
+}
+
+body.colorblind-mode .perfil-avatar-icon { 
+    background-color: #FFCB00 !important; 
+    color: #000000 !important; 
+    border: 2px solid #000000 !important; 
+    box-shadow: none !important; 
+}
+
+body.colorblind-mode .perfil-header h3, 
+body.colorblind-mode .perfil-subtitle, 
+body.colorblind-mode .perfil-value, 
+body.colorblind-mode #perfil-rol { 
+    color: #000000 !important; 
+    font-weight: 700 !important; 
+    opacity: 1 !important; 
+}
+
+body.colorblind-mode .perfil-label, 
+body.colorblind-mode .perfil-label i { 
+    color: #872200 !important; 
+    font-weight: 700 !important; 
+}
+
+body.colorblind-mode .search-clear-btn { 
+    background-color: #000000 !important; 
+    color: #FFFFFF !important; 
+}
+
+body.colorblind-mode .search-clear-btn:hover { 
+    background-color: #872200 !important; 
+}
+
+/* 1. BODY */
+body.colorblind-mode {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    font-weight: 500 !important;
+}
+
+/* --- 2. NAVBAR --- */
+body.colorblind-mode .top-navbar {
+    background-color: #FFCB00 !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+/* 8.3 DALTONISMO: Botones del menú (Marrón) */
+body.colorblind-mode .nav-tabs a {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.4 DALTONISMO: Botón activo/hover del menú (Azul) */
+body.colorblind-mode .nav-tabs a.active,
+body.colorblind-mode .nav-tabs a:hover {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+}
+
+/* 8.5 DALTONISMO: Texto del logo (Negro) */
+body.colorblind-mode .login-logo-text {
+    color: #000000 !important;
+}
+
+/* 8.6 DALTONISMO: Botón del perfil (Marrón) */
+body.colorblind-mode .admin-dropdown {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+}
+
+/* 8.7 DALTONISMO: Campana blanca sobre fondo azul oscuro */
+body.colorblind-mode .notification-toggle .bell,
+body.colorblind-mode .notification-toggle i {
+    color: #FFFFFF !important;
+    -webkit-text-stroke: 0;
+    font-weight: 900 !important;
+}
+
+/* --- 3. FORMULARIOS Y BOTONES GENERALES --- */
+
+/* 8.8 DALTONISMO: Inputs y cajas de búsqueda (Borde negro grueso) */
+body.colorblind-mode input,
+body.colorblind-mode select,
+body.colorblind-mode textarea,
+body.colorblind-mode .eq-search-box,
+body.colorblind-mode .ubi-buscador,
+body.colorblind-mode .usu-buscador {
+    border: 2px solid #000000 !important;
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+}
+
+/* 8.9 DALTONISMO: Botones principales (Azul) */
+body.colorblind-mode .eq-btn-primary,
+body.colorblind-mode .ubi-boton-añadir,
+body.colorblind-mode .usu-boton-añadir,
+body.colorblind-mode .ubi-btn-guardar,
+body.colorblind-mode .btn-aceptar,
+body.colorblind-mode .notificaciones-lista__accion,
+body.colorblind-mode .notificaciones-admin__acciones input[type="submit"],
+body.colorblind-mode .eq-btn-guardar {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
+body.colorblind-mode #popupEliminar #btnCancelarEliminar {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.10 DALTONISMO: Botones de Editar/Historial (Amarillo) */
+body.colorblind-mode .ubi-boton-editar,
+body.colorblind-mode .btnEditar,
+body.colorblind-mode .eq-btn-edit,
+body.colorblind-mode .eq-btn-history,
+body.colorblind-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
+    background-color: #FFCB00 !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.11 DALTONISMO: Botones de Eliminar/Cancelar (Marrón) */
+body.colorblind-mode .ubi-boton-eliminar,
+body.colorblind-mode .btnEliminar,
+body.colorblind-mode .eq-btn-delete,
+body.colorblind-mode .ubi-btn-peligro,
+body.colorblind-mode .btn-eliminar-confirmar,
+body.colorblind-mode .eq-btn-cancelar,
+body.colorblind-mode .eq-btn-cancel,
+body.colorblind-mode .ubi-btn-cancelar,
+body.colorblind-mode .btn-cancelar,
+body.colorblind-mode .eq-btn-secondary,
+body.colorblind-mode .notificaciones-lista__boton-accion--eliminar {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.12 DALTONISMO: Botón Guardar inline (Azul) */
+body.colorblind-mode .eq-btn-save {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+}
+
+/* --- 9.3. TABLAS Y TEXTOS --- */
+
+/* 8.13 DALTONISMO: Títulos generales (Negro) */
+body.colorblind-mode h1,
+body.colorblind-mode h2,
+body.colorblind-mode h3 {
+    color: #000000 !important;
+}
+
+/* 8.14 DALTONISMO: Cabeceras de tablas (Amarillo) */
+body.colorblind-mode .eq-table th,
+body.colorblind-mode .notificaciones-lista__tabla th {
+    background-color: #FFCB00 !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.15 DALTONISMO: Pestañas (Tabs) de categorías */
+body.colorblind-mode .eq-tab {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 8.16 DALTONISMO: Pestaña activa (Marrón) */
+body.colorblind-mode .eq-tab.active {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+}
+
+/* 8.17 DALTONISMO: La flechita de la pestaña activa */
+body.colorblind-mode .eq-tab.active::after {
+    border-color: #872200 transparent transparent transparent !important;
+}
+
+/* 8.18 DALTONISMO: Badges de categoría (Marrón) */
+body.colorblind-mode .eq-badge {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+}
+
+/* 8.19 DALTONISMO: Textos grises secundarios (Marrón) */
+body.colorblind-mode .subtitulo-ubi,
+body.colorblind-mode .subtitulo-usu,
+body.colorblind-mode .ubi-estadisticas,
+body.colorblind-mode .ubi-estadisticas i,
+body.colorblind-mode .usu-estadisticas,
+body.colorblind-mode .usu-estadisticas i,
+body.colorblind-mode .estadistica-numero,
+body.colorblind-mode .estadistica-barra,
+body.colorblind-mode .tarjetaInfo p,
+body.colorblind-mode .tarjetaInfo strong,
+body.colorblind-mode .notificaciones-lista__tabla td,
+body.colorblind-mode .notificaciones-admin__campo label,
+body.colorblind-mode .perfil-label,
+body.colorblind-mode .perfil-label i,
+body.colorblind-mode .perfil-value {
+    color: #872200 !important;
+}
+
+/* 8.20 DALTONISMO: Textos de estadísticas (Negro) */
+body.colorblind-mode .eq-stats-bar,
+body.colorblind-mode .eq-stat,
+body.colorblind-mode .eq-stat i,
+body.colorblind-mode .stat-number,
+body.colorblind-mode .ubi-barra-estadisticas,
+body.colorblind-mode .ubi-estadisticas,
+body.colorblind-mode .ubi-estadisticas i,
+body.colorblind-mode .estadistica-numero,
+body.colorblind-mode .estadistica-barra,
+body.colorblind-mode .usu-barra-estadisticas,
+body.colorblind-mode .usu-estadisticas,
+body.colorblind-mode .usu-estadisticas i {
+    color: #000000 !important;
+}
+
+/* --- 9.4. MODALES Y BUSCADORES --- */
+
+/* 8.21 DALTONISMO: Quitar el borde interno de los buscadores */
+body.colorblind-mode .eq-search-box input,
+body.colorblind-mode .ubi-buscador input,
+body.colorblind-mode .usu-buscador input {
+    border: none !important;
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 8.22 DALTONISMO: Poner el borde negro al contenedor del buscador */
+body.colorblind-mode .eq-search-box,
+body.colorblind-mode .ubi-buscador,
+body.colorblind-mode .usu-buscador {
+    border: 2px solid #000000 !important;
+    background-color: #FFFFFF !important;
+}
+
+/* 8.23 DALTONISMO: Placeholder de los buscadores (Negro) */
+body.colorblind-mode .eq-search-box input::placeholder,
+body.colorblind-mode .ubi-buscador input::placeholder,
+body.colorblind-mode .usu-buscador input::placeholder {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+/* 8.24 DALTONISMO: Borde del Select (Equipamientos) */
+body.colorblind-mode .eq-select {
+    border: 2px solid #000000 !important;
+}
+
+/* 8.25 DALTONISMO: Placeholder general (Negro) */
+body.colorblind-mode input::placeholder,
+body.colorblind-mode textarea::placeholder {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+/* 8.26 DALTONISMO: Opciones de los Select (Blanco y Negro) */
+body.colorblind-mode select option {
+    color: #000000 !important;
+    background-color: #FFFFFF !important;
+}
+
+/* 8.27 DALTONISMO: Tarjetas y tablas (Ubicaciones, Usuarios) */
+body.colorblind-mode .desplegable-planta,
+body.colorblind-mode .tarjeta-usu,
+body.colorblind-mode .notificaciones-lista__tabla table {
+    border: 2px solid #000000 !important;
+}
+
+/* 8.28 DALTONISMO: Notificaciones (Filas) */
+body.colorblind-mode .notificacion-leida,
+body.colorblind-mode .notificacion-no-leida {
+    background-color: #FFFFFF !important;
+    border-bottom: 2px solid #000000 !important;
 }
 
 body.colorblind-mode .notificaciones-lista__tabla,
@@ -916,291 +1091,403 @@ body.colorblind-mode .notificaciones-lista__mensaje--error {
 }
 
 /* 8.29 DALTONISMO: Modales y Popups (Fondo blanco, borde negro) */
-body.colorblind-mode .ubi-modal-contenido, 
-body.colorblind-mode .popup-contenido, 
-body.colorblind-mode .popup-eliminar-contenido, 
-body.colorblind-mode .perfil-modal-content { 
-    background-color: #FFFFFF !important; 
-    border: 2px solid #000000 !important; 
+body.colorblind-mode .ubi-modal-contenido,
+body.colorblind-mode .popup-contenido,
+body.colorblind-mode .popup-eliminar-contenido,
+body.colorblind-mode .perfil-modal-content {
+    background-color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
 }
 
 /* 8.30 DALTONISMO: Footer (Amarillo) */
-body.colorblind-mode footer { 
-    background-color: #FFCB00 !important; 
-    color: #000000 !important; 
-    border-top: 2px solid #000000 !important; 
+body.colorblind-mode footer {
+    background-color: #FFCB00 !important;
+    color: #000000 !important;
+    border-top: 2px solid #000000 !important;
 }
 
 /* 8.31 DALTONISMO: Fix del fondo del Dialog Modal */
-dialog.eq-modal { 
-    background: transparent !important; 
+dialog.eq-modal {
+    background: transparent !important;
 }
 
 /* 8.32 DALTONISMO: Backdrop oscuro del Dialog Modal */
-dialog.eq-modal::backdrop { 
-    background: rgba(0, 0, 0, 0.5) !important; 
+dialog.eq-modal::backdrop {
+    background: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* 8.33 DALTONISMO: Contenido del Modal de equipamientos */
-body.colorblind-mode .eq-modal-content { 
-    background-color: #FFFFFF !important; 
-    border: 2px solid #000000 !important; 
-    box-shadow: none !important; 
+body.colorblind-mode .eq-modal-content {
+    background-color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
 }
 
 /* 8.34 DALTONISMO: Quitar el borde azul de foco en inputs */
-body.colorblind-mode input:focus, 
-body.colorblind-mode select:focus, 
-body.colorblind-mode textarea:focus { 
-    outline: none !important; 
-    box-shadow: none !important; 
+body.colorblind-mode input:focus,
+body.colorblind-mode select:focus,
+body.colorblind-mode textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 /* 8.35 DALTONISMO: Hover del botón secundario (Marrón oscuro) */
-body.colorblind-mode .eq-btn-secondary:hover { 
-    background-color: #6b1a00 !important; 
+body.colorblind-mode .eq-btn-secondary:hover {
+    background-color: #6b1a00 !important;
 }
 
 /* 8.36 DALTONISMO: Texto de la descripción en el modal (Negro) */
-body.colorblind-mode #desc-text-content { 
-    color: #000000 !important; 
+body.colorblind-mode #desc-text-content {
+    color: #000000 !important;
 }
 
 /* 8.37 DALTONISMO: Textos de Ubicación en tablas (Azul) */
-body.colorblind-mode #historico-table-body .eq-location, 
-body.colorblind-mode #historico-table-body .eq-location i, 
-body.colorblind-mode #eq-table-body .eq-location, 
-body.colorblind-mode #eq-table-body .eq-location i, 
-body.colorblind-mode .eq-location-link, 
-body.colorblind-mode .eq-location-link i { 
-    color: #051BFF !important; 
+body.colorblind-mode #historico-table-body .eq-location,
+body.colorblind-mode #historico-table-body .eq-location i,
+body.colorblind-mode #eq-table-body .eq-location,
+body.colorblind-mode #eq-table-body .eq-location i,
+body.colorblind-mode .eq-location-link,
+body.colorblind-mode .eq-location-link i {
+    color: #051BFF !important;
 }
 
 /* 8.38 DALTONISMO: Fila resaltada en Historial (Amarillo) */
-body.colorblind-mode .row-highlight, 
-body.colorblind-mode .row-highlight td { 
-    background-color: #FFCB00 !important; 
-    border-bottom: 2px solid #000000 !important; 
+body.colorblind-mode .row-highlight,
+body.colorblind-mode .row-highlight td {
+    background-color: #FFCB00 !important;
+    border-bottom: 2px solid #000000 !important;
 }
 
 /* --- 9.5. MODAL PERFIL --- */
 
 /* 8.39 DALTONISMO PERFIL: Cabecera (Blanco, borde negro) */
-body.colorblind-mode .perfil-header { 
-    background-color: #FFFFFF !important; 
-    border-bottom: 2px solid #000000 !important; 
+body.colorblind-mode .perfil-header {
+    background-color: #FFFFFF !important;
+    border-bottom: 2px solid #000000 !important;
 }
 
 /* 8.40 DALTONISMO PERFIL: Filas (Borde negro) */
-body.colorblind-mode .perfil-row { 
-    border-bottom: 2px solid #000000 !important; 
+body.colorblind-mode .perfil-row {
+    border-bottom: 2px solid #000000 !important;
 }
 
 /* 8.41 DALTONISMO PERFIL: Avatar (Amarillo, borde negro) */
-body.colorblind-mode .perfil-avatar-icon { 
-    background-color: #FFCB00 !important; 
-    color: #000000 !important; 
-    border: 2px solid #000000 !important; 
-    box-shadow: none !important; 
+body.colorblind-mode .perfil-avatar-icon {
+    background-color: #FFCB00 !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
 }
 
 /* 8.42 DALTONISMO PERFIL: Título (Negro grueso) */
-body.colorblind-mode .perfil-header h3 { 
-    color: #000000 !important; 
-    font-weight: 700 !important; 
+body.colorblind-mode .perfil-header h3 {
+    color: #000000 !important;
+    font-weight: 700 !important;
 }
 
 /* 8.43 DALTONISMO PERFIL: Subtítulo (Negro sin opacidad) */
-body.colorblind-mode .perfil-subtitle { 
-    color: #000000 !important; 
-    opacity: 1 !important; 
-    font-weight: 600 !important; 
+body.colorblind-mode .perfil-subtitle {
+    color: #000000 !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
 }
 
 /* 8.44 DALTONISMO PERFIL: Labels e Iconos (Marrón grueso) */
-body.colorblind-mode .perfil-label, 
-body.colorblind-mode .perfil-label i { 
-    color: #872200 !important; 
-    font-weight: 700 !important; 
+body.colorblind-mode .perfil-label,
+body.colorblind-mode .perfil-label i {
+    color: #872200 !important;
+    font-weight: 700 !important;
 }
 
 /* 8.45 DALTONISMO PERFIL: Valores (Negro grueso) */
-body.colorblind-mode .perfil-value { 
-    color: #000000 !important; 
-    font-weight: 700 !important; 
+body.colorblind-mode .perfil-value {
+    color: #000000 !important;
+    font-weight: 700 !important;
 }
 
 /* 8.46 DALTONISMO PERFIL: Rol (Negro) */
-body.colorblind-mode #perfil-rol { 
-    color: #000000 !important; 
+body.colorblind-mode #perfil-rol {
+    color: #000000 !important;
 }
 
 /* 8.47 DALTONISMO PERFIL: Botón Cerrar (Azul, borde negro) */
-body.colorblind-mode .perfil-btn-cerrar { 
-    background-color: #051BFF !important; 
-    color: #FFFFFF !important; 
-    border: 2px solid #000000 !important; 
-    font-weight: 700 !important; 
+body.colorblind-mode .perfil-btn-cerrar {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+    font-weight: 700 !important;
 }
 
 /* 8.48 DALTONISMO PERFIL: Hover del Botón Cerrar (Azul oscuro) */
-body.colorblind-mode .perfil-btn-cerrar:hover { 
-    background-color: #0415cc !important; 
+body.colorblind-mode .perfil-btn-cerrar:hover {
+    background-color: #0415cc !important;
 }
 
 /* --- 9.6. GROSOR GLOBAL DE TEXTO --- */
 
 /* 8.49 DALTONISMO TEXTO: Títulos más gruesos */
-body.colorblind-mode h1, 
-body.colorblind-mode h2, 
-body.colorblind-mode h3, 
-body.colorblind-mode .eq-title, 
-body.colorblind-mode .titulo-ubi, 
-body.colorblind-mode .titulo-usu, 
-body.colorblind-mode .perfil-header h3 { 
-    font-weight: 600 !important; 
+body.colorblind-mode h1,
+body.colorblind-mode h2,
+body.colorblind-mode h3,
+body.colorblind-mode .eq-title,
+body.colorblind-mode .titulo-ubi,
+body.colorblind-mode .titulo-usu,
+body.colorblind-mode .perfil-header h3 {
+    font-weight: 600 !important;
 }
 
 /* 8.50 DALTONISMO TEXTO: Botones y cabeceras de tabla más gruesos */
-body.colorblind-mode .eq-table th, 
-body.colorblind-mode .notificaciones-lista th, 
-body.colorblind-mode button, 
-body.colorblind-mode .eq-btn-primary, 
-body.colorblind-mode .ubi-boton-añadir, 
-body.colorblind-mode .usu-boton-añadir, 
-body.colorblind-mode .perfil-btn-cerrar, 
-body.colorblind-mode .nav-tabs a { 
-    font-weight: 600 !important; 
+body.colorblind-mode .eq-table th,
+body.colorblind-mode .notificaciones-lista th,
+body.colorblind-mode button,
+body.colorblind-mode .eq-btn-primary,
+body.colorblind-mode .ubi-boton-añadir,
+body.colorblind-mode .usu-boton-añadir,
+body.colorblind-mode .perfil-btn-cerrar,
+body.colorblind-mode .nav-tabs a {
+    font-weight: 600 !important;
 }
 
 /* 8.51 DALTONISMO TEXTO: Párrafos y textos secundarios más gruesos */
-body.colorblind-mode p, 
-body.colorblind-mode td, 
-body.colorblind-mode .eq-stat, 
-body.colorblind-mode .subtitulo-ubi, 
-body.colorblind-mode .subtitulo-usu, 
-body.colorblind-mode .stat-number { 
-    font-weight: 500 !important; 
+body.colorblind-mode p,
+body.colorblind-mode td,
+body.colorblind-mode .eq-stat,
+body.colorblind-mode .subtitulo-ubi,
+body.colorblind-mode .subtitulo-usu,
+body.colorblind-mode .stat-number {
+    font-weight: 500 !important;
 }
 
 /* --- 9.7. SEARCH CLEAR (X) --- */
 
 /* 8.52 DALTONISMO (X): Fondo negro, icono blanco */
-body.colorblind-mode .search-clear-btn { 
-    background-color: #000000 !important; 
-    color: #FFFFFF !important; 
+body.colorblind-mode .search-clear-btn {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
 }
 
 /* 8.53 DALTONISMO (X): Hover (Marrón) */
-body.colorblind-mode .search-clear-btn:hover { 
-    background-color: #872200 !important; 
+body.colorblind-mode .search-clear-btn:hover {
+    background-color: #872200 !important;
 }
+
 
 /* =========================================
-   MODO OSCURO (DARK MODE) - PALETA VERDE
+   MODO DALTONISMO: MENÚ HAMBURGUESA (MÓVIL)
    ========================================= */
 
-/* 1. BASE Y FONDO */
+/* 1. Fondo del cajón lateral */
+body.colorblind-mode .mobile-drawer {
+    background-color: #FFFFFF !important;
+    border-right: 2px solid #000000 !important;
+}
+
+/* 2. Cabecera del menú (Fondo Amarillo, texto negro) */
+body.colorblind-mode .mobile-drawer-header {
+    background-color: #FFCB00 !important;
+    color: #000000 !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+/* 3. Enlaces de navegación (Fondo Marrón, texto blanco) */
+body.colorblind-mode .mobile-nav-links a {
+    background-color: #872200 !important;
+    color: #FFFFFF !important;
+    border-bottom: 1px solid #000000 !important;
+    font-weight: 700 !important;
+    padding: 15px 20px !important;
+}
+
+/* Enlace activo (Fondo Azul) */
+body.colorblind-mode .mobile-nav-links a.active {
+    background-color: #051BFF !important;
+    color: #FFFFFF !important;
+}
+
+/* 4. Opciones de usuario (Perfil, Daltonismo, Salir) - Fondo blanco, texto negro */
+body.colorblind-mode .mobile-user-options .menu-option-perfil,
+body.colorblind-mode .mobile-user-options .menu-option-daltonismo,
+body.colorblind-mode .mobile-user-options .menu-option-salir {
+    border: none !important;
+    border-bottom: 1px solid #000000 !important;
+    padding: 15px 20px !important; 
+    background-color: #FFFFFF !important; 
+    color: #000000 !important; 
+    font-weight: 700 !important;
+}
+
+/* Hover de las opciones */
+body.colorblind-mode .mobile-user-options .menu-option-perfil:hover,
+body.colorblind-mode .mobile-user-options .menu-option-daltonismo:hover,
+body.colorblind-mode .mobile-user-options .menu-option-salir:hover {
+    background-color: #FFCB00 !important;
+}
+
+/* 5. Separador */
+body.colorblind-mode .menu-separator {
+    border-top: 2px solid #000000 !important;
+    margin: 0 !important;
+}
+
+/* 6. Interruptores (Switches) */
+body.colorblind-mode .mobile-user-options .toggle-switch {
+    width: 40px !important; 
+    height: 22px !important;
+    border: 2px solid #000000 !important;
+    background-color: #FFFFFF !important;
+    box-sizing: border-box !important; 
+    border-radius: 20px !important;
+    position: relative !important;
+}
+
+body.colorblind-mode .mobile-user-options .toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 2px;
+    left: 2px;
+    background-color: #000000;
+    border-radius: 50%;
+    transition: left 0.3s ease, background-color 0.3s ease;
+    box-shadow: none;
+}
+
+body.colorblind-mode .mobile-user-options .toggle-switch.active {
+    background-color: #051BFF;
+}
+
+body.colorblind-mode .mobile-user-options .toggle-switch.active::after {
+    background-color: #FFFFFF;
+    left: 20px;
+}
+
+
+/* =========================================
+   9. MODO OSCURO
+   ========================================= */
 body.dark-mode { 
-    background-color: #4c4c4c !important; /* Fondo principal */
-    color: #FFFFFF !important; 
+    background-color: #050505 !important; 
+    color: #e0e0e0 !important; 
+    background-image: radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.05), transparent 30%), radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.05), transparent 30%) !important; 
+    background-attachment: fixed !important; 
 }
 
-/* 2. NAVBAR Y FOOTER */
-body.dark-mode .top-navbar {
-    background-color: #403f3f !important; 
-}
-body.dark-mode footer {
-    background-color: #4c4c4c !important;
-    color: #9ec5ab !important;
-}
-body.dark-mode .login-logo-text { color: #FFFFFF !important; }
-
-/* 3. NAVEGACIÓN (TABS) */
-body.dark-mode .nav-tabs a {
-    background-color: #2e2e2e!important;
-    color: #d4e4d9 !important;
-    
-}
-body.dark-mode .nav-tabs a:hover {
-    background-color: #01200f !important;
-    color: #FFFFFF !important;
-}
-body.dark-mode .nav-tabs a.active {
-    background-color: #080808 !important; 
-    color: #FFFFFF !important;
-    border: 1px solid #007029 !important;
+body.dark-mode .top-navbar, 
+body.dark-mode footer { 
+    background: rgba(10, 10, 10, 0.7) !important; 
+    backdrop-filter: blur(16px) !important; 
+    -webkit-backdrop-filter: blur(16px) !important; 
+    border-bottom: 1px solid rgba(0, 240, 255, 0.3) !important; 
+    border-top: 1px solid rgba(0, 240, 255, 0.3) !important; 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important; 
 }
 
-/* 4. MENÚ DE USUARIO Y AVATAR */
+body.dark-mode .login-logo-text { 
+    color: #ffffff !important; 
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6) !important; 
+}
+
+body.dark-mode .nav-tabs a { 
+    background: rgba(255, 255, 255, 0.03) !important; 
+    color: #a0a0a0 !important; 
+    border: 1px solid rgba(255, 255, 255, 0.05) !important; 
+    backdrop-filter: blur(4px) !important; 
+}
+
+body.dark-mode .nav-tabs a:hover { 
+    background: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
+    border-color: rgba(0, 240, 255, 0.3) !important; 
+}
+
+body.dark-mode .nav-tabs a.active { 
+    background: rgba(0, 240, 255, 0.15) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid #00f0ff !important; 
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2) !important; 
+}
+
 body.dark-mode .admin-dropdown { 
-    background-color: #2e2e2e !important; 
-    color: #FFFFFF !important; 
+    background: rgba(20, 20, 20, 0.6) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
+    backdrop-filter: blur(8px) !important; 
+    color: #ffffff !important; 
 }
-body.dark-mode .admin-dropdown:hover {
-    background-color: #023015 !important; 
+
+body.dark-mode .admin-dropdown:hover { 
+    border-color: #00f0ff !important; 
 }
-body.dark-mode .user-avatar {
-    background-color: #01200f !important; 
-    color: #9ec5ab !important;
+
+body.dark-mode .user-avatar { 
+    background: rgba(0, 240, 255, 0.2) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid #00f0ff !important; 
 }
-body.dark-mode .dropdown-menu {
-    background-color: #01200f !important;
-    border: 1px solid #9ec5ab !important;
+
+body.dark-mode .dropdown-menu { 
+    background: rgba(10, 10, 10, 0.9) !important; 
+    backdrop-filter: blur(20px) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.4) !important; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important; 
 }
+
 body.dark-mode .menu-option-perfil, 
 body.dark-mode .menu-option-daltonismo, 
-body.dark-mode .menu-option-salir {
-    color: #FFFFFF !important;
+body.dark-mode .menu-option-salir { 
+    color: #e0e0e0 !important; 
 }
+
 body.dark-mode .menu-option-perfil:hover, 
 body.dark-mode .menu-option-daltonismo:hover, 
 body.dark-mode .menu-option-salir:hover { 
-    background-color: #011502 !important; 
-    color: #e5eee8 !important;
-}
-body.dark-mode .menu-separator {
-    border-top: 1px solid #343d37 !important;
+    background-color: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
 }
 
-/* 5. BOTONES PRINCIPALES */
-body.dark-mode .eq-btn-primary,
-body.dark-mode .eq-select,
-body.dark-mode .ubi-boton-añadir,
-body.dark-mode .usu-boton-añadir,
-body.dark-mode .ubi-btn-guardar,
-body.dark-mode .btn-aceptar,
-body.dark-mode .notificaciones-lista__accion,
-body.dark-mode .notification-menu__mark-read:not(:disabled),
-body.dark-mode .eq-btn-guardar,
-body.dark-mode .perfil-btn-cerrar { 
-    background-color: #1b241f !important; 
-    color: #FFFFFF !important; 
-    border: 1px solid #005720 !important; 
-    transition: 0.2s;
+body.dark-mode .menu-separator { 
+    border-top: 1px solid rgba(0, 240, 255, 0.2) !important; 
 }
-body.dark-mode .eq-btn-primary:hover,
-body.dark-mode .perfil-btn-cerrar:hover,
-body.dark-mode .ubi-btn-guardar:hover,
-body.dark-mode .notification-menu__mark-read:not(:disabled):hover {
-    background-color: #01200f  !important; 
+
+body.dark-mode .eq-btn-primary, 
+body.dark-mode .eq-select, 
+body.dark-mode .ubi-boton-añadir, 
+body.dark-mode .usu-boton-añadir, 
+body.dark-mode .ubi-btn-guardar, 
+body.dark-mode .btn-aceptar, 
+body.dark-mode .notificaciones-lista__accion, 
+body.dark-mode .eq-btn-guardar, 
+body.dark-mode .perfil-btn-cerrar { 
+    background: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid #00f0ff !important; 
+    backdrop-filter: blur(8px) !important; 
+    transition: all 0.3s ease; 
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.5); 
+}
+
+body.dark-mode .eq-btn-primary:hover, 
+body.dark-mode .perfil-btn-cerrar:hover, 
+body.dark-mode .ubi-btn-guardar:hover { 
+    background: rgba(0, 240, 255, 0.3) !important; 
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important; 
     color: #ffffff !important; 
 }
 
 /* 6. BOTONES DE ACCIÓN (Editar y Eliminar) */
-/* Editar (Icono en verde menta) */
-body.dark-mode .ubi-boton-editar, 
+body.dark-mode .ubi-boton-editar,
 body.dark-mode .btnEditar,
-body.dark-mode .eq-btn-edit, 
+body.dark-mode .eq-btn-edit,
 body.dark-mode .eq-btn-history,
 body.dark-mode .eq-btn-save,
 body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar) {
-    background-color: #2f2f2f !important; 
-    color: #ffffff !important; 
+    background-color: #2f2f2f !important;
+    color: #ffffff !important;
     border: 1px solid #4c4c4c !important;
     transition: 0.2s;
 }
-body.dark-mode .ubi-boton-editar:hover, 
+
+body.dark-mode .ubi-boton-editar:hover,
 body.dark-mode .eq-btn-edit:hover,
 body.dark-mode .eq-btn-history:hover,
 body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__boton-accion--eliminar):hover {
@@ -1208,8 +1495,7 @@ body.dark-mode .notificaciones-lista__boton-accion:not(.notificaciones-lista__bo
     color: #011502 !important;
 }
 
-/* Eliminar */
-body.dark-mode .ubi-boton-eliminar, 
+body.dark-mode .ubi-boton-eliminar,
 body.dark-mode .btnEliminar,
 body.dark-mode .eq-btn-delete,
 body.dark-mode .ubi-btn-peligro,
@@ -1220,255 +1506,486 @@ body.dark-mode .ubi-btn-cancelar,
 body.dark-mode .btn-cancelar,
 body.dark-mode .eq-btn-secondary,
 body.dark-mode .notificaciones-lista__boton-accion--eliminar {
-    background-color: #1b241f !important; 
+    background-color: #1b241f !important;
     color: #FFFFFF !important;
     border: none !important;
 }
+
 body.dark-mode .ubi-boton-eliminar:hover,
 body.dark-mode .eq-btn-delete:hover,
 body.dark-mode .btn-eliminar-confirmar:hover,
 body.dark-mode .notificaciones-lista__boton-accion--eliminar:hover {
-    background-color: #b91c1c !important; /* Rojo */
+    background-color: #b91c1c !important;
 }
 
-/* 7. INPUTS Y BUSCADORES */
+body.dark-mode .ubi-boton-editar, 
+body.dark-mode .btnEditar, 
+body.dark-mode .eq-btn-edit, 
+body.dark-mode .eq-btn-history, 
+body.dark-mode .eq-btn-save { 
+    background: rgba(0, 240, 255, 0.15) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid rgba(0, 240, 255, 0.5) !important; 
+    transition: 0.3s; 
+}
+
+body.dark-mode .ubi-boton-editar:hover, 
+body.dark-mode .eq-btn-edit:hover, 
+body.dark-mode .eq-btn-history:hover { 
+    background: #00f0ff !important; 
+    color: #050505 !important; 
+    box-shadow: 0 0 15px #00f0ff !important; 
+}
+
+body.dark-mode .ubi-boton-eliminar, 
+body.dark-mode .btnEliminar, 
+body.dark-mode .eq-btn-delete, 
+body.dark-mode .ubi-btn-peligro, 
+body.dark-mode .btn-eliminar-confirmar, 
+body.dark-mode .eq-btn-cancel, 
+body.dark-mode .eq-btn-cancelar, 
+body.dark-mode .ubi-btn-cancelar, 
+body.dark-mode .btn-cancelar, 
+body.dark-mode .eq-btn-secondary { 
+    background: rgba(255, 0, 85, 0.1) !important; 
+    color: #ff0055 !important; 
+    border: 1px solid rgba(255, 0, 85, 0.5) !important; 
+}
+
+body.dark-mode .ubi-boton-eliminar:hover, 
+body.dark-mode .eq-btn-delete:hover, 
+body.dark-mode .btn-eliminar-confirmar:hover { 
+    background: #ff0055 !important; 
+    color: #ffffff !important; 
+    box-shadow: 0 0 15px #ff0055 !important; 
+}
+
 body.dark-mode input, 
 body.dark-mode select, 
-body.dark-mode textarea,
+body.dark-mode textarea, 
 body.dark-mode .eq-search-box, 
 body.dark-mode .ubi-buscador, 
 body.dark-mode .usu-buscador { 
-    background-color: #021c04 !important; 
-    color: #FFFFFF !important; 
-    border: 1px solid #01200f !important; 
+    background: rgba(0, 0, 0, 0.5) !important; 
+    color: #ffffff !important; 
+    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
+    backdrop-filter: blur(4px) !important; 
 }
+
 body.dark-mode .eq-search-box input, 
 body.dark-mode .ubi-buscador input, 
 body.dark-mode .usu-buscador input { 
     background-color: transparent !important; 
-    border: none !important;
-}
-body.dark-mode input::placeholder {
-    color: #e2f4e8 !important;
-}
-body.dark-mode .search-clear-btn {
-    background-color: #01401e !important;
-    color: #ffffff !important;
-}
-body.dark-mode .search-clear-btn:hover {
-    background-color: #9ec5ab !important;
-    color: #011502 !important;
+    border: none !important; 
 }
 
-/* 8. TABLAS Y TEXTOS */
+body.dark-mode input:focus { 
+    border-color: #00f0ff !important; 
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3) !important; 
+    outline: none !important; 
+}
+
+body.dark-mode input::placeholder { 
+    color: #6b7280 !important; 
+}
+
+body.dark-mode .search-clear-btn { 
+    background: rgba(0, 240, 255, 0.2) !important; 
+    color: #00f0ff !important; 
+}
+
+body.dark-mode .search-clear-btn:hover { 
+    background: #00f0ff !important; 
+    color: #050505 !important; 
+}
+
 body.dark-mode h1, 
 body.dark-mode h2, 
-body.dark-mode h3,
-body.dark-mode .eq-title,
-body.dark-mode .titulo-ubi,
-body.dark-mode .titulo-usu,
-body.dark-mode .subtitulo-ubi,
-body.dark-mode .subtitulo-usu,
+body.dark-mode h3, 
+body.dark-mode .eq-title, 
+body.dark-mode .titulo-ubi, 
+body.dark-mode .titulo-usu, 
 body.dark-mode .stat-number { 
-    color: #FFFFFF !important; 
+    color: #ffffff !important; 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important; 
 }
 
 body.dark-mode .eq-stats-bar, 
-body.dark-mode .eq-stat {
-    color: #9ec5ab !important;
+body.dark-mode .eq-stat { 
+    color: #a0a0a0 !important; 
 }
 
-/* Cabecera de las tablas */
+body.dark-mode .eq-table-container { 
+    background: rgba(10, 10, 10, 0.4) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
+    backdrop-filter: blur(12px) !important; 
+    border-radius: 12px !important; 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5) !important; 
+}
+
 body.dark-mode .eq-table th, 
 body.dark-mode .notificaciones-lista__tabla th { 
-    background-color: #242726 !important;
-    color: #FFFFFF !important; 
-    border: none !important;
+    background: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
+    border: none !important; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
 }
 
-/* Celdas de las tablas (Sin bordes) */
-body.dark-mode .eq-table-container {
-    background-color: transparent !important;
-    border: none !important;
-}
-body.dark-mode .eq-table td,
-body.dark-mode .notificaciones-lista__tabla td {
-    border-bottom: none !important; 
-    color: #FFFFFF !important;
+body.dark-mode .eq-table td, 
+body.dark-mode .notificaciones-lista__tabla td { 
+    border-bottom: 1px solid rgba(0, 240, 255, 0.05) !important; 
+    color: #e0e0e0 !important; 
 }
 
-/* Alternancia de colores en las filas (Cebra) */
-body.dark-mode #eq-table-body tr:nth-child(odd),
-body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+1) {
-    background-color: transparent !important;
-}
-body.dark-mode #eq-table-body tr:nth-child(even),
-body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+3) {
-    background-color: #252e29 !important; 
+body.dark-mode #eq-table-body tr:nth-child(even), 
+body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+3) { 
+    background-color: rgba(0, 240, 255, 0.03) !important; 
 }
 
-/* ICONOS (Verde Menta) */
-body.dark-mode .eq-item-icon {
-    color: #aadab6 !important;
+body.dark-mode #eq-table-body tr:nth-child(odd), 
+body.dark-mode #historico-table-body tr[id^="row-"]:nth-child(4n+1) { 
+    background-color: transparent !important; 
 }
+
+body.dark-mode .eq-item-icon, 
+body.dark-mode .eq-location i, 
+body.dark-mode .eq-location-link i { 
+    color: #00f0ff !important; 
+    filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.5)); 
+}
+
 body.dark-mode .eq-location, 
-body.dark-mode .eq-location i,
-body.dark-mode .eq-location-link, 
-body.dark-mode .eq-location-link i {
-    color: #9ec5ab !important;
+body.dark-mode .eq-location-link { 
+    color: #00f0ff !important; 
 }
 
-/* Inputs de edición en la tabla */
-body.dark-mode .inline-edit:disabled {
-    color: #FFFFFF !important; 
-    background-color: transparent !important;
-    border: none !important;
-}
-body.dark-mode .inline-edit:not(:disabled) {
-    color: #FFFFFF !important;
-    background-color: #011502 !important;
-    border: 1px solid #9ec5ab !important;
+body.dark-mode .inline-edit:disabled { 
+    color: #ffffff !important; 
+    background-color: transparent !important; 
+    border: none !important; 
 }
 
-/* Descripción truncada */
-body.dark-mode .desc-truncate {
-    color: #D1D5DB !important;
-}
-body.dark-mode .desc-truncate:hover {
-    color: #9ec5ab !important;
+body.dark-mode .inline-edit:not(:disabled) { 
+    color: #ffffff !important; 
+    background-color: rgba(0, 0, 0, 0.6) !important; 
+    border: 1px solid #00f0ff !important; 
+    box-shadow: inset 0 0 5px rgba(0, 240, 255, 0.2) !important; 
 }
 
-/* Barra de Tabs de Categorías (Equipamientos) */
-body.dark-mode .eq-tabs-container {
-    background-color: #022203 !important;
-    border: none !important;
+body.dark-mode .desc-truncate { 
+    color: #a0a0a0 !important; 
 }
+
+body.dark-mode .desc-truncate:hover { 
+    color: #00f0ff !important; 
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.5); 
+}
+
+body.dark-mode .eq-tabs-container { 
+    background: rgba(10, 10, 10, 0.5) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.2) !important; 
+    backdrop-filter: blur(8px) !important; 
+}
+
 body.dark-mode .eq-tab { 
     background-color: transparent !important; 
-    color: #9CA3AF !important; 
-    border-right: 1px solid #133020 !important; 
+    color: #a0a0a0 !important; 
+    border-right: 1px solid rgba(0, 240, 255, 0.1) !important; 
 }
-body.dark-mode .eq-tab:last-child {
-    border-right: none !important;
-}
+
 body.dark-mode .eq-tab.active { 
-    background-color: #383d3a !important; 
-    color: #d5f6e0 !important; 
+    background: rgba(0, 240, 255, 0.15) !important; 
+    color: #00f0ff !important; 
 }
+
 body.dark-mode .eq-tab.active::after { 
-    border-color: #01200f transparent transparent transparent !important; 
-}
-body.dark-mode .eq-badge {
-    background-color: #01200f !important;
-    color: #9ec5ab !important;
+    border-color: rgba(0, 240, 255, 0.15) transparent transparent transparent !important; 
 }
 
-/* 9. MODALES, POPUPS Y TARJETAS (Ubicaciones y Usuarios) */
-body.dark-mode .eq-modal-content,
-body.dark-mode .perfil-modal-content,
-body.dark-mode .ubi-modal-contenido,
-body.dark-mode .popup-contenido,
-body.dark-mode .popup-eliminar-contenido,
-body.dark-mode .tarjeta-usu,
+body.dark-mode .eq-badge { 
+    background: rgba(0, 240, 255, 0.1) !important; 
+    color: #00f0ff !important; 
+    border: 1px solid rgba(0, 240, 255, 0.3) !important; 
+}
+
+body.dark-mode .eq-modal-content, 
+body.dark-mode .perfil-modal-content, 
+body.dark-mode .ubi-modal-contenido, 
+body.dark-mode .popup-contenido, 
+body.dark-mode .popup-eliminar-contenido, 
+body.dark-mode .tarjeta-usu, 
 body.dark-mode .desplegable-planta { 
-    background-color: #393d3b !important; 
-    color: #FFFFFF !important;
-    border: 1px solid #3e4a42 !important; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+    background: rgba(15, 15, 15, 0.7) !important; 
+    color: #ffffff !important; 
+    border: 1px solid rgba(0, 240, 255, 0.3) !important; 
+    backdrop-filter: blur(20px) !important; 
+    -webkit-backdrop-filter: blur(20px) !important; 
+    box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1) !important; 
+    border-radius: 16px !important; 
 }
 
-body.dark-mode .perfil-header {
-    background-color: #011502 !important;
-    border-bottom: 1px solid #9ec5ab !important;
+body.dark-mode .perfil-header { 
+    background: rgba(0, 0, 0, 0.3) !important; 
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2) !important; 
 }
+
 body.dark-mode .perfil-row { 
-    border-bottom: 1px solid #01200f !important; 
-}
-body.dark-mode .perfil-label {
-    color: #9ec5ab !important;
-}
-body.dark-mode .perfil-avatar-icon {
-    background-color: #011502 !important;
-    border: 2px solid #9ec5ab !important;
-    color: #9ec5ab !important;
-}
-body.dark-mode .tarjeta-usu:hover {
-    border-color: #9ec5ab !important;
-}
-body.dark-mode .tarjeta-info p {
-    color: #D1D5DB !important;
-}
-body.dark-mode .tarjeta-info strong {
-    color: #9ec5ab !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important; 
 }
 
-/* Notificaciones */
-body.dark-mode .notification-menu {
-    background-color: #01200f !important;
-}
-body.dark-mode .notification-menu__title,
-body.dark-mode .notification-menu__item h3 {
-    color: #FFFFFF !important;
-    border-bottom-color: #9ec5ab !important;
-}
-body.dark-mode .notification-menu__item p,
-body.dark-mode .notification-menu__date {
-    color: #9ec5ab !important;
+body.dark-mode .perfil-label { 
+    color: #a0a0a0 !important; 
 }
 
-body.dark-mode .notificaciones-lista__tabla,
-body.dark-mode .notificaciones-admin__form {
-    border-color: #3e4a42 !important;
-    background-color: #393d3b !important;
+body.dark-mode .perfil-avatar-icon { 
+    background: rgba(0, 240, 255, 0.1) !important; 
+    border: 2px solid #00f0ff !important; 
+    color: #00f0ff !important; 
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important; 
 }
 
-body.dark-mode .notis-tabs-container {
-    border-color: #133020 !important;
-    background-color: #022203 !important;
+body.dark-mode .tarjeta-usu:hover { 
+    border-color: #00f0ff !important; 
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2) !important; 
 }
 
-body.dark-mode .notis-tab {
-    border-color: #133020 !important;
-    background-color: transparent !important;
-    color: #9CA3AF !important;
+body.dark-mode .tarjeta-info p { 
+    color: #a0a0a0 !important; 
 }
 
-body.dark-mode .notis-tab:hover {
-    background-color: #252e29 !important;
-    color: #FFFFFF !important;
+body.dark-mode .tarjeta-info strong { 
+    color: #00f0ff !important; 
 }
 
-body.dark-mode .notis-tab.active {
-    background-color: #383d3a !important;
-    color: #d5f6e0 !important;
+body.dark-mode .notification-menu { 
+    background: rgba(10, 10, 10, 0.9) !important; 
+    border: 1px solid rgba(0, 240, 255, 0.3) !important; 
 }
 
-body.dark-mode .notificaciones-lista tbody tr,
-body.dark-mode .notificaciones-lista tbody tr:nth-child(even),
-body.dark-mode .notificaciones-lista tbody tr:hover,
-body.dark-mode .notificaciones-lista tbody tr.notificacion-no-leida {
-    background-color: #252e29 !important;
+body.dark-mode .notification-menu__title, 
+body.dark-mode .notification-menu__item h3 { 
+    color: #00f0ff !important; 
+    border-bottom-color: rgba(0, 240, 255, 0.2) !important; 
 }
 
-body.dark-mode .notificaciones-lista tbody tr:nth-child(odd) {
-    background-color: #393d3b !important;
+body.dark-mode .notification-menu__item p, 
+body.dark-mode .notification-menu__date { 
+    color: #a0a0a0 !important; 
 }
 
-body.dark-mode .notificaciones-lista tbody tr:hover {
-    background-color: #303632 !important;
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 850px) {
+    main#app-content {
+        padding: 20px 10px !important;
+    }
+    
+    .eq-filters-bar,
+    .ubi-filtro-buscador,
+    .usu-filtro-buscador {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 15px !important;
+    }
+
+    .eq-search-box,
+    .ubi-buscador,
+    .usu-buscador,
+    .eq-select,
+    .ubi-boton-añadir,
+    .usu-boton-añadir,
+    .eq-btn-primary {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .usu-contenedor-tarjetas {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .ubi-boton-editar-eliminar {
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+    
+    .ubi-boton-editar,
+    .ubi-boton-eliminar {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    .eq-modal-content,
+    .ubi-modal-contenido,
+    .popup-contenido,
+    .popup-eliminar-contenido,
+    .perfil-modal-content {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 0 auto !important;
+    }
 }
 
-body.dark-mode .notificaciones-lista__estado {
-    border-color: #005720 !important;
-    background-color: #021c04 !important;
-    color: #FFFFFF !important;
+/* ------------------------------------------------------------- */
+/* --------------------- MÓVIL MENÚ HAMBURGUESA --------------- */
+/* ------------------------------------------------------------- */
+
+.mobile-drawer { 
+    display: none; 
 }
 
-body.dark-mode .notificaciones-lista__mensaje,
-body.dark-mode .notificaciones-admin__campo {
-    color: #9ec5ab !important;
+@media (max-width: 900px) {
+    .nav-tabs,
+    .desktop-user-menu,
+    #nav-avatar {
+        display: none !important;
+    }
+
+    .mobile-menu-btn {
+        display: block !important;
+        order: 1; 
+        font-size: 24px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #0f172a;
+        z-index: 2001;
+        margin-left: 10px !important;
+    }
+
+    .nav-logo-center {
+        order: 2;
+        flex: 1 !important;
+        justify-content: center !important;
+    }
+    
+    .login-logo-text {
+        display: none !important;
+    }
+
+    .nav-profile {
+        order: 3;
+        flex: 0 0 auto !important;
+        gap: 10px !important;
+    }
+
+    .nav-profile .bell {
+        font-size: 28px;
+    }
+
+    .mobile-drawer {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: #fffdf0;
+        box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+        z-index: 2000;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+    }
+
+    .mobile-drawer.show { 
+        left: 0 !important; 
+    }
+
+    .mobile-drawer-header {
+        display: flex; 
+        align-items: center; 
+        justify-content: flex-end; 
+        gap: 10px; 
+        padding: 20px; 
+        border-bottom: 1px solid #e5e7eb; 
+        font-weight: 600; 
+        color: #11225b; 
+        letter-spacing: 4px;
+    }
+
+    .mobile-nav-links, 
+    .mobile-user-options { 
+        display: flex; 
+        flex-direction: column; 
+        padding: 10px 0; 
+    }
+
+    .mobile-nav-links a {
+        padding: 15px 20px; 
+        text-decoration: none; 
+        color: #111827; 
+        font-weight: 500; 
+        font-size: 15px; 
+        text-align: left;
+    }
+
+    .mobile-nav-links a.active {
+        background: #e5e7eb; 
+        color: #0b1b42; 
+        border-left: 4px solid #0b1b42;
+    }
+
+    body.dark-mode .mobile-drawer { 
+        background: rgba(20, 20, 20, 0.98); 
+        border-left: 1px solid rgba(0, 240, 255, 0.2); 
+    }
+    
+    body.dark-mode .mobile-drawer-header { 
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+        color: #ffffff; 
+    }
+    
+    body.dark-mode .mobile-nav-links a { 
+        color: #e0e0e0; 
+    }
+    
+    body.dark-mode .mobile-nav-links a.active { 
+        background: rgba(0, 240, 255, 0.1); 
+        color: #00f0ff; 
+        border-left-color: #00f0ff; 
+    }
+    
+    body.dark-mode .mobile-menu-btn { 
+        color: #ffffff; 
+    }
+}
+/* =========================================
+   SCROLL EN LOGO Y TEXTO
+   ========================================= */
+
+.nav-logo-center {
+    display: flex !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+    overflow: hidden !important; 
 }
 
-body.dark-mode .notificaciones-lista__mensaje--error {
-    color: #fca5a5 !important;
+.login-logo-img {
+    position: relative;
+    z-index: 2; 
+    flex-shrink: 0;
+}
+
+.login-logo-text {
+    position: relative;
+    z-index: 1; 
+    margin-left: 15px !important; 
+    max-width: 200px !important; 
+    white-space: nowrap;
+    opacity: 1;
+    overflow: hidden;
+    
+    transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease, 
+                margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* se activa con JS */
+body.scrolled .login-logo-text {
+    max-width: 0 !important;
+    opacity: 0;
+    margin-left: 0 !important;
 }
