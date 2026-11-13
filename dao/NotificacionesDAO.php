@@ -39,7 +39,7 @@
 
         // READ TODAS
         public function obtenerTodas(): array {
-            $sql = "SELECT * FROM notificaciones";
+            $sql = "SELECT * FROM notificaciones ORDER BY fecha_creacion DESC, id_notificacion DESC";
             $stmt = $this->conexion->query($sql);
             $listaNotificaciones = [];
 
