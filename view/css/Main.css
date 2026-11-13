@@ -192,6 +192,48 @@ body {
     font-weight: 600;
 }
 
+.notification-menu__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-right: 16px;
+}
+
+.notification-menu__header .notification-menu__title {
+    flex: 1;
+}
+
+.notification-menu__mark-read {
+    flex: 0 0 auto;
+    margin-left: 8px;
+    padding: 8px 12px;
+    border: 1px solid #0b1b42;
+    border-radius: 6px;
+    background: #0b1b42;
+    color: #ffffff;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.notification-menu__mark-read:hover:not(:disabled) {
+    border-color: #1e293b;
+    background: #1e293b;
+}
+
+.notification-menu__mark-read:focus-visible {
+    outline: 2px solid #1d4ed8;
+    outline-offset: 2px;
+}
+
+.notification-menu__mark-read:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
 .notification-menu__list {
     max-height: 340px;
     overflow-y: auto;
