@@ -130,10 +130,10 @@ main {
 }
 
 /* El numero de la estadistica */
-.estadistica-numero { 
-    color: #6b7280; 
-    font-size: 15px; 
-    font-weight: 500; 
+.estadistica-numero {
+    color: #6b7280;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 /* el texto que acompaña al numero */
@@ -449,7 +449,7 @@ body.colorblind-mode .password-requirements {
     color: #000000 !important;
 }
 body.dark-mode .password-requirements {
-    color: #9ec5ab !important;
+    color: #bdc1c6 !important;
 }
 /*-----------
     ROL
