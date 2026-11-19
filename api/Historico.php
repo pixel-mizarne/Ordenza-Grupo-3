@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Verificar que el usuario esté logueado (opcional, por seguridad)
+// Verificar que el usuario esté logueado 
 if (!isset($_SESSION['usuario_id'])) {
     http_response_code(401);
     echo json_encode(['error' => 'No autorizado']);
