@@ -1,3 +1,8 @@
+/* ------------------------------------------------------------- */
+/* ---------------------- NOTIFICACIONES ----------------------- */
+/* ------------------------------------------------------------- */
+
+/* CONTENEDOR DE LA LISTA */
 .notificaciones-lista {
     width: 100%;
 }
@@ -10,6 +15,7 @@
     margin-bottom: 24px;
 }
 
+/* PESTAÑAS DE NOTIFICACIONES */
 .notis-tabs-container {
     position: relative;
     margin-bottom: 24px;
@@ -55,6 +61,7 @@
     font-weight: 600;
 }
 
+/* TITULOS Y ACCIONES DE LA LISTA */
 .notificaciones-lista h1,
 .notificaciones-admin h1 {
     margin: 0;
@@ -99,6 +106,7 @@
     opacity: 0.65;
 }
 
+/* MODAL DE NOTIFICACIONES */
 .notificaciones-modal {
     position: fixed;
     inset: 0;
@@ -139,6 +147,7 @@
     border: 0;
 }
 
+/* MODO DALTONISMO */
 body.colorblind-mode .notificaciones-modal__contenido {
     border: 2px solid #000;
 }
@@ -147,6 +156,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     border: 0 !important;
 }
 
+/* BOTONES Y MENSAJES DEL MODAL */
 .notificaciones-modal__cancelar {
     padding: 12px 16px;
     border: 1px solid #e5e7eb;
@@ -174,6 +184,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     font-size: 14px;
 }
 
+/* ACCION DE ELIMINAR */
 .notificaciones-lista__accion--eliminar,
 .notificaciones-lista__accion--eliminar:hover {
     border-color: #dc2626;
@@ -181,6 +192,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     color: white;
 }
 
+/* TABLA DE NOTIFICACIONES */
 .notificaciones-lista__tabla {
     overflow-x: auto;
     border: 1px solid #e5e7eb;
@@ -196,6 +208,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     text-align: left;
 }
 
+/* ANCHO DE LAS COLUMNAS */
 .notificaciones-lista th:nth-child(1),
 .notificaciones-lista td:nth-child(1) {
     width: 16%;
@@ -221,6 +234,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     width: 20%;
 }
 
+/* ENCABEZADOS Y CELDAS */
 .notificaciones-lista th {
     padding: 16px 20px;
     border-bottom: 1px solid #e5e7eb;
@@ -239,6 +253,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     vertical-align: middle;
 }
 
+/* DESCRIPCION Y ACCIONES DE CADA FILA */
 .notificaciones-lista__descripcion {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -277,6 +292,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     background: #ba1313;
 }
 
+/* ESTADOS DE LAS NOTIFICACIONES */
 .notificaciones-lista tbody tr:last-child td {
     border-bottom: none;
 }
@@ -342,6 +358,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     color: #dc2626;
 }
 
+/* FORMULARIO DEL ADMINISTRADOR */
 .notificaciones-admin {
     width: 100%;
 }
@@ -363,6 +380,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     font-weight: 500;
 }
 
+/* CAMPOS DEL FORMULARIO */
 .notificaciones-admin__campo input,
 .notificaciones-admin__campo textarea,
 .notificaciones-admin__campo select {
@@ -389,6 +407,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
 }
 
+/* ACCIONES DEL FORMULARIO */
 .notificaciones-admin__acciones {
     display: flex;
     justify-content: flex-end;
@@ -411,6 +430,11 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     border-color: #1e293b;
 }
 
+/* ------------------------------------------------------------- */
+/* ------------------------- RESPONSIVE ------------------------ */
+/* ------------------------------------------------------------- */
+
+/* VISTA MOVIL */
 @media (max-width: 600px) {
     #app-content {
         width: 100%;
@@ -634,6 +658,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     }
 }
 
+/* AJUSTES DE NAVEGACION PARA PANTALLAS MEDIANAS */
 @media (max-width: 1000px) {
     .top-navbar {
         gap: 12px;
@@ -662,6 +687,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     }
 }
 
+/* NAVEGACION EN PANTALLAS PEQUEÑAS */
 @media (max-width: 700px) {
     .top-navbar {
         display: grid;

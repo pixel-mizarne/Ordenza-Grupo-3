@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (mobUsu) mobUsu.style.display = 'none';
             }
 
+            // resaltar el acceso cuando se muestra la lista de notificaciones
             const notificationToggle = document.getElementById('notificationToggle');
             const isNotificationList = page === 'notificaciones' && (
                 user.rol !== 'ADMIN' ||
@@ -126,6 +127,7 @@ async function loadView(pageName, role) {
     } else if (pageName === 'ubicaciones') {
         htmlFile = 'Ubicaciones'; cssFile = 'Ubicaciones'; jsFile = 'Ubicaciones';
     } else if (pageName === 'notificaciones') {
+        // cargar el panel de administración o la lista según el rol y la vista
         const showNotificationList = new URLSearchParams(window.location.search).get('vista') === 'lista';
         htmlFile = (role === 'ADMIN' && !showNotificationList) ? 'NotificacionesAdmin' : 'NotificacionesLista';
         if (htmlFile === 'NotificacionesLista') jsFile = 'Notificaciones';
@@ -291,10 +293,14 @@ document.addEventListener('click', event => {
     }
 });
 
+// notificaciones del menú
+
+// generar una clave de lecturas independiente para cada usuario
 function notificationStorageKey() {
     return `ordenza-notificaciones-leidas-${notificationUserId}`;
 }
 
+// recuperar los identificadores de notificaciones leídas desde localStorage
 function getReadNotificationIds() {
     const savedIds = localStorage.getItem(notificationStorageKey());
     if (savedIds === null) return new Set();
@@ -303,6 +309,7 @@ function getReadNotificationIds() {
     return new Set(parsedIds.map(String));
 }
 
+// actualizar el contador y el botón según las notificaciones pendientes de leer
 function updateNotificationBadge() {
     const badge = document.getElementById('notificationBadge');
     const readIds = getReadNotificationIds();
@@ -314,6 +321,7 @@ function updateNotificationBadge() {
     markReadButton.disabled = unreadCount === 0;
 }
 
+// marcar como leídas en este navegador todas las notificaciones recibidas
 function markAllNotificationsRead(event) {
     event.stopPropagation();
     const readIds = getReadNotificationIds();
@@ -329,6 +337,7 @@ function markAllNotificationsRead(event) {
     updateNotificationBadge();
 }
 
+// mostrar la lista de notificaciones no leídas en el menú
 function renderNotificationItems(items) {
     const list = document.getElementById('notificationList');
     list.replaceChildren();
@@ -363,6 +372,7 @@ function renderNotificationItems(items) {
     });
 }
 
+// solicitar las notificaciones correspondientes al rol del usuario
 async function fetchNotifications() {
     const endpoint = window.ROL === 'ADMIN'
         ? 'api/NotificacionesAPI.php?all=1'
@@ -377,12 +387,14 @@ async function fetchNotifications() {
     updateNotificationBadge();
 }
 
+// preparar el menú y cargar inicialmente sus notificaciones
 function initializeNotificationDropdown(userId) {
     notificationUserId = userId;
     document.getElementById('markAllNotificationsRead').addEventListener('click', markAllNotificationsRead);
     fetchNotifications().catch(error => console.error('Error al cargar las notificaciones:', error));
 }
 
+// abrir o cerrar el desplegable y actualizar su contenido
 async function toggleNotifications(event) {
     event.stopPropagation();
     const menu = document.getElementById('notificationMenu');
@@ -435,6 +447,7 @@ window.addEventListener('click', function(event) {
     const notifMenu = document.getElementById('notificationMenu');
     const notifBtn = document.getElementById('notificationToggle'); 
 
+    // cerrar el desplegable de notificaciones al hacer clic fuera
     if (notifMenu && notifMenu.classList.contains('show')) {
         if (!notifMenu.contains(event.target) && !notifBtn.contains(event.target)) {
             notifMenu.classList.remove('show');

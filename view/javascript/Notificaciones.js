@@ -1,7 +1,9 @@
 (() => {
+    // inicialización de la vista de notificaciones
     const cuerpoTabla = document.querySelector('.notificaciones-lista tbody');
     if (!cuerpoTabla) return;
 
+    // datos de sesión y elementos de la interfaz
     const rolUsuario = typeof window.ROL === 'string' ? window.ROL.toUpperCase() : '';
     const esAdmin = rolUsuario === 'ADMIN';
     const botonAnadir = document.getElementById('btn-anadir-notificacion');
@@ -18,12 +20,15 @@
     let idNotificacionEditar = null;
     let notificacionesCargadas = [];
     let filtroEstado = 'TODO';
+
+    // opciones que puede tener el estado de una notificación
     const estados = [
         { valor: 'PENDIENTE', etiqueta: 'Pendiente' },
         { valor: 'EN_PROCESO', etiqueta: 'En proceso' },
         { valor: 'REALIZADA', etiqueta: 'Completada' }
     ];
 
+    // acciones de creación y eliminación disponibles para usuarios
     if (rolUsuario === 'USER' && botonAnadir && modalAnadir && formularioAnadir) {
         encabezadoAcciones.hidden = false;
         botonAnadir.hidden = false;
@@ -46,6 +51,7 @@
         botonConfirmarEliminar.addEventListener('click', eliminarNotificacion);
     }
 
+    // filtrar la tabla según la pestaña seleccionada
     document.querySelectorAll('.notis-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.notis-tab').forEach(otraTab => {
@@ -59,6 +65,7 @@
 
     cargarNotificaciones();
 
+    // abrir el formulario vacío para crear una notificación
     function abrirFormularioCrear() {
         resetearFormulario();
         tituloModal.textContent = 'Añadir notificación';
@@ -66,6 +73,7 @@
         modalAnadir.showModal();
     }
 
+    // cargar los datos de la notificación seleccionada en el formulario
     function abrirFormularioEditar(notificacion) {
         resetearFormulario();
         idNotificacionEditar = notificacion.id_notificacion;
@@ -76,12 +84,14 @@
         modalAnadir.showModal();
     }
 
+    // limpiar el formulario y descartar el identificador de edición
     function resetearFormulario() {
         formularioAnadir.reset();
         mensajeError.hidden = true;
         idNotificacionEditar = null;
     }
 
+    // guardar una notificación nueva o los cambios de una existente
     async function crearNotificacion(evento) {
         evento.preventDefault();
         botonSubmitFormulario.disabled = true;
@@ -114,12 +124,14 @@
         }
     }
 
+    // guardar el identificador antes de pedir confirmación
     function confirmarEliminar(notificacion) {
         idNotificacionEliminar = notificacion.id_notificacion;
         mensajeErrorEliminar.hidden = true;
         modalEliminar.showModal();
     }
 
+    // eliminar la notificación confirmada
     async function eliminarNotificacion() {
         if (idNotificacionEliminar === null) return;
         botonConfirmarEliminar.disabled = true;
@@ -147,6 +159,7 @@
         }
     }
 
+    // obtener las notificaciones del usuario o todas, según su rol
     async function cargarNotificaciones() {
         try {
             const respuesta = await fetch(
@@ -170,6 +183,7 @@
         }
     }
 
+    // aplicar el filtro actual y dibujar las filas de la tabla
     function mostrarNotificaciones() {
         const notificacionesFiltradas = filtroEstado === 'TODO'
             ? notificacionesCargadas
@@ -210,6 +224,7 @@
             const celdaEstado = document.createElement('td');
             celdaEstado.dataset.label = 'Estado';
             if (esAdmin) {
+                // los administradores pueden cambiar el estado pendiente o en proceso
                 const selector = document.createElement('select');
                 selector.className = 'notificaciones-lista__estado';
                 selector.dataset.estado = notificacion.estado;
@@ -238,6 +253,7 @@
             }
             fila.appendChild(celdaEstado);
 
+            // los usuarios pueden editar o eliminar sus notificaciones
             if (rolUsuario === 'USER') {
                 const celdaAcciones = document.createElement('td');
                 celdaAcciones.dataset.label = 'Acciones';
@@ -268,6 +284,7 @@
         });
     }
 
+    // guardar el cambio de estado realizado por un administrador
     async function actualizarEstado(notificacion, estado) {
         try {
             const respuesta = await fetch('api/NotificacionesAPI.php?action=update-state', {
@@ -292,6 +309,7 @@
         }
     }
 
+    // convertir el valor guardado en un texto visible
     function etiquetaEstado(estado) {
         return {
             REALIZADA: 'Completada',
@@ -300,6 +318,7 @@
         }[estado] || estado;
     }
 
+    // mostrar mensajes vacíos o errores dentro de la tabla
     function mostrarMensaje(mensaje, tipo) {
         const fila = document.createElement('tr');
         fila.className = 'notificaciones-lista__fila-mensaje';
