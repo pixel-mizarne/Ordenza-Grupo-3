@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2026 a las 23:26:17
+-- Tiempo de generación: 19-11-2026 a las 23:36:59
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -194,9 +194,7 @@ INSERT INTO `notificaciones` (`id_notificacion`, `titulo`, `descripcion`, `fecha
 (3, 'Teclado defectuoso', 'El teclado del puesto 05 no responde correctamente.', '2026-09-17 11:00:00', 'REALIZADA', 4),
 (4, 'Cambio de monitor', 'Se solicita sustituir el monitor del puesto 08.', '2026-09-18 12:15:00', 'PENDIENTE', 5),
 (5, 'Problema de red', 'El equipo del Aula 102 no tiene conexion a Internet.', '2026-09-19 08:45:00', 'EN_PROCESO', 2),
-(7, 'as', 'a', '2026-11-10 20:42:23', 'REALIZADA', 7),
-(8, 'a', 'a', '2026-11-11 11:47:47', 'PENDIENTE', 7),
-(9, 'pene', 'aa', '2026-11-15 14:29:02', 'PENDIENTE', 7);
+(10, 'ss', 'aa', '2026-11-19 23:36:17', 'PENDIENTE', 13);
 
 --
 -- Disparadores `notificaciones`
@@ -304,9 +302,8 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellidos`, `nombre_usuario`, `
 (3, 'Maitee', 'Rodriguez Perez', 'mrodriguez', '$2y$10$abcdefghijklmnopqrstuuABCDEFGHIJKLMNOPQRSTUVWXYZ123458', 'USER'),
 (4, 'Jon', 'Sanchez Ruiz', 'jsanchez', '$2y$10$abcdefghijklmnopqrstuuABCDEFGHIJKLMNOPQRSTUVWXYZ123459', 'USER'),
 (5, 'Laura', 'Fernandez Martin', 'lfernandez', '$2y$10$abcdefghijklmnopqrstuuABCDEFGHIJKLMNOPQRSTUVWXYZ123450', 'USER'),
-(6, 'adrian', 'adrian', 'adrian', '$2y$10$u6qpDMdrzclgLTUT2RdLvOpgFqcOgvJ3/JEdtyM7P1SONXEiNgfUC', 'ADMIN'),
-(7, 'gaizka', 'gaizka', 'gaizka', '$2y$10$O8c1NUV4AMbezMqPdGkhz.bb26kipS256LE93DhjZuhS8nKbBpdKy', 'USER'),
-(11, 'admin', 'admin', 'admin', '$2y$10$yJ3uJ3SBFrb1/wrscmkqLu8WUqBnCE7IRGb/E2BPflVhJ6hXaeQgG', 'ADMIN');
+(11, 'admin', 'admin', 'admin', '$2y$10$yJ3uJ3SBFrb1/wrscmkqLu8WUqBnCE7IRGb/E2BPflVhJ6hXaeQgG', 'ADMIN'),
+(13, 'conserje', 'conserje', 'conserje', '$2y$10$gksuTlzhlzaGBrjq6hs41uZ3pLJh2Aw.wSSK5ewY2XyRCjv47C/Tu', 'USER');
 
 --
 -- Índices para tablas volcadas
@@ -371,7 +368,7 @@ ALTER TABLE `historico_ubicaciones`
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  MODIFY `id_notificacion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_notificacion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `ubicaciones`
@@ -383,7 +380,7 @@ ALTER TABLE `ubicaciones`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_usuario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
@@ -406,7 +403,7 @@ ALTER TABLE `historico_ubicaciones`
 -- Filtros para la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
-  ADD CONSTRAINT `fk_notificaciones_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_notificaciones_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
