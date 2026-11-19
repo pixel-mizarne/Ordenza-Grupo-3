@@ -1,8 +1,6 @@
-// 1. Get the form elements
 const loginForm = document.getElementById('loginForm');
 const errorDiv = document.getElementById('login-error');
 
-// 2. Handle Login Submission
 if (loginForm) {
     loginForm.addEventListener('submit', async function(event) {
         event.preventDefault();
@@ -12,10 +10,8 @@ if (loginForm) {
         const inputUsuario = document.getElementById('usuario').value.trim();
         const inputPassword = document.getElementById('password').value;
 
-        // Hide previous errors
         errorDiv.style.display = 'none';
 
-        // Prevent blank spaces / empty fields
         if (inputUsuario === '' || inputPassword.trim() === '') {
             errorDiv.textContent = "El usuario y la contraseña no pueden estar vacíos.";
             errorDiv.style.display = 'block';
@@ -55,7 +51,7 @@ if (loginForm) {
     });
 }
 
-// 3. --- CLEAR INPUT (X) FUNCTIONALITY ---
+// BOTON X
 function setupClearButton(inputId, btnId) {
     const input = document.getElementById(inputId);
     const btn = document.getElementById(btnId);
@@ -75,7 +71,5 @@ function setupClearButton(inputId, btnId) {
         input.focus(); 
     });
 }
-
-// Initialize for both fields
 setupClearButton('usuario', 'clear-usuario');
 setupClearButton('password', 'clear-password');
