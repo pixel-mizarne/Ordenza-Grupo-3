@@ -19,7 +19,7 @@ try {
     $loginController = new LoginController($db);
     $method = $_SERVER['REQUEST_METHOD'];
 
-    // 1. CHECK SESSION (Used by Main.js)
+    // COMPRUEBA SESSION
     if ($method === 'GET') {
         if (isset($_SESSION['usuario_id'])) {
             sendJson([
@@ -35,14 +35,14 @@ try {
         }
     }
 
-    // 2. LOGIN (Used by Login.js)
+    // LOGIN 
     if ($method === 'POST') {
         $body = json_decode(file_get_contents('php://input'), true);
         $user = $loginController->login($body['nombre_usuario'] ?? '', $body['password'] ?? '');
         sendJson(['mensaje' => 'Login correcto', 'usuario' => $user]);
     }
 
-    // 3. LOGOUT
+    // LOGOUT
     if ($method === 'DELETE') {
         $_SESSION = [];
         session_destroy();

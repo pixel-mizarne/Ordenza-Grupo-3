@@ -7,7 +7,7 @@ html, body {
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #fffdf0 !important;
+    background: #fefdf4 !important;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -34,7 +34,7 @@ body {
 
 /* NAVBAR sticky */
 .top-navbar {
-    background: #fff198 !important;
+    background: #faeb8a !important;
     display: flex;
     justify-content: space-between !important;
     align-items: center !important;
@@ -442,11 +442,11 @@ main#app-content {
    5. FOOTER
    ========================================= */
 footer {
-    background: #fff198 !important;
+    background: #fbe65e !important;
     width: 100%;
     text-align: center;
     padding: 20px;
-    color: #6b7280;
+    color: #374151;
     font-size: 14px;
     border-top: 1px solid rgba(0,0,0,0.04);
     box-sizing: border-box;
@@ -593,7 +593,7 @@ footer {
 }
 
 /* =========================================
-   (X) EN LA BARRA DE BUSQUEDA
+   X EN LA BARRA DE BUSQUEDA
    ========================================= */
 .search-clear-btn {
     position: absolute !important;
@@ -630,45 +630,45 @@ footer {
    MODO DALTONISMO
    ========================================= */
 
-/* 1. BODY */
+/* BODY */
 body.colorblind-mode {
     background-color: #FFFFFF !important;
     color: #000000 !important;
     font-weight: 500 !important;
 }
 
-/* --- 2. NAVBAR --- */
+/* NAVBAR */
 body.colorblind-mode .top-navbar {
     background-color: #FFCB00 !important;
     border-bottom: 2px solid #000000 !important;
 }
 
-/* 8.3 DALTONISMO: Botones del menú (Marrón) */
+/* DALTONISMO: Botones del menú */
 body.colorblind-mode .nav-tabs a {
     background-color: #872200 !important;
     color: #FFFFFF !important;
     border: 2px solid #000000 !important;
 }
 
-/* 8.4 DALTONISMO: Botón activo/hover del menú (Azul) */
+/* DALTONISMO: Botón activo/hover del menú */
 body.colorblind-mode .nav-tabs a.active,
 body.colorblind-mode .nav-tabs a:hover {
     background-color: #051BFF !important;
     color: #FFFFFF !important;
 }
 
-/* 8.5 DALTONISMO: Texto del logo (Negro) */
+/* DALTONISMO: Texto del logo */
 body.colorblind-mode .login-logo-text {
     color: #000000 !important;
 }
 
-/* 8.6 DALTONISMO: Botón del perfil (Marrón) */
+/* DALTONISMO: Botón del perfil */
 body.colorblind-mode .admin-dropdown {
     background-color: #872200 !important;
     color: #FFFFFF !important;
 }
 
-/* 8.7 DALTONISMO: Campana blanca sobre fondo azul oscuro */
+/* DALTONISMO: Campana blanca sobre fondo azul oscuro */
 body.colorblind-mode .notification-toggle .bell,
 body.colorblind-mode .notification-toggle i {
     color: #FFFFFF !important;
@@ -682,9 +682,9 @@ body.colorblind-mode .notification-toggle.is-current i {
     -webkit-text-stroke: 0;
 }
 
-/* --- 3. FORMULARIOS Y BOTONES GENERALES --- */
+/* --- FORMULARIOS Y BOTONES GENERALES --- */
 
-/* 8.8 DALTONISMO: Inputs y cajas de búsqueda (Borde negro grueso) */
+/* DALTONISMO: Inputs y cajas de búsqueda */
 body.colorblind-mode input,
 body.colorblind-mode select,
 body.colorblind-mode textarea,
@@ -696,7 +696,7 @@ body.colorblind-mode .usu-buscador {
     color: #000000 !important;
 }
 
-/* 8.9 DALTONISMO: Botones principales (Azul) */
+/* DALTONISMO: Botones principales */
 body.colorblind-mode .eq-btn-primary,
 body.colorblind-mode .ubi-boton-añadir,
 body.colorblind-mode .usu-boton-añadir,
@@ -717,7 +717,7 @@ body.colorblind-mode #popupEliminar #btnCancelarEliminar {
     border: 2px solid #000000 !important;
 }
 
-/* 8.10 DALTONISMO: Botones de Editar/Historial (Amarillo) */
+/* DALTONISMO: Botones de Editar/Historial  */
 body.colorblind-mode .ubi-boton-editar,
 body.colorblind-mode .btnEditar,
 body.colorblind-mode .eq-btn-edit,
@@ -728,7 +728,7 @@ body.colorblind-mode .notificaciones-lista__boton-accion:not(.notificaciones-lis
     border: 2px solid #000000 !important;
 }
 
-/* 8.11 DALTONISMO: Botones de Eliminar/Cancelar (Marrón) */
+/* DALTONISMO: Botones de Eliminar/Cancelar  */
 body.colorblind-mode .ubi-boton-eliminar,
 body.colorblind-mode .btnEliminar,
 body.colorblind-mode .eq-btn-delete,
@@ -745,26 +745,22 @@ body.colorblind-mode .notificaciones-lista__boton-accion--eliminar {
     border: 2px solid #000000 !important;
 }
 
-/* 8.12 DALTONISMO: Botón Guardar inline (Azul) */
+/* DALTONISMO: Botón Guardar inline (Azul) */
 body.colorblind-mode .eq-btn-save {
     background-color: #051BFF !important;
     color: #FFFFFF !important;
 }
 
-/* --- 9.3. TABLAS Y TEXTOS --- */
+/* --- TABLAS Y TEXTOS --- */
 
-/* 8.13 DALTONISMO: Títulos generales (Negro) */
+/* DALTONISMO: Títulos generales (Negro) */
 body.colorblind-mode h1,
 body.colorblind-mode h2,
 body.colorblind-mode h3 {
     color: #000000 !important;
 }
 
-/* 8.14 DALTONISMO: Cabeceras de tablas (Amarillo)
-   [BUG FIX] Aquí se consolidó la versión "special" del bloque 1
-   (border: none; border-bottom: 2px; border-right: 1px)
-   con esta, ya que el navegador aplicaba "border: 2px solid"
-   sobre todo, anulando el border-right: 1px. */
+/* DALTONISMO:*/
 body.colorblind-mode .eq-table th,
 body.colorblind-mode .notificaciones-lista__tabla th {
     background-color: #FFCB00 !important;
@@ -774,31 +770,31 @@ body.colorblind-mode .notificaciones-lista__tabla th {
     box-sizing: border-box !important;
 }
 
-/* 8.15 DALTONISMO: Pestañas (Tabs) de categorías */
+/* DALTONISMO: Pestañas (Tabs) de categorías */
 body.colorblind-mode .eq-tab {
     background-color: #FFFFFF !important;
     color: #000000 !important;
     border: 2px solid #000000 !important;
 }
 
-/* 8.16 DALTONISMO: Pestaña activa (Marrón) */
+/* DALTONISMO: Pestaña activa */
 body.colorblind-mode .eq-tab.active {
     background-color: #872200 !important;
     color: #FFFFFF !important;
 }
 
-/* 8.17 DALTONISMO: La flechita de la pestaña activa */
+/* DALTONISMO: La flechita de la pestaña activa */
 body.colorblind-mode .eq-tab.active::after {
     border-color: #872200 transparent transparent transparent !important;
 }
 
-/* 8.18 DALTONISMO: Badges de categoría (Marrón) */
+/* DALTONISMO: Badges de categoría */
 body.colorblind-mode .eq-badge {
     background-color: #872200 !important;
     color: #FFFFFF !important;
 }
 
-/* 8.19 DALTONISMO: Textos grises secundarios (Marrón) */
+/* ALTONISMO: Textos grises secundarios */
 body.colorblind-mode .subtitulo-ubi,
 body.colorblind-mode .subtitulo-usu,
 body.colorblind-mode .ubi-estadisticas,
@@ -816,7 +812,7 @@ body.colorblind-mode .perfil-label i {
     color: #872200 !important;
 }
 
-/* 8.20 DALTONISMO: Textos de estadísticas (Negro) */
+/* DALTONISMO: Textos de estadísticas */
 body.colorblind-mode .eq-stats-bar,
 body.colorblind-mode .eq-stat,
 body.colorblind-mode .eq-stat i,
@@ -832,9 +828,9 @@ body.colorblind-mode .usu-estadisticas i {
     color: #000000 !important;
 }
 
-/* --- 9.4. MODALES Y BUSCADORES --- */
+/* --- MODALES Y BUSCADORES --- */
 
-/* 8.21 DALTONISMO: Quitar el borde interno de los buscadores */
+/* DALTONISMO: Quitar el borde interno de los buscadores */
 body.colorblind-mode .eq-search-box input,
 body.colorblind-mode .ubi-buscador input,
 body.colorblind-mode .usu-buscador input {
@@ -844,7 +840,7 @@ body.colorblind-mode .usu-buscador input {
     box-shadow: none !important;
 }
 
-/* 8.22 DALTONISMO: Poner el borde negro al contenedor del buscador */
+/* DALTONISMO: Poner el borde negro al contenedor del buscador */
 body.colorblind-mode .eq-search-box,
 body.colorblind-mode .ubi-buscador,
 body.colorblind-mode .usu-buscador {
@@ -852,40 +848,40 @@ body.colorblind-mode .usu-buscador {
     background-color: #FFFFFF !important;
 }
 
-/* 8.23 DALTONISMO: Placeholder de los buscadores (Negro) */
+/* DALTONISMO: Placeholder de los buscadores */
 body.colorblind-mode .eq-search-box input::placeholder,
 body.colorblind-mode .ubi-buscador input::placeholder,
 body.colorblind-mode .usu-buscador input::placeholder {
-    color: #000000 !important;
+    color: #4b5563 !important;
     opacity: 1 !important;
 }
 
-/* 8.24 DALTONISMO: Borde del Select (Equipamientos) */
+/* DALTONISMO: Borde del Select */
 body.colorblind-mode .eq-select {
     border: 2px solid #000000 !important;
 }
 
-/* 8.25 DALTONISMO: Placeholder general (Negro) */
+/* DALTONISMO: Placeholder general */
 body.colorblind-mode input::placeholder,
 body.colorblind-mode textarea::placeholder {
     color: #000000 !important;
     opacity: 1 !important;
 }
 
-/* 8.26 DALTONISMO: Opciones de los Select (Blanco y Negro) */
+/* DALTONISMO: Opciones de los Select */
 body.colorblind-mode select option {
     color: #000000 !important;
     background-color: #FFFFFF !important;
 }
 
-/* 8.27 DALTONISMO: Tarjetas y tablas (Ubicaciones, Usuarios) */
+/* DALTONISMO: Tarjetas y tablas */
 body.colorblind-mode .desplegable-planta,
 body.colorblind-mode .tarjeta-usu,
 body.colorblind-mode .notificaciones-lista__tabla table {
     border: 2px solid #000000 !important;
 }
 
-/* 8.28 DALTONISMO: Notificaciones (Filas) */
+/* DALTONISMO: Notificaciones */
 body.colorblind-mode .notificacion-leida,
 body.colorblind-mode .notificacion-no-leida {
     background-color: #FFFFFF !important;
@@ -943,7 +939,7 @@ body.colorblind-mode .notificaciones-lista__mensaje--error {
     color: #872200 !important;
 }
 
-/* 8.29 DALTONISMO: Modales y Popups (Fondo blanco, borde negro) */
+/*  DALTONISMO: Modales y Popups  */
 body.colorblind-mode .ubi-modal-contenido,
 body.colorblind-mode .popup-contenido,
 body.colorblind-mode .popup-eliminar-contenido,
@@ -953,31 +949,31 @@ body.colorblind-mode .eq-modal-content {
     border: 2px solid #000000 !important;
 }
 
-/* 8.30 DALTONISMO: Footer (Amarillo) */
+/* DALTONISMO: Footer */
 body.colorblind-mode footer {
     background-color: #FFCB00 !important;
     color: #000000 !important;
     border-top: 2px solid #000000 !important;
 }
 
-/* 8.31 DALTONISMO: Fix del fondo del Dialog Modal */
+/* DALTONISMO: Fix del fondo del Dialog Modal */
 dialog.eq-modal {
     background: transparent !important;
 }
 
-/* 8.32 DALTONISMO: Backdrop oscuro del Dialog Modal */
+/* DALTONISMO: Backdrop oscuro del Dialog Modal */
 dialog.eq-modal::backdrop {
     background: rgba(0, 0, 0, 0.5) !important;
 }
 
-/* 8.33 DALTONISMO: Contenido del Modal de equipamientos */
+/* DALTONISMO: Contenido del Modal de equipamientos */
 body.colorblind-mode .eq-modal-content {
     background-color: #FFFFFF !important;
     border: 2px solid #000000 !important;
     box-shadow: none !important;
 }
 
-/* 8.34 DALTONISMO: Quitar el borde azul de foco en inputs */
+/* DALTONISMO: Quitar el borde azul de foco en inputs */
 body.colorblind-mode input:focus,
 body.colorblind-mode select:focus,
 body.colorblind-mode textarea:focus {
@@ -985,17 +981,17 @@ body.colorblind-mode textarea:focus {
     box-shadow: none !important;
 }
 
-/* 8.35 DALTONISMO: Hover del botón secundario (Marrón oscuro) */
+/* DALTONISMO: Hover del botón secundario */
 body.colorblind-mode .eq-btn-secondary:hover {
     background-color: #6b1a00 !important;
 }
 
-/* 8.36 DALTONISMO: Texto de la descripción en el modal (Negro) */
+/* DALTONISMO: Texto de la descripción en el modal */
 body.colorblind-mode #desc-text-content {
     color: #000000 !important;
 }
 
-/* 8.37 DALTONISMO: Textos de Ubicación en tablas (Azul) */
+/* DALTONISMO: Textos de Ubicación en tablas */
 body.colorblind-mode #historico-table-body .eq-location,
 body.colorblind-mode #historico-table-body .eq-location i,
 body.colorblind-mode #eq-table-body .eq-location,
@@ -1005,7 +1001,7 @@ body.colorblind-mode .eq-location-link i {
     color: #051BFF !important;
 }
 
-/* 8.38 DALTONISMO: Fila resaltada en Historial (Amarillo) */
+/* DALTONISMO: Fila resaltada en Historial */
 body.colorblind-mode .row-highlight,
 body.colorblind-mode .row-highlight td {
     background-color: #FFCB00 !important;
@@ -1014,13 +1010,13 @@ body.colorblind-mode .row-highlight td {
 
 /* --- 9.5. MODAL PERFIL --- */
 
-/* 8.39 DALTONISMO PERFIL: Cabecera (Blanco, borde negro) */
+/* DALTONISMO PERFIL: Cabecera */
 body.colorblind-mode .perfil-header {
     background-color: #FFFFFF !important;
     border-bottom: 2px solid #000000 !important;
 }
 
-/* 8.40 DALTONISMO PERFIL: Filas (Borde negro) */
+/* DALTONISMO PERFIL: Filas */
 body.colorblind-mode .perfil-row {
     border-bottom: 2px solid #000000 !important;
 }
@@ -1033,38 +1029,38 @@ body.colorblind-mode .perfil-avatar-icon {
     box-shadow: none !important;
 }
 
-/* 8.42 DALTONISMO PERFIL: Título (Negro grueso) */
+/* DALTONISMO PERFIL: Título */
 body.colorblind-mode .perfil-header h3 {
     color: #000000 !important;
     font-weight: 700 !important;
 }
 
-/* 8.43 DALTONISMO PERFIL: Subtítulo (Negro sin opacidad) */
+/* DALTONISMO PERFIL: Subtítulo */
 body.colorblind-mode .perfil-subtitle {
     color: #000000 !important;
     opacity: 1 !important;
     font-weight: 600 !important;
 }
 
-/* 8.44 DALTONISMO PERFIL: Labels e Iconos (Marrón grueso) */
+/* DALTONISMO PERFIL: Labels e Iconos */
 body.colorblind-mode .perfil-label,
 body.colorblind-mode .perfil-label i {
     color: #872200 !important;
     font-weight: 700 !important;
 }
 
-/* 8.45 DALTONISMO PERFIL: Valores (Negro grueso) */
+/* DALTONISMO PERFIL: Valores */
 body.colorblind-mode .perfil-value {
     color: #000000 !important;
     font-weight: 700 !important;
 }
 
-/* 8.46 DALTONISMO PERFIL: Rol (Negro) */
+/* DALTONISMO PERFIL: Rol */
 body.colorblind-mode #perfil-rol {
     color: #000000 !important;
 }
 
-/* 8.47 DALTONISMO PERFIL: Botón Cerrar (Azul, borde negro) */
+/* DALTONISMO PERFIL: Botón Cerrar */
 body.colorblind-mode .perfil-btn-cerrar {
     background-color: #051BFF !important;
     color: #FFFFFF !important;
@@ -1072,14 +1068,14 @@ body.colorblind-mode .perfil-btn-cerrar {
     font-weight: 700 !important;
 }
 
-/* 8.48 DALTONISMO PERFIL: Hover del Botón Cerrar (Azul oscuro) */
+/* DALTONISMO PERFIL: Hover del Botón Cerrar */
 body.colorblind-mode .perfil-btn-cerrar:hover {
     background-color: #0415cc !important;
 }
 
-/* --- 9.6. GROSOR GLOBAL DE TEXTO --- */
+/* --- GROSOR GLOBAL DE TEXTO --- */
 
-/* 8.49 DALTONISMO TEXTO: Títulos más gruesos */
+/* DALTONISMO TEXTO: Títulos más gruesos */
 body.colorblind-mode h1,
 body.colorblind-mode h2,
 body.colorblind-mode h3,
@@ -1090,7 +1086,7 @@ body.colorblind-mode .perfil-header h3 {
     font-weight: 600 !important;
 }
 
-/* 8.50 DALTONISMO TEXTO: Botones y cabeceras de tabla más gruesos */
+/* DALTONISMO TEXTO: Botones y cabeceras de tabla más gruesos */
 body.colorblind-mode .eq-table th,
 body.colorblind-mode .notificaciones-lista th,
 body.colorblind-mode button,
@@ -1102,7 +1098,7 @@ body.colorblind-mode .nav-tabs a {
     font-weight: 600 !important;
 }
 
-/* 8.51 DALTONISMO TEXTO: Párrafos y textos secundarios más gruesos */
+/* DALTONISMO TEXTO: Párrafos y textos secundarios más gruesos */
 body.colorblind-mode p,
 body.colorblind-mode td,
 body.colorblind-mode .eq-stat,
@@ -1112,22 +1108,23 @@ body.colorblind-mode .stat-number {
     font-weight: 500 !important;
 }
 
-/* --- 9.7. SEARCH CLEAR (X) --- */
+/* --- SEARCH CLEAR (X) --- */
 
-/* 8.52 DALTONISMO (X): Fondo negro, icono blanco */
+/* DALTONISMO (X): Fondo negro, icono blanco */
 body.colorblind-mode .search-clear-btn {
     background-color: #000000 !important;
     color: #FFFFFF !important;
 }
 
-/* 8.53 DALTONISMO (X): Hover (Marrón) */
+/* DALTONISMO (X): Hover (Marrón) */
 body.colorblind-mode .search-clear-btn:hover {
     background-color: #872200 !important;
 }
 
 
 /* =========================================
-   MODO DALTONISMO: MENÚ HAMBURGUESA (MÓVIL)
+   MODO DALTONISMO: MENÚ HAMBURGUESA MOBILE 
+   HE PUESTO LOS NUMEROS PARA SABER QUE COREGIR -MIZ
    ========================================= */
 
 /* 1. Fondo del cajón lateral */
@@ -1183,7 +1180,7 @@ body.colorblind-mode .menu-separator {
     margin: 0 !important;
 }
 
-/* 6. Interruptores (Switches) */
+/* 6. Interruptores */
 body.colorblind-mode .mobile-user-options .toggle-switch {
     width: 40px !important; 
     height: 22px !important;
@@ -1215,9 +1212,6 @@ body.colorblind-mode .mobile-user-options .toggle-switch.active::after {
     background-color: #FFFFFF;
     left: 20px;
 }
-
-
-/* El modo oscuro se define con la paleta unificada al final de este archivo. */
 
 /* =========================================
    RESPONSIVE
@@ -1275,7 +1269,7 @@ body.colorblind-mode .mobile-user-options .toggle-switch.active::after {
 }
 
 /* ------------------------------------------------------------- */
-/* --------------------- MÓVIL MENÚ HAMBURGUESA --------------- */
+/* MÓVIL MENÚ HAMBURGUESA
 /* ------------------------------------------------------------- */
 /* oculto en desktop */
 .mobile-drawer { 

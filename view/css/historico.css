@@ -1,4 +1,4 @@
-/* TIMELINE VERTICAL (Para PC y MOvil) */
+/* Para PC y MOvil */
 .horizontal-timeline { 
     display: flex; 
     flex-direction: column; 
@@ -90,7 +90,7 @@ tr[id^="history-row-"] td {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    background-color: #f69f3d !important;
+    background-color: #78350f !important;
     color: white !important;
     border: none !important;
     padding: 6px 12px !important;
@@ -101,8 +101,9 @@ tr[id^="history-row-"] td {
     transition: background-color 0.2s;
 }
 
-#historico-table-body tr[id^="row-"]:hover .eq-btn-history { 
-    background-color: #d17000 !important; 
+#historico-table-body tr[id^="row-"]:hover 
+.eq-btn-history { 
+    background-color: #451a03 !important; 
 }
 
 .row-highlight { 
