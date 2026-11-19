@@ -1,6 +1,3 @@
-/* =========================================
-      HEADER
-   ========================================= */
 .eq-header { 
     margin-bottom: 24px; 
 }
@@ -41,7 +38,7 @@
 }
 
 /* =========================================
-      FILTERS BAR
+      FILTRO BAR
    ========================================= */
 .eq-filters-bar { 
     display: flex; 
@@ -72,7 +69,7 @@
 }
 
 .eq-search-box input::placeholder { 
-    color: #9ca3af; 
+    color: #6b7280; 
 }
 
 .eq-select { 
@@ -145,6 +142,14 @@
     color: #003099;
     font-weight: 500;
 }
+button.desc-truncate {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-align: left;
+    width: 100%;
+}
 
 .desc-truncate:hover {
     text-decoration: underline;
@@ -165,12 +170,16 @@
    ALTERNATE ROWS
    ========================================= */
 /* Main Color */
-#eq-table-body tr[id^="row-"]:nth-child(odd) { background-color: #ffffff !important; }
-#eq-table-body tr[id^="row-"]:nth-child(even) { background-color: #f9fafb !important; }
+#eq-table-body tr[id^="row-"]:nth-child(odd) { 
+    background-color: #ffffff !important; }
+#eq-table-body tr[id^="row-"]:nth-child(even) { 
+    background-color: #f9fafb !important; }
 
 /* Daltonismo */
-body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(odd) { background-color: #FFFFFF !important; }
-body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-color: #F3F4F6 !important; }
+body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(odd) { 
+    background-color: #FFFFFF !important; }
+body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { 
+    background-color: #F3F4F6 !important; }
 
 /* =========================================
       TABLE CONTENT
@@ -212,7 +221,7 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 }
 
 /* =========================================
-      ACTION BUTTONS
+    BOTON DE ACCIONES
    ========================================= */
 .eq-actions-wrapper { 
     display: flex; 
@@ -236,23 +245,23 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     color: white; 
 }
 
-/* Botón Editar (Naranja) */
+/* Botón Editar */
 .eq-btn-edit { 
-    background-color: #f69f3d; 
+    background-color: #b45309;
 }
 .eq-btn-edit:hover { 
     background-color: #d17000; 
 }
 
-/* Botón Eliminar (Rojo) */
+/* Botón Eliminar */
 .eq-btn-delete { 
-    background-color: #ff3939; 
+    background-color: #b91c1c;
 }
 .eq-btn-delete:hover { 
-    background-color: #ba1313; 
+    background-color: #991b1b;
 }
 
-/* Botón Guardar (Verde) */
+/* Botón Guardar */
 .eq-btn-save { 
     background-color: #1a6a0a; 
 }
@@ -260,12 +269,12 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     background-color: #059669; 
 }
 
-/* Botón Cancelar (Gris) */
+/* Botón Cancelar */
 .eq-btn-cancel { 
-    background-color: #6b7280; 
+    background-color: #4b5563;
 }
 .eq-btn-cancel:hover { 
-    background-color: #4b5563; 
+    background-color: #374151; 
 }
 
 
@@ -360,7 +369,7 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 }
 
 /* =========================================
-         (Table Editing)
+    EDITANDO
    ========================================= */
 .inline-edit {
     width: 100%;
@@ -394,7 +403,6 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     border-bottom-color: #fde047 !important;
 }
 
-/* HIDE DROPDOWN ARROW WHEN NOT EDITING */
 .category-select:disabled {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -403,8 +411,6 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     border: none;
     cursor: default;
 }
-
-/* Shows arrow when editing */
 .category-select.is-editing {
     -webkit-appearance: auto;
     -moz-appearance: auto;
@@ -419,7 +425,7 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 
 
 /* =========================================
-   TAB FILTER DESIGN (With Arrow)
+   FILTRO TAB 
    ========================================= */
 .eq-tabs-container {
     background: white;
@@ -457,7 +463,6 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     background-color: #f3f4f6; 
 }
 
-/* ACTIVE (CLICKED) TAB */
 .eq-tab.active {
     color: #FFFFFF; 
     font-weight: 600;
@@ -465,7 +470,7 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     border-radius: 8px;
 }
 
-/* ARROW */
+/* FELCHITA */
 .eq-tab.active::after {
     content: '';
     position: absolute;
@@ -478,7 +483,7 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     z-index: 10;
 }
 
-/* Make Location a clickable link */
+/* HACER QUE LA UBICACION CLICKABLE */
 .eq-location-link {
     display: flex;
     align-items: center;
@@ -493,7 +498,7 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 }
 
 /* =========================================
-   HISTORY TIMELINE DESIGN
+   HISTORIAL
    ========================================= */
 .history-timeline-container {
     background: white;
@@ -583,12 +588,12 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 }
 
 /* =========================================
-   HORIZONTAL TIMELINE (Para Historial)
+  HISTORIAL VERTICAL
    ========================================= */
 .horizontal-timeline {
     display: flex;
     align-items: flex-start;
-    overflow-x: auto; /* Scroll si hay muchos movimientos */
+    overflow-x: auto;
     padding: 20px 10px;
     gap: 0;
 }
@@ -643,7 +648,7 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     min-width: 50px;
 }
 /* =========================================
-   ESTILOS DEL MODAL (Iguales a Ubicaciones)
+   ESTILOS DEL MODAL 
    ========================================= */
 .eq-modal {
     position: fixed;
@@ -788,21 +793,18 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
 /* =========================================
    EQUIPAMIENTOS 
    ========================================= */
-
-/* 1. Filter Bar Container */
 .eq-filters-bar { 
     display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; 
     gap: 12px !important; align-items: center !important; margin-bottom: 24px !important; width: 100% !important; 
 }
 
-/* 2. Search Box */
 .eq-filters-bar .eq-search-box { 
     flex: 1 1 auto !important; min-width: 200px !important; display: flex !important; 
     align-items: center !important; background: white !important; border: 1px solid #e5e7eb !important; 
     border-radius: 8px !important; padding: 0 16px !important; 
 }
 
-/* 3. Location Select */
+/* SELECT UBIACION */
 .eq-filters-bar .eq-select { 
     flex: 0 0 auto !important; width: auto !important; min-width: 180px !important; 
     padding: 12px 36px 12px 16px !important; border: 1px solid #e5e7eb !important; 
@@ -810,7 +812,7 @@ body.colorblind-mode #eq-table-body tr[id^="row-"]:nth-child(even) { background-
     height: 48px !important; cursor: pointer; 
 }
 
-/* 4. Create Button */
+/* CREAR BOTON */
 .eq-filters-bar .eq-btn-primary { 
     flex: 0 0 auto !important; 
     display: flex;
@@ -959,25 +961,25 @@ body.dark-mode .eq-back-categories:hover {
     box-shadow: none !important;
 }
 /* =========================================
-   TABLA EN MÓVIL (USUARIO)
+   TABLA EN MÓVIL USUARIO
    ========================================= */
 
 @media (max-width: 850px) {
     
-    /* 1. Quitamos el scroll horizontal a la fuerza */
+    /* Quitamos el scroll horizontal a la fuerza */
     .eq-table-container {
         overflow-x: hidden !important;
         width: 100% !important;
     }
 
-    /* 2. Forzamos a la tabla a medir el 100% de la pantalla */
+    /* Forzamos a la tabla a medir el 100% de la pantalla */
     .eq-table {
         min-width: 100% !important;
         width: 100% !important;
-        table-layout: fixed !important; /* 👈 CLAVE: Ajusta las columnas al espacio */
+        table-layout: fixed !important;
     }
 
-    /* 3. Ocultamos las columnas que no queremos */
+    /* Ocultamos las columnas que no queremos */
     /* Columna 3: Marca, Columna 4: Modelo, Columna 5: Categoría, Columna 7: Descripción */
     .eq-table th:nth-child(3), .eq-table td:nth-child(3),
     .eq-table th:nth-child(4), .eq-table td:nth-child(4),
@@ -986,18 +988,18 @@ body.dark-mode .eq-back-categories:hover {
         display: none !important;
     }
 
-    /* 4. Repartimos el ancho exacto de las 4 columnas que quedan */
+    /* Repartimos el ancho exacto de las 4 columnas que quedan */
     .eq-table th:nth-child(1), .eq-table td:nth-child(1) { width: 15% !important; padding: 8px 4px !important; } /* ID */
     .eq-table th:nth-child(2), .eq-table td:nth-child(2) { width: 40% !important; padding: 8px 4px !important; } /* Nombre */
     .eq-table th:nth-child(6), .eq-table td:nth-child(6) { width: 25% !important; padding: 8px 4px !important; } /* Ubicación */
     .eq-table th:nth-child(8), .eq-table td:nth-child(8) { width: 20% !important; padding: 8px 4px !important; text-align: center !important; } /* Acciones */
 
-    /* 5. Ocultamos el icono del equipo para ganar espacio */
+    /* Ocultamos el icono del equipo para ganar espacio */
     .eq-item-icon {
         display: none !important;
     }
 
-    /* 6. Ajustamos el botón de "Asignar" para que no se salga */
+    /* Ajustamos el botón de "Asignar" para que no se salga */
     .eq-action-btn {
         width: auto !important;
         padding: 4px 8px !important;
@@ -1005,17 +1007,17 @@ body.dark-mode .eq-back-categories:hover {
         height: 28px !important;
     }
 
-    /* 7. Ajustamos el texto de la ubicación para que no se desborde */
+    /* Ajustamos el texto de la ubicación para que no se desborde */
     .eq-location-link {
         font-size: 11px !important;
         gap: 4px !important;
     }
 }
 /* =========================================
-   OCULTAR COLUMNAS PARA EL ROL USER (CONSERJE)
+   OCULTAR COLUMNAS PARA EL ROL USER CONSERJE
    ========================================= */
 
-/* 1. Ocultamos las columnas Marca (3), Modelo (4), Categoría (5) y Descripción (7) */
+/* Ocultamos las columnas Marca (3), Modelo (4), Categoría (5) y Descripción (7) */
 body.role-user .eq-table th:nth-child(3), body.role-user .eq-table td:nth-child(3),
 body.role-user .eq-table th:nth-child(4), body.role-user .eq-table td:nth-child(4),
 body.role-user .eq-table th:nth-child(5), body.role-user .eq-table td:nth-child(5),
@@ -1023,13 +1025,13 @@ body.role-user .eq-table th:nth-child(7), body.role-user .eq-table td:nth-child(
     display: none !important;
 }
 
-/* 2. Ajustamos el ancho de las columnas que SÍ se ven para que quede perfecto */
+/* Ajustamos el ancho de las columnas que SÍ se ven para que quede perfecto */
 body.role-user .eq-table th:nth-child(1), body.role-user .eq-table td:nth-child(1) { width: 15% !important; } /* ID */
 body.role-user .eq-table th:nth-child(2), body.role-user .eq-table td:nth-child(2) { width: 40% !important; } /* Nombre */
 body.role-user .eq-table th:nth-child(6), body.role-user .eq-table td:nth-child(6) { width: 25% !important; } /* Ubicación */
 body.role-user .eq-table th:nth-child(8), body.role-user .eq-table td:nth-child(8) { width: 20% !important; } /* Acciones */
 
-/* 3. Ajustes específicos para Móvil */
+/* Ajustes específicos para Móvil */
 @media (max-width: 850px) {
     .eq-table-container {
         overflow-x: hidden !important;
@@ -1037,7 +1039,7 @@ body.role-user .eq-table th:nth-child(8), body.role-user .eq-table td:nth-child(
     }
     .eq-table {
         min-width: 100% !important;
-        table-layout: fixed !important; /* Fuerza a respetar los porcentajes */
+        table-layout: fixed !important; 
     }
     /* Ocultamos el icono del portátil para ganar espacio */
     body.role-user .eq-item-icon {
@@ -1051,11 +1053,11 @@ body.role-user .eq-table th:nth-child(8), body.role-user .eq-table td:nth-child(
     }
 }
 /* =========================================
-   BOTÓN ASIGNAR (USUARIO/CONSERJE)
+   BOTÓN ASIGNAR USUARIO/CONSERJE
    ========================================= */
 
 .btn-asignar-user {
-    background-color: #2563eb !important; /* Azul moderno */
+    background-color: #2563eb !important; 
     color: white !important;
     width: auto !important;
     padding: 8px 16px !important;
@@ -1073,7 +1075,7 @@ body.role-user .eq-table th:nth-child(8), body.role-user .eq-table td:nth-child(
 }
 
 .btn-asignar-user:hover {
-    background-color: #1d4ed8 !important; /* Azul más oscuro */
+    background-color: #1d4ed8 !important;
     transform: translateY(-2px) !important;
     box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4) !important;
 }
@@ -1085,4 +1087,17 @@ body.role-user .eq-table th:nth-child(8), body.role-user .eq-table td:nth-child(
         font-size: 11px !important;
         width: 100% !important; /* En móvil ocupa el ancho de su celda */
     }
+}
+
+/* Utilidad para ocultar visualmente pero mantener accesible */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
