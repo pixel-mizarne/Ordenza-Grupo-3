@@ -1,4 +1,5 @@
 <?php
+    // usamos __DIR__ para que php no pierda la ruta cuando llamamos a este archivo desde fuera
     require_once __DIR__ . '/../model/Ubicaciones.php';
     require_once __DIR__ . '/../dao/UbicacionesDAO.php';
 
@@ -15,6 +16,7 @@
             $resultado = [];
             
             foreach ($lista as $ubicacion) {
+                // pasamos los objetos a array porque los atributos son private y si no el json saldria vacio
                 $resultado[] = $ubicacion->toArray();
             }
             
@@ -35,7 +37,7 @@
         // CREAR
         public function crear(array $datos) { 
             if (isset($datos['nombre']) && isset($datos['descripcion'])) {
-                $nuevaUbicacion = new Ubicaciones(0, $datos['nombre'], $datos['descripcion']);
+                $nuevaUbicacion = new Ubicaciones(0, $datos['nombre'], $datos['descripcion']); // le metemos un 0 de id temporal porque el bueno lo pone la base de datos sola
                 return $this->ubicacionesDAO->crear($nuevaUbicacion); // Devuelve true o false
             }
             return false;
@@ -45,6 +47,7 @@
         public function actualizar(array $datos) {
             if (isset($datos['id_ubicacion']) && isset($datos['nombre']) && isset($datos['descripcion'])) {
                 $ubicacionModificada = new Ubicaciones(
+                    // esto hace que no explote si el id nos llega como texto desde el json y lo pasa a numero
                     intval($datos['id_ubicacion']), 
                     $datos['nombre'], 
                     $datos['descripcion']

@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Enlace a tu archivo CSS -->
 </head>
 <body>
     <!-- CONTENIDO PRINCIPAL -->
@@ -40,6 +39,7 @@
     </main>
 
     <!-- POP UP UNIFICADO PARA AÑADIR/EDITAR -->
+        <!-- usamos la etiqueta dialog nativa de html5 para hacer el popup sin liarla con divs, esto hace que desde el css al darle al esc o fuera se cierrela vetana -->
     <dialog id="popupUbicacion" class="ubi-modal">
         <div class="ubi-modal-contenido">
             <h3 id="popupTitulo">Nueva Ubicación</h3>
@@ -71,7 +71,7 @@
             <p class="ubi-texto-eliminar">¿Estás seguro de que quieres borrar esta ubicación? Esta acción no se puede deshacer.</p>
             <input type="hidden" id="eliminarUbiId">
             <div class="ubi-modal-acciones">
-                <button type="button" class="ubi-btn-cancelar" id="btnCancelarEliminar">Cancelar</button>
+                <button type="button" class="ubi-btn-cancelar" id="btnCancelarEliminar">Cancelar</button> <!-- le ponemos type button para que al cancelar no intente enviar el formulario por error -->
                 <button type="button" class="ubi-btn-peligro" id="btnConfirmarEliminar">Eliminar</button>
             </div>
         </div>

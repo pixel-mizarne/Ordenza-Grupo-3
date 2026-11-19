@@ -1,4 +1,5 @@
-const apiUrl = new URL('../../api/UsuariosAPI.php', document.currentScript.src).href;
+const apiUrl = new URL('../../api/UsuariosAPI.php', document.currentScript.src).href; 
+// calcula la ruta exacta de la api partiendo de donde esta guardado este js para que no falle nunca
 
 // Referencias al DOM
 const contenedorAdmins = document.getElementById('contenedorAdmins');
@@ -20,7 +21,7 @@ const dialogAvisoCuenta = document.getElementById('popupAvisoCuenta');
 const mensajeAvisoCuenta = document.getElementById('mensajeAvisoCuenta');
 const btnCerrarAvisoCuenta = document.getElementById('btnCerrarAvisoCuenta');
 
-passwordInput.addEventListener('invalid', evento => {
+passwordInput.addEventListener('invalid', evento => { // frena el mensajito feo por defecto del navegador cuando falla la contraseña y saca nuestro popup
     evento.preventDefault();
     mostrarAvisoPersonalizado(passwordInput.value
         ? 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y uno de estos caracteres: . - _'
@@ -45,9 +46,11 @@ async function cargarUsuarios() {
 
         usuarios.forEach(usuario => {
             const article = document.createElement('article');
+
             const esAdmin = String(usuario.rol).trim().toUpperCase() === 'ADMIN';
             article.className = `tarjeta-usu ${esAdmin ? 'admin' : 'usuario'}`;
-            article.dataset.nombre = String(usuario.nombre ?? '').trim().toLowerCase();
+            // guardamos el nombre y el id escondidos en el html para que el buscador filtre rapido y evitamos que salga null
+            article.dataset.nombre = String(usuario.nombre ?? '').trim().toLowerCase(); 
             article.dataset.id = String(usuario.id_usuario ?? '').trim().toLowerCase();
             const detalles = document.createElement('div');
             detalles.className = 'tarjeta-info';
@@ -67,7 +70,9 @@ async function cargarUsuarios() {
 
             const acciones = document.createElement('div');
             acciones.className = 'tarjetaAccion';
-            const esUsuarioActual = Number(usuario.id_usuario) === Number(window.USUARIO_ID);
+
+            // comprobamos si esta tarjeta eres tu mismo para no dejarte borrar ni editar tu propia cuenta
+            const esUsuarioActual = Number(usuario.id_usuario) === Number(window.USUARIO_ID); 
 
             const botonEditar = document.createElement('button');
             botonEditar.className = 'btnEditar';
@@ -113,6 +118,8 @@ async function cargarUsuarios() {
 
             acciones.append(botonEditar, botonEliminar);
             article.append(detalles, acciones);
+
+            // si es admin lo mete en la columna de la izquierda y si no en la de usuarios
             (esAdmin ? contenedorAdmins : contenedorUsuarios).appendChild(article);
         });
 
@@ -206,6 +213,8 @@ formUsuario.addEventListener('submit', async (evento) => {
         nombre: document.getElementById('nombre').value,
         apellidos: document.getElementById('apellido').value,
         nombre_usuario: document.getElementById('username').value,
+
+        // busca cual de los dos radio buttons esta marcado para sacar el rol elegido
         rol: formUsuario.querySelector('input[name="rol"]:checked').value
     };
     if (password) datos.password = password;

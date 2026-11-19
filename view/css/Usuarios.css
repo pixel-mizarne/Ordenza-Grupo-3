@@ -164,7 +164,7 @@ main {
 }
 
 /* La caja blanca del buscador */
-.usu-buscador { 
+.usu-buscador { /* hace 2 columnas iguales y con el minmax(0, 1fr) evitamos que un texto muy largo las estire y rompa todo */
     flex: 1; 
     display: flex; 
     align-items: center; 
@@ -218,9 +218,9 @@ main {
    ------------------------- */
 
 /* Columnas: administradores a la izquierda y usuarios a la derecha */
-.usu-grupos {
+.usu-grupos { 
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* hace 2 columnas iguales y con el minmax(0, 1fr) evitamos que un texto muy largo las estire y rompa todo */
     gap: 0;
 }
 
@@ -261,12 +261,12 @@ main {
 .tarjeta-info {
     color: inherit;
 }
-
+                                    
 .tarjeta-usu.admin {
     background-color: #11225b;
     color: #ffffff;
 }
-
+                                /* al ir las dos clases pegadas sin espacio solo se aplica si la tarjeta tiene las dos a la vez */
 .tarjeta-usu.usuario {
     background-color: #256725;
     color: #fff5f2;
@@ -276,7 +276,7 @@ main {
 .tarjeta-usu:hover {
     border-color: #111827;
     box-shadow: 0 4px 12px rgba(37,99,235,0.08);
-    transform: translateY(-2px);
+    transform: translateY(-2px); /* sube la tarjeta un pelin al pasar el raton pero sin empujar ni mover las demas cajas */
 }
 
 /* El texto dentro de las tarjetas */
@@ -292,7 +292,7 @@ main {
 
 /* La zona de abajo de la tarjeta con los dos botones */
 .tarjetaAccion {
-    margin: 20px -20px -20px;
+    margin: 20px -20px -20px; /* truco de margenes negativos para comernos el padding de la tarjeta y que la barra blanca se pegue a los bordes */
     display: flex;
     gap: 6px;
     border-top: 1px solid #292929;
@@ -352,8 +352,8 @@ main {
 }
 
 .popup-eliminar {
-    width: min(400px, calc(100vw - 32px));
-}
+    width: min(400px, calc(100vw - 32px)); /* hace que mida 400px en pc pero en movil se encoja para no salirse de la pantalla. vw viewport width*/
+}                       /*Viene de calcular. Sirve para hacer sumas o restas mezclando unidades distintas*/
 
 .popup::backdrop {
     background-color: rgba(0, 0, 0, 0.4); /* Pone la pantalla en negro al 40% */
@@ -445,9 +445,9 @@ main {
     font-size: 12px;
     line-height: 1.4;
 }
-body.colorblind-mode .password-requirements {
+body.colorblind-mode .password-requirements { /* se activa solo cuando el js le mete la clase de modo oscuro o daltonico al body */
     color: #000000 !important;
-}
+}           
 body.dark-mode .password-requirements {
     color: #bdc1c6 !important;
 }
@@ -455,7 +455,7 @@ body.dark-mode .password-requirements {
     ROL
 -------------*/
 .grupo-rol {
-    min-width: 0;
+    min-width: 0; /* le quita el ancho minimo raro que traen los fieldset por defecto para que no se desborde */
     padding: 0;
     border: 0;
 }
@@ -492,9 +492,9 @@ body.colorblind-mode .grupo-rol .rol-opcion {
     width: 16px;
     height: 16px;
     margin: 0;
-    accent-color: #2563eb;
+    accent-color: #2563eb; /* pinta el circulito del radio button en azul sin tener que hacer botones falsos */
 }
-.rol-opcion input:focus-visible {
+.rol-opcion input:focus-visible { /* saca el borde azul un poco separado solo si navegas con el tabulador del teclado y no al hacer clic */
     outline: 2px solid #2563eb;
     outline-offset: 2px;
 }

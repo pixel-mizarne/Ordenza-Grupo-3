@@ -1,78 +1,64 @@
 <?php
-
 require_once 'Usuarios.php';
 require_once 'UsuariosDAO.php';
 
-    class UsuariosController{
+class UsuariosController {
 
-        private UsuariosDAO $usuariosDAO;
+    private UsuariosDAO $usuariosDAO;
 
-        // Crea el controlador y prepara el acceso a datos con la conexión recibida.
-        public function __construct(PDO $conexion){
-            $this->usuariosDAO = new UsuariosDAO($conexion);
+    public function __construct(PDO $conexion) {
+        $this->usuariosDAO = new UsuariosDAO($conexion);
+    }
+
+    // saca todos los usuarios y los pasa a array para que el json los lea bien
+    public function listar() {
+        $listaUsuarios = $this->usuariosDAO->buscarTodos();
+        $resultado = [];
+
+        foreach ($listaUsuarios as $usuario) {
+            $resultado[] = $usuario->toArray();
         }
 
-        // Obtiene todos los usuarios a través del DAO.
-        public function listar(){
-            $listaUsuarios = $this->usuariosDAO->buscarTodos();
+        return $resultado;
+    }
 
-            return 'PorDefinir';
-        }
-
-        // Recoge los datos del formulario, construye el usuario y solicita su creación.
-        public function guardarNuevo(){
-            $nombre_cliente = $_POST['nombre'];
-            $apellido_cliente = $_POST['apellido'];
-            $nombre_username_cliente = $_POST['nombre_usuarios'];
-            $password_hash_cliente = $_POST['password_hash'];
-            $rol_cliente = $_POST['rol'];
-
-            // El ID inicial es 0 porque el usuario aún no se ha guardado.
-            $usuarioNuevo = new Usuarios(0, $nombre_cliente, $apellido_cliente, $nombre_username_cliente, $password_hash_cliente,$rol_cliente);
-
-            $exito = $this->usuariosDAO->crear($usuarioNuevo);
-
-            if($exito){
-                header("PorDefinir");
-            }else{
-                echo "ERROR al guardar en la base de datos";
-            }
-        }
-
-        // Recoge los datos del formulario y solicita al DAO la actualización del usuario.
-        public function actualizar(){
-            $id_usuario = (int) $_POST['id'];
-            $nombre_cliente = $_POST['nombre'];
-            $apellido_cliente = $_POST['apellido'];
-            $nombre_username_cliente = $_POST['nombre_usuarios'];
-            $password_hash_cliente = $_POST['password_hash'];
-            $rol_cliente = $_POST['rol'];
-
-            $usuarioActualizado = new Usuarios(
-                $id_usuario,
-                $nombre_cliente,
-                $apellido_cliente,
-                $nombre_username_cliente,
-                $password_hash_cliente,
-                $rol_cliente
+    // crea un usuario nuevo con los datos que llegan y devuelve true o false
+    public function guardarNuevo(array $datos) {
+        if (isset($datos['nombre']) && isset($datos['apellido']) && isset($datos['nombre_usuarios']) && isset($datos['password_hash']) && isset($datos['rol'])) {
+            $usuarioNuevo = new Usuarios(
+                0,
+                $datos['nombre'],
+                $datos['apellido'],
+                $datos['nombre_usuarios'],
+                $datos['password_hash'],
+                $datos['rol']
             );
 
-            $exito = $this->usuariosDAO->actualizar($usuarioActualizado);
-
-            if($exito){
-                header("PorDefinir");
-            }else{
-                echo "ERROR al actualizar en la base de datos";
-            }
+            return $this->usuariosDAO->crear($usuarioNuevo);
         }
-
-        // Obtiene el ID de la solicitud y solicita al DAO que elimine ese usuario.
-        public function eliminar(){
-            $id_borrar = (int) $_GET['id'];
-
-            $this->usuariosDAO->borrar($id_borrar);
-
-            header("PorDefinir");
-        }
+        return false;
     }
+
+    // actualiza un usuario existente forzando el id a entero para que no de problemas
+    public function actualizar(array $datos) {
+        if (isset($datos['id']) && isset($datos['nombre']) && isset($datos['apellido']) && isset($datos['nombre_usuarios']) && isset($datos['password_hash']) && isset($datos['rol'])) {
+            $usuarioActualizado = new Usuarios(
+                intval($datos['id']),
+                $datos['nombre'],
+                $datos['apellido'],
+                $datos['nombre_usuarios'],
+                $datos['password_hash'],
+                $datos['rol']
+            );
+
+            return $this->usuariosDAO->actualizar($usuarioActualizado);
+        }
+        return false;
+    }
+
+    // borra el usuario por su id y devuelve true o false
+    public function eliminar(int $id) {
+        return $this->usuariosDAO->borrar($id);
+    }
+}
 ?>

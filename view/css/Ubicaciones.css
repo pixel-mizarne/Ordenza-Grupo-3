@@ -260,7 +260,7 @@ summary:hover .nombre-aula {
     transition: color 0.2s;
 }
 /* Otro truco para ocultar la flecha en navegadores */
-summary::-webkit-details-marker { 
+summary::-webkit-details-marker { /*un prefijo especifico para navegadores sirve para borrar el triangulito feo que traen por defecto los desplegables*/
     display: none; 
 }
 
@@ -320,7 +320,7 @@ summary::-webkit-details-marker {
     */
 .ubi-modal {
     position: fixed;
-    inset: 0;
+    inset: 0; /*atajo para no escribir 0top0right*/
     width: 100%;
     height: 100%;
     max-width: none;
@@ -332,17 +332,18 @@ summary::-webkit-details-marker {
     background: transparent;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1000; /*esto asegura que quede siempre por encima, va por capas*/
 }
 
-.ubi-modal::backdrop {
+.ubi-modal::backdrop { /*fondo semitrasparente negro gris ma o meno que sale cuando sale el popup*/
     background: rgba(0, 0, 0, 0.4);
 }
 
 .ubi-modal:not([open]){
     display: none;
 }
-
+                            /* son selectores de atributo que le dicen al css que si la etiquita html tiene 
+                            el atributo open pues que se muestre con flex, si no olo tiene lo esconde con displauy none*/
 .ubi-modal[open]{
         display: flex;
 }

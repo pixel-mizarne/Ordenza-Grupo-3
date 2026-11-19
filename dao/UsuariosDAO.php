@@ -1,5 +1,5 @@
 <?php
-require_once 'Usuarios.php';
+require_once __DIR__ . '/../model/Usuarios.php';
 
 class UsuariosDAO
 {
@@ -13,15 +13,15 @@ class UsuariosDAO
     // Comprueba las credenciales comparando la contraseña con el hash almacenado.
     public function login(string $nombre_usuario, string $password): bool
     {
-        $sql = "SELECT password_hash FROM usuarios WHERE nombre_usuario = ?";
+        $sql = "SELECT password_hash FROM usuarios WHERE nombre_usuario = ?"; 
 
         // La consulta preparada separa los datos recibidos de la instrucción SQL.
         $stmt = $this->conexion->prepare($sql);
         $stmt->execute([$nombre_usuario]);
 
-        $password_hash = $stmt->fetchColumn();
+        $password_hash = $stmt->fetchColumn(); // fetchColumn saca el dato suelto del tirón sin tener que meterlo en un array
 
-        return $password_hash !== false && password_verify($password, $password_hash);
+        return $password_hash !== false && password_verify($password, $password_hash); // comprueba que el usuario existe y compara la contraseña normal con la encriptada de la bd
     }
 
     // Busca un usuario por su ID y devuelve el objeto correspondiente o null si no existe.
@@ -31,7 +31,7 @@ class UsuariosDAO
         $stmt = $this->conexion->prepare($sql);
         $stmt->execute([$id]);
 
-        $fila = $stmt->fetch(PDO::FETCH_ASSOC);
+        $fila = $stmt->fetch(PDO::FETCH_ASSOC); 
 
         if ($fila) {
             return new Usuarios(
@@ -54,7 +54,7 @@ class UsuariosDAO
         $stmt = $this->conexion->prepare($sql);
         $stmt->execute();
 
-        $fila = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $fila = $stmt->fetchAll(PDO::FETCH_OBJ); // aqui usamos FETCH_OBJ para leer los datos con flechitas en vez de corchetes
 
         // Acumula los objetos creados a partir de las filas obtenidas.
         $usuarios=[];
@@ -63,7 +63,7 @@ class UsuariosDAO
             $usuario= new usuarios(
                 $filaUsuarios->id_usuario,
                 $filaUsuarios->nombre,
-                $filaUsuarios->apellido,
+                $filaUsuarios->apellidos,
                 $filaUsuarios->nombre_usuario,
                 $filaUsuarios->password_hash,
                 $filaUsuarios->rol
@@ -100,10 +100,10 @@ class UsuariosDAO
         ]);
     }
 
-    // Genera un hash para la nueva contraseña y lo guarda para el usuario.
+    // Genera un hash para la nueva contraseña y lo guarda para el usuario
     public function actualizar_password(Usuarios $usuario, string $nuevaPassword): bool
     {
-        $hashed_password = password_hash($nuevaPassword, PASSWORD_DEFAULT);
+        $hashed_password = password_hash($nuevaPassword, PASSWORD_DEFAULT); // encriptamos la contraseña nueva para no guardarla nunca en texto plano
         $sql = "UPDATE usuarios SET password_hash = ? WHERE id_usuario = ?";
 
         $stmt = $this->conexion->prepare($sql);

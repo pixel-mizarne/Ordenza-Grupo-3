@@ -62,11 +62,12 @@
     </main>
 
     <!-- POP UP PARA AÑADIR/EDITAR -->
+        <!-- usamos la etiqueta dialog nativa de html5 para hacer el popup sin liarla con divs, esto hace que desde el css al darle al esc o fuera se cierrela vetana -->
     <dialog id="popupUsuario" class="popup">
         <div class="popup-contenido">
             <h2 id="popupTitulo">Nuevo Usuario</h2>
             <form id="formularioUsuario">
-                <input type="hidden" id="userId">
+                <input type="hidden" id="userId"> <!-- input invisible para guardarnos el id cuando editamos o borramos sin que el usuario lo vea -->
                 
                 <div class="grupo-input">
                     <label for="nombre">NOMBRE</label>
@@ -83,7 +84,7 @@
                     <input type="text" id="username" required>
                 </div>
 
-                <fieldset class="grupo-input grupo-rol">
+                <fieldset class="grupo-input grupo-rol"> <!-- agrupamos los radio buttons con el mismo name para que solo se pueda elegir un rol -->
                     <legend>ROL</legend>
                     <div class="rol-opciones">
                         <label class="rol-opcion">
@@ -97,6 +98,7 @@
                     </div>
                 </fieldset>
 
+                <!-- pattern: exprdesion regular para obligar a que la contraseña tenga mayuscula minuscula numero simbolo y minimo 8 letras-->
                 <div class="grupo-input">
                     <label for="password">CONTRASEÑA</label>
                     <input
@@ -104,7 +106,7 @@
                         id="password"
                         required
                         minlength="8"
-                        pattern="(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[0-9])(?=.*[._-]).{8,}"
+                        pattern="(?=.*\p{Ll})(?=.*\p{Lu})(?=.*[0-9])(?=.*[._-]).{8,}" 
                         title="Mínimo 8 caracteres, una mayúscula, una minúscula, un número y uno de estos caracteres: . - _"
                         aria-describedby="password-requirements"
                         autocomplete="new-password">
@@ -114,7 +116,7 @@
                 </div>
 
                 <div class="botones-popup">
-                    <button type="button" class="btn-cancelar" id="btnCerrarPopUp">Cancelar</button>
+                    <button type="button" class="btn-cancelar" id="btnCerrarPopUp">Cancelar</button> <!-- le ponemos type button para que al cancelar no intente enviar el formulario por error -->
                     <button type="submit" class="btn-aceptar">Aceptar</button>
                 </div>
             </form>

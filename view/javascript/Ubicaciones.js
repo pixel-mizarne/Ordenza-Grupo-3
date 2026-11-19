@@ -24,7 +24,7 @@ async function cargarUbicaciones() {
         ubicaciones.forEach(ubicacion => {
             const details = document.createElement('details');
             details.className = 'desplegable-planta';
-            details.ontoggle = () => {
+            details.ontoggle = () => { // solo pedimos los equipos a la bd cuando el usuario abre el desplegable para no saturar la pagina
                 if (details.open) {
                     cargarEquiposUbicacion(ubicacion.id_ubicacion);
                 }
@@ -62,13 +62,14 @@ if (btnAnadir) {
 } else {
     console.error("No se encontró el botón btnAnadir en el HTML.");
 }
+
 btnCancelarUbicacion.addEventListener('click', () => {
     dialogPopup.close(); // Cierra el pop-up de añadir/editar
 });
 
 dialogPopup.addEventListener('click', evento => {
     const contenido = dialogPopup.querySelector('.ubi-modal-contenido');
-    if (contenido && !contenido.contains(evento.target)) dialogPopup.close();
+    if (contenido && !contenido.contains(evento.target)) dialogPopup.close(); // si haces clic fuera de la caja blanca del popup se cierra solo
 });
 
 btnCancelarEliminar.addEventListener('click', () => {
@@ -78,7 +79,7 @@ btnCancelarEliminar.addEventListener('click', () => {
 
 
 // ABRIR POPUP PARA EDITAR
-window.abrirEditar = function(id, nombre, descripcion) {
+window.abrirEditar = function(id, nombre, descripcion) { // la metemos en window para que el onclick del html la encuentre sin problemas
     document.getElementById('ubiId').value = id;
     document.getElementById('nombre').value = nombre;
     document.getElementById('descripcion').value = descripcion;
@@ -91,7 +92,7 @@ formUbicacion.addEventListener('submit', async (evento) => {
     evento.preventDefault();
 
     const id = document.getElementById('ubiId').value;
-    const metodo = id ? 'PUT' : 'POST';
+    const metodo = id ? 'PUT' : 'POST'; // si hay id escondido hacemos PUT para editar y si esta vacio hacemos POST para crear
     const datos = {
         nombre: document.getElementById('nombre').value,
         descripcion: document.getElementById('descripcion').value
@@ -213,7 +214,7 @@ async function cargarEquiposUbicacion(idUbicacion) {
 }
 
 
-if (document.readyState === 'loading') {
+if (document.readyState === 'loading') { // comprueba si el html ya ha cargado para lanzar la funcion al momento o esperar a que termine, esto era por que el pop up salia desde el principio
     document.addEventListener('DOMContentLoaded', cargarUbicaciones, { once: true });
 } else {
     cargarUbicaciones();
