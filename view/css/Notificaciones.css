@@ -273,7 +273,7 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
     padding: 8px;
     border: 0;
     border-radius: 6px;
-    background: #f69f3d;
+    background: #b45309;
     color: white;
     font: inherit;
     font-size: 14px;
@@ -281,15 +281,15 @@ body.colorblind-mode .notificaciones-modal .notificaciones-admin__form {
 }
 
 .notificaciones-lista__boton-accion:hover {
-    background: #d17000;
+    background: #92400e;
 }
 
 .notificaciones-lista__boton-accion--eliminar {
-    background: #ff3939;
+    background:  #b91c1c;
 }
 
 .notificaciones-lista__boton-accion--eliminar:hover {
-    background: #ba1313;
+    background: #991b1b;
 }
 
 /* ESTADOS DE LAS NOTIFICACIONES */
