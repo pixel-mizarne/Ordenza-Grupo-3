@@ -17,7 +17,7 @@ body {
 #main-navbar, #main-footer { 
     display: none; 
 }
-
+/* se inyecta las vistas */
 #app-content { 
     min-height: 60vh; 
 }
@@ -45,7 +45,7 @@ body {
     z-index: 1000 !important;
 }
 
-/* BOTÓN MÓVIL */
+/* HAMBURGUESA */
 .mobile-menu-btn {
     display: none !important;
 }
@@ -94,7 +94,7 @@ body {
     display: flex !important;
     align-items: center !important;
     gap: 15px !important;
-    flex: 0 0 auto !important;
+    flex: 0 0 auto !important; /* MANTIENE EL LOGO EN CENTRO */
 }
 
 /* Image */
@@ -177,9 +177,9 @@ body {
     line-height: 17px;
     text-align: center;
 }
-
+/* RESPONSIVE MIN() ELIGE EL MAS PEQUEÑO ENTRE */ 
 .notification-menu {
-    width: min(360px, calc(100vw - 32px));
+    width: min(360px, calc(100vw - 32px)); /* DESKTOP Y MOVIL*/
     padding: 0;
     overflow: hidden;
 }
@@ -203,7 +203,7 @@ body {
 .notification-menu__header .notification-menu__title {
     flex: 1;
 }
-
+/* BOTON MARCAR COMO LEIDO */
 .notification-menu__mark-read {
     flex: 0 0 auto;
     margin-left: 8px;
@@ -218,7 +218,8 @@ body {
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s;
 }
-
+ /* :not(:disabled) evita que el hover "se vea" cuando el botón está
+    deshabilitado (porque no hay notificaciones que marcar). */
 .notification-menu__mark-read:hover:not(:disabled) {
     border-color: #1e293b;
     background: #1e293b;
@@ -272,7 +273,7 @@ body {
     padding: 18px;
     text-align: center;
 }
-
+/* FOOTER DEL DROPDOWN */
 .notification-menu__footer {
     display: block;
     padding: 13px 18px;
@@ -306,7 +307,7 @@ body {
 .dropdown-container {
     position: relative;
 }
-
+/* BOTON QUE ABRE EL MENU */
 .admin-dropdown {
     display: flex;
     align-items: center;
@@ -324,10 +325,10 @@ body {
 .admin-dropdown:hover {
     background: #e5e1d5;
 }
-
+/* PANEL DESPLEGABLE */
 .dropdown-menu {
-    display: none;
-    position: absolute;
+    display: none; /* OCULTO POR DEFECTO */
+    position: absolute; /* FLOTA */
     top: 110%;
     right: 0;
     background: white;
@@ -342,7 +343,7 @@ body {
 .dropdown-menu.show {
     display: block;
 }
-
+/* OPCION DEL MENU PERFIL, DALTONISMO, SALIR */
 .menu-option-perfil,
 .menu-option-daltonismo,
 .menu-option-salir {
@@ -365,14 +366,14 @@ body {
     align-items: center;
     gap: 8px;
 }
-
+/* TEXTO IZQUIERDA, SWITCH DERECHA */
 .menu-option-daltonismo {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     padding-right: 20px;
 }
-
+/* SWITCH */
 .menu-option-daltonismo .toggle-switch {
     width: 34px;
     height: 18px;
@@ -381,7 +382,7 @@ body {
     position: relative;
     transition: 0.3s;
 }
-
+/* DESLIZADOR */
 .menu-option-daltonismo .toggle-switch::after {
     content: ''; 
     position: absolute;
