@@ -33,7 +33,7 @@ function renderizarTablaHistorico() {
     const search = searchInput ? normalizarTexto(searchInput.value) : '';
 
     const filtrados = todosLosEquipos.filter(e => {
-        // 👇 BÚSQUEDA AMPLIADA: Nombre, ID, Marca y Modelo 👇
+        // Nombre, ID, Marca y Modelo
         const matchSearch = normalizarTexto(e.nombre).includes(search) || 
                             normalizarTexto(e.id_equipamiento).includes(search) ||
                             normalizarTexto(e.marca).includes(search) ||
@@ -95,7 +95,7 @@ function renderizarTablaHistorico() {
 async function verHistorialExpandido(id) {
     const historyRow = document.getElementById(`history-row-${id}`);
     const contentDiv = document.getElementById(`history-content-${id}`);
-    const btn = document.querySelector(`#row-${id} .eq-btn-history`); // 👈 Capturamos el botón
+    const btn = document.querySelector(`#row-${id} .eq-btn-history`); 
 
     if (!historyRow) return;
 
@@ -151,7 +151,7 @@ async function verHistorialExpandido(id) {
     }
 }
 
-// 👇 EVENTOS DEL BUSCADOR 👇
+// BUSCADOR
 const searchHis = document.getElementById('search-input');
 const clearHis = document.getElementById('clear-search-his');
 
@@ -168,7 +168,7 @@ if (searchHis && clearHis) {
     clearHis.addEventListener('click', () => {
         searchHis.value = '';
         clearHis.classList.remove('visible');
-        // Forzamos la actualización de la tabla
+        // actualización de la tabla
         renderizarTablaHistorico(); 
         searchHis.focus();
     });
