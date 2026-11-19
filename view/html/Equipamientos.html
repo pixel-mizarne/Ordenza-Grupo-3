@@ -24,19 +24,24 @@
 <!-- Los filtros, búsqueda y creación conservan la vista original de administración. -->
 <div class="eq-filters-bar eq-admin-controls" id="eq-admin-controls" hidden>
     <div class="eq-search-box" style="position: relative;">
-        <i class="fa-solid fa-magnifying-glass" style="color: #9ca3af;"></i>
+        <i class="fa-solid fa-magnifying-glass" style="color: #9ca3af;" aria-hidden="true"></i>
+        <!-- Añadimos el label oculto -->
+        <label for="search-input" class="sr-only">Buscar equipamiento por nombre, ID, marca o modelo</label>
         <input type="text" id="search-input" placeholder="Buscar por nombre, ID, marca o modelo...">
-        <button type="button" class="search-clear-btn" id="clear-search-eq">
-            <i class="fa-solid fa-xmark"></i>
+        <!-- Añadimos aria-label al botón de limpiar -->
+        <button type="button" class="search-clear-btn" id="clear-search-eq" aria-label="Limpiar búsqueda">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
     </div>
 
+    <!-- Añadimos el label oculto para el select -->
+    <label for="filter-location" class="sr-only">Filtrar por ubicación</label>
     <select id="filter-location" class="eq-select">
         <option value="">Ubicación: Todas</option>
     </select>
 
     <button class="eq-btn-primary" id="btn-crear-equipamiento" onclick="abrirModalCrear()" style="display: none;">
-        <i class="fa-solid fa-plus"></i> Crear equipamiento
+        <i class="fa-solid fa-plus" aria-hidden="true"></i> Crear equipamiento
     </button>
 </div>
 
@@ -88,13 +93,13 @@
     <h2 class="eq-results-title" id="eq-selected-category"></h2>
 </div>
 
-<!-- La tabla se comparte: administración la ve de entrada y el usuario tras elegir un botón. -->
+<!-- La tabla se comparte administración la ve de entrada y el usuario tras elegir un botón. -->
 <section class="eq-table-section" id="eq-table-section" hidden>
     <div class="eq-table-container">
         <table class="eq-table">
             <thead>
                 <tr>
-                    <th style="width: 60px;">ID</th>
+                    <th scope="col" style="width: 60px;">ID</th>
                     <th>Nombre</th>
                     <th>Marca</th>
                     <th>Modelo</th>
@@ -154,7 +159,7 @@
     </div>
 </dialog>
 
-<div id="modal-desc" class="eq-modal" style="display: none;">
+<dialog id="modal-desc" class="eq-modal">
     <div class="eq-modal-content">
         <h3>Descripción del Equipamiento</h3>
         <p id="desc-text-content" style="margin-bottom: 20px; line-height: 1.6; color: #374151; font-size: 15px;"></p>
@@ -165,7 +170,7 @@
 </div>
 
 <!-- POPUP PARA ELIMINAR EQUIPO -->
-<div id="modal-eliminar-eq" class="eq-modal" style="display: none;">
+<dialog id="modal-eliminar-eq" class="eq-modal">
     <div class="eq-modal-content">
         <h3>Eliminar Equipamiento</h3>
         <p style="margin-bottom: 20px; color: #4b5563; font-size: 14px;">
