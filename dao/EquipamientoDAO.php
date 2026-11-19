@@ -30,7 +30,6 @@ class EquipamientoDAO {
         $fila = $stmt->fetch(PDO::FETCH_ASSOC);
         return $fila ?: null;
     }
-//(ADRIAN)
     public function crear(string $nombre, string $descripcion, string $marca, string $modelo, string $categoria): bool {
         // Reservamos el alta para que dos personas no reciban el mismo ID 
         $bloqueo = $this->dbConnection->query(
@@ -84,7 +83,6 @@ class EquipamientoDAO {
             }
         }
     }
-//(ADRIAN)
     public function actualizar(int $id, string $nombre, string $descripcion, string $marca, string $modelo, string $categoria, ?int $id_ubicacion = null): bool {
         if ($id_ubicacion !== null) {
             $query = "UPDATE equipamientos SET nombre = :nombre, descripcion = :descripcion, 
