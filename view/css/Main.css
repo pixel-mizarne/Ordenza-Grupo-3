@@ -126,6 +126,7 @@ body {
 }
 
 /* --- NOTIFICACIONES --- */
+/* ICONO, BOTON Y AVISO DE NOTIFICACIONES */
 .nav-profile .bell {
     color: white;
     font-size: 24px;
@@ -178,6 +179,7 @@ body {
     text-align: center;
 }
 /* RESPONSIVE MIN() ELIGE EL MAS PEQUEÑO ENTRE */ 
+/* MENU DESPLEGABLE DE NOTIFICACIONES */
 .notification-menu {
     width: min(360px, calc(100vw - 32px)); /* DESKTOP Y MOVIL*/
     padding: 0;
@@ -235,6 +237,7 @@ body {
     opacity: 0.55;
 }
 
+/* LISTA Y MENSAJES DEL MENU */
 .notification-menu__list {
     max-height: 340px;
     overflow-y: auto;
@@ -889,6 +892,7 @@ body.colorblind-mode .notificacion-no-leida {
     border-bottom: 2px solid #000000 !important;
 }
 
+/* CONTENEDOR DE LA LISTA Y PESTAÑAS EN ALTO CONTRASTE */
 body.colorblind-mode .notificaciones-lista__tabla,
 body.colorblind-mode .notificaciones-admin__form,
 body.colorblind-mode .notis-tabs-container {
@@ -915,6 +919,7 @@ body.colorblind-mode .notificaciones-lista tbody tr.notificacion-no-leida {
     background-color: #FFFFFF !important;
 }
 
+/* ESTADOS Y MENSAJES DE NOTIFICACIONES EN ALTO CONTRASTE */
 body.colorblind-mode .notificaciones-lista__estado {
     border: 2px solid #000000 !important;
     background-color: #FFFFFF !important;
@@ -1585,6 +1590,7 @@ body.dark-mode textarea:focus {
     outline: none !important;
 }
 
+/* TABLAS DE EQUIPAMIENTO Y NOTIFICACIONES EN MODO OSCURO */
 body.dark-mode .eq-table th,
 body.dark-mode .notificaciones-lista th {
     background: #3c4043 !important;
@@ -1728,6 +1734,7 @@ body.dark-mode .tarjeta-info strong {
     color: var(--dark-coral) !important;
 }
 
+/* BORDES Y HOVER DEL MENU DE NOTIFICACIONES */
 body.dark-mode .notification-menu {
     border: 1px solid var(--dark-border) !important;
 }
@@ -1736,6 +1743,7 @@ body.dark-mode .notification-menu__footer:hover {
     background: var(--dark-surface-raised) !important;
 }
 
+/* BOTONES DE ACCION, INCLUIDO MARCAR COMO LEIDO */
 body.dark-mode .eq-btn-primary,
 body.dark-mode .ubi-boton-añadir,
 body.dark-mode .usu-boton-añadir,
@@ -1855,6 +1863,7 @@ body.dark-mode .notificaciones-lista tbody tr:nth-child(even) {
     background: var(--dark-surface) !important;
 }
 
+/* RESALTAR NOTIFICACIONES NO LEIDAS EN MODO OSCURO */
 body.dark-mode .notificaciones-lista tbody tr.notificacion-no-leida {
     background: #303f5e !important;
 }
